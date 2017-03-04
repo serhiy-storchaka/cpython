@@ -806,6 +806,12 @@ Documentation
 Build
 -----
 
+- bpo-27593: sys.version and the platform module python_build(),
+  python_branch(), and python_revision() functions now use
+  git information rather than hg when building from a repo.
+
+- bpo-29572: Update Windows build and OS X installers to use OpenSSL 1.0.2k.
+
 - Issue #27659: Prohibit implicit C function declarations: use
   -Werror=implicit-function-declaration when possible (GCC and Clang, but it
   depends on the compiler version). Patch written by Chi Hsuan Yen.
@@ -888,6 +894,10 @@ Tools/Demos
 
 Tests
 -----
+
+- bpo-28087: Skip test_asyncore and test_eintr poll failures on macOS.
+  Skip some tests of select.poll when running on macOS due to unresolved
+  issues with the underlying system poll function on some macOS versions.
 
 - Issue #29571: to match the behaviour of the ``re.LOCALE`` flag,
   test_re.test_locale_flag now uses ``locale.getpreferredencoding(False)`` to
