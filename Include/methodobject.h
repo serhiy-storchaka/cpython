@@ -88,6 +88,12 @@ PyAPI_FUNC(PyObject *) PyCFunction_NewEx(PyMethodDef *, PyObject *,
 #ifndef Py_LIMITED_API
 #define METH_FASTCALL  0x0080
 
+/* METH_GENRAL controls the construction of methods for a class like
+   METH_CLASS and METH_STATIC.  Methods with this flag doesn't check
+   the type of the self argument.  It cannot be used for functions
+   in modules. */
+#define METH_GENERAL   0x0100
+
 typedef struct {
     PyObject_HEAD
     PyMethodDef *m_ml; /* Description of the C function to call */

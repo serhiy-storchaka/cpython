@@ -4674,6 +4674,9 @@ add_methods(PyTypeObject *type, PyMethodDef *meth)
             isdescr = 0;  // PyStaticMethod is not PyDescrObject
             Py_DECREF(cfunc);
         }
+        else if (meth->ml_flags & METH_GENERAL) {
+            descr = PyDescr_NewMethod(&PyBaseObject_Type, meth);
+        }
         else {
             descr = PyDescr_NewMethod(type, meth);
         }
