@@ -1,6 +1,7 @@
 #define PY_SSIZE_T_CLEAN
 #include "Python.h"
 #include "bytes_methods.h"
+#include "pystrhex.h"
 
 PyDoc_STRVAR_shared(_Py_isspace__doc__,
 "B.isspace() -> bool\n\
@@ -466,7 +467,7 @@ parse_args_finds_byte(const char *function_name, PyObject *args,
     }
 
 Py_LOCAL_INLINE(Py_ssize_t)
-find_internal(const char *str, Py_ssize_t len,
+find_internal2(const char *str, Py_ssize_t len,
               const char *function_name, PyObject *args, int dir)
 {
     PyObject *subobj;
@@ -525,6 +526,19 @@ find_internal(const char *str, Py_ssize_t len,
     return res;
 }
 
+Py_LOCAL_INLINE(Py_ssize_t)
+find_internal(PyObject *self,
+              const char *function_name, PyObject *args, int dir)
+{
+    Py_buffer view;
+    Py_ssize_t result;
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
+        return -1;
+    result = find_internal2(view.buf, view.len, function_name, args, dir);
+    PyBuffer_Release(&view);
+    return result;
+}
+
 PyDoc_STRVAR_shared(_Py_find__doc__,
 "B.find(sub[, start[, end]]) -> int\n\
 \n\
@@ -535,9 +549,9 @@ arguments start and end are interpreted as in slice notation.\n\
 Return -1 on failure.");
 
 PyObject *
-_Py_bytes_find(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_find(PyObject *self, PyObject *args)
 {
-    Py_ssize_t result = find_internal(str, len, "find", args, +1);
+    Py_ssize_t result = find_internal(self, "find", args, +1);
     if (result == -2)
         return NULL;
     return PyLong_FromSsize_t(result);
@@ -553,9 +567,9 @@ arguments start and end are interpreted as in slice notation.\n\
 Raises ValueError when the subsection is not found.");
 
 PyObject *
-_Py_bytes_index(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_index(PyObject *self, PyObject *args)
 {
-    Py_ssize_t result = find_internal(str, len, "index", args, +1);
+    Py_ssize_t result = find_internal(self, "index", args, +1);
     if (result == -2)
         return NULL;
     if (result == -1) {
@@ -576,9 +590,9 @@ arguments start and end are interpreted as in slice notation.\n\
 Return -1 on failure.");
 
 PyObject *
-_Py_bytes_rfind(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_rfind(PyObject *self, PyObject *args)
 {
-    Py_ssize_t result = find_internal(str, len, "rfind", args, -1);
+    Py_ssize_t result = find_internal(self, "rfind", args, -1);
     if (result == -2)
         return NULL;
     return PyLong_FromSsize_t(result);
@@ -594,9 +608,9 @@ arguments start and end are interpreted as in slice notation.\n\
 Raise ValueError when the subsection is not found.");
 
 PyObject *
-_Py_bytes_rindex(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_rindex(PyObject *self, PyObject *args)
 {
-    Py_ssize_t result = find_internal(str, len, "rindex", args, -1);
+    Py_ssize_t result = find_internal(self, "rindex", args, -1);
     if (result == -2)
         return NULL;
     if (result == -1) {
@@ -614,8 +628,8 @@ Return the number of non-overlapping occurrences of subsection sub in\n\
 bytes B[start:end].  Optional arguments start and end are interpreted\n\
 as in slice notation.");
 
-PyObject *
-_Py_bytes_count(const char *str, Py_ssize_t len, PyObject *args)
+static PyObject *
+bytes_count(const char *str, Py_ssize_t len, PyObject *args)
 {
     PyObject *sub_obj;
     const char *sub;
@@ -652,6 +666,18 @@ _Py_bytes_count(const char *str, Py_ssize_t len, PyObject *args)
         PyBuffer_Release(&vsub);
 
     return count_obj;
+}
+
+PyObject *
+_Py_bytes_count(PyObject *self, PyObject *args)
+{
+    Py_buffer view;
+    PyObject *result;
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
+        return NULL;
+    result = bytes_count(view.buf, view.len, args);
+    PyBuffer_Release(&view);
+    return result;
 }
 
 int
@@ -729,7 +755,7 @@ notfound:
 }
 
 static PyObject *
-_Py_bytes_tailmatch(const char *str, Py_ssize_t len,
+_Py_bytes_tailmatch2(const char *str, Py_ssize_t len,
                     const char *function_name, PyObject *args,
                     int direction)
 {
@@ -766,6 +792,19 @@ _Py_bytes_tailmatch(const char *str, Py_ssize_t len,
         return PyBool_FromLong(result);
 }
 
+static PyObject *
+_Py_bytes_tailmatch(PyObject *self,
+                    const char *function_name, PyObject *args, int dir)
+{
+    Py_buffer view;
+    PyObject *result;
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
+        return NULL;
+    result = _Py_bytes_tailmatch2(view.buf, view.len, function_name, args, dir);
+    PyBuffer_Release(&view);
+    return result;
+}
+
 PyDoc_STRVAR_shared(_Py_startswith__doc__,
 "B.startswith(prefix[, start[, end]]) -> bool\n\
 \n\
@@ -775,9 +814,9 @@ With optional end, stop comparing B at that position.\n\
 prefix can also be a tuple of bytes to try.");
 
 PyObject *
-_Py_bytes_startswith(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_startswith(PyObject *self, PyObject *args)
 {
-    return _Py_bytes_tailmatch(str, len, "startswith", args, -1);
+    return _Py_bytes_tailmatch(self, "startswith", args, -1);
 }
 
 PyDoc_STRVAR_shared(_Py_endswith__doc__,
@@ -789,10 +828,23 @@ With optional end, stop comparing B at that position.\n\
 suffix can also be a tuple of bytes to try.");
 
 PyObject *
-_Py_bytes_endswith(const char *str, Py_ssize_t len, PyObject *args)
+_Py_bytes_endswith(PyObject *self, PyObject *args)
 {
-    return _Py_bytes_tailmatch(str, len, "endswith", args, +1);
+    return _Py_bytes_tailmatch(self, "endswith", args, +1);
 }
+
+PyObject *
+_Py_bytes_hex(PyObject *self)
+{
+    Py_buffer view;
+    PyObject *result;
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
+        return NULL;
+    result = _Py_strhex(view.buf, view.len);
+    PyBuffer_Release(&view);
+    return result;
+}
+
 
 PyDoc_STRVAR_shared(_Py_expandtabs__doc__,
 "B.expandtabs(tabsize=8) -> copy of B\n\

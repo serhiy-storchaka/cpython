@@ -5,7 +5,6 @@
 #include "Python.h"
 
 #include "bytes_methods.h"
-#include "pystrhex.h"
 #include <stddef.h>
 
 /*[clinic input]
@@ -1913,33 +1912,6 @@ _PyBytes_Join(PyObject *sep, PyObject *x)
     return bytes_join((PyBytesObject*)sep, x);
 }
 
-static PyObject *
-bytes_find(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_find(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-static PyObject *
-bytes_index(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_index(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-
-static PyObject *
-bytes_rfind(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_rfind(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-
-static PyObject *
-bytes_rindex(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_rindex(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-
 Py_LOCAL_INLINE(PyObject *)
 do_xstrip(PyBytesObject *self, int striptype, PyObject *sepobj)
 {
@@ -2072,13 +2044,6 @@ bytes_rstrip_impl(PyBytesObject *self, PyObject *bytes)
 /*[clinic end generated code: output=547e3815c95447da input=b78af445c727e32b]*/
 {
     return do_argstrip(self, RIGHTSTRIP, bytes);
-}
-
-
-static PyObject *
-bytes_count(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_count(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
 }
 
 
@@ -2266,19 +2231,6 @@ bytes_replace_impl(PyBytesObject *self, Py_buffer *old, Py_buffer *new,
 /** End DALKE **/
 
 
-static PyObject *
-bytes_startswith(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_startswith(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-static PyObject *
-bytes_endswith(PyBytesObject *self, PyObject *args)
-{
-    return _Py_bytes_endswith(PyBytes_AS_STRING(self), PyBytes_GET_SIZE(self), args);
-}
-
-
 /*[clinic input]
 bytes.decode
 
@@ -2433,14 +2385,6 @@ Create a string of hexadecimal numbers from a bytes object.\n\
 Example: b'\\xb9\\x01\\xef'.hex() -> 'b901ef'.");
 
 static PyObject *
-bytes_hex(PyBytesObject *self)
-{
-    char* argbuf = PyBytes_AS_STRING(self);
-    Py_ssize_t arglen = PyBytes_GET_SIZE(self);
-    return _Py_strhex(argbuf, arglen);
-}
-
-static PyObject *
 bytes_getnewargs(PyBytesObject *v)
 {
     return Py_BuildValue("(y#)", v->ob_sval, Py_SIZE(v));
@@ -2450,60 +2394,61 @@ bytes_getnewargs(PyBytesObject *v)
 static PyMethodDef
 bytes_methods[] = {
     {"__getnewargs__",          (PyCFunction)bytes_getnewargs,  METH_NOARGS},
-    {"capitalize", (PyCFunction)stringlib_capitalize, METH_NOARGS,
+    {"capitalize", (PyCFunction)stringlib_capitalize, METH_NOARGS|METH_GENERAL,
      _Py_capitalize__doc__},
-    {"center", (PyCFunction)stringlib_center, METH_VARARGS,
+    {"center", (PyCFunction)stringlib_center, METH_VARARGS|METH_GENERAL,
      _Py_center__doc__},
-    {"count", (PyCFunction)bytes_count, METH_VARARGS,
+    {"count", (PyCFunction)_Py_bytes_count, METH_VARARGS|METH_GENERAL,
      _Py_count__doc__},
     BYTES_DECODE_METHODDEF
-    {"endswith", (PyCFunction)bytes_endswith, METH_VARARGS,
+    {"endswith", (PyCFunction)_Py_bytes_endswith, METH_VARARGS|METH_GENERAL,
      _Py_endswith__doc__},
-    {"expandtabs", (PyCFunction)stringlib_expandtabs, METH_VARARGS | METH_KEYWORDS,
+    {"expandtabs", (PyCFunction)stringlib_expandtabs,
+     METH_VARARGS|METH_KEYWORDS,
      _Py_expandtabs__doc__},
-    {"find", (PyCFunction)bytes_find, METH_VARARGS,
+    {"find", (PyCFunction)_Py_bytes_find, METH_VARARGS|METH_GENERAL,
      _Py_find__doc__},
     BYTES_FROMHEX_METHODDEF
-    {"hex", (PyCFunction)bytes_hex, METH_NOARGS, hex__doc__},
-    {"index", (PyCFunction)bytes_index, METH_VARARGS, _Py_index__doc__},
-    {"isalnum", (PyCFunction)stringlib_isalnum, METH_NOARGS,
+    {"hex", (PyCFunction)_Py_bytes_hex, METH_NOARGS|METH_GENERAL, hex__doc__},
+    {"index", (PyCFunction)_Py_bytes_index, METH_VARARGS|METH_GENERAL, _Py_index__doc__},
+    {"isalnum", (PyCFunction)stringlib_isalnum, METH_NOARGS|METH_GENERAL,
      _Py_isalnum__doc__},
-    {"isalpha", (PyCFunction)stringlib_isalpha, METH_NOARGS,
+    {"isalpha", (PyCFunction)stringlib_isalpha, METH_NOARGS|METH_GENERAL,
      _Py_isalpha__doc__},
-    {"isdigit", (PyCFunction)stringlib_isdigit, METH_NOARGS,
+    {"isdigit", (PyCFunction)stringlib_isdigit, METH_NOARGS|METH_GENERAL,
      _Py_isdigit__doc__},
-    {"islower", (PyCFunction)stringlib_islower, METH_NOARGS,
+    {"islower", (PyCFunction)stringlib_islower, METH_NOARGS|METH_GENERAL,
      _Py_islower__doc__},
-    {"isspace", (PyCFunction)stringlib_isspace, METH_NOARGS,
+    {"isspace", (PyCFunction)stringlib_isspace, METH_NOARGS|METH_GENERAL,
      _Py_isspace__doc__},
-    {"istitle", (PyCFunction)stringlib_istitle, METH_NOARGS,
+    {"istitle", (PyCFunction)stringlib_istitle, METH_NOARGS|METH_GENERAL,
      _Py_istitle__doc__},
-    {"isupper", (PyCFunction)stringlib_isupper, METH_NOARGS,
+    {"isupper", (PyCFunction)stringlib_isupper, METH_NOARGS|METH_GENERAL,
      _Py_isupper__doc__},
     BYTES_JOIN_METHODDEF
-    {"ljust", (PyCFunction)stringlib_ljust, METH_VARARGS, _Py_ljust__doc__},
-    {"lower", (PyCFunction)stringlib_lower, METH_NOARGS, _Py_lower__doc__},
+    {"ljust", (PyCFunction)stringlib_ljust, METH_VARARGS|METH_GENERAL, _Py_ljust__doc__},
+    {"lower", (PyCFunction)stringlib_lower, METH_NOARGS|METH_GENERAL, _Py_lower__doc__},
     BYTES_LSTRIP_METHODDEF
     BYTES_MAKETRANS_METHODDEF
     BYTES_PARTITION_METHODDEF
     BYTES_REPLACE_METHODDEF
-    {"rfind", (PyCFunction)bytes_rfind, METH_VARARGS, _Py_rfind__doc__},
-    {"rindex", (PyCFunction)bytes_rindex, METH_VARARGS, _Py_rindex__doc__},
-    {"rjust", (PyCFunction)stringlib_rjust, METH_VARARGS, _Py_rjust__doc__},
+    {"rfind", (PyCFunction)_Py_bytes_rfind, METH_VARARGS|METH_GENERAL, _Py_rfind__doc__},
+    {"rindex", (PyCFunction)_Py_bytes_rindex, METH_VARARGS|METH_GENERAL, _Py_rindex__doc__},
+    {"rjust", (PyCFunction)stringlib_rjust, METH_VARARGS|METH_GENERAL, _Py_rjust__doc__},
     BYTES_RPARTITION_METHODDEF
     BYTES_RSPLIT_METHODDEF
     BYTES_RSTRIP_METHODDEF
     BYTES_SPLIT_METHODDEF
     BYTES_SPLITLINES_METHODDEF
-    {"startswith", (PyCFunction)bytes_startswith, METH_VARARGS,
+    {"startswith", (PyCFunction)_Py_bytes_startswith, METH_VARARGS|METH_GENERAL,
      _Py_startswith__doc__},
     BYTES_STRIP_METHODDEF
-    {"swapcase", (PyCFunction)stringlib_swapcase, METH_NOARGS,
+    {"swapcase", (PyCFunction)stringlib_swapcase, METH_NOARGS|METH_GENERAL,
      _Py_swapcase__doc__},
-    {"title", (PyCFunction)stringlib_title, METH_NOARGS, _Py_title__doc__},
+    {"title", (PyCFunction)stringlib_title, METH_NOARGS|METH_GENERAL, _Py_title__doc__},
     BYTES_TRANSLATE_METHODDEF
-    {"upper", (PyCFunction)stringlib_upper, METH_NOARGS, _Py_upper__doc__},
-    {"zfill", (PyCFunction)stringlib_zfill, METH_VARARGS, _Py_zfill__doc__},
+    {"upper", (PyCFunction)stringlib_upper, METH_NOARGS|METH_GENERAL, _Py_upper__doc__},
+    {"zfill", (PyCFunction)stringlib_zfill, METH_VARARGS|METH_GENERAL, _Py_zfill__doc__},
     {NULL,     NULL}                         /* sentinel */
 };
 

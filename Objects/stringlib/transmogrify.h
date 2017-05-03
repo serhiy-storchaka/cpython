@@ -17,6 +17,22 @@ return_self(PyObject *self)
     return STRINGLIB_NEW(STRINGLIB_STR(self), STRINGLIB_LEN(self));
 }
 
+static inline PyObject *
+return_self2(PyObject *self, Py_buffer *view)
+{
+    PyObject *result;
+#if !STRINGLIB_MUTABLE
+    if (STRINGLIB_CHECK_EXACT(self)) {
+        Py_INCREF(self);
+        PyBuffer_Release(view);
+        return self;
+    }
+#endif
+    result = STRINGLIB_NEW(view->buf, view->len);
+    PyBuffer_Release(view);
+    return result;
+}
+
 static PyObject*
 stringlib_expandtabs(PyObject *self, PyObject *args, PyObject *kwds)
 {
@@ -91,7 +107,7 @@ stringlib_expandtabs(PyObject *self, PyObject *args, PyObject *kwds)
 }
 
 static inline PyObject *
-pad(PyObject *self, Py_ssize_t left, Py_ssize_t right, char fill)
+pad(PyObject *self, Py_buffer *view, Py_ssize_t left, Py_ssize_t right, char fill)
 {
     PyObject *u;
 
@@ -101,21 +117,20 @@ pad(PyObject *self, Py_ssize_t left, Py_ssize_t right, char fill)
         right = 0;
 
     if (left == 0 && right == 0) {
-        return return_self(self);
+        return return_self2(self, view);
     }
 
-    u = STRINGLIB_NEW(NULL, left + STRINGLIB_LEN(self) + right);
+    u = STRINGLIB_NEW(NULL, left + view->len + right);
     if (u) {
         if (left)
             memset(STRINGLIB_STR(u), fill, left);
-        memcpy(STRINGLIB_STR(u) + left,
-               STRINGLIB_STR(self),
-               STRINGLIB_LEN(self));
+        memcpy(STRINGLIB_STR(u) + left, view->buf, view->len);
         if (right)
-            memset(STRINGLIB_STR(u) + left + STRINGLIB_LEN(self),
+            memset(STRINGLIB_STR(u) + left + view->len,
                    fill, right);
     }
 
+    PyBuffer_Release(view);
     return u;
 }
 
@@ -124,15 +139,21 @@ stringlib_ljust(PyObject *self, PyObject *args)
 {
     Py_ssize_t width;
     char fillchar = ' ';
+    Py_buffer view;
 
-    if (!PyArg_ParseTuple(args, "n|c:ljust", &width, &fillchar))
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
         return NULL;
 
-    if (STRINGLIB_LEN(self) >= width) {
-        return return_self(self);
+    if (!PyArg_ParseTuple(args, "n|c:ljust", &width, &fillchar)) {
+        PyBuffer_Release(&view);
+        return NULL;
     }
 
-    return pad(self, 0, width - STRINGLIB_LEN(self), fillchar);
+    if (view.len >= width) {
+        return return_self2(self, &view);
+    }
+
+    return pad(self, &view, 0, width - view.len, fillchar);
 }
 
 
@@ -141,15 +162,21 @@ stringlib_rjust(PyObject *self, PyObject *args)
 {
     Py_ssize_t width;
     char fillchar = ' ';
+    Py_buffer view;
 
-    if (!PyArg_ParseTuple(args, "n|c:rjust", &width, &fillchar))
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
         return NULL;
 
-    if (STRINGLIB_LEN(self) >= width) {
-        return return_self(self);
+    if (!PyArg_ParseTuple(args, "n|c:rjust", &width, &fillchar)) {
+        PyBuffer_Release(&view);
+        return NULL;
     }
 
-    return pad(self, width - STRINGLIB_LEN(self), 0, fillchar);
+    if (view.len >= width) {
+        return return_self2(self, &view);
+    }
+
+    return pad(self, &view, width - view.len, 0, fillchar);
 }
 
 
@@ -159,18 +186,24 @@ stringlib_center(PyObject *self, PyObject *args)
     Py_ssize_t marg, left;
     Py_ssize_t width;
     char fillchar = ' ';
+    Py_buffer view;
 
-    if (!PyArg_ParseTuple(args, "n|c:center", &width, &fillchar))
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
         return NULL;
 
-    if (STRINGLIB_LEN(self) >= width) {
-        return return_self(self);
+    if (!PyArg_ParseTuple(args, "n|c:center", &width, &fillchar)) {
+        PyBuffer_Release(&view);
+        return NULL;
     }
 
-    marg = width - STRINGLIB_LEN(self);
+    if (view.len >= width) {
+        return return_self2(self, &view);
+    }
+
+    marg = width - view.len;
     left = marg / 2 + (marg & width & 1);
 
-    return pad(self, left, marg - left, fillchar);
+    return pad(self, &view, left, marg - left, fillchar);
 }
 
 static PyObject *
@@ -180,17 +213,23 @@ stringlib_zfill(PyObject *self, PyObject *args)
     PyObject *s;
     char *p;
     Py_ssize_t width;
+    Py_buffer view;
 
-    if (!PyArg_ParseTuple(args, "n:zfill", &width))
+    if (PyObject_GetBuffer(self, &view, PyBUF_SIMPLE) != 0)
         return NULL;
 
-    if (STRINGLIB_LEN(self) >= width) {
-        return return_self(self);
+    if (!PyArg_ParseTuple(args, "n:zfill", &width)) {
+        PyBuffer_Release(&view);
+        return NULL;
     }
 
-    fill = width - STRINGLIB_LEN(self);
+    if (view.len >= width) {
+        return return_self2(self, &view);
+    }
 
-    s = pad(self, fill, 0, '0');
+    fill = width - view.len;
+
+    s = pad(self, &view, fill, 0, '0');
 
     if (s == NULL)
         return NULL;
