@@ -458,7 +458,7 @@ _PyMethodDef_RawFastCallDict(PyMethodDef *method, PyObject *self,
     assert(kwargs == NULL || PyDict_Check(kwargs));
 
     PyCFunction meth = method->ml_meth;
-    int flags = method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST);
+    int flags = method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_GENERAL);
     PyObject *result = NULL;
 
     if (Py_EnterRecursiveCall(" while calling a Python object")) {
@@ -604,7 +604,7 @@ _PyMethodDef_RawFastCallKeywords(PyMethodDef *method, PyObject *self,
        be unique */
 
     PyCFunction meth = method->ml_meth;
-    int flags = method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST);
+    int flags = method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_GENERAL);
     Py_ssize_t nkwargs = kwnames == NULL ? 0 : PyTuple_GET_SIZE(kwnames);
     PyObject *result = NULL;
 

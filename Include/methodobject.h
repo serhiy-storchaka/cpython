@@ -98,6 +98,12 @@ PyAPI_FUNC(PyObject *) PyCFunction_NewEx(PyMethodDef *, PyObject *,
 #define METH_STACKLESS 0x0000
 #endif
 
+/* METH_GENRAL controls the construction of methods for a class like
+   METH_CLASS and METH_STATIC.  Methods with this flag doesn't check
+   the type of the self argument.  It cannot be used for functions
+   in modules. */
+#define METH_GENERAL   0x0200
+
 #ifndef Py_LIMITED_API
 typedef struct {
     PyObject_HEAD
