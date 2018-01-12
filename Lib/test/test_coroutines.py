@@ -545,7 +545,7 @@ class CoroutineTest(unittest.TestCase):
         coro = foo()
 
         check = lambda: self.assertRaisesRegex(
-            TypeError, "'coroutine' object is not iterable")
+            TypeError, r"'types\.CoroutineType' object is not iterable")
 
         with check():
             list(coro)
@@ -577,7 +577,7 @@ class CoroutineTest(unittest.TestCase):
             await bar()
 
         check = lambda: self.assertRaisesRegex(
-            TypeError, "'coroutine' object is not iterable")
+            TypeError, r"'types\.CoroutineType' object is not iterable")
 
         coro = foo()
         with check():
@@ -931,7 +931,7 @@ class CoroutineTest(unittest.TestCase):
         self.assertIn('in coroutine', ct.throw.__doc__)
         self.assertIn('of the coroutine', ct.__dict__['__name__'].__doc__)
         self.assertIn('of the coroutine', ct.__dict__['__qualname__'].__doc__)
-        self.assertEqual(ct.__name__, 'coroutine')
+        self.assertEqual(ct.__name__, 'CoroutineType')
 
         async def f(): pass
         c = f()

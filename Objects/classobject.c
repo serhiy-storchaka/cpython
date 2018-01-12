@@ -161,7 +161,7 @@ method_getattro(PyObject *obj, PyObject *name)
 }
 
 PyDoc_STRVAR(method_doc,
-"method(function, instance)\n\
+"MethodType(function, instance)\n\
 \n\
 Create a bound instance method object.");
 
@@ -322,7 +322,7 @@ method_descr_get(PyObject *meth, PyObject *obj, PyObject *cls)
 
 PyTypeObject PyMethod_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "method",
+    "types.MethodType",
     sizeof(PyMethodObject),
     0,
     (destructor)method_dealloc,                 /* tp_dealloc */

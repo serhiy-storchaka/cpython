@@ -75,7 +75,7 @@ class Get_signatureTest(unittest.TestCase):
         gtest(List.append, '(self, object, /)' + append_doc)
         gtest([].append, '(object, /)' + append_doc)
 
-        gtest(types.MethodType, "method(function, instance)")
+        gtest(types.MethodType, "MethodType(function, instance)")
         gtest(SB(), default_tip)
         import re
         p = re.compile('')

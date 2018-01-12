@@ -767,7 +767,7 @@ class PyBtTests(DebuggerTests):
         self.assertMultilineMatches(bt,
                                     r'''^.*
 Traceback \(most recent call first\):
-  <built-in method id of module object .*>
+  <built-in method id of types\.ModuleType object .*>
   File ".*gdb_sample.py", line 10, in baz
     id\(42\)
   File ".*gdb_sample.py", line 7, in bar
@@ -940,7 +940,7 @@ class PyPrintTests(DebuggerTests):
         bt = self.get_stack_trace(script=self.get_sample_script(),
                                   cmds_after_breakpoint=['py-up', 'py-print len'])
         self.assertMultilineMatches(bt,
-                                    r".*\nbuiltin 'len' = <built-in method len of module object at remote 0x-?[0-9a-f]+>\n.*")
+                                    r".*\nbuiltin 'len' = <built-in method len of types\.ModuleType object at remote 0x-?[0-9a-f]+>\n.*")
 
 class PyLocalsTests(DebuggerTests):
     @unittest.skipIf(python_is_optimized(),

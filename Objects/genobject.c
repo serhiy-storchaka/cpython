@@ -722,7 +722,7 @@ static PyMethodDef gen_methods[] = {
 
 PyTypeObject PyGen_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "generator",                                /* tp_name */
+    "types.GeneratorType",                      /* tp_name */
     sizeof(PyGenObject),                        /* tp_basicsize */
     0,                                          /* tp_itemsize */
     /* methods */
@@ -977,7 +977,7 @@ static PyAsyncMethods coro_as_async = {
 
 PyTypeObject PyCoro_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "coroutine",                                /* tp_name */
+    "types.CoroutineType",                      /* tp_name */
     sizeof(PyCoroObject),                       /* tp_basicsize */
     0,                                          /* tp_itemsize */
     /* methods */
@@ -1374,7 +1374,7 @@ static PyAsyncMethods async_gen_as_async = {
 
 PyTypeObject PyAsyncGen_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "async_generator",                          /* tp_name */
+    "types.AsyncGeneratorType",                 /* tp_name */
     sizeof(PyAsyncGenObject),                   /* tp_basicsize */
     0,                                          /* tp_itemsize */
     /* methods */

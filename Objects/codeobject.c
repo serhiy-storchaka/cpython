@@ -334,7 +334,7 @@ validate_and_copy_tuple(PyObject *tup)
 }
 
 PyDoc_STRVAR(code_doc,
-"code(argcount, kwonlyargcount, nlocals, stacksize, flags, codestring,\n\
+"CodeType(argcount, kwonlyargcount, nlocals, stacksize, flags, codestring,\n\
       constants, names, varnames, filename, name, firstlineno,\n\
       lnotab[, freevars[, cellvars]])\n\
 \n\
@@ -734,7 +734,7 @@ static struct PyMethodDef code_methods[] = {
 
 PyTypeObject PyCode_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "code",
+    "types.CodeType",
     sizeof(PyCodeObject),
     0,
     (destructor)code_dealloc,           /* tp_dealloc */

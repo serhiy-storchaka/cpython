@@ -555,7 +555,7 @@ static PyMethodDef frame_methods[] = {
 
 PyTypeObject PyFrame_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "frame",
+    "types.FrameType",
     sizeof(PyFrameObject),
     sizeof(PyObject *),
     (destructor)frame_dealloc,                  /* tp_dealloc */

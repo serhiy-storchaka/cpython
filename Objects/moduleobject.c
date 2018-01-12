@@ -789,7 +789,7 @@ static PyMethodDef module_methods[] = {
 
 PyTypeObject PyModule_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "module",                                   /* tp_name */
+    "types.ModuleType",                         /* tp_name */
     sizeof(PyModuleObject),                     /* tp_basicsize */
     0,                                          /* tp_itemsize */
     (destructor)module_dealloc,                 /* tp_dealloc */

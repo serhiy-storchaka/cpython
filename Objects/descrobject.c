@@ -537,7 +537,7 @@ descr_traverse(PyObject *self, visitproc visit, void *arg)
 
 PyTypeObject PyMethodDescr_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "method_descriptor",
+    "types.MethodDescriptorType",
     sizeof(PyMethodDescrObject),
     0,
     (destructor)descr_dealloc,                  /* tp_dealloc */
@@ -575,7 +575,7 @@ PyTypeObject PyMethodDescr_Type = {
 /* This is for METH_CLASS in C, not for "f = classmethod(f)" in Python! */
 PyTypeObject PyClassMethodDescr_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "classmethod_descriptor",
+    "types.ClassMethodDescriptorType",
     sizeof(PyMethodDescrObject),
     0,
     (destructor)descr_dealloc,                  /* tp_dealloc */
@@ -612,7 +612,7 @@ PyTypeObject PyClassMethodDescr_Type = {
 
 PyTypeObject PyMemberDescr_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "member_descriptor",
+    "types.MemberDescriptorType",
     sizeof(PyMemberDescrObject),
     0,
     (destructor)descr_dealloc,                  /* tp_dealloc */
@@ -649,7 +649,7 @@ PyTypeObject PyMemberDescr_Type = {
 
 PyTypeObject PyGetSetDescr_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "getset_descriptor",
+    "types.GetSetDescriptorType",
     sizeof(PyGetSetDescrObject),
     0,
     (destructor)descr_dealloc,                  /* tp_dealloc */
@@ -686,7 +686,7 @@ PyTypeObject PyGetSetDescr_Type = {
 
 PyTypeObject PyWrapperDescr_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "wrapper_descriptor",
+    "types.WrapperDescriptorType",
     sizeof(PyWrapperDescrObject),
     0,
     (destructor)descr_dealloc,                  /* tp_dealloc */
@@ -1165,7 +1165,7 @@ wrapper_traverse(PyObject *self, visitproc visit, void *arg)
 
 PyTypeObject _PyMethodWrapper_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "method-wrapper",                           /* tp_name */
+    "types.MethodWrapperType",                  /* tp_name */
     sizeof(wrapperobject),                      /* tp_basicsize */
     0,                                          /* tp_itemsize */
     /* methods */
@@ -1561,7 +1561,7 @@ property_clear(PyObject *self)
 
 PyTypeObject PyDictProxy_Type = {
     PyVarObject_HEAD_INIT(&PyType_Type, 0)
-    "mappingproxy",                             /* tp_name */
+    "types.MappingProxyType",                   /* tp_name */
     sizeof(mappingproxyobject),                 /* tp_basicsize */
     0,                                          /* tp_itemsize */
     /* methods */
