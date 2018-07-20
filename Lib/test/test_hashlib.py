@@ -569,7 +569,7 @@ class HashLibTestCase(unittest.TestCase):
         self.assertRaises(OverflowError, constructor, node_offset=max_offset+1)
 
         constructor(
-            string=b'',
+            b'',
             key=b'',
             salt=b'',
             person=b'',
