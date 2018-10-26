@@ -621,16 +621,22 @@ Py2Reg(PyObject *value, DWORD typ, BYTE **retDataBuf, DWORD *retDataSize)
                 for (j = 0; j < i; j++)
                 {
                     PyObject *t;
-                    wchar_t *wstr;
                     Py_ssize_t len;
 
                     t = PyList_GET_ITEM(value, j);
                     if (!PyUnicode_Check(t))
                         return FALSE;
-                    wstr = PyUnicode_AsUnicodeAndSize(t, &len);
-                    if (wstr == NULL)
+#if USE_UNICODE_WCHAR_CACHE
+                    len = PyUnicode_GetSize(t);
+                    if (len < 0)
                         return FALSE;
-                    size += Py_SAFE_DOWNCAST((len + 1) * sizeof(wchar_t),
+                    len++;
+#else /* USE_UNICODE_WCHAR_CACHE */
+                    len = PyUnicode_AsWideChar(t, NULL, 0);
+                    if (len < 0)
+                        return FALSE;
+#endif /* USE_UNICODE_WCHAR_CACHE */
+                    size += Py_SAFE_DOWNCAST(len * sizeof(wchar_t),
                                              size_t, DWORD);
                 }
 
@@ -646,17 +652,18 @@ Py2Reg(PyObject *value, DWORD typ, BYTE **retDataBuf, DWORD *retDataSize)
                 for (j = 0; j < i; j++)
                 {
                     PyObject *t;
-                    wchar_t *wstr;
                     Py_ssize_t len;
 
                     t = PyList_GET_ITEM(value, j);
-                    wstr = PyUnicode_AsUnicodeAndSize(t, &len);
-                    assert(wstr);
-                    wcscpy(P, wstr);
-                    P += (len + 1);
+                    assert(size > 0);
+                    len = PyUnicode_AsWideChar(t, P, size);
+                    assert(len >= 0);
+                    assert(len < size);
+                    size -= len + 1;
+                    P += len + 1;
                 }
                 /* And doubly-terminate the list... */
-                *P = '\0';
+                *P = L'\0';
                 break;
             }
         case REG_BINARY:

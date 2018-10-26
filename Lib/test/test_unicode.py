@@ -2827,7 +2827,8 @@ class CAPITest(unittest.TestCase):
 
     @support.cpython_only
     def test_encode_decimal(self):
-        from _testcapi import unicode_encodedecimal
+        import _testcapi
+        unicode_encodedecimal = support.get_attribute(_testcapi, 'unicode_encodedecimal')
         self.assertEqual(unicode_encodedecimal('123'),
                          b'123')
         self.assertEqual(unicode_encodedecimal('\u0663.\u0661\u0664'),
@@ -2843,7 +2844,8 @@ class CAPITest(unittest.TestCase):
 
     @support.cpython_only
     def test_transform_decimal(self):
-        from _testcapi import unicode_transformdecimaltoascii as transform_decimal
+        import _testcapi
+        transform_decimal = support.get_attribute(_testcapi, 'unicode_transformdecimaltoascii')
         self.assertEqual(transform_decimal('123'),
                          '123')
         self.assertEqual(transform_decimal('\u0663.\u0661\u0664'),

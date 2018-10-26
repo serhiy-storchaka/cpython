@@ -893,7 +893,8 @@ class String_TestCase(unittest.TestCase):
         self.assertRaises(ValueError, getargs_et_hash, 'abc\xe9', 'latin1', buf)
 
     def test_u(self):
-        from _testcapi import getargs_u
+        import _testcapi
+        getargs_u = support.get_attribute(_testcapi, 'getargs_u')
         self.assertEqual(getargs_u('abc\xe9'), 'abc\xe9')
         self.assertRaises(ValueError, getargs_u, 'nul:\0')
         self.assertRaises(TypeError, getargs_u, b'bytes')
@@ -902,7 +903,8 @@ class String_TestCase(unittest.TestCase):
         self.assertRaises(TypeError, getargs_u, None)
 
     def test_u_hash(self):
-        from _testcapi import getargs_u_hash
+        import _testcapi
+        getargs_u_hash = support.get_attribute(_testcapi, 'getargs_u_hash')
         self.assertEqual(getargs_u_hash('abc\xe9'), 'abc\xe9')
         self.assertEqual(getargs_u_hash('nul:\0'), 'nul:\0')
         self.assertRaises(TypeError, getargs_u_hash, b'bytes')
@@ -911,7 +913,8 @@ class String_TestCase(unittest.TestCase):
         self.assertRaises(TypeError, getargs_u_hash, None)
 
     def test_Z(self):
-        from _testcapi import getargs_Z
+        import _testcapi
+        getargs_Z = support.get_attribute(_testcapi, 'getargs_Z')
         self.assertEqual(getargs_Z('abc\xe9'), 'abc\xe9')
         self.assertRaises(ValueError, getargs_Z, 'nul:\0')
         self.assertRaises(TypeError, getargs_Z, b'bytes')
@@ -920,7 +923,8 @@ class String_TestCase(unittest.TestCase):
         self.assertIsNone(getargs_Z(None))
 
     def test_Z_hash(self):
-        from _testcapi import getargs_Z_hash
+        import _testcapi
+        getargs_Z_hash = support.get_attribute(_testcapi, 'getargs_Z_hash')
         self.assertEqual(getargs_Z_hash('abc\xe9'), 'abc\xe9')
         self.assertEqual(getargs_Z_hash('nul:\0'), 'nul:\0')
         self.assertRaises(TypeError, getargs_Z_hash, b'bytes')

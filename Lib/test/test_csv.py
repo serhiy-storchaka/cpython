@@ -233,8 +233,8 @@ class Test_Csv(unittest.TestCase):
     @support.cpython_only
     def test_writerows_legacy_strings(self):
         import _testcapi
-
-        c = _testcapi.unicode_legacy_string('a')
+        legacy_string = support.get_attribute(_testcapi, 'unicode_legacy_string')
+        c = legacy_string('a')
         with TemporaryFile("w+", newline='') as fileobj:
             writer = csv.writer(fileobj)
             writer.writerows([[c]])
