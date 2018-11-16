@@ -10,6 +10,7 @@ import functools
 import html
 import io
 import operator
+import os
 import pickle
 import sys
 import types
@@ -20,6 +21,7 @@ import weakref
 from itertools import product
 from test import support
 from test.support import TESTFN, findfile, import_fresh_module, gc_collect, swap_attr
+from xml.etree import ElementC14N
 
 # pyET is the pure-Python implementation.
 #
@@ -3161,6 +3163,117 @@ class NoAcceleratorTest(unittest.TestCase):
 
 # --------------------------------------------------------------------
 
+def c14n_roundtrip(xml, subset=None, **options):
+    tree = ElementC14N.parse(io.StringIO(xml))
+    #tree = ET.parse(io.StringIO(xml))
+    if subset:
+        subset = tree.find(subset)
+    f = io.StringIO()
+    ElementC14N.write(tree, f, subset, **options)
+    return f.getvalue()
+
+class C14NTest(unittest.TestCase):
+    maxDiff = None
+
+    def test_parents(self):
+        # Broken parent structure.
+        tests = [
+            "<e0/>",
+            "<e0><e1><e2/></e1></e0>",
+            "<e0><e1/><e2><e3/></e2></e0>",
+        ]
+        for xml in tests:
+            with self.subTest(xml=xml):
+                tree = ElementC14N.parse(io.StringIO(xml))
+                p1 = tree._parent
+                p2 = {c: p for p in tree.iter() for c in p}
+                for elem in tree.iter():
+                    if p1.get(elem) != p2.get(elem):
+                        self.fail(f"{elem.tag}'s parent is {p1[elem].tag}, "
+                                  f"expected {p2[elem].tag}")
+
+    #
+    # simple roundtrip tests (from c14n.py)
+
+    def test_simple_roundtrip(self):
+        # Basics
+        self.assertEqual(c14n_roundtrip("<doc/>"), '<doc></doc>')
+        self.assertEqual(c14n_roundtrip("<doc xmlns='uri'/>"), # FIXME
+                '<doc></doc>')
+        self.assertEqual(c14n_roundtrip("<prefix:doc xmlns:prefix='uri'/>"),
+            '<prefix:doc xmlns:prefix="uri"></prefix:doc>')
+        self.assertEqual(c14n_roundtrip("<doc xmlns:prefix='uri'><prefix:bar/></doc>"),
+            '<doc xmlns:prefix="uri"><prefix:bar></prefix:bar></doc>')
+        self.assertEqual(c14n_roundtrip("<elem xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd' xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' />"),
+            '<elem xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"></elem>')
+
+        # C14N spec
+        self.assertEqual(c14n_roundtrip("<doc>Hello, world!<!-- Comment 1 --></doc>"),
+            '<doc>Hello, world!</doc>')
+        self.assertEqual(c14n_roundtrip("<value>&#x32;</value>"),
+            '<value>2</value>')
+        self.assertEqual(c14n_roundtrip('<compute><![CDATA[value>"0" && value<"10" ?"valid":"error"]]></compute>'),
+            '<compute>value&gt;"0" &amp;&amp; value&lt;"10" ?"valid":"error"</compute>')
+        self.assertEqual(c14n_roundtrip('''<compute expr='value>"0" &amp;&amp; value&lt;"10" ?"valid":"error"'>valid</compute>'''),
+            '<compute expr="value>&quot;0&quot; &amp;&amp; value&lt;&quot;10&quot; ?&quot;valid&quot;:&quot;error&quot;">valid</compute>')
+        self.assertEqual(c14n_roundtrip("<norm attr=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>"),
+            '<norm attr=" \'    &#xD;&#xA;&#x9;   \' "></norm>')
+        self.assertEqual(c14n_roundtrip("<normNames attr='   A   &#x20;&#13;&#xa;&#9;   B   '/>"),
+            '<normNames attr="   A    &#xD;&#xA;&#x9;   B   "></normNames>')
+        self.assertEqual(c14n_roundtrip("<normId id=' &apos;   &#x20;&#13;&#xa;&#9;   &apos; '/>"),
+            '<normId id=" \'    &#xD;&#xA;&#x9;   \' "></normId>')
+
+        # fragments from PJ's tests
+        self.assertEqual(c14n_roundtrip("<doc xmlns:x='http://example.com/x' xmlns='http://example.com/default'><b y:a1='1' xmlns='http://example.com/default' a3='3' xmlns:y='http://example.com/y' y:a2='2'/></doc>"),
+        '<doc xmlns:x="http://example.com/x"><b xmlns:y="http://example.com/y" a3="3" y:a1="1" y:a2="2"></b></doc>')
+
+    def test_exclusive_roundtrip(self):
+        XML = "<root xmlns:ns='NS' xmlns:sn='SN'><ns:subset><ns:elem/></ns:subset></root>"
+        self.assertEqual(c14n_roundtrip(XML), # <-- broken?
+            '<root xmlns:ns="NS" xmlns:sn="SN"><ns:subset><ns:elem></ns:elem></ns:subset></root>')
+        self.assertEqual(c14n_roundtrip(XML, ".", exclusive=True),
+            '<root><ns:subset xmlns:ns="NS"><ns:elem></ns:elem></ns:subset></root>')
+        self.assertEqual(c14n_roundtrip(XML, ".", exclusive=True, inclusive_namespaces=["sn"]),
+            '<root xmlns:sn="SN"><ns:subset xmlns:ns="NS"><ns:elem></ns:elem></ns:subset></root>')
+        self.assertEqual(c14n_roundtrip(XML, "{NS}subset", exclusive=True),
+            '<ns:subset xmlns:ns="NS"><ns:elem></ns:elem></ns:subset>')
+        self.assertEqual(c14n_roundtrip(XML, "{NS}subset/{NS}elem", exclusive=True),
+            '<ns:elem xmlns:ns="NS"></ns:elem>')
+        XML = "<root xmlns:ns='NS'><ns:subset xmlns:ns='SN'><ns:elem/></ns:subset></root>"
+        self.assertEqual(c14n_roundtrip(XML), # <-- broken?
+            '<root xmlns:ns="NS"><ns:subset xmlns:ns="SN"><ns:elem></ns:elem></ns:subset></root>')
+        self.assertEqual(c14n_roundtrip(XML, ".", exclusive=True),
+            '<root><ns:subset xmlns:ns="SN"><ns:elem></ns:elem></ns:subset></root>')
+
+    #
+    # basic method=c14n tests, mainly from the c14n specification.  uses
+    # test files under unittests/c14n.
+
+    # note that this uses generates C14N versions of the standard ET.write
+    # output, not roundtripped C14N (see above).
+
+    def test_xml_c14n(self):
+        datadir = findfile("c14n", subdir="xmltestdata")
+        tests = [
+            "simple-1",
+            "simple-2",
+            "xml-c14n-1",
+            "xml-c14n-2",
+            "xml-c14n-3",
+            # doesn't work under doctest, due to whitespace issues
+            "xml-c14n-4", # FIXME!
+            "xml-c14n-5",
+        ]
+        for name in tests:
+            with self.subTest(name):
+                elem = ET.parse(os.path.join(datadir, name + ".xml")).getroot()
+                text = serialize(elem, method="c14n")
+                with open(os.path.join(datadir, name + ".out"), 'rb') as f:
+                    expected = f.read().decode('utf-8')
+                self.assertEqual(text, expected)
+
+# --------------------------------------------------------------------
+
 
 def test_main(module=None):
     # When invoked without a module, runs the Python ET tests by loading pyET.
@@ -3191,6 +3304,8 @@ def test_main(module=None):
         XMLParserTest,
         XMLPullParserTest,
         BugsTest,
+        KeywordArgsTest,
+        C14NTest,
         ]
 
     # These tests will only run for the pure-Python version that doesn't import

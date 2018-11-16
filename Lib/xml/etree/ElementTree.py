@@ -944,13 +944,8 @@ def _serialize_xml(write, elem, qnames, namespaces,
     if elem.tail:
         write(_escape_cdata(elem.tail))
 
-HTML_EMPTY = ("area", "base", "basefont", "br", "col", "frame", "hr",
-              "img", "input", "isindex", "link", "meta", "param")
-
-try:
-    HTML_EMPTY = set(HTML_EMPTY)
-except NameError:
-    pass
+HTML_EMPTY = {"area", "base", "basefont", "br", "col", "frame", "hr",
+              "img", "input", "isindex", "link", "meta", "param"}
 
 def _serialize_html(write, elem, qnames, namespaces, **kwargs):
     tag = elem.tag
@@ -1638,3 +1633,8 @@ try:
     from _elementtree import *
 except ImportError:
     pass
+
+
+# workaround circular import.
+from .ElementC14N import _serialize_c14n
+_serialize["c14n"] = _serialize_c14n
