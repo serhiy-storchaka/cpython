@@ -35,7 +35,7 @@ import locale
 from test.support import (run_unittest, run_doctest, is_resource_enabled,
                           requires_IEEE_754, requires_docstrings)
 from test.support import (import_fresh_module, TestFailed,
-                          run_with_locale, cpython_only)
+                          run_with_locale, cpython_only, get_attribute)
 import random
 import inspect
 import threading
@@ -583,10 +583,11 @@ class ExplicitConstructionTest(unittest.TestCase):
     @cpython_only
     def test_from_legacy_strings(self):
         import _testcapi
+        legacy_string = get_attribute(_testcapi, 'unicode_legacy_string')
         Decimal = self.decimal.Decimal
         context = self.decimal.Context()
 
-        s = _testcapi.unicode_legacy_string('9.999999')
+        s = legacy_string('9.999999')
         self.assertEqual(str(Decimal(s)), '9.999999')
         self.assertEqual(str(context.create_decimal(s)), '9.999999')
 
@@ -2818,16 +2819,17 @@ class ContextAPItests(unittest.TestCase):
     @cpython_only
     def test_from_legacy_strings(self):
         import _testcapi
+        legacy_string = get_attribute(_testcapi, 'unicode_legacy_string')
         c = self.decimal.Context()
 
         for rnd in RoundingModes:
-            c.rounding = _testcapi.unicode_legacy_string(rnd)
+            c.rounding = legacy_string(rnd)
             self.assertEqual(c.rounding, rnd)
 
-        s = _testcapi.unicode_legacy_string('')
+        s = legacy_string('')
         self.assertRaises(TypeError, setattr, c, 'rounding', s)
 
-        s = _testcapi.unicode_legacy_string('ROUND_\x00UP')
+        s = legacy_string('ROUND_\x00UP')
         self.assertRaises(TypeError, setattr, c, 'rounding', s)
 
     def test_pickle(self):
