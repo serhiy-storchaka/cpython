@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_tracemalloc_is_tracing__doc__,
-"is_tracing($module, /)\n"
+"is_tracing($module)\n"
 "--\n"
 "\n"
 "Return True if the tracemalloc module is tracing Python memory allocations.");
@@ -21,7 +21,7 @@ _tracemalloc_is_tracing(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_tracemalloc_clear_traces__doc__,
-"clear_traces($module, /)\n"
+"clear_traces($module)\n"
 "--\n"
 "\n"
 "Clear traces of memory blocks allocated by Python.");
@@ -39,7 +39,7 @@ _tracemalloc_clear_traces(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_tracemalloc__get_traces__doc__,
-"_get_traces($module, /)\n"
+"_get_traces($module)\n"
 "--\n"
 "\n"
 "Get traces of all memory blocks allocated by Python.\n"
@@ -62,7 +62,7 @@ _tracemalloc__get_traces(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_tracemalloc__get_object_traceback__doc__,
-"_get_object_traceback($module, obj, /)\n"
+"_get_object_traceback($module, __obj)\n"
 "--\n"
 "\n"
 "Get the traceback where the Python object obj was allocated.\n"
@@ -75,7 +75,7 @@ PyDoc_STRVAR(_tracemalloc__get_object_traceback__doc__,
     {"_get_object_traceback", (PyCFunction)_tracemalloc__get_object_traceback, METH_O, _tracemalloc__get_object_traceback__doc__},
 
 PyDoc_STRVAR(_tracemalloc_start__doc__,
-"start($module, nframe=1, /)\n"
+"start($module, __nframe=1)\n"
 "--\n"
 "\n"
 "Start tracing Python memory allocations.\n"
@@ -118,7 +118,7 @@ exit:
 }
 
 PyDoc_STRVAR(_tracemalloc_stop__doc__,
-"stop($module, /)\n"
+"stop($module)\n"
 "--\n"
 "\n"
 "Stop tracing Python memory allocations.\n"
@@ -138,7 +138,7 @@ _tracemalloc_stop(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_tracemalloc_get_traceback_limit__doc__,
-"get_traceback_limit($module, /)\n"
+"get_traceback_limit($module)\n"
 "--\n"
 "\n"
 "Get the maximum number of frames stored in the traceback of a trace.\n"
@@ -159,7 +159,7 @@ _tracemalloc_get_traceback_limit(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_tracemalloc_get_tracemalloc_memory__doc__,
-"get_tracemalloc_memory($module, /)\n"
+"get_tracemalloc_memory($module)\n"
 "--\n"
 "\n"
 "Get the memory usage in bytes of the tracemalloc module.\n"
@@ -179,7 +179,7 @@ _tracemalloc_get_tracemalloc_memory(PyObject *module, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_tracemalloc_get_traced_memory__doc__,
-"get_traced_memory($module, /)\n"
+"get_traced_memory($module)\n"
 "--\n"
 "\n"
 "Get the current size and peak size of memory blocks traced by tracemalloc.\n"
@@ -197,4 +197,4 @@ _tracemalloc_get_traced_memory(PyObject *module, PyObject *Py_UNUSED(ignored))
 {
     return _tracemalloc_get_traced_memory_impl(module);
 }
-/*[clinic end generated code: output=1bc96dc569706afa input=a9049054013a1b77]*/
+/*[clinic end generated code: output=7526810242591403 input=a9049054013a1b77]*/

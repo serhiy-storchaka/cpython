@@ -4657,23 +4657,6 @@ class DSLParser:
                 right_bracket_count -= 1
             return s
 
-        need_slash = False
-        added_slash = False
-        need_a_trailing_slash = False
-
-        # we only need a trailing slash:
-        #   * if this is not a "docstring_only" signature
-        #   * and if the last *shown* parameter is
-        #     positional only
-        if not f.docstring_only:
-            for p in reversed(parameters):
-                if not p.converter.show_in_signature:
-                    continue
-                if p.is_positional_only():
-                    need_a_trailing_slash = True
-                break
-
-
         added_star = False
 
         first_parameter = True
@@ -4707,12 +4690,6 @@ class DSLParser:
                 # so let's not print the "self" parameter
                 continue
 
-            if p.is_positional_only():
-                need_slash = not f.docstring_only
-            elif need_slash and not (added_slash or p.is_positional_only()):
-                added_slash = True
-                add_parameter('/,')
-
             if p.is_keyword_only() and not added_star:
                 added_star = True
                 add_parameter('*,')
@@ -4737,6 +4714,8 @@ class DSLParser:
                 # (or __new__), then this signature is for
                 # calling the class to construct a new instance.
                 p_add('$')
+            elif p.is_positional_only() and not f.docstring_only:
+                p_add('__')
 
             name = p.converter.signature_name or p.name
             p_add(name)
@@ -4748,14 +4727,12 @@ class DSLParser:
                     value = repr(p.converter.default)
                 p_add(value)
 
-            if (p != last_p) or need_a_trailing_slash:
+            if p != last_p:
                 p_add(',')
 
             add_parameter(p_output())
 
         add(fix_right_bracket_count(0))
-        if need_a_trailing_slash:
-            add_parameter('/')
         add(')')
 
         # PEP 8 says:

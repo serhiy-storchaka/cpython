@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(EVP_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -21,7 +21,7 @@ EVP_copy(EVPobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(EVP_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -39,7 +39,7 @@ EVP_digest(EVPobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(EVP_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -57,7 +57,7 @@ EVP_hexdigest(EVPobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(EVP_update__doc__,
-"update($self, obj, /)\n"
+"update($self, __obj)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided string.");
@@ -66,7 +66,7 @@ PyDoc_STRVAR(EVP_update__doc__,
     {"update", (PyCFunction)EVP_update, METH_O, EVP_update__doc__},
 
 PyDoc_STRVAR(EVP_new__doc__,
-"new($module, /, name, string=b\'\')\n"
+"new($module, name, string=b\'\')\n"
 "--\n"
 "\n"
 "Return a new hash object using the named algorithm.\n"
@@ -112,8 +112,7 @@ exit:
 #if ((OPENSSL_VERSION_NUMBER >= 0x10000000 && !defined(OPENSSL_NO_HMAC) && !defined(OPENSSL_NO_SHA)))
 
 PyDoc_STRVAR(pbkdf2_hmac__doc__,
-"pbkdf2_hmac($module, /, hash_name, password, salt, iterations,\n"
-"            dklen=None)\n"
+"pbkdf2_hmac($module, hash_name, password, salt, iterations, dklen=None)\n"
 "--\n"
 "\n"
 "Password based key derivation function 2 (PKCS #5 v2.0) with HMAC as pseudorandom function.");
@@ -205,7 +204,7 @@ exit:
 #if (OPENSSL_VERSION_NUMBER > 0x10100000L && !defined(OPENSSL_NO_SCRYPT) && !defined(LIBRESSL_VERSION_NUMBER))
 
 PyDoc_STRVAR(_hashlib_scrypt__doc__,
-"scrypt($module, /, password, *, salt=None, n=None, r=None, p=None,\n"
+"scrypt($module, password, *, salt=None, n=None, r=None, p=None,\n"
 "       maxmem=0, dklen=64)\n"
 "--\n"
 "\n"
@@ -333,7 +332,7 @@ exit:
 #endif /* (OPENSSL_VERSION_NUMBER > 0x10100000L && !defined(OPENSSL_NO_SCRYPT) && !defined(LIBRESSL_VERSION_NUMBER)) */
 
 PyDoc_STRVAR(_hashlib_hmac_digest__doc__,
-"hmac_digest($module, /, key, msg, digest)\n"
+"hmac_digest($module, key, msg, digest)\n"
 "--\n"
 "\n"
 "Single-shot HMAC.");
@@ -409,4 +408,4 @@ exit:
 #ifndef _HASHLIB_SCRYPT_METHODDEF
     #define _HASHLIB_SCRYPT_METHODDEF
 #endif /* !defined(_HASHLIB_SCRYPT_METHODDEF) */
-/*[clinic end generated code: output=5955ec791260045a input=a9049054013a1b77]*/
+/*[clinic end generated code: output=4ce7f4ba435663a2 input=a9049054013a1b77]*/

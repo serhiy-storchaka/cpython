@@ -222,7 +222,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_bkgd__doc__,
-"bkgd($self, ch, attr=_curses.A_NORMAL, /)\n"
+"bkgd($self, __ch, __attr=_curses.A_NORMAL)\n"
 "--\n"
 "\n"
 "Set the background property of the window.\n"
@@ -269,7 +269,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_attroff__doc__,
-"attroff($self, attr, /)\n"
+"attroff($self, __attr)\n"
 "--\n"
 "\n"
 "Remove attribute attr from the \"background\" set.");
@@ -302,7 +302,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_attron__doc__,
-"attron($self, attr, /)\n"
+"attron($self, __attr)\n"
 "--\n"
 "\n"
 "Add attribute attr from the \"background\" set.");
@@ -335,7 +335,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_attrset__doc__,
-"attrset($self, attr, /)\n"
+"attrset($self, __attr)\n"
 "--\n"
 "\n"
 "Set the \"background\" set of attributes.");
@@ -368,7 +368,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_bkgdset__doc__,
-"bkgdset($self, ch, attr=_curses.A_NORMAL, /)\n"
+"bkgdset($self, __ch, __attr=_curses.A_NORMAL)\n"
 "--\n"
 "\n"
 "Set the window\'s background.\n"
@@ -416,10 +416,10 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_border__doc__,
-"border($self, ls=_curses.ACS_VLINE, rs=_curses.ACS_VLINE,\n"
-"       ts=_curses.ACS_HLINE, bs=_curses.ACS_HLINE,\n"
-"       tl=_curses.ACS_ULCORNER, tr=_curses.ACS_URCORNER,\n"
-"       bl=_curses.ACS_LLCORNER, br=_curses.ACS_LRCORNER, /)\n"
+"border($self, __ls=_curses.ACS_VLINE, __rs=_curses.ACS_VLINE,\n"
+"       __ts=_curses.ACS_HLINE, __bs=_curses.ACS_HLINE,\n"
+"       __tl=_curses.ACS_ULCORNER, __tr=_curses.ACS_URCORNER,\n"
+"       __bl=_curses.ACS_LLCORNER, __br=_curses.ACS_LRCORNER)\n"
 "--\n"
 "\n"
 "Draw a border around the edges of the window.\n"
@@ -656,7 +656,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_echochar__doc__,
-"echochar($self, ch, attr=_curses.A_NORMAL, /)\n"
+"echochar($self, __ch, __attr=_curses.A_NORMAL)\n"
 "--\n"
 "\n"
 "Add character ch with attribute attr, and refresh.\n"
@@ -706,7 +706,7 @@ exit:
 #if defined(NCURSES_MOUSE_VERSION)
 
 PyDoc_STRVAR(_curses_window_enclose__doc__,
-"enclose($self, y, x, /)\n"
+"enclose($self, __y, __x)\n"
 "--\n"
 "\n"
 "Return True if the screen-relative coordinates are enclosed by the window.\n"
@@ -764,7 +764,7 @@ exit:
 #endif /* defined(NCURSES_MOUSE_VERSION) */
 
 PyDoc_STRVAR(_curses_window_getbkgd__doc__,
-"getbkgd($self, /)\n"
+"getbkgd($self)\n"
 "--\n"
 "\n"
 "Return the window\'s current background character/attribute pair.");
@@ -1281,7 +1281,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_is_linetouched__doc__,
-"is_linetouched($self, line, /)\n"
+"is_linetouched($self, __line)\n"
 "--\n"
 "\n"
 "Return True if the specified line was modified, otherwise return False.\n"
@@ -1373,7 +1373,7 @@ exit:
 #if !defined(py_is_pad)
 
 PyDoc_STRVAR(_curses_window_noutrefresh__doc__,
-"noutrefresh($self, /)\n"
+"noutrefresh($self)\n"
 "--\n"
 "\n"
 "Mark for refresh but wait.\n"
@@ -1513,7 +1513,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_putwin__doc__,
-"putwin($self, file, /)\n"
+"putwin($self, __file)\n"
 "--\n"
 "\n"
 "Write all data associated with the window into the provided file object.\n"
@@ -1524,7 +1524,7 @@ PyDoc_STRVAR(_curses_window_putwin__doc__,
     {"putwin", (PyCFunction)_curses_window_putwin, METH_O, _curses_window_putwin__doc__},
 
 PyDoc_STRVAR(_curses_window_redrawln__doc__,
-"redrawln($self, beg, num, /)\n"
+"redrawln($self, __beg, __num)\n"
 "--\n"
 "\n"
 "Mark the specified lines corrupted.\n"
@@ -1632,7 +1632,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_window_setscrreg__doc__,
-"setscrreg($self, top, bottom, /)\n"
+"setscrreg($self, __top, __bottom)\n"
 "--\n"
 "\n"
 "Define a software scrolling region.\n"
@@ -1900,7 +1900,7 @@ exit:
 #if defined(HAVE_CURSES_FILTER)
 
 PyDoc_STRVAR(_curses_filter__doc__,
-"filter($module, /)\n"
+"filter($module)\n"
 "--\n"
 "\n");
 
@@ -1919,7 +1919,7 @@ _curses_filter(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(HAVE_CURSES_FILTER) */
 
 PyDoc_STRVAR(_curses_baudrate__doc__,
-"baudrate($module, /)\n"
+"baudrate($module)\n"
 "--\n"
 "\n"
 "Return the output speed of the terminal in bits per second.");
@@ -1937,7 +1937,7 @@ _curses_baudrate(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_beep__doc__,
-"beep($module, /)\n"
+"beep($module)\n"
 "--\n"
 "\n"
 "Emit a short attention sound.");
@@ -1955,7 +1955,7 @@ _curses_beep(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_can_change_color__doc__,
-"can_change_color($module, /)\n"
+"can_change_color($module)\n"
 "--\n"
 "\n"
 "Return True if the programmer can change the colors displayed by the terminal.");
@@ -1973,7 +1973,7 @@ _curses_can_change_color(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_cbreak__doc__,
-"cbreak($module, flag=True, /)\n"
+"cbreak($module, __flag=True)\n"
 "--\n"
 "\n"
 "Enter cbreak mode.\n"
@@ -2022,7 +2022,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_color_content__doc__,
-"color_content($module, color_number, /)\n"
+"color_content($module, __color_number)\n"
 "--\n"
 "\n"
 "Return the red, green, and blue (RGB) components of the specified color.\n"
@@ -2076,7 +2076,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_color_pair__doc__,
-"color_pair($module, color_number, /)\n"
+"color_pair($module, __color_number)\n"
 "--\n"
 "\n"
 "Return the attribute value for displaying text in the specified color.\n"
@@ -2130,7 +2130,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_curs_set__doc__,
-"curs_set($module, visibility, /)\n"
+"curs_set($module, __visibility)\n"
 "--\n"
 "\n"
 "Set the cursor state.\n"
@@ -2171,7 +2171,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_def_prog_mode__doc__,
-"def_prog_mode($module, /)\n"
+"def_prog_mode($module)\n"
 "--\n"
 "\n"
 "Save the current terminal mode as the \"program\" mode.\n"
@@ -2193,7 +2193,7 @@ _curses_def_prog_mode(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_def_shell_mode__doc__,
-"def_shell_mode($module, /)\n"
+"def_shell_mode($module)\n"
 "--\n"
 "\n"
 "Save the current terminal mode as the \"shell\" mode.\n"
@@ -2215,7 +2215,7 @@ _curses_def_shell_mode(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_delay_output__doc__,
-"delay_output($module, ms, /)\n"
+"delay_output($module, __ms)\n"
 "--\n"
 "\n"
 "Insert a pause in output.\n"
@@ -2251,7 +2251,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_doupdate__doc__,
-"doupdate($module, /)\n"
+"doupdate($module)\n"
 "--\n"
 "\n"
 "Update the physical screen to match the virtual screen.");
@@ -2269,7 +2269,7 @@ _curses_doupdate(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_echo__doc__,
-"echo($module, flag=True, /)\n"
+"echo($module, __flag=True)\n"
 "--\n"
 "\n"
 "Enter echo mode.\n"
@@ -2314,7 +2314,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_endwin__doc__,
-"endwin($module, /)\n"
+"endwin($module)\n"
 "--\n"
 "\n"
 "De-initialize the library, and return terminal to normal status.");
@@ -2332,7 +2332,7 @@ _curses_endwin(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_erasechar__doc__,
-"erasechar($module, /)\n"
+"erasechar($module)\n"
 "--\n"
 "\n"
 "Return the user\'s current erase character.");
@@ -2350,7 +2350,7 @@ _curses_erasechar(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_flash__doc__,
-"flash($module, /)\n"
+"flash($module)\n"
 "--\n"
 "\n"
 "Flash the screen.\n"
@@ -2370,7 +2370,7 @@ _curses_flash(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_flushinp__doc__,
-"flushinp($module, /)\n"
+"flushinp($module)\n"
 "--\n"
 "\n"
 "Flush all input buffers.\n"
@@ -2393,7 +2393,7 @@ _curses_flushinp(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(getsyx)
 
 PyDoc_STRVAR(_curses_getsyx__doc__,
-"getsyx($module, /)\n"
+"getsyx($module)\n"
 "--\n"
 "\n"
 "Return the current coordinates of the virtual screen cursor.\n"
@@ -2417,7 +2417,7 @@ _curses_getsyx(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(NCURSES_MOUSE_VERSION)
 
 PyDoc_STRVAR(_curses_getmouse__doc__,
-"getmouse($module, /)\n"
+"getmouse($module)\n"
 "--\n"
 "\n"
 "Retrieve the queued mouse event.\n"
@@ -2442,7 +2442,7 @@ _curses_getmouse(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(NCURSES_MOUSE_VERSION)
 
 PyDoc_STRVAR(_curses_ungetmouse__doc__,
-"ungetmouse($module, id, x, y, z, bstate, /)\n"
+"ungetmouse($module, __id, __x, __y, __z, __bstate)\n"
 "--\n"
 "\n"
 "Push a KEY_MOUSE event onto the input queue.\n"
@@ -2534,7 +2534,7 @@ exit:
 #endif /* defined(NCURSES_MOUSE_VERSION) */
 
 PyDoc_STRVAR(_curses_getwin__doc__,
-"getwin($module, file, /)\n"
+"getwin($module, __file)\n"
 "--\n"
 "\n"
 "Read window related data stored in the file by an earlier putwin() call.\n"
@@ -2546,7 +2546,7 @@ PyDoc_STRVAR(_curses_getwin__doc__,
     {"getwin", (PyCFunction)_curses_getwin, METH_O, _curses_getwin__doc__},
 
 PyDoc_STRVAR(_curses_halfdelay__doc__,
-"halfdelay($module, tenths, /)\n"
+"halfdelay($module, __tenths)\n"
 "--\n"
 "\n"
 "Enter half-delay mode.\n"
@@ -2599,7 +2599,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_has_colors__doc__,
-"has_colors($module, /)\n"
+"has_colors($module)\n"
 "--\n"
 "\n"
 "Return True if the terminal can display colors; otherwise, return False.");
@@ -2617,7 +2617,7 @@ _curses_has_colors(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_has_ic__doc__,
-"has_ic($module, /)\n"
+"has_ic($module)\n"
 "--\n"
 "\n"
 "Return True if the terminal has insert- and delete-character capabilities.");
@@ -2635,7 +2635,7 @@ _curses_has_ic(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_has_il__doc__,
-"has_il($module, /)\n"
+"has_il($module)\n"
 "--\n"
 "\n"
 "Return True if the terminal has insert- and delete-line capabilities.");
@@ -2655,7 +2655,7 @@ _curses_has_il(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_CURSES_HAS_KEY)
 
 PyDoc_STRVAR(_curses_has_key__doc__,
-"has_key($module, key, /)\n"
+"has_key($module, __key)\n"
 "--\n"
 "\n"
 "Return True if the current terminal type recognizes a key with that value.\n"
@@ -2693,7 +2693,7 @@ exit:
 #endif /* defined(HAVE_CURSES_HAS_KEY) */
 
 PyDoc_STRVAR(_curses_init_color__doc__,
-"init_color($module, color_number, r, g, b, /)\n"
+"init_color($module, __color_number, __r, __g, __b)\n"
 "--\n"
 "\n"
 "Change the definition of a color.\n"
@@ -2833,7 +2833,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_init_pair__doc__,
-"init_pair($module, pair_number, fg, bg, /)\n"
+"init_pair($module, __pair_number, __fg, __bg)\n"
 "--\n"
 "\n"
 "Change the definition of a color-pair.\n"
@@ -2945,7 +2945,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_initscr__doc__,
-"initscr($module, /)\n"
+"initscr($module)\n"
 "--\n"
 "\n"
 "Initialize the library.\n"
@@ -2965,7 +2965,7 @@ _curses_initscr(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_setupterm__doc__,
-"setupterm($module, /, term=None, fd=-1)\n"
+"setupterm($module, term=None, fd=-1)\n"
 "--\n"
 "\n"
 "Initialize the terminal.\n"
@@ -3041,7 +3041,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_intrflush__doc__,
-"intrflush($module, flag, /)\n"
+"intrflush($module, __flag)\n"
 "--\n"
 "\n");
 
@@ -3073,7 +3073,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_isendwin__doc__,
-"isendwin($module, /)\n"
+"isendwin($module)\n"
 "--\n"
 "\n"
 "Return True if endwin() has been called.");
@@ -3093,7 +3093,7 @@ _curses_isendwin(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_CURSES_IS_TERM_RESIZED)
 
 PyDoc_STRVAR(_curses_is_term_resized__doc__,
-"is_term_resized($module, nlines, ncols, /)\n"
+"is_term_resized($module, __nlines, __ncols)\n"
 "--\n"
 "\n"
 "Return True if resize_term() would modify the window structure, False otherwise.\n"
@@ -3146,7 +3146,7 @@ exit:
 #endif /* defined(HAVE_CURSES_IS_TERM_RESIZED) */
 
 PyDoc_STRVAR(_curses_keyname__doc__,
-"keyname($module, key, /)\n"
+"keyname($module, __key)\n"
 "--\n"
 "\n"
 "Return the name of specified key.\n"
@@ -3182,7 +3182,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_killchar__doc__,
-"killchar($module, /)\n"
+"killchar($module)\n"
 "--\n"
 "\n"
 "Return the user\'s current line kill character.");
@@ -3200,7 +3200,7 @@ _curses_killchar(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_longname__doc__,
-"longname($module, /)\n"
+"longname($module)\n"
 "--\n"
 "\n"
 "Return the terminfo long name field describing the current terminal.\n"
@@ -3221,7 +3221,7 @@ _curses_longname(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_meta__doc__,
-"meta($module, yes, /)\n"
+"meta($module, __yes)\n"
 "--\n"
 "\n"
 "Enable/disable meta keys.\n"
@@ -3259,7 +3259,7 @@ exit:
 #if defined(NCURSES_MOUSE_VERSION)
 
 PyDoc_STRVAR(_curses_mouseinterval__doc__,
-"mouseinterval($module, interval, /)\n"
+"mouseinterval($module, __interval)\n"
 "--\n"
 "\n"
 "Set and retrieve the maximum time between press and release in a click.\n"
@@ -3303,7 +3303,7 @@ exit:
 #if defined(NCURSES_MOUSE_VERSION)
 
 PyDoc_STRVAR(_curses_mousemask__doc__,
-"mousemask($module, newmask, /)\n"
+"mousemask($module, __newmask)\n"
 "--\n"
 "\n"
 "Set the mouse events to be reported, and return a tuple (availmask, oldmask).\n"
@@ -3339,7 +3339,7 @@ exit:
 #endif /* defined(NCURSES_MOUSE_VERSION) */
 
 PyDoc_STRVAR(_curses_napms__doc__,
-"napms($module, ms, /)\n"
+"napms($module, __ms)\n"
 "--\n"
 "\n"
 "Sleep for specified time.\n"
@@ -3375,7 +3375,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_newpad__doc__,
-"newpad($module, nlines, ncols, /)\n"
+"newpad($module, __nlines, __ncols)\n"
 "--\n"
 "\n"
 "Create and return a pointer to a new pad data structure.\n"
@@ -3481,7 +3481,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_nl__doc__,
-"nl($module, flag=True, /)\n"
+"nl($module, __flag=True)\n"
 "--\n"
 "\n"
 "Enter newline mode.\n"
@@ -3527,7 +3527,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_nocbreak__doc__,
-"nocbreak($module, /)\n"
+"nocbreak($module)\n"
 "--\n"
 "\n"
 "Leave cbreak mode.\n"
@@ -3547,7 +3547,7 @@ _curses_nocbreak(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_noecho__doc__,
-"noecho($module, /)\n"
+"noecho($module)\n"
 "--\n"
 "\n"
 "Leave echo mode.\n"
@@ -3567,7 +3567,7 @@ _curses_noecho(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_nonl__doc__,
-"nonl($module, /)\n"
+"nonl($module)\n"
 "--\n"
 "\n"
 "Leave newline mode.\n"
@@ -3588,7 +3588,7 @@ _curses_nonl(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_noqiflush__doc__,
-"noqiflush($module, /)\n"
+"noqiflush($module)\n"
 "--\n"
 "\n"
 "Disable queue flushing.\n"
@@ -3609,7 +3609,7 @@ _curses_noqiflush(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_noraw__doc__,
-"noraw($module, /)\n"
+"noraw($module)\n"
 "--\n"
 "\n"
 "Leave raw mode.\n"
@@ -3629,7 +3629,7 @@ _curses_noraw(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_pair_content__doc__,
-"pair_content($module, pair_number, /)\n"
+"pair_content($module, __pair_number)\n"
 "--\n"
 "\n"
 "Return a tuple (fg, bg) containing the colors for the requested color pair.\n"
@@ -3680,7 +3680,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_pair_number__doc__,
-"pair_number($module, attr, /)\n"
+"pair_number($module, __attr)\n"
 "--\n"
 "\n"
 "Return the number of the color-pair set by the specified attribute value.\n"
@@ -3715,7 +3715,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_putp__doc__,
-"putp($module, string, /)\n"
+"putp($module, __string)\n"
 "--\n"
 "\n"
 "Emit the value of a specified terminfo capability for the current terminal.\n"
@@ -3744,7 +3744,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_qiflush__doc__,
-"qiflush($module, flag=True, /)\n"
+"qiflush($module, __flag=True)\n"
 "--\n"
 "\n"
 "Enable queue flushing.\n"
@@ -3792,7 +3792,7 @@ exit:
 #if (defined(HAVE_CURSES_RESIZETERM) || defined(HAVE_CURSES_RESIZE_TERM))
 
 PyDoc_STRVAR(_curses_update_lines_cols__doc__,
-"update_lines_cols($module, /)\n"
+"update_lines_cols($module)\n"
 "--\n"
 "\n");
 
@@ -3821,7 +3821,7 @@ exit:
 #endif /* (defined(HAVE_CURSES_RESIZETERM) || defined(HAVE_CURSES_RESIZE_TERM)) */
 
 PyDoc_STRVAR(_curses_raw__doc__,
-"raw($module, flag=True, /)\n"
+"raw($module, __flag=True)\n"
 "--\n"
 "\n"
 "Enter raw mode.\n"
@@ -3868,7 +3868,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_reset_prog_mode__doc__,
-"reset_prog_mode($module, /)\n"
+"reset_prog_mode($module)\n"
 "--\n"
 "\n"
 "Restore the terminal to \"program\" mode, as previously saved by def_prog_mode().");
@@ -3886,7 +3886,7 @@ _curses_reset_prog_mode(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_reset_shell_mode__doc__,
-"reset_shell_mode($module, /)\n"
+"reset_shell_mode($module)\n"
 "--\n"
 "\n"
 "Restore the terminal to \"shell\" mode, as previously saved by def_shell_mode().");
@@ -3904,7 +3904,7 @@ _curses_reset_shell_mode(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_resetty__doc__,
-"resetty($module, /)\n"
+"resetty($module)\n"
 "--\n"
 "\n"
 "Restore terminal mode.");
@@ -3924,7 +3924,7 @@ _curses_resetty(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_CURSES_RESIZETERM)
 
 PyDoc_STRVAR(_curses_resizeterm__doc__,
-"resizeterm($module, nlines, ncols, /)\n"
+"resizeterm($module, __nlines, __ncols)\n"
 "--\n"
 "\n"
 "Resize the standard and current windows to the specified dimensions.\n"
@@ -3982,7 +3982,7 @@ exit:
 #if defined(HAVE_CURSES_RESIZE_TERM)
 
 PyDoc_STRVAR(_curses_resize_term__doc__,
-"resize_term($module, nlines, ncols, /)\n"
+"resize_term($module, __nlines, __ncols)\n"
 "--\n"
 "\n"
 "Backend function used by resizeterm(), performing most of the work.\n"
@@ -4041,7 +4041,7 @@ exit:
 #endif /* defined(HAVE_CURSES_RESIZE_TERM) */
 
 PyDoc_STRVAR(_curses_savetty__doc__,
-"savetty($module, /)\n"
+"savetty($module)\n"
 "--\n"
 "\n"
 "Save terminal mode.");
@@ -4061,7 +4061,7 @@ _curses_savetty(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(getsyx)
 
 PyDoc_STRVAR(_curses_setsyx__doc__,
-"setsyx($module, y, x, /)\n"
+"setsyx($module, __y, __x)\n"
 "--\n"
 "\n"
 "Set the virtual screen cursor.\n"
@@ -4116,7 +4116,7 @@ exit:
 #endif /* defined(getsyx) */
 
 PyDoc_STRVAR(_curses_start_color__doc__,
-"start_color($module, /)\n"
+"start_color($module)\n"
 "--\n"
 "\n"
 "Initializes eight basic colors and global variables COLORS and COLOR_PAIRS.\n"
@@ -4141,7 +4141,7 @@ _curses_start_color(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_termattrs__doc__,
-"termattrs($module, /)\n"
+"termattrs($module)\n"
 "--\n"
 "\n"
 "Return a logical OR of all video attributes supported by the terminal.");
@@ -4159,7 +4159,7 @@ _curses_termattrs(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_termname__doc__,
-"termname($module, /)\n"
+"termname($module)\n"
 "--\n"
 "\n"
 "Return the value of the environment variable TERM, truncated to 14 characters.");
@@ -4177,7 +4177,7 @@ _curses_termname(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_tigetflag__doc__,
-"tigetflag($module, capname, /)\n"
+"tigetflag($module, __capname)\n"
 "--\n"
 "\n"
 "Return the value of the Boolean capability.\n"
@@ -4220,7 +4220,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_tigetnum__doc__,
-"tigetnum($module, capname, /)\n"
+"tigetnum($module, __capname)\n"
 "--\n"
 "\n"
 "Return the value of the numeric capability.\n"
@@ -4263,7 +4263,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_tigetstr__doc__,
-"tigetstr($module, capname, /)\n"
+"tigetstr($module, __capname)\n"
 "--\n"
 "\n"
 "Return the value of the string capability.\n"
@@ -4306,8 +4306,8 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_tparm__doc__,
-"tparm($module, str, i1=0, i2=0, i3=0, i4=0, i5=0, i6=0, i7=0, i8=0,\n"
-"      i9=0, /)\n"
+"tparm($module, __str, __i1=0, __i2=0, __i3=0, __i4=0, __i5=0, __i6=0,\n"
+"      __i7=0, __i8=0, __i9=0)\n"
 "--\n"
 "\n"
 "Instantiate the specified byte string with the supplied parameters.\n"
@@ -4350,7 +4350,7 @@ exit:
 #if defined(HAVE_CURSES_TYPEAHEAD)
 
 PyDoc_STRVAR(_curses_typeahead__doc__,
-"typeahead($module, fd, /)\n"
+"typeahead($module, __fd)\n"
 "--\n"
 "\n"
 "Specify that the file descriptor fd be used for typeahead checking.\n"
@@ -4390,7 +4390,7 @@ exit:
 #endif /* defined(HAVE_CURSES_TYPEAHEAD) */
 
 PyDoc_STRVAR(_curses_unctrl__doc__,
-"unctrl($module, ch, /)\n"
+"unctrl($module, __ch)\n"
 "--\n"
 "\n"
 "Return a string which is a printable representation of the character ch.\n"
@@ -4402,7 +4402,7 @@ PyDoc_STRVAR(_curses_unctrl__doc__,
     {"unctrl", (PyCFunction)_curses_unctrl, METH_O, _curses_unctrl__doc__},
 
 PyDoc_STRVAR(_curses_ungetch__doc__,
-"ungetch($module, ch, /)\n"
+"ungetch($module, __ch)\n"
 "--\n"
 "\n"
 "Push ch so the next getch() will return it.");
@@ -4413,7 +4413,7 @@ PyDoc_STRVAR(_curses_ungetch__doc__,
 #if defined(HAVE_NCURSESW)
 
 PyDoc_STRVAR(_curses_unget_wch__doc__,
-"unget_wch($module, ch, /)\n"
+"unget_wch($module, __ch)\n"
 "--\n"
 "\n"
 "Push ch so the next get_wch() will return it.");
@@ -4426,7 +4426,7 @@ PyDoc_STRVAR(_curses_unget_wch__doc__,
 #if defined(HAVE_CURSES_USE_ENV)
 
 PyDoc_STRVAR(_curses_use_env__doc__,
-"use_env($module, flag, /)\n"
+"use_env($module, __flag)\n"
 "--\n"
 "\n"
 "Use environment variables LINES and COLUMNS.\n"
@@ -4472,7 +4472,7 @@ exit:
 #if !defined(STRICT_SYSV_CURSES)
 
 PyDoc_STRVAR(_curses_use_default_colors__doc__,
-"use_default_colors($module, /)\n"
+"use_default_colors($module)\n"
 "--\n"
 "\n"
 "Allow use of default values for colors on terminals supporting this feature.\n"
@@ -4569,4 +4569,4 @@ _curses_use_default_colors(PyObject *module, PyObject *Py_UNUSED(ignored))
 #ifndef _CURSES_USE_DEFAULT_COLORS_METHODDEF
     #define _CURSES_USE_DEFAULT_COLORS_METHODDEF
 #endif /* !defined(_CURSES_USE_DEFAULT_COLORS_METHODDEF) */
-/*[clinic end generated code: output=1350eeb0c1e06af6 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5283c9389027e0fa input=a9049054013a1b77]*/

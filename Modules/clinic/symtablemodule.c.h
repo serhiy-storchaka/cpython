@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_symtable_symtable__doc__,
-"symtable($module, str, filename, startstr, /)\n"
+"symtable($module, __str, __filename, __startstr)\n"
 "--\n"
 "\n"
 "Return symbol and scope dictionaries used internally by compiler.");
@@ -60,4 +60,4 @@ _symtable_symtable(PyObject *module, PyObject *const *args, Py_ssize_t nargs)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=be1cca59de019984 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=93da98406bc78297 input=a9049054013a1b77]*/

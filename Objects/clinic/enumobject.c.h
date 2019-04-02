@@ -50,7 +50,7 @@ exit:
 }
 
 PyDoc_STRVAR(reversed_new__doc__,
-"reversed(sequence, /)\n"
+"reversed(__sequence)\n"
 "--\n"
 "\n"
 "Return a reverse iterator over the values of the given sequence.");
@@ -77,4 +77,4 @@ reversed_new(PyTypeObject *type, PyObject *args, PyObject *kwargs)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=e18c3fefcf914ec7 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5107fc30c43e0bbc input=a9049054013a1b77]*/

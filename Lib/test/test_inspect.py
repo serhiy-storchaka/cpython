@@ -870,10 +870,10 @@ class TestClassesAndFunctions(unittest.TestCase):
                      "Signature information for builtins requires docstrings")
     def test_getfullargspec_builtin_methods(self):
         self.assertFullArgSpecEquals(_pickle.Pickler.dump,
-                                     args_e=['self', 'obj'], formatted='(self, obj)')
+                                     args_e=['self', '__obj'], formatted='(self, __obj)')
 
         self.assertFullArgSpecEquals(_pickle.Pickler(io.BytesIO()).dump,
-                                     args_e=['self', 'obj'], formatted='(self, obj)')
+                                     args_e=['self', '__obj'], formatted='(self, __obj)')
 
         self.assertFullArgSpecEquals(
              os.stat,
@@ -2635,7 +2635,7 @@ class TestSignatureObject(unittest.TestCase):
         params['b'] = params['b'].replace(kind=Parameter.POSITIONAL_ONLY)
         foo.__signature__ = inspect.Signature(params.values())
         sig = inspect.signature(foo)
-        self.assertEqual(str(sig), '(a, b, /, c, d, **kwargs)')
+        self.assertEqual(str(sig), '(__a, __b, c, d, **kwargs)')
 
         self.assertEqual(self.signature(partial(foo, 1)),
                          ((('b', ..., ..., 'positional_only'),
@@ -3073,20 +3073,20 @@ class TestSignatureObject(unittest.TestCase):
         test.__signature__ = sig.replace(parameters=new_params)
 
         self.assertEqual(str(inspect.signature(test)),
-                         '(a_po, /, *, b, **kwargs)')
+                         '(__a_po, *, b, **kwargs)')
 
         self.assertEqual(str(S(parameters=[P('foo', P.POSITIONAL_ONLY)])),
-                         '(foo, /)')
+                         '(__foo)')
 
         self.assertEqual(str(S(parameters=[
                                 P('foo', P.POSITIONAL_ONLY),
                                 P('bar', P.VAR_KEYWORD)])),
-                         '(foo, /, **bar)')
+                         '(__foo, **bar)')
 
         self.assertEqual(str(S(parameters=[
                                 P('foo', P.POSITIONAL_ONLY),
                                 P('bar', P.VAR_POSITIONAL)])),
-                         '(foo, /, *bar)')
+                         '(__foo, *bar)')
 
     def test_signature_replace_anno(self):
         def test() -> 42:

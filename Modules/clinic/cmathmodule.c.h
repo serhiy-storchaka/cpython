@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(cmath_acos__doc__,
-"acos($module, z, /)\n"
+"acos($module, __z)\n"
 "--\n"
 "\n"
 "Return the arc cosine of z.");
@@ -46,7 +46,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_acosh__doc__,
-"acosh($module, z, /)\n"
+"acosh($module, __z)\n"
 "--\n"
 "\n"
 "Return the inverse hyperbolic cosine of z.");
@@ -89,7 +89,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_asin__doc__,
-"asin($module, z, /)\n"
+"asin($module, __z)\n"
 "--\n"
 "\n"
 "Return the arc sine of z.");
@@ -132,7 +132,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_asinh__doc__,
-"asinh($module, z, /)\n"
+"asinh($module, __z)\n"
 "--\n"
 "\n"
 "Return the inverse hyperbolic sine of z.");
@@ -175,7 +175,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_atan__doc__,
-"atan($module, z, /)\n"
+"atan($module, __z)\n"
 "--\n"
 "\n"
 "Return the arc tangent of z.");
@@ -218,7 +218,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_atanh__doc__,
-"atanh($module, z, /)\n"
+"atanh($module, __z)\n"
 "--\n"
 "\n"
 "Return the inverse hyperbolic tangent of z.");
@@ -261,7 +261,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_cos__doc__,
-"cos($module, z, /)\n"
+"cos($module, __z)\n"
 "--\n"
 "\n"
 "Return the cosine of z.");
@@ -304,7 +304,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_cosh__doc__,
-"cosh($module, z, /)\n"
+"cosh($module, __z)\n"
 "--\n"
 "\n"
 "Return the hyperbolic cosine of z.");
@@ -347,7 +347,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_exp__doc__,
-"exp($module, z, /)\n"
+"exp($module, __z)\n"
 "--\n"
 "\n"
 "Return the exponential value e**z.");
@@ -390,7 +390,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_log10__doc__,
-"log10($module, z, /)\n"
+"log10($module, __z)\n"
 "--\n"
 "\n"
 "Return the base-10 logarithm of z.");
@@ -433,7 +433,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_sin__doc__,
-"sin($module, z, /)\n"
+"sin($module, __z)\n"
 "--\n"
 "\n"
 "Return the sine of z.");
@@ -476,7 +476,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_sinh__doc__,
-"sinh($module, z, /)\n"
+"sinh($module, __z)\n"
 "--\n"
 "\n"
 "Return the hyperbolic sine of z.");
@@ -519,7 +519,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_sqrt__doc__,
-"sqrt($module, z, /)\n"
+"sqrt($module, __z)\n"
 "--\n"
 "\n"
 "Return the square root of z.");
@@ -562,7 +562,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_tan__doc__,
-"tan($module, z, /)\n"
+"tan($module, __z)\n"
 "--\n"
 "\n"
 "Return the tangent of z.");
@@ -605,7 +605,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_tanh__doc__,
-"tanh($module, z, /)\n"
+"tanh($module, __z)\n"
 "--\n"
 "\n"
 "Return the hyperbolic tangent of z.");
@@ -648,7 +648,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_log__doc__,
-"log($module, x, y_obj=None, /)\n"
+"log($module, __x, __y_obj=None)\n"
 "--\n"
 "\n"
 "The logarithm of z to the given base.\n"
@@ -687,7 +687,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_phase__doc__,
-"phase($module, z, /)\n"
+"phase($module, __z)\n"
 "--\n"
 "\n"
 "Return argument, also known as the phase angle, of a complex.");
@@ -715,7 +715,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_polar__doc__,
-"polar($module, z, /)\n"
+"polar($module, __z)\n"
 "--\n"
 "\n"
 "Convert a complex from rectangular coordinates to polar coordinates.\n"
@@ -745,7 +745,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_rect__doc__,
-"rect($module, r, phi, /)\n"
+"rect($module, __r, __phi)\n"
 "--\n"
 "\n"
 "Convert from polar coordinates to rectangular coordinates.");
@@ -781,7 +781,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_isfinite__doc__,
-"isfinite($module, z, /)\n"
+"isfinite($module, __z)\n"
 "--\n"
 "\n"
 "Return True if both the real and imaginary parts of z are finite, else False.");
@@ -809,7 +809,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_isnan__doc__,
-"isnan($module, z, /)\n"
+"isnan($module, __z)\n"
 "--\n"
 "\n"
 "Checks if the real or imaginary part of z not a number (NaN).");
@@ -837,7 +837,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_isinf__doc__,
-"isinf($module, z, /)\n"
+"isinf($module, __z)\n"
 "--\n"
 "\n"
 "Checks if the real or imaginary part of z is infinite.");
@@ -865,7 +865,7 @@ exit:
 }
 
 PyDoc_STRVAR(cmath_isclose__doc__,
-"isclose($module, /, a, b, *, rel_tol=1e-09, abs_tol=0.0)\n"
+"isclose($module, a, b, *, rel_tol=1e-09, abs_tol=0.0)\n"
 "--\n"
 "\n"
 "Determine whether two complex numbers are close in value.\n"
@@ -944,4 +944,4 @@ skip_optional_kwonly:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=c7afb866e593fa45 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=7897e47e5c06a8b2 input=a9049054013a1b77]*/

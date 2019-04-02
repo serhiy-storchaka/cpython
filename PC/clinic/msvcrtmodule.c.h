@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(msvcrt_heapmin__doc__,
-"heapmin($module, /)\n"
+"heapmin($module)\n"
 "--\n"
 "\n"
 "Minimize the malloc() heap.\n"
@@ -24,7 +24,7 @@ msvcrt_heapmin(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(msvcrt_locking__doc__,
-"locking($module, fd, mode, nbytes, /)\n"
+"locking($module, __fd, __mode, __nbytes)\n"
 "--\n"
 "\n"
 "Lock part of a file based on file descriptor fd from the C runtime.\n"
@@ -87,7 +87,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_setmode__doc__,
-"setmode($module, fd, mode, /)\n"
+"setmode($module, __fd, __mode)\n"
 "--\n"
 "\n"
 "Set the line-end translation mode for the file descriptor fd.\n"
@@ -143,7 +143,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_open_osfhandle__doc__,
-"open_osfhandle($module, handle, flags, /)\n"
+"open_osfhandle($module, __handle, __flags)\n"
 "--\n"
 "\n"
 "Create a C runtime file descriptor from the file handle handle.\n"
@@ -181,7 +181,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_get_osfhandle__doc__,
-"get_osfhandle($module, fd, /)\n"
+"get_osfhandle($module, __fd)\n"
 "--\n"
 "\n"
 "Return the file handle for the file descriptor fd.\n"
@@ -221,7 +221,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_kbhit__doc__,
-"kbhit($module, /)\n"
+"kbhit($module)\n"
 "--\n"
 "\n"
 "Return true if a keypress is waiting to be read.");
@@ -249,7 +249,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_getch__doc__,
-"getch($module, /)\n"
+"getch($module)\n"
 "--\n"
 "\n"
 "Read a keypress and return the resulting character as a byte string.\n"
@@ -279,7 +279,7 @@ msvcrt_getch(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(msvcrt_getwch__doc__,
-"getwch($module, /)\n"
+"getwch($module)\n"
 "--\n"
 "\n"
 "Wide char variant of getch(), returning a Unicode value.");
@@ -303,7 +303,7 @@ msvcrt_getwch(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(msvcrt_getche__doc__,
-"getche($module, /)\n"
+"getche($module)\n"
 "--\n"
 "\n"
 "Similar to getch(), but the keypress will be echoed if possible.");
@@ -327,7 +327,7 @@ msvcrt_getche(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(msvcrt_getwche__doc__,
-"getwche($module, /)\n"
+"getwche($module)\n"
 "--\n"
 "\n"
 "Wide char variant of getche(), returning a Unicode value.");
@@ -351,7 +351,7 @@ msvcrt_getwche(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(msvcrt_putch__doc__,
-"putch($module, char, /)\n"
+"putch($module, __char)\n"
 "--\n"
 "\n"
 "Print the byte string char to the console without buffering.");
@@ -385,7 +385,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_putwch__doc__,
-"putwch($module, unicode_char, /)\n"
+"putwch($module, __unicode_char)\n"
 "--\n"
 "\n"
 "Wide char variant of putch(), accepting a Unicode value.");
@@ -421,7 +421,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_ungetch__doc__,
-"ungetch($module, char, /)\n"
+"ungetch($module, __char)\n"
 "--\n"
 "\n"
 "Opposite of getch.\n"
@@ -459,7 +459,7 @@ exit:
 }
 
 PyDoc_STRVAR(msvcrt_ungetwch__doc__,
-"ungetwch($module, unicode_char, /)\n"
+"ungetwch($module, __unicode_char)\n"
 "--\n"
 "\n"
 "Wide char variant of ungetch(), accepting a Unicode value.");
@@ -497,7 +497,7 @@ exit:
 #if defined(_DEBUG)
 
 PyDoc_STRVAR(msvcrt_CrtSetReportFile__doc__,
-"CrtSetReportFile($module, type, file, /)\n"
+"CrtSetReportFile($module, __type, __file)\n"
 "--\n"
 "\n"
 "Wrapper around _CrtSetReportFile.\n"
@@ -537,7 +537,7 @@ exit:
 #if defined(_DEBUG)
 
 PyDoc_STRVAR(msvcrt_CrtSetReportMode__doc__,
-"CrtSetReportMode($module, type, mode, /)\n"
+"CrtSetReportMode($module, __type, __mode)\n"
 "--\n"
 "\n"
 "Wrapper around _CrtSetReportMode.\n"
@@ -594,7 +594,7 @@ exit:
 #if defined(_DEBUG)
 
 PyDoc_STRVAR(msvcrt_set_error_mode__doc__,
-"set_error_mode($module, mode, /)\n"
+"set_error_mode($module, __mode)\n"
 "--\n"
 "\n"
 "Wrapper around _set_error_mode.\n"
@@ -636,7 +636,7 @@ exit:
 #endif /* defined(_DEBUG) */
 
 PyDoc_STRVAR(msvcrt_SetErrorMode__doc__,
-"SetErrorMode($module, mode, /)\n"
+"SetErrorMode($module, __mode)\n"
 "--\n"
 "\n"
 "Wrapper around SetErrorMode.");
@@ -679,4 +679,4 @@ exit:
 #ifndef MSVCRT_SET_ERROR_MODE_METHODDEF
     #define MSVCRT_SET_ERROR_MODE_METHODDEF
 #endif /* !defined(MSVCRT_SET_ERROR_MODE_METHODDEF) */
-/*[clinic end generated code: output=816bc4f993893cea input=a9049054013a1b77]*/
+/*[clinic end generated code: output=d6bdb3d4ff5b2868 input=a9049054013a1b77]*/

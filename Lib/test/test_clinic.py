@@ -368,7 +368,7 @@ os.stat as os_stat_fn
 
 Perform a stat system call on the given path.""")
         self.assertEqual("""
-stat($module, /, path)
+stat($module, path)
 --
 
 Perform a stat system call on the given path.
@@ -390,7 +390,7 @@ This is the documentation for foo.
 Okay, we're done here.
 """)
         self.assertEqual("""
-bar($module, /, x, y)
+bar($module, x, y)
 --
 
 This is the documentation for foo.
@@ -408,7 +408,7 @@ os.stat
     path: str
 This/used to break Clinic!
 """)
-        self.assertEqual("stat($module, /, path)\n--\n\nThis/used to break Clinic!", function.docstring)
+        self.assertEqual("stat($module, path)\n--\n\nThis/used to break Clinic!", function.docstring)
 
     def test_c_name(self):
         function = self.parse_function("module os\nos.stat as os_stat_fn")
@@ -638,7 +638,7 @@ foo.bar
 Docstring
 
 """)
-        self.assertEqual("bar($module, /)\n--\n\nDocstring", function.docstring)
+        self.assertEqual("bar($module)\n--\n\nDocstring", function.docstring)
         self.assertEqual(1, len(function.parameters)) # self!
 
     def test_init_with_no_parameters(self):
@@ -747,7 +747,7 @@ foo.bar
   Not at column 0!
 """)
         self.assertEqual("""
-bar($module, /, x, *, y)
+bar($module, x, *, y)
 --
 
 Not at column 0!

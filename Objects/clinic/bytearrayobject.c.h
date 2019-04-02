@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(bytearray_clear__doc__,
-"clear($self, /)\n"
+"clear($self)\n"
 "--\n"
 "\n"
 "Remove all items from the bytearray.");
@@ -21,7 +21,7 @@ bytearray_clear(PyByteArrayObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(bytearray_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of B.");
@@ -39,7 +39,7 @@ bytearray_copy(PyByteArrayObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(bytearray_translate__doc__,
-"translate($self, table, /, delete=b\'\')\n"
+"translate($self, __table, delete=b\'\')\n"
 "--\n"
 "\n"
 "Return a copy with each character mapped by the given translation table.\n"
@@ -85,7 +85,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_maketrans__doc__,
-"maketrans(frm, to, /)\n"
+"maketrans(__frm, __to)\n"
 "--\n"
 "\n"
 "Return a translation table useable for the bytes or bytearray translate method.\n"
@@ -141,7 +141,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_replace__doc__,
-"replace($self, old, new, count=-1, /)\n"
+"replace($self, __old, __new, __count=-1)\n"
 "--\n"
 "\n"
 "Return a copy with all occurrences of substring old replaced by new.\n"
@@ -222,7 +222,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_split__doc__,
-"split($self, /, sep=None, maxsplit=-1)\n"
+"split($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the sections in the bytearray, using sep as the delimiter.\n"
@@ -291,7 +291,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_partition__doc__,
-"partition($self, sep, /)\n"
+"partition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the bytearray into three parts using the given separator.\n"
@@ -307,7 +307,7 @@ PyDoc_STRVAR(bytearray_partition__doc__,
     {"partition", (PyCFunction)bytearray_partition, METH_O, bytearray_partition__doc__},
 
 PyDoc_STRVAR(bytearray_rpartition__doc__,
-"rpartition($self, sep, /)\n"
+"rpartition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the bytearray into three parts using the given separator.\n"
@@ -324,7 +324,7 @@ PyDoc_STRVAR(bytearray_rpartition__doc__,
     {"rpartition", (PyCFunction)bytearray_rpartition, METH_O, bytearray_rpartition__doc__},
 
 PyDoc_STRVAR(bytearray_rsplit__doc__,
-"rsplit($self, /, sep=None, maxsplit=-1)\n"
+"rsplit($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the sections in the bytearray, using sep as the delimiter.\n"
@@ -395,7 +395,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_reverse__doc__,
-"reverse($self, /)\n"
+"reverse($self)\n"
 "--\n"
 "\n"
 "Reverse the order of the values in B in place.");
@@ -413,7 +413,7 @@ bytearray_reverse(PyByteArrayObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(bytearray_insert__doc__,
-"insert($self, index, item, /)\n"
+"insert($self, __index, __item)\n"
 "--\n"
 "\n"
 "Insert a single item into the bytearray before the given index.\n"
@@ -466,7 +466,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_append__doc__,
-"append($self, item, /)\n"
+"append($self, __item)\n"
 "--\n"
 "\n"
 "Append a single item to the end of the bytearray.\n"
@@ -496,7 +496,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_extend__doc__,
-"extend($self, iterable_of_ints, /)\n"
+"extend($self, __iterable_of_ints)\n"
 "--\n"
 "\n"
 "Append all the items from the iterator or sequence to the end of the bytearray.\n"
@@ -508,7 +508,7 @@ PyDoc_STRVAR(bytearray_extend__doc__,
     {"extend", (PyCFunction)bytearray_extend, METH_O, bytearray_extend__doc__},
 
 PyDoc_STRVAR(bytearray_pop__doc__,
-"pop($self, index=-1, /)\n"
+"pop($self, __index=-1)\n"
 "--\n"
 "\n"
 "Remove and return a single item from B.\n"
@@ -562,7 +562,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_remove__doc__,
-"remove($self, value, /)\n"
+"remove($self, __value)\n"
 "--\n"
 "\n"
 "Remove the first occurrence of a value in the bytearray.\n"
@@ -592,7 +592,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_strip__doc__,
-"strip($self, bytes=None, /)\n"
+"strip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip leading and trailing bytes contained in the argument.\n"
@@ -626,7 +626,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_lstrip__doc__,
-"lstrip($self, bytes=None, /)\n"
+"lstrip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip leading bytes contained in the argument.\n"
@@ -660,7 +660,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_rstrip__doc__,
-"rstrip($self, bytes=None, /)\n"
+"rstrip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip trailing bytes contained in the argument.\n"
@@ -694,7 +694,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_decode__doc__,
-"decode($self, /, encoding=\'utf-8\', errors=\'strict\')\n"
+"decode($self, encoding=\'utf-8\', errors=\'strict\')\n"
 "--\n"
 "\n"
 "Decode the bytearray using the codec registered for encoding.\n"
@@ -772,7 +772,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_join__doc__,
-"join($self, iterable_of_bytes, /)\n"
+"join($self, __iterable_of_bytes)\n"
 "--\n"
 "\n"
 "Concatenate any number of bytes/bytearray objects.\n"
@@ -785,7 +785,7 @@ PyDoc_STRVAR(bytearray_join__doc__,
     {"join", (PyCFunction)bytearray_join, METH_O, bytearray_join__doc__},
 
 PyDoc_STRVAR(bytearray_splitlines__doc__,
-"splitlines($self, /, keepends=False)\n"
+"splitlines($self, keepends=False)\n"
 "--\n"
 "\n"
 "Return a list of the lines in the bytearray, breaking at line boundaries.\n"
@@ -833,7 +833,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_fromhex__doc__,
-"fromhex($type, string, /)\n"
+"fromhex($type, __string)\n"
 "--\n"
 "\n"
 "Create a bytearray object from a string of hexadecimal numbers.\n"
@@ -868,7 +868,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_reduce__doc__,
-"__reduce__($self, /)\n"
+"__reduce__($self)\n"
 "--\n"
 "\n"
 "Return state information for pickling.");
@@ -886,7 +886,7 @@ bytearray_reduce(PyByteArrayObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(bytearray_reduce_ex__doc__,
-"__reduce_ex__($self, proto=0, /)\n"
+"__reduce_ex__($self, __proto=0)\n"
 "--\n"
 "\n"
 "Return state information for pickling.");
@@ -926,7 +926,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytearray_sizeof__doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Returns the size of the bytearray object in memory, in bytes.");
@@ -942,4 +942,4 @@ bytearray_sizeof(PyByteArrayObject *self, PyObject *Py_UNUSED(ignored))
 {
     return bytearray_sizeof_impl(self);
 }
-/*[clinic end generated code: output=272fcb836b92da32 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=df9dac3296d4a25c input=a9049054013a1b77]*/

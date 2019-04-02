@@ -50,7 +50,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Future_result__doc__,
-"result($self, /)\n"
+"result($self)\n"
 "--\n"
 "\n"
 "Return the result this future represents.\n"
@@ -72,7 +72,7 @@ _asyncio_Future_result(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future_exception__doc__,
-"exception($self, /)\n"
+"exception($self)\n"
 "--\n"
 "\n"
 "Return the exception that was set on this future.\n"
@@ -95,7 +95,7 @@ _asyncio_Future_exception(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future_set_result__doc__,
-"set_result($self, result, /)\n"
+"set_result($self, __result)\n"
 "--\n"
 "\n"
 "Mark the future done and set its result.\n"
@@ -107,7 +107,7 @@ PyDoc_STRVAR(_asyncio_Future_set_result__doc__,
     {"set_result", (PyCFunction)_asyncio_Future_set_result, METH_O, _asyncio_Future_set_result__doc__},
 
 PyDoc_STRVAR(_asyncio_Future_set_exception__doc__,
-"set_exception($self, exception, /)\n"
+"set_exception($self, __exception)\n"
 "--\n"
 "\n"
 "Mark the future done and set an exception.\n"
@@ -119,7 +119,7 @@ PyDoc_STRVAR(_asyncio_Future_set_exception__doc__,
     {"set_exception", (PyCFunction)_asyncio_Future_set_exception, METH_O, _asyncio_Future_set_exception__doc__},
 
 PyDoc_STRVAR(_asyncio_Future_add_done_callback__doc__,
-"add_done_callback($self, fn, /, *, context=None)\n"
+"add_done_callback($self, __fn, *, context=None)\n"
 "--\n"
 "\n"
 "Add a callback to be run when the future becomes done.\n"
@@ -163,7 +163,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Future_remove_done_callback__doc__,
-"remove_done_callback($self, fn, /)\n"
+"remove_done_callback($self, __fn)\n"
 "--\n"
 "\n"
 "Remove all instances of a callback from the \"call when done\" list.\n"
@@ -174,7 +174,7 @@ PyDoc_STRVAR(_asyncio_Future_remove_done_callback__doc__,
     {"remove_done_callback", (PyCFunction)_asyncio_Future_remove_done_callback, METH_O, _asyncio_Future_remove_done_callback__doc__},
 
 PyDoc_STRVAR(_asyncio_Future_cancel__doc__,
-"cancel($self, /)\n"
+"cancel($self)\n"
 "--\n"
 "\n"
 "Cancel the future and schedule callbacks.\n"
@@ -196,7 +196,7 @@ _asyncio_Future_cancel(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future_cancelled__doc__,
-"cancelled($self, /)\n"
+"cancelled($self)\n"
 "--\n"
 "\n"
 "Return True if the future was cancelled.");
@@ -214,7 +214,7 @@ _asyncio_Future_cancelled(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future_done__doc__,
-"done($self, /)\n"
+"done($self)\n"
 "--\n"
 "\n"
 "Return True if the future is done.\n"
@@ -235,7 +235,7 @@ _asyncio_Future_done(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future_get_loop__doc__,
-"get_loop($self, /)\n"
+"get_loop($self)\n"
 "--\n"
 "\n"
 "Return the event loop the Future is bound to.");
@@ -253,7 +253,7 @@ _asyncio_Future_get_loop(FutureObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Future__repr_info__doc__,
-"_repr_info($self, /)\n"
+"_repr_info($self)\n"
 "--\n"
 "\n");
 
@@ -316,7 +316,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Task_current_task__doc__,
-"current_task($type, /, loop=None)\n"
+"current_task($type, loop=None)\n"
 "--\n"
 "\n"
 "Return the currently running task in an event loop or None.\n"
@@ -357,7 +357,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Task_all_tasks__doc__,
-"all_tasks($type, /, loop=None)\n"
+"all_tasks($type, loop=None)\n"
 "--\n"
 "\n"
 "Return a set of all tasks for an event loop.\n"
@@ -396,7 +396,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Task__repr_info__doc__,
-"_repr_info($self, /)\n"
+"_repr_info($self)\n"
 "--\n"
 "\n");
 
@@ -413,7 +413,7 @@ _asyncio_Task__repr_info(TaskObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Task_cancel__doc__,
-"cancel($self, /)\n"
+"cancel($self)\n"
 "--\n"
 "\n"
 "Request that this task cancel itself.\n"
@@ -448,7 +448,7 @@ _asyncio_Task_cancel(TaskObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Task_get_stack__doc__,
-"get_stack($self, /, *, limit=None)\n"
+"get_stack($self, *, limit=None)\n"
 "--\n"
 "\n"
 "Return the list of stack frames for this task\'s coroutine.\n"
@@ -503,7 +503,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Task_print_stack__doc__,
-"print_stack($self, /, *, limit=None, file=None)\n"
+"print_stack($self, *, limit=None, file=None)\n"
 "--\n"
 "\n"
 "Print the stack or traceback for this task\'s coroutine.\n"
@@ -554,7 +554,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio_Task_set_result__doc__,
-"set_result($self, result, /)\n"
+"set_result($self, __result)\n"
 "--\n"
 "\n");
 
@@ -562,7 +562,7 @@ PyDoc_STRVAR(_asyncio_Task_set_result__doc__,
     {"set_result", (PyCFunction)_asyncio_Task_set_result, METH_O, _asyncio_Task_set_result__doc__},
 
 PyDoc_STRVAR(_asyncio_Task_set_exception__doc__,
-"set_exception($self, exception, /)\n"
+"set_exception($self, __exception)\n"
 "--\n"
 "\n");
 
@@ -570,7 +570,7 @@ PyDoc_STRVAR(_asyncio_Task_set_exception__doc__,
     {"set_exception", (PyCFunction)_asyncio_Task_set_exception, METH_O, _asyncio_Task_set_exception__doc__},
 
 PyDoc_STRVAR(_asyncio_Task_get_name__doc__,
-"get_name($self, /)\n"
+"get_name($self)\n"
 "--\n"
 "\n");
 
@@ -587,7 +587,7 @@ _asyncio_Task_get_name(TaskObj *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_Task_set_name__doc__,
-"set_name($self, value, /)\n"
+"set_name($self, __value)\n"
 "--\n"
 "\n");
 
@@ -595,7 +595,7 @@ PyDoc_STRVAR(_asyncio_Task_set_name__doc__,
     {"set_name", (PyCFunction)_asyncio_Task_set_name, METH_O, _asyncio_Task_set_name__doc__},
 
 PyDoc_STRVAR(_asyncio__get_running_loop__doc__,
-"_get_running_loop($module, /)\n"
+"_get_running_loop($module)\n"
 "--\n"
 "\n"
 "Return the running event loop or None.\n"
@@ -616,7 +616,7 @@ _asyncio__get_running_loop(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio__set_running_loop__doc__,
-"_set_running_loop($module, loop, /)\n"
+"_set_running_loop($module, __loop)\n"
 "--\n"
 "\n"
 "Set the running event loop.\n"
@@ -628,7 +628,7 @@ PyDoc_STRVAR(_asyncio__set_running_loop__doc__,
     {"_set_running_loop", (PyCFunction)_asyncio__set_running_loop, METH_O, _asyncio__set_running_loop__doc__},
 
 PyDoc_STRVAR(_asyncio_get_event_loop__doc__,
-"get_event_loop($module, /)\n"
+"get_event_loop($module)\n"
 "--\n"
 "\n"
 "Return an asyncio event loop.\n"
@@ -653,7 +653,7 @@ _asyncio_get_event_loop(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio_get_running_loop__doc__,
-"get_running_loop($module, /)\n"
+"get_running_loop($module)\n"
 "--\n"
 "\n"
 "Return the running event loop.  Raise a RuntimeError if there is none.\n"
@@ -673,7 +673,7 @@ _asyncio_get_running_loop(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_asyncio__register_task__doc__,
-"_register_task($module, /, task)\n"
+"_register_task($module, task)\n"
 "--\n"
 "\n"
 "Register a new task in asyncio as executed by loop.\n"
@@ -707,7 +707,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio__unregister_task__doc__,
-"_unregister_task($module, /, task)\n"
+"_unregister_task($module, task)\n"
 "--\n"
 "\n"
 "Unregister a task.\n"
@@ -741,7 +741,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio__enter_task__doc__,
-"_enter_task($module, /, loop, task)\n"
+"_enter_task($module, loop, task)\n"
 "--\n"
 "\n"
 "Enter into task execution or resume suspended task.\n"
@@ -779,7 +779,7 @@ exit:
 }
 
 PyDoc_STRVAR(_asyncio__leave_task__doc__,
-"_leave_task($module, /, loop, task)\n"
+"_leave_task($module, loop, task)\n"
 "--\n"
 "\n"
 "Leave task execution or suspend a task.\n"
@@ -815,4 +815,4 @@ _asyncio__leave_task(PyObject *module, PyObject *const *args, Py_ssize_t nargs, 
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=e3b02d96da56e80c input=a9049054013a1b77]*/
+/*[clinic end generated code: output=dbaa6a5614d7a4af input=a9049054013a1b77]*/

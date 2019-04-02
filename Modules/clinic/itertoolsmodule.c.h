@@ -78,7 +78,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_teedataobject__doc__,
-"teedataobject(iterable, values, next, /)\n"
+"teedataobject(__iterable, __values, __next)\n"
 "--\n"
 "\n"
 "Data container common to multiple tee objects.");
@@ -116,7 +116,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools__tee__doc__,
-"_tee(iterable, /)\n"
+"_tee(__iterable)\n"
 "--\n"
 "\n"
 "Iterator wrapped to make it copyable.");
@@ -145,7 +145,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_tee__doc__,
-"tee($module, iterable, n=2, /)\n"
+"tee($module, __iterable, __n=2)\n"
 "--\n"
 "\n"
 "Returns a tuple of n independent iterators.");
@@ -195,7 +195,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_cycle__doc__,
-"cycle(iterable, /)\n"
+"cycle(__iterable)\n"
 "--\n"
 "\n"
 "Return elements from the iterable until it is exhausted. Then repeat the sequence indefinitely.");
@@ -224,7 +224,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_dropwhile__doc__,
-"dropwhile(predicate, iterable, /)\n"
+"dropwhile(__predicate, __iterable)\n"
 "--\n"
 "\n"
 "Drop items from the iterable while predicate(item) is true.\n"
@@ -257,7 +257,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_takewhile__doc__,
-"takewhile(predicate, iterable, /)\n"
+"takewhile(__predicate, __iterable)\n"
 "--\n"
 "\n"
 "Return successive entries from an iterable as long as the predicate evaluates to true for each entry.");
@@ -288,7 +288,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_starmap__doc__,
-"starmap(function, iterable, /)\n"
+"starmap(__function, __iterable)\n"
 "--\n"
 "\n"
 "Return an iterator whose values are returned from the function evaluated with an argument tuple taken from the given sequence.");
@@ -319,7 +319,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_chain_from_iterable__doc__,
-"from_iterable($type, iterable, /)\n"
+"from_iterable($type, __iterable)\n"
 "--\n"
 "\n"
 "Alternative chain() constructor taking a single iterable argument that evaluates lazily.");
@@ -560,7 +560,7 @@ exit:
 }
 
 PyDoc_STRVAR(itertools_filterfalse__doc__,
-"filterfalse(function, iterable, /)\n"
+"filterfalse(__function, __iterable)\n"
 "--\n"
 "\n"
 "Return those items of iterable for which function(item) is false.\n"
@@ -642,4 +642,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=04c49debcae96003 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=ac1c527c791b4973 input=a9049054013a1b77]*/

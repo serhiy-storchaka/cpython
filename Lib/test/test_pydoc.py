@@ -1098,7 +1098,7 @@ class TestDescriptions(unittest.TestCase):
     @requires_docstrings
     def test_unbound_builtin_method(self):
         self.assertEqual(self._get_summary_line(_pickle.Pickler.dump),
-            "dump(self, obj, /)")
+            "dump(__self, __obj)")
 
     # these no longer include "self"
     def test_bound_python_method(self):
@@ -1126,7 +1126,7 @@ class TestDescriptions(unittest.TestCase):
         s = StringIO()
         p = _pickle.Pickler(s)
         self.assertEqual(self._get_summary_line(p.dump),
-            "dump(obj, /) method of _pickle.Pickler instance")
+            "dump(__obj) method of _pickle.Pickler instance")
 
     # this should *never* include self!
     @requires_docstrings

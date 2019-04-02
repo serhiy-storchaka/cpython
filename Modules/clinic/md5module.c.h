@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(MD5Type_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -21,7 +21,7 @@ MD5Type_copy(MD5object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(MD5Type_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -39,7 +39,7 @@ MD5Type_digest(MD5object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(MD5Type_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -57,7 +57,7 @@ MD5Type_hexdigest(MD5object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(MD5Type_update__doc__,
-"update($self, obj, /)\n"
+"update($self, __obj)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided string.");
@@ -66,7 +66,7 @@ PyDoc_STRVAR(MD5Type_update__doc__,
     {"update", (PyCFunction)MD5Type_update, METH_O, MD5Type_update__doc__},
 
 PyDoc_STRVAR(_md5_md5__doc__,
-"md5($module, /, string=b\'\')\n"
+"md5($module, string=b\'\')\n"
 "--\n"
 "\n"
 "Return a new MD5 hash object; optionally initialized with a string.");
@@ -101,4 +101,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=53133f08cf9095fc input=a9049054013a1b77]*/
+/*[clinic end generated code: output=4ee6d01523f31cc4 input=a9049054013a1b77]*/

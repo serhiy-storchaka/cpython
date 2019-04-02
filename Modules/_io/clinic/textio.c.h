@@ -60,7 +60,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_IncrementalNewlineDecoder_decode__doc__,
-"decode($self, /, input, final=False)\n"
+"decode($self, input, final=False)\n"
 "--\n"
 "\n");
 
@@ -107,7 +107,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_IncrementalNewlineDecoder_getstate__doc__,
-"getstate($self, /)\n"
+"getstate($self)\n"
 "--\n"
 "\n");
 
@@ -124,7 +124,7 @@ _io_IncrementalNewlineDecoder_getstate(nldecoder_object *self, PyObject *Py_UNUS
 }
 
 PyDoc_STRVAR(_io_IncrementalNewlineDecoder_setstate__doc__,
-"setstate($self, state, /)\n"
+"setstate($self, __state)\n"
 "--\n"
 "\n");
 
@@ -132,7 +132,7 @@ PyDoc_STRVAR(_io_IncrementalNewlineDecoder_setstate__doc__,
     {"setstate", (PyCFunction)_io_IncrementalNewlineDecoder_setstate, METH_O, _io_IncrementalNewlineDecoder_setstate__doc__},
 
 PyDoc_STRVAR(_io_IncrementalNewlineDecoder_reset__doc__,
-"reset($self, /)\n"
+"reset($self)\n"
 "--\n"
 "\n");
 
@@ -296,7 +296,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_reconfigure__doc__,
-"reconfigure($self, /, *, encoding=None, errors=None, newline=None,\n"
+"reconfigure($self, *, encoding=None, errors=None, newline=None,\n"
 "            line_buffering=None, write_through=None)\n"
 "--\n"
 "\n"
@@ -367,7 +367,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_detach__doc__,
-"detach($self, /)\n"
+"detach($self)\n"
 "--\n"
 "\n");
 
@@ -384,7 +384,7 @@ _io_TextIOWrapper_detach(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_write__doc__,
-"write($self, text, /)\n"
+"write($self, __text)\n"
 "--\n"
 "\n");
 
@@ -415,7 +415,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -448,7 +448,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_readline__doc__,
-"readline($self, size=-1, /)\n"
+"readline($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -495,7 +495,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_seek__doc__,
-"seek($self, cookie, whence=0, /)\n"
+"seek($self, __cookie, __whence=0)\n"
 "--\n"
 "\n");
 
@@ -536,7 +536,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_tell__doc__,
-"tell($self, /)\n"
+"tell($self)\n"
 "--\n"
 "\n");
 
@@ -553,7 +553,7 @@ _io_TextIOWrapper_tell(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_truncate__doc__,
-"truncate($self, pos=None, /)\n"
+"truncate($self, __pos=None)\n"
 "--\n"
 "\n");
 
@@ -584,7 +584,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n");
 
@@ -601,7 +601,7 @@ _io_TextIOWrapper_fileno(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_seekable__doc__,
-"seekable($self, /)\n"
+"seekable($self)\n"
 "--\n"
 "\n");
 
@@ -618,7 +618,7 @@ _io_TextIOWrapper_seekable(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n");
 
@@ -635,7 +635,7 @@ _io_TextIOWrapper_readable(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n");
 
@@ -652,7 +652,7 @@ _io_TextIOWrapper_writable(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_isatty__doc__,
-"isatty($self, /)\n"
+"isatty($self)\n"
 "--\n"
 "\n");
 
@@ -669,7 +669,7 @@ _io_TextIOWrapper_isatty(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_flush__doc__,
-"flush($self, /)\n"
+"flush($self)\n"
 "--\n"
 "\n");
 
@@ -686,7 +686,7 @@ _io_TextIOWrapper_flush(textio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_TextIOWrapper_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n");
 
@@ -701,4 +701,4 @@ _io_TextIOWrapper_close(textio *self, PyObject *Py_UNUSED(ignored))
 {
     return _io_TextIOWrapper_close_impl(self);
 }
-/*[clinic end generated code: output=b651e056e3000f88 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=8972c8e8ad4f654e input=a9049054013a1b77]*/

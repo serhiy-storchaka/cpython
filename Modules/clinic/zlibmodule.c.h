@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(zlib_compress__doc__,
-"compress($module, data, /, level=Z_DEFAULT_COMPRESSION)\n"
+"compress($module, __data, level=Z_DEFAULT_COMPRESSION)\n"
 "--\n"
 "\n"
 "Returns a bytes object containing compressed data.\n"
@@ -66,7 +66,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_decompress__doc__,
-"decompress($module, data, /, wbits=MAX_WBITS, bufsize=DEF_BUF_SIZE)\n"
+"decompress($module, __data, wbits=MAX_WBITS, bufsize=DEF_BUF_SIZE)\n"
 "--\n"
 "\n"
 "Returns a bytes object containing the uncompressed data.\n"
@@ -141,7 +141,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_compressobj__doc__,
-"compressobj($module, /, level=Z_DEFAULT_COMPRESSION, method=DEFLATED,\n"
+"compressobj($module, level=Z_DEFAULT_COMPRESSION, method=DEFLATED,\n"
 "            wbits=MAX_WBITS, memLevel=DEF_MEM_LEVEL,\n"
 "            strategy=Z_DEFAULT_STRATEGY, zdict=None)\n"
 "--\n"
@@ -289,7 +289,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_decompressobj__doc__,
-"decompressobj($module, /, wbits=MAX_WBITS, zdict=b\'\')\n"
+"decompressobj($module, wbits=MAX_WBITS, zdict=b\'\')\n"
 "--\n"
 "\n"
 "Return a decompressor object.\n"
@@ -347,7 +347,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_Compress_compress__doc__,
-"compress($self, data, /)\n"
+"compress($self, __data)\n"
 "--\n"
 "\n"
 "Returns a bytes object containing compressed data.\n"
@@ -390,7 +390,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_Decompress_decompress__doc__,
-"decompress($self, data, /, max_length=0)\n"
+"decompress($self, __data, max_length=0)\n"
 "--\n"
 "\n"
 "Return a bytes object containing the decompressed version of the data.\n"
@@ -454,7 +454,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_Compress_flush__doc__,
-"flush($self, mode=zlib.Z_FINISH, /)\n"
+"flush($self, __mode=zlib.Z_FINISH)\n"
 "--\n"
 "\n"
 "Return a bytes object containing any remaining compressed data.\n"
@@ -502,7 +502,7 @@ exit:
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Compress_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the compression object.");
@@ -524,7 +524,7 @@ zlib_Compress_copy(compobject *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Compress___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n");
 
@@ -545,7 +545,7 @@ zlib_Compress___copy__(compobject *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Compress___deepcopy____doc__,
-"__deepcopy__($self, memo, /)\n"
+"__deepcopy__($self, __memo)\n"
 "--\n"
 "\n");
 
@@ -557,7 +557,7 @@ PyDoc_STRVAR(zlib_Compress___deepcopy____doc__,
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Decompress_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the decompression object.");
@@ -579,7 +579,7 @@ zlib_Decompress_copy(compobject *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Decompress___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n");
 
@@ -600,7 +600,7 @@ zlib_Decompress___copy__(compobject *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_ZLIB_COPY)
 
 PyDoc_STRVAR(zlib_Decompress___deepcopy____doc__,
-"__deepcopy__($self, memo, /)\n"
+"__deepcopy__($self, __memo)\n"
 "--\n"
 "\n");
 
@@ -610,7 +610,7 @@ PyDoc_STRVAR(zlib_Decompress___deepcopy____doc__,
 #endif /* defined(HAVE_ZLIB_COPY) */
 
 PyDoc_STRVAR(zlib_Decompress_flush__doc__,
-"flush($self, length=zlib.DEF_BUF_SIZE, /)\n"
+"flush($self, __length=zlib.DEF_BUF_SIZE)\n"
 "--\n"
 "\n"
 "Return a bytes object containing any remaining decompressed data.\n"
@@ -647,7 +647,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_adler32__doc__,
-"adler32($module, data, value=1, /)\n"
+"adler32($module, __data, __value=1)\n"
 "--\n"
 "\n"
 "Compute an Adler-32 checksum of data.\n"
@@ -705,7 +705,7 @@ exit:
 }
 
 PyDoc_STRVAR(zlib_crc32__doc__,
-"crc32($module, data, value=0, /)\n"
+"crc32($module, __data, __value=0)\n"
 "--\n"
 "\n"
 "Compute a CRC-32 checksum of data.\n"
@@ -785,4 +785,4 @@ exit:
 #ifndef ZLIB_DECOMPRESS___DEEPCOPY___METHODDEF
     #define ZLIB_DECOMPRESS___DEEPCOPY___METHODDEF
 #endif /* !defined(ZLIB_DECOMPRESS___DEEPCOPY___METHODDEF) */
-/*[clinic end generated code: output=feb079cebbbaacd6 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=215f87d3407acf2e input=a9049054013a1b77]*/

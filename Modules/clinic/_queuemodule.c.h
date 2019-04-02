@@ -31,7 +31,7 @@ exit:
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_put__doc__,
-"put($self, /, item, block=True, timeout=None)\n"
+"put($self, item, block=True, timeout=None)\n"
 "--\n"
 "\n"
 "Put the item on the queue.\n"
@@ -84,7 +84,7 @@ exit:
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_put_nowait__doc__,
-"put_nowait($self, /, item)\n"
+"put_nowait($self, item)\n"
 "--\n"
 "\n"
 "Put an item into the queue without blocking.\n"
@@ -119,7 +119,7 @@ exit:
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_get__doc__,
-"get($self, /, block=True, timeout=None)\n"
+"get($self, block=True, timeout=None)\n"
 "--\n"
 "\n"
 "Remove and return an item from the queue.\n"
@@ -175,7 +175,7 @@ exit:
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_get_nowait__doc__,
-"get_nowait($self, /)\n"
+"get_nowait($self)\n"
 "--\n"
 "\n"
 "Remove and return an item from the queue without blocking.\n"
@@ -196,7 +196,7 @@ _queue_SimpleQueue_get_nowait(simplequeueobject *self, PyObject *Py_UNUSED(ignor
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_empty__doc__,
-"empty($self, /)\n"
+"empty($self)\n"
 "--\n"
 "\n"
 "Return True if the queue is empty, False otherwise (not reliable!).");
@@ -224,7 +224,7 @@ exit:
 }
 
 PyDoc_STRVAR(_queue_SimpleQueue_qsize__doc__,
-"qsize($self, /)\n"
+"qsize($self)\n"
 "--\n"
 "\n"
 "Return the approximate size of the queue (not reliable!).");
@@ -250,4 +250,4 @@ _queue_SimpleQueue_qsize(simplequeueobject *self, PyObject *Py_UNUSED(ignored))
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=b4717e2974cbc909 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=13f25b030259b79e input=a9049054013a1b77]*/

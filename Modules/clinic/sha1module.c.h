@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(SHA1Type_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -21,7 +21,7 @@ SHA1Type_copy(SHA1object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA1Type_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -39,7 +39,7 @@ SHA1Type_digest(SHA1object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA1Type_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -57,7 +57,7 @@ SHA1Type_hexdigest(SHA1object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA1Type_update__doc__,
-"update($self, obj, /)\n"
+"update($self, __obj)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided string.");
@@ -66,7 +66,7 @@ PyDoc_STRVAR(SHA1Type_update__doc__,
     {"update", (PyCFunction)SHA1Type_update, METH_O, SHA1Type_update__doc__},
 
 PyDoc_STRVAR(_sha1_sha1__doc__,
-"sha1($module, /, string=b\'\')\n"
+"sha1($module, string=b\'\')\n"
 "--\n"
 "\n"
 "Return a new SHA1 hash object; optionally initialized with a string.");
@@ -101,4 +101,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=1ae7e73ec84a27d5 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=0e5102949ea718be input=a9049054013a1b77]*/

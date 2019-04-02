@@ -1918,6 +1918,7 @@ def _signature_strip_non_python_syntax(signature):
 
     current_parameter = 0
     OP = token.OP
+    NAME = token.NAME
     ERRORTOKEN = token.ERRORTOKEN
 
     # token stream always starts with ENCODING token, skip it
@@ -1939,14 +1940,17 @@ def _signature_strip_non_python_syntax(signature):
 
             if string == '/':
                 assert not skip_next_comma
-                assert last_positional_only is None
                 skip_next_comma = True
                 last_positional_only = current_parameter - 1
                 continue
 
+        if type == NAME and string.startswith('__'):
+            last_positional_only = current_parameter
+
         if (type == ERRORTOKEN) and (string == '$'):
             assert self_parameter is None
             self_parameter = current_parameter
+            last_positional_only = current_parameter
             continue
 
         if delayed_comma:
@@ -3035,20 +3039,14 @@ class Signature:
 
     def __str__(self):
         result = []
-        render_pos_only_separator = False
         render_kw_only_separator = True
         for param in self.parameters.values():
             formatted = str(param)
 
             kind = param.kind
 
-            if kind == _POSITIONAL_ONLY:
-                render_pos_only_separator = True
-            elif render_pos_only_separator:
-                # It's not a positional-only parameter, and the flag
-                # is set to 'True' (there were pos-only params before.)
-                result.append('/')
-                render_pos_only_separator = False
+            if kind == _POSITIONAL_ONLY and not formatted.startswith('__'):
+                    formatted = '__' + formatted
 
             if kind == _VAR_POSITIONAL:
                 # OK, we have an '*args'-like parameter, so we won't need
@@ -3064,11 +3062,6 @@ class Signature:
                 render_kw_only_separator = False
 
             result.append(formatted)
-
-        if render_pos_only_separator:
-            # There were only positional-only parameters, hence the
-            # flag was not reset to 'False'
-            result.append('/')
 
         rendered = '({})'.format(', '.join(result))
 

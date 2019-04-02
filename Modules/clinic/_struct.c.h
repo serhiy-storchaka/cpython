@@ -39,7 +39,7 @@ exit:
 }
 
 PyDoc_STRVAR(Struct_unpack__doc__,
-"unpack($self, buffer, /)\n"
+"unpack($self, __buffer)\n"
 "--\n"
 "\n"
 "Return a tuple containing unpacked values.\n"
@@ -80,7 +80,7 @@ exit:
 }
 
 PyDoc_STRVAR(Struct_unpack_from__doc__,
-"unpack_from($self, /, buffer, offset=0)\n"
+"unpack_from($self, buffer, offset=0)\n"
 "--\n"
 "\n"
 "Return a tuple containing unpacked values.\n"
@@ -154,7 +154,7 @@ exit:
 }
 
 PyDoc_STRVAR(Struct_iter_unpack__doc__,
-"iter_unpack($self, buffer, /)\n"
+"iter_unpack($self, __buffer)\n"
 "--\n"
 "\n"
 "Return an iterator yielding tuples.\n"
@@ -168,7 +168,7 @@ PyDoc_STRVAR(Struct_iter_unpack__doc__,
     {"iter_unpack", (PyCFunction)Struct_iter_unpack, METH_O, Struct_iter_unpack__doc__},
 
 PyDoc_STRVAR(_clearcache__doc__,
-"_clearcache($module, /)\n"
+"_clearcache($module)\n"
 "--\n"
 "\n"
 "Clear the internal cache.");
@@ -186,7 +186,7 @@ _clearcache(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(calcsize__doc__,
-"calcsize($module, format, /)\n"
+"calcsize($module, __format)\n"
 "--\n"
 "\n"
 "Return size in bytes of the struct described by the format string.");
@@ -221,7 +221,7 @@ exit:
 }
 
 PyDoc_STRVAR(unpack__doc__,
-"unpack($module, format, buffer, /)\n"
+"unpack($module, __format, __buffer)\n"
 "--\n"
 "\n"
 "Return a tuple containing values unpacked according to the format string.\n"
@@ -270,7 +270,7 @@ exit:
 }
 
 PyDoc_STRVAR(unpack_from__doc__,
-"unpack_from($module, format, /, buffer, offset=0)\n"
+"unpack_from($module, __format, buffer, offset=0)\n"
 "--\n"
 "\n"
 "Return a tuple containing values unpacked according to the format string.\n"
@@ -347,7 +347,7 @@ exit:
 }
 
 PyDoc_STRVAR(iter_unpack__doc__,
-"iter_unpack($module, format, buffer, /)\n"
+"iter_unpack($module, __format, __buffer)\n"
 "--\n"
 "\n"
 "Return an iterator yielding tuples unpacked from the given bytes.\n"
@@ -386,4 +386,4 @@ exit:
 
     return return_value;
 }
-/*[clinic end generated code: output=b642e1002d25ebdd input=a9049054013a1b77]*/
+/*[clinic end generated code: output=58da67661e171045 input=a9049054013a1b77]*/

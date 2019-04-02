@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_pickle_Pickler_clear_memo__doc__,
-"clear_memo($self, /)\n"
+"clear_memo($self)\n"
 "--\n"
 "\n"
 "Clears the pickler\'s \"memo\".\n"
@@ -26,7 +26,7 @@ _pickle_Pickler_clear_memo(PicklerObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_pickle_Pickler_dump__doc__,
-"dump($self, obj, /)\n"
+"dump($self, __obj)\n"
 "--\n"
 "\n"
 "Write a pickled representation of the given object to the open file.");
@@ -35,7 +35,7 @@ PyDoc_STRVAR(_pickle_Pickler_dump__doc__,
     {"dump", (PyCFunction)_pickle_Pickler_dump, METH_O, _pickle_Pickler_dump__doc__},
 
 PyDoc_STRVAR(_pickle_Pickler___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Returns size in memory, in bytes.");
@@ -129,7 +129,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_PicklerMemoProxy_clear__doc__,
-"clear($self, /)\n"
+"clear($self)\n"
 "--\n"
 "\n"
 "Remove all items from memo.");
@@ -147,7 +147,7 @@ _pickle_PicklerMemoProxy_clear(PicklerMemoProxyObject *self, PyObject *Py_UNUSED
 }
 
 PyDoc_STRVAR(_pickle_PicklerMemoProxy_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Copy the memo to a new object.");
@@ -165,7 +165,7 @@ _pickle_PicklerMemoProxy_copy(PicklerMemoProxyObject *self, PyObject *Py_UNUSED(
 }
 
 PyDoc_STRVAR(_pickle_PicklerMemoProxy___reduce____doc__,
-"__reduce__($self, /)\n"
+"__reduce__($self)\n"
 "--\n"
 "\n"
 "Implement pickle support.");
@@ -183,7 +183,7 @@ _pickle_PicklerMemoProxy___reduce__(PicklerMemoProxyObject *self, PyObject *Py_U
 }
 
 PyDoc_STRVAR(_pickle_Unpickler_load__doc__,
-"load($self, /)\n"
+"load($self)\n"
 "--\n"
 "\n"
 "Load a pickle.\n"
@@ -205,7 +205,7 @@ _pickle_Unpickler_load(UnpicklerObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_pickle_Unpickler_find_class__doc__,
-"find_class($self, module_name, global_name, /)\n"
+"find_class($self, __module_name, __global_name)\n"
 "--\n"
 "\n"
 "Return an object from a specified module.\n"
@@ -244,7 +244,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_Unpickler___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Returns size in memory, in bytes.");
@@ -372,7 +372,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_UnpicklerMemoProxy_clear__doc__,
-"clear($self, /)\n"
+"clear($self)\n"
 "--\n"
 "\n"
 "Remove all items from memo.");
@@ -390,7 +390,7 @@ _pickle_UnpicklerMemoProxy_clear(UnpicklerMemoProxyObject *self, PyObject *Py_UN
 }
 
 PyDoc_STRVAR(_pickle_UnpicklerMemoProxy_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Copy the memo to a new object.");
@@ -408,7 +408,7 @@ _pickle_UnpicklerMemoProxy_copy(UnpicklerMemoProxyObject *self, PyObject *Py_UNU
 }
 
 PyDoc_STRVAR(_pickle_UnpicklerMemoProxy___reduce____doc__,
-"__reduce__($self, /)\n"
+"__reduce__($self)\n"
 "--\n"
 "\n"
 "Implement pickling support.");
@@ -426,7 +426,7 @@ _pickle_UnpicklerMemoProxy___reduce__(UnpicklerMemoProxyObject *self, PyObject *
 }
 
 PyDoc_STRVAR(_pickle_dump__doc__,
-"dump($module, /, obj, file, protocol=None, *, fix_imports=True)\n"
+"dump($module, obj, file, protocol=None, *, fix_imports=True)\n"
 "--\n"
 "\n"
 "Write a pickled representation of obj to the open file object file.\n"
@@ -503,7 +503,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_dumps__doc__,
-"dumps($module, /, obj, protocol=None, *, fix_imports=True)\n"
+"dumps($module, obj, protocol=None, *, fix_imports=True)\n"
 "--\n"
 "\n"
 "Return the pickled representation of the object as a bytes object.\n"
@@ -570,7 +570,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_load__doc__,
-"load($module, /, file, *, fix_imports=True, encoding=\'ASCII\',\n"
+"load($module, file, *, fix_imports=True, encoding=\'ASCII\',\n"
 "     errors=\'strict\')\n"
 "--\n"
 "\n"
@@ -674,7 +674,7 @@ exit:
 }
 
 PyDoc_STRVAR(_pickle_loads__doc__,
-"loads($module, /, data, *, fix_imports=True, encoding=\'ASCII\',\n"
+"loads($module, data, *, fix_imports=True, encoding=\'ASCII\',\n"
 "      errors=\'strict\')\n"
 "--\n"
 "\n"
@@ -767,4 +767,4 @@ skip_optional_kwonly:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=8f972562c8f71e2b input=a9049054013a1b77]*/
+/*[clinic end generated code: output=316f2b715f534b27 input=a9049054013a1b77]*/

@@ -16,7 +16,7 @@ test_object_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_object_converter__doc__,
-"test_object_converter($module, a, b, c, d, /)\n"
+"test_object_converter($module, __a, __b, __c, __d)\n"
 "--\n"
 "\n");
 
@@ -58,7 +58,7 @@ exit:
 static PyObject *
 test_object_converter_impl(PyObject *module, PyObject *a, PyObject *b,
                            PyObject *c, PyUnicode_Object *d)
-/*[clinic end generated code: output=f2c26174b3d46e94 input=005e6a8a711a869b]*/
+/*[clinic end generated code: output=fe9bb7868d631188 input=005e6a8a711a869b]*/
 
 
 /*[clinic input]
@@ -70,7 +70,7 @@ test_object_converter_one_arg
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_object_converter_one_arg__doc__,
-"test_object_converter_one_arg($module, a, /)\n"
+"test_object_converter_one_arg($module, __a)\n"
 "--\n"
 "\n");
 
@@ -79,7 +79,7 @@ PyDoc_STRVAR(test_object_converter_one_arg__doc__,
 
 static PyObject *
 test_object_converter_one_arg(PyObject *module, PyObject *a)
-/*[clinic end generated code: output=6da755f8502139df input=d635d92a421f1ca3]*/
+/*[clinic end generated code: output=14c6d4fe8b07630c input=d635d92a421f1ca3]*/
 
 
 /*[clinic input]
@@ -92,7 +92,7 @@ test_objects_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_objects_converter__doc__,
-"test_objects_converter($module, a, b=None, /)\n"
+"test_objects_converter($module, __a, __b=None)\n"
 "--\n"
 "\n");
 
@@ -126,7 +126,7 @@ exit:
 
 static PyObject *
 test_objects_converter_impl(PyObject *module, PyObject *a, PyObject *b)
-/*[clinic end generated code: output=58009c0e42b4834e input=4cbb3d9edd2a36f3]*/
+/*[clinic end generated code: output=4f796bf0a1c73b2c input=4cbb3d9edd2a36f3]*/
 
 
 /*[clinic input]
@@ -147,8 +147,8 @@ test_object_converter_subclass_of
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_object_converter_subclass_of__doc__,
-"test_object_converter_subclass_of($module, a, b, c, d, e, f, g, h, i,\n"
-"                                  j, /)\n"
+"test_object_converter_subclass_of($module, __a, __b, __c, __d, __e,\n"
+"                                  __f, __g, __h, __i, __j)\n"
 "--\n"
 "\n");
 
@@ -240,7 +240,7 @@ test_object_converter_subclass_of_impl(PyObject *module, PyObject *a,
                                        PyObject *b, PyObject *c, PyObject *d,
                                        PyObject *e, PyObject *f, PyObject *g,
                                        PyObject *h, PyObject *i, PyObject *j)
-/*[clinic end generated code: output=99691bda8eeda6d6 input=31b06b772d5f983e]*/
+/*[clinic end generated code: output=5679c42b6a7e2500 input=31b06b772d5f983e]*/
 
 
 /*[clinic input]
@@ -252,7 +252,7 @@ test_PyBytesObject_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_PyBytesObject_converter__doc__,
-"test_PyBytesObject_converter($module, a, /)\n"
+"test_PyBytesObject_converter($module, __a)\n"
 "--\n"
 "\n");
 
@@ -281,7 +281,7 @@ exit:
 
 static PyObject *
 test_PyBytesObject_converter_impl(PyObject *module, PyBytesObject *a)
-/*[clinic end generated code: output=5d9a301c1df24eb5 input=12b10c7cb5750400]*/
+/*[clinic end generated code: output=b43361a80e45be42 input=12b10c7cb5750400]*/
 
 
 /*[clinic input]
@@ -293,7 +293,7 @@ test_PyByteArrayObject_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_PyByteArrayObject_converter__doc__,
-"test_PyByteArrayObject_converter($module, a, /)\n"
+"test_PyByteArrayObject_converter($module, __a)\n"
 "--\n"
 "\n");
 
@@ -322,7 +322,7 @@ exit:
 
 static PyObject *
 test_PyByteArrayObject_converter_impl(PyObject *module, PyByteArrayObject *a)
-/*[clinic end generated code: output=9455d06f4f09637b input=5a657da535d194ae]*/
+/*[clinic end generated code: output=b898b2561bb2ba33 input=5a657da535d194ae]*/
 
 
 /*[clinic input]
@@ -334,7 +334,7 @@ test_unicode_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unicode_converter__doc__,
-"test_unicode_converter($module, a, /)\n"
+"test_unicode_converter($module, __a)\n"
 "--\n"
 "\n");
 
@@ -366,7 +366,7 @@ exit:
 
 static PyObject *
 test_unicode_converter_impl(PyObject *module, PyObject *a)
-/*[clinic end generated code: output=9275c04fe204f4c5 input=aa33612df92aa9c5]*/
+/*[clinic end generated code: output=6dab5c095f14eeb5 input=aa33612df92aa9c5]*/
 
 
 /*[clinic input]
@@ -380,7 +380,7 @@ test_bool_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_bool_converter__doc__,
-"test_bool_converter($module, a=True, b=True, c=True, /)\n"
+"test_bool_converter($module, __a=True, __b=True, __c=True)\n"
 "--\n"
 "\n");
 
@@ -436,7 +436,7 @@ exit:
 
 static PyObject *
 test_bool_converter_impl(PyObject *module, int a, int b, int c)
-/*[clinic end generated code: output=25f20963894256a1 input=939854fa9f248c60]*/
+/*[clinic end generated code: output=a9d9540aa1e3a862 input=939854fa9f248c60]*/
 
 
 /*[clinic input]
@@ -461,9 +461,10 @@ test_char_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_char_converter__doc__,
-"test_char_converter($module, a=b\'A\', b=b\'\\x07\', c=b\'\\x08\', d=b\'\\t\',\n"
-"                    e=b\'\\n\', f=b\'\\x0b\', g=b\'\\x0c\', h=b\'\\r\', i=b\'\"\',\n"
-"                    j=b\"\'\", k=b\'?\', l=b\'\\\\\', m=b\'\\x00\', n=b\'\\xff\', /)\n"
+"test_char_converter($module, __a=b\'A\', __b=b\'\\x07\', __c=b\'\\x08\',\n"
+"                    __d=b\'\\t\', __e=b\'\\n\', __f=b\'\\x0b\', __g=b\'\\x0c\',\n"
+"                    __h=b\'\\r\', __i=b\'\"\', __j=b\"\'\", __k=b\'?\', __l=b\'\\\\\',\n"
+"                    __m=b\'\\x00\', __n=b\'\\xff\')\n"
 "--\n"
 "\n");
 
@@ -690,7 +691,7 @@ static PyObject *
 test_char_converter_impl(PyObject *module, char a, char b, char c, char d,
                          char e, char f, char g, char h, char i, char j,
                          char k, char l, char m, char n)
-/*[clinic end generated code: output=e041d687555e0a5d input=e42330417a44feac]*/
+/*[clinic end generated code: output=455f1078b3b6af3f input=e42330417a44feac]*/
 
 
 /*[clinic input]
@@ -704,7 +705,7 @@ test_unsigned_char_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unsigned_char_converter__doc__,
-"test_unsigned_char_converter($module, a=12, b=34, c=56, /)\n"
+"test_unsigned_char_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -807,7 +808,7 @@ exit:
 static PyObject *
 test_unsigned_char_converter_impl(PyObject *module, unsigned char a,
                                   unsigned char b, unsigned char c)
-/*[clinic end generated code: output=ebf905c5c9414762 input=021414060993e289]*/
+/*[clinic end generated code: output=f7a1eb0a1ddbd879 input=021414060993e289]*/
 
 
 /*[clinic input]
@@ -819,7 +820,7 @@ test_short_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_short_converter__doc__,
-"test_short_converter($module, a=12, /)\n"
+"test_short_converter($module, __a=12)\n"
 "--\n"
 "\n");
 
@@ -874,7 +875,7 @@ exit:
 
 static PyObject *
 test_short_converter_impl(PyObject *module, short a)
-/*[clinic end generated code: output=86fe1a1496a7ff20 input=6a8a7a509a498ff4]*/
+/*[clinic end generated code: output=d878d0c6c32e48f3 input=6a8a7a509a498ff4]*/
 
 
 /*[clinic input]
@@ -888,7 +889,7 @@ test_unsigned_short_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unsigned_short_converter__doc__,
-"test_unsigned_short_converter($module, a=12, b=34, c=56, /)\n"
+"test_unsigned_short_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -944,7 +945,7 @@ exit:
 static PyObject *
 test_unsigned_short_converter_impl(PyObject *module, unsigned short a,
                                    unsigned short b, unsigned short c)
-/*[clinic end generated code: output=3779fe104319e3ae input=cdfd8eff3d9176b4]*/
+/*[clinic end generated code: output=221c359c3744d0c6 input=cdfd8eff3d9176b4]*/
 
 
 /*[clinic input]
@@ -959,7 +960,7 @@ test_int_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_int_converter__doc__,
-"test_int_converter($module, a=12, b=34, c=45, d=67, /)\n"
+"test_int_converter($module, __a=12, __b=34, __c=45, __d=67)\n"
 "--\n"
 "\n");
 
@@ -1041,7 +1042,7 @@ exit:
 
 static PyObject *
 test_int_converter_impl(PyObject *module, int a, int b, int c, myenum d)
-/*[clinic end generated code: output=de74e24e85a669a5 input=d20541fc1ca0553e]*/
+/*[clinic end generated code: output=c93d1a655d2e73cf input=d20541fc1ca0553e]*/
 
 
 /*[clinic input]
@@ -1055,7 +1056,7 @@ test_unsigned_int_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unsigned_int_converter__doc__,
-"test_unsigned_int_converter($module, a=12, b=34, c=56, /)\n"
+"test_unsigned_int_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -1111,7 +1112,7 @@ exit:
 static PyObject *
 test_unsigned_int_converter_impl(PyObject *module, unsigned int a,
                                  unsigned int b, unsigned int c)
-/*[clinic end generated code: output=189176ce67c7d2e7 input=5533534828b62fc0]*/
+/*[clinic end generated code: output=706171f681252c02 input=5533534828b62fc0]*/
 
 
 /*[clinic input]
@@ -1123,7 +1124,7 @@ test_long_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_long_converter__doc__,
-"test_long_converter($module, a=12, /)\n"
+"test_long_converter($module, __a=12)\n"
 "--\n"
 "\n");
 
@@ -1163,7 +1164,7 @@ exit:
 
 static PyObject *
 test_long_converter_impl(PyObject *module, long a)
-/*[clinic end generated code: output=44cd8823f59d116b input=d2179e3c9cdcde89]*/
+/*[clinic end generated code: output=7c9f9a94b25276e1 input=d2179e3c9cdcde89]*/
 
 
 /*[clinic input]
@@ -1177,7 +1178,7 @@ test_unsigned_long_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unsigned_long_converter__doc__,
-"test_unsigned_long_converter($module, a=12, b=34, c=56, /)\n"
+"test_unsigned_long_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -1229,7 +1230,7 @@ exit:
 static PyObject *
 test_unsigned_long_converter_impl(PyObject *module, unsigned long a,
                                   unsigned long b, unsigned long c)
-/*[clinic end generated code: output=1c05c871c0309e08 input=f450d94cae1ef73b]*/
+/*[clinic end generated code: output=7f2a61e32c8d35bf input=f450d94cae1ef73b]*/
 
 
 /*[clinic input]
@@ -1241,7 +1242,7 @@ test_long_long_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_long_long_converter__doc__,
-"test_long_long_converter($module, a=12, /)\n"
+"test_long_long_converter($module, __a=12)\n"
 "--\n"
 "\n");
 
@@ -1281,7 +1282,7 @@ exit:
 
 static PyObject *
 test_long_long_converter_impl(PyObject *module, long long a)
-/*[clinic end generated code: output=3e8083f3aee4f18a input=d5fc81577ff4dd02]*/
+/*[clinic end generated code: output=0c9711567ddb7204 input=d5fc81577ff4dd02]*/
 
 
 /*[clinic input]
@@ -1295,7 +1296,7 @@ test_unsigned_long_long_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_unsigned_long_long_converter__doc__,
-"test_unsigned_long_long_converter($module, a=12, b=34, c=56, /)\n"
+"test_unsigned_long_long_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -1351,7 +1352,7 @@ test_unsigned_long_long_converter_impl(PyObject *module,
                                        unsigned long long a,
                                        unsigned long long b,
                                        unsigned long long c)
-/*[clinic end generated code: output=0a9b17fb824e28eb input=a15115dc41866ff4]*/
+/*[clinic end generated code: output=751718052a44fffa input=a15115dc41866ff4]*/
 
 
 /*[clinic input]
@@ -1365,7 +1366,7 @@ test_Py_ssize_t_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_Py_ssize_t_converter__doc__,
-"test_Py_ssize_t_converter($module, a=12, b=34, c=56, /)\n"
+"test_Py_ssize_t_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -1443,7 +1444,7 @@ exit:
 static PyObject *
 test_Py_ssize_t_converter_impl(PyObject *module, Py_ssize_t a, Py_ssize_t b,
                                Py_ssize_t c)
-/*[clinic end generated code: output=a46d2aaf40c10398 input=3855f184bb3f299d]*/
+/*[clinic end generated code: output=7dd5225a646182bb input=3855f184bb3f299d]*/
 
 
 /*[clinic input]
@@ -1457,7 +1458,7 @@ test_slice_index_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_slice_index_converter__doc__,
-"test_slice_index_converter($module, a=12, b=34, c=56, /)\n"
+"test_slice_index_converter($module, __a=12, __b=34, __c=56)\n"
 "--\n"
 "\n");
 
@@ -1507,7 +1508,7 @@ exit:
 static PyObject *
 test_slice_index_converter_impl(PyObject *module, Py_ssize_t a, Py_ssize_t b,
                                 Py_ssize_t c)
-/*[clinic end generated code: output=2148703cd3c6e941 input=edeadb0ee126f531]*/
+/*[clinic end generated code: output=8b95bb19accda72c input=edeadb0ee126f531]*/
 
 
 /*[clinic input]
@@ -1519,7 +1520,7 @@ test_size_t_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_size_t_converter__doc__,
-"test_size_t_converter($module, a=12, /)\n"
+"test_size_t_converter($module, __a=12)\n"
 "--\n"
 "\n");
 
@@ -1553,7 +1554,7 @@ exit:
 
 static PyObject *
 test_size_t_converter_impl(PyObject *module, size_t a)
-/*[clinic end generated code: output=8a91a9ca8a92dabb input=52e93a0fed0f1fb3]*/
+/*[clinic end generated code: output=b517171c1fca5f1d input=52e93a0fed0f1fb3]*/
 
 
 /*[clinic input]
@@ -1565,7 +1566,7 @@ test_float_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_float_converter__doc__,
-"test_float_converter($module, a=12.5, /)\n"
+"test_float_converter($module, __a=12.5)\n"
 "--\n"
 "\n");
 
@@ -1600,7 +1601,7 @@ exit:
 
 static PyObject *
 test_float_converter_impl(PyObject *module, float a)
-/*[clinic end generated code: output=8293566b2ec1fc52 input=259c0d98eca35034]*/
+/*[clinic end generated code: output=b3ed301f8162f798 input=259c0d98eca35034]*/
 
 
 /*[clinic input]
@@ -1612,7 +1613,7 @@ test_double_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_double_converter__doc__,
-"test_double_converter($module, a=12.5, /)\n"
+"test_double_converter($module, __a=12.5)\n"
 "--\n"
 "\n");
 
@@ -1647,7 +1648,7 @@ exit:
 
 static PyObject *
 test_double_converter_impl(PyObject *module, double a)
-/*[clinic end generated code: output=487081a9b8da67ab input=c6a9945706a41c27]*/
+/*[clinic end generated code: output=e8a6277116860719 input=c6a9945706a41c27]*/
 
 
 /*[clinic input]
@@ -1659,7 +1660,7 @@ test_Py_complex_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_Py_complex_converter__doc__,
-"test_Py_complex_converter($module, a, /)\n"
+"test_Py_complex_converter($module, __a)\n"
 "--\n"
 "\n");
 
@@ -1687,7 +1688,7 @@ exit:
 
 static PyObject *
 test_Py_complex_converter_impl(PyObject *module, Py_complex a)
-/*[clinic end generated code: output=c2ecbec2144ca540 input=070f216a515beb79]*/
+/*[clinic end generated code: output=655fc77a6354c45c input=070f216a515beb79]*/
 
 
 /*[clinic input]
@@ -1706,8 +1707,8 @@ test_str_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_str_converter__doc__,
-"test_str_converter($module, a=None, b=\'ab\', c=\'cd\', d=\'cef\', e=\'gh\',\n"
-"                   f=\'ij\', g=\'kl\', h=\'mn\', /)\n"
+"test_str_converter($module, __a=None, __b=\'ab\', __c=\'cd\', __d=\'cef\',\n"
+"                   __e=\'gh\', __f=\'ij\', __g=\'kl\', __h=\'mn\')\n"
 "--\n"
 "\n");
 
@@ -1753,7 +1754,7 @@ test_str_converter_impl(PyObject *module, const char *a, const char *b,
                         const char *f, Py_ssize_clean_t f_length,
                         const char *g, Py_ssize_clean_t g_length,
                         const char *h, Py_ssize_clean_t h_length)
-/*[clinic end generated code: output=8415d82c56154307 input=8afe9da8185cd38c]*/
+/*[clinic end generated code: output=659b33b9d4d49255 input=8afe9da8185cd38c]*/
 
 
 /*[clinic input]
@@ -1769,7 +1770,7 @@ test_str_converter_encoding
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_str_converter_encoding__doc__,
-"test_str_converter_encoding($module, a, b, c, d, e, /)\n"
+"test_str_converter_encoding($module, __a, __b, __c, __d, __e)\n"
 "--\n"
 "\n");
 
@@ -1828,7 +1829,7 @@ static PyObject *
 test_str_converter_encoding_impl(PyObject *module, char *a, char *b, char *c,
                                  char *d, Py_ssize_clean_t d_length, char *e,
                                  Py_ssize_clean_t e_length)
-/*[clinic end generated code: output=f579dd9e795a364e input=eb4c38e1f898f402]*/
+/*[clinic end generated code: output=90c3fcffdd8afe1d input=eb4c38e1f898f402]*/
 
 
 /*[clinic input]
@@ -1844,7 +1845,7 @@ test_Py_UNICODE_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_Py_UNICODE_converter__doc__,
-"test_Py_UNICODE_converter($module, a, b, c, d, e, /)\n"
+"test_Py_UNICODE_converter($module, __a, __b, __c, __d, __e)\n"
 "--\n"
 "\n");
 
@@ -1888,7 +1889,7 @@ test_Py_UNICODE_converter_impl(PyObject *module, const Py_UNICODE *a,
                                Py_ssize_clean_t d_length,
                                const Py_UNICODE *e,
                                Py_ssize_clean_t e_length)
-/*[clinic end generated code: output=dd0a09a1b772e57b input=064a3b68ad7f04b0]*/
+/*[clinic end generated code: output=bb0ca6ce9d2cc0ea input=064a3b68ad7f04b0]*/
 
 
 /*[clinic input]
@@ -1904,7 +1905,7 @@ test_Py_buffer_converter
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_Py_buffer_converter__doc__,
-"test_Py_buffer_converter($module, a, b, c, d, e, /)\n"
+"test_Py_buffer_converter($module, __a, __b, __c, __d, __e)\n"
 "--\n"
 "\n");
 
@@ -1959,7 +1960,7 @@ exit:
 static PyObject *
 test_Py_buffer_converter_impl(PyObject *module, Py_buffer *a, Py_buffer *b,
                               Py_buffer *c, Py_buffer *d, Py_buffer *e)
-/*[clinic end generated code: output=5760c82faa2ed61f input=6a9da0f56f9525fd]*/
+/*[clinic end generated code: output=c51ec9147e57cac4 input=6a9da0f56f9525fd]*/
 
 
 /*[clinic input]
@@ -1971,7 +1972,7 @@ test_keywords
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_keywords__doc__,
-"test_keywords($module, /, a, b)\n"
+"test_keywords($module, a, b)\n"
 "--\n"
 "\n");
 
@@ -2005,7 +2006,7 @@ exit:
 
 static PyObject *
 test_keywords_impl(PyObject *module, PyObject *a, PyObject *b)
-/*[clinic end generated code: output=4be6cf045ea8242e input=0d3484844749c05b]*/
+/*[clinic end generated code: output=5f0a5acef7e043b8 input=0d3484844749c05b]*/
 
 
 /*[clinic input]
@@ -2018,7 +2019,7 @@ test_keywords_kwonly
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_keywords_kwonly__doc__,
-"test_keywords_kwonly($module, /, a, *, b)\n"
+"test_keywords_kwonly($module, a, *, b)\n"
 "--\n"
 "\n");
 
@@ -2052,7 +2053,7 @@ exit:
 
 static PyObject *
 test_keywords_kwonly_impl(PyObject *module, PyObject *a, PyObject *b)
-/*[clinic end generated code: output=d63c4977a7a80713 input=384adc78bfa0bff7]*/
+/*[clinic end generated code: output=642eee11fc6163a5 input=384adc78bfa0bff7]*/
 
 
 /*[clinic input]
@@ -2065,7 +2066,7 @@ test_keywords_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_keywords_opt__doc__,
-"test_keywords_opt($module, /, a, b=None, c=None)\n"
+"test_keywords_opt($module, a, b=None, c=None)\n"
 "--\n"
 "\n");
 
@@ -2113,7 +2114,7 @@ exit:
 static PyObject *
 test_keywords_opt_impl(PyObject *module, PyObject *a, PyObject *b,
                        PyObject *c)
-/*[clinic end generated code: output=e5e50d114d8fc10a input=eda7964f784f4607]*/
+/*[clinic end generated code: output=8d0311f808817fab input=eda7964f784f4607]*/
 
 
 /*[clinic input]
@@ -2128,7 +2129,7 @@ test_keywords_opt_kwonly
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_keywords_opt_kwonly__doc__,
-"test_keywords_opt_kwonly($module, /, a, b=None, *, c=None, d=None)\n"
+"test_keywords_opt_kwonly($module, a, b=None, *, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2187,7 +2188,7 @@ exit:
 static PyObject *
 test_keywords_opt_kwonly_impl(PyObject *module, PyObject *a, PyObject *b,
                               PyObject *c, PyObject *d)
-/*[clinic end generated code: output=3f065cb8309b9317 input=209387a4815e5082]*/
+/*[clinic end generated code: output=42e42491115eec73 input=209387a4815e5082]*/
 
 
 /*[clinic input]
@@ -2201,7 +2202,7 @@ test_keywords_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_keywords_kwonly_opt__doc__,
-"test_keywords_kwonly_opt($module, /, a, *, b=None, c=None)\n"
+"test_keywords_kwonly_opt($module, a, *, b=None, c=None)\n"
 "--\n"
 "\n");
 
@@ -2249,7 +2250,7 @@ exit:
 static PyObject *
 test_keywords_kwonly_opt_impl(PyObject *module, PyObject *a, PyObject *b,
                               PyObject *c)
-/*[clinic end generated code: output=94edba5484e1681e input=18393cc64fa000f4]*/
+/*[clinic end generated code: output=cb592d57588e5df1 input=18393cc64fa000f4]*/
 
 
 /*[clinic input]
@@ -2262,7 +2263,7 @@ test_posonly_keywords
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords__doc__,
-"test_posonly_keywords($module, a, /, b)\n"
+"test_posonly_keywords($module, __a, b)\n"
 "--\n"
 "\n");
 
@@ -2296,7 +2297,7 @@ exit:
 
 static PyObject *
 test_posonly_keywords_impl(PyObject *module, PyObject *a, PyObject *b)
-/*[clinic end generated code: output=eca1507f0182ffb0 input=1767b0ebdf06060e]*/
+/*[clinic end generated code: output=4214c3c6ae7528a6 input=1767b0ebdf06060e]*/
 
 
 /*[clinic input]
@@ -2310,7 +2311,7 @@ test_posonly_kwonly
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_kwonly__doc__,
-"test_posonly_kwonly($module, a, /, *, c)\n"
+"test_posonly_kwonly($module, __a, *, c)\n"
 "--\n"
 "\n");
 
@@ -2344,7 +2345,7 @@ exit:
 
 static PyObject *
 test_posonly_kwonly_impl(PyObject *module, PyObject *a, PyObject *c)
-/*[clinic end generated code: output=3e14655646b66e9a input=9042f2818f664839]*/
+/*[clinic end generated code: output=3cf7c737af20478e input=9042f2818f664839]*/
 
 
 /*[clinic input]
@@ -2359,7 +2360,7 @@ test_posonly_keywords_kwonly
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_kwonly__doc__,
-"test_posonly_keywords_kwonly($module, a, /, b, *, c)\n"
+"test_posonly_keywords_kwonly($module, __a, b, *, c)\n"
 "--\n"
 "\n");
 
@@ -2397,7 +2398,7 @@ exit:
 static PyObject *
 test_posonly_keywords_kwonly_impl(PyObject *module, PyObject *a, PyObject *b,
                                   PyObject *c)
-/*[clinic end generated code: output=de57172fc97a626e input=29546ebdca492fea]*/
+/*[clinic end generated code: output=3e683118b1d7e3c3 input=29546ebdca492fea]*/
 
 
 /*[clinic input]
@@ -2412,7 +2413,7 @@ test_posonly_keywords_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_opt__doc__,
-"test_posonly_keywords_opt($module, a, /, b, c=None, d=None)\n"
+"test_posonly_keywords_opt($module, __a, b, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2462,7 +2463,7 @@ exit:
 static PyObject *
 test_posonly_keywords_opt_impl(PyObject *module, PyObject *a, PyObject *b,
                                PyObject *c, PyObject *d)
-/*[clinic end generated code: output=8bc6b44a25d4b716 input=cdf5a9625e554e9b]*/
+/*[clinic end generated code: output=768bf54bd5a5bd17 input=cdf5a9625e554e9b]*/
 
 
 /*[clinic input]
@@ -2476,7 +2477,7 @@ test_posonly_keywords_opt2
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_opt2__doc__,
-"test_posonly_keywords_opt2($module, a, /, b=None, c=None)\n"
+"test_posonly_keywords_opt2($module, __a, b=None, c=None)\n"
 "--\n"
 "\n");
 
@@ -2524,7 +2525,7 @@ exit:
 static PyObject *
 test_posonly_keywords_opt2_impl(PyObject *module, PyObject *a, PyObject *b,
                                 PyObject *c)
-/*[clinic end generated code: output=a870c45a6510ba91 input=1581299d21d16f14]*/
+/*[clinic end generated code: output=cc397b26577a0914 input=1581299d21d16f14]*/
 
 
 /*[clinic input]
@@ -2539,7 +2540,7 @@ test_posonly_opt_keywords_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_opt_keywords_opt__doc__,
-"test_posonly_opt_keywords_opt($module, a, b=None, /, c=None, d=None)\n"
+"test_posonly_opt_keywords_opt($module, __a, __b=None, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2594,7 +2595,7 @@ exit:
 static PyObject *
 test_posonly_opt_keywords_opt_impl(PyObject *module, PyObject *a,
                                    PyObject *b, PyObject *c, PyObject *d)
-/*[clinic end generated code: output=9ae3d52e071d3b7f input=408798ec3d42949f]*/
+/*[clinic end generated code: output=874b4d346bf9a8e8 input=408798ec3d42949f]*/
 
 
 /*[clinic input]
@@ -2610,7 +2611,7 @@ test_posonly_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_kwonly_opt__doc__,
-"test_posonly_kwonly_opt($module, a, /, *, b, c=None, d=None)\n"
+"test_posonly_kwonly_opt($module, __a, *, b, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2660,7 +2661,7 @@ exit:
 static PyObject *
 test_posonly_kwonly_opt_impl(PyObject *module, PyObject *a, PyObject *b,
                              PyObject *c, PyObject *d)
-/*[clinic end generated code: output=fb001f586ba68549 input=8d8e5643bbbc2309]*/
+/*[clinic end generated code: output=b8474f4f8c678be6 input=8d8e5643bbbc2309]*/
 
 
 /*[clinic input]
@@ -2675,7 +2676,7 @@ test_posonly_kwonly_opt2
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_kwonly_opt2__doc__,
-"test_posonly_kwonly_opt2($module, a, /, *, b=None, c=None)\n"
+"test_posonly_kwonly_opt2($module, __a, *, b=None, c=None)\n"
 "--\n"
 "\n");
 
@@ -2723,7 +2724,7 @@ exit:
 static PyObject *
 test_posonly_kwonly_opt2_impl(PyObject *module, PyObject *a, PyObject *b,
                               PyObject *c)
-/*[clinic end generated code: output=51aae7cac77b458a input=f7e5eed94f75fff0]*/
+/*[clinic end generated code: output=5598aeb4a70b8c3a input=f7e5eed94f75fff0]*/
 
 
 /*[clinic input]
@@ -2739,7 +2740,7 @@ test_posonly_opt_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_opt_kwonly_opt__doc__,
-"test_posonly_opt_kwonly_opt($module, a, b=None, /, *, c=None, d=None)\n"
+"test_posonly_opt_kwonly_opt($module, __a, __b=None, *, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2794,7 +2795,7 @@ exit:
 static PyObject *
 test_posonly_opt_kwonly_opt_impl(PyObject *module, PyObject *a, PyObject *b,
                                  PyObject *c, PyObject *d)
-/*[clinic end generated code: output=68844c45143d1668 input=1e557dc979d120fd]*/
+/*[clinic end generated code: output=e61a63671391510b input=1e557dc979d120fd]*/
 
 
 /*[clinic input]
@@ -2811,7 +2812,7 @@ test_posonly_keywords_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_kwonly_opt__doc__,
-"test_posonly_keywords_kwonly_opt($module, a, /, b, *, c, d=None, e=None)\n"
+"test_posonly_keywords_kwonly_opt($module, __a, b, *, c, d=None, e=None)\n"
 "--\n"
 "\n");
 
@@ -2865,7 +2866,7 @@ static PyObject *
 test_posonly_keywords_kwonly_opt_impl(PyObject *module, PyObject *a,
                                       PyObject *b, PyObject *c, PyObject *d,
                                       PyObject *e)
-/*[clinic end generated code: output=996ff645551897ac input=c3884a4f956fdc89]*/
+/*[clinic end generated code: output=dfa62cca553c294f input=c3884a4f956fdc89]*/
 
 
 /*[clinic input]
@@ -2881,7 +2882,7 @@ test_posonly_keywords_kwonly_opt2
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_kwonly_opt2__doc__,
-"test_posonly_keywords_kwonly_opt2($module, a, /, b, *, c=None, d=None)\n"
+"test_posonly_keywords_kwonly_opt2($module, __a, b, *, c=None, d=None)\n"
 "--\n"
 "\n");
 
@@ -2931,7 +2932,7 @@ exit:
 static PyObject *
 test_posonly_keywords_kwonly_opt2_impl(PyObject *module, PyObject *a,
                                        PyObject *b, PyObject *c, PyObject *d)
-/*[clinic end generated code: output=e5a3e992fd4b28b3 input=68d01d7c0f6dafb0]*/
+/*[clinic end generated code: output=c1e9dd2ecf6d05c3 input=68d01d7c0f6dafb0]*/
 
 
 /*[clinic input]
@@ -2948,7 +2949,7 @@ test_posonly_keywords_opt_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_opt_kwonly_opt__doc__,
-"test_posonly_keywords_opt_kwonly_opt($module, a, /, b, c=None, *,\n"
+"test_posonly_keywords_opt_kwonly_opt($module, __a, b, c=None, *,\n"
 "                                     d=None, e=None)\n"
 "--\n"
 "\n");
@@ -3012,7 +3013,7 @@ static PyObject *
 test_posonly_keywords_opt_kwonly_opt_impl(PyObject *module, PyObject *a,
                                           PyObject *b, PyObject *c,
                                           PyObject *d, PyObject *e)
-/*[clinic end generated code: output=ff9fb6c3d2cbbaa4 input=d0883d45876f186c]*/
+/*[clinic end generated code: output=58ce93ed24cc4624 input=d0883d45876f186c]*/
 
 
 /*[clinic input]
@@ -3029,7 +3030,7 @@ test_posonly_keywords_opt2_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_keywords_opt2_kwonly_opt__doc__,
-"test_posonly_keywords_opt2_kwonly_opt($module, a, /, b=None, c=None, *,\n"
+"test_posonly_keywords_opt2_kwonly_opt($module, __a, b=None, c=None, *,\n"
 "                                      d=None, e=None)\n"
 "--\n"
 "\n");
@@ -3098,7 +3099,7 @@ static PyObject *
 test_posonly_keywords_opt2_kwonly_opt_impl(PyObject *module, PyObject *a,
                                            PyObject *b, PyObject *c,
                                            PyObject *d, PyObject *e)
-/*[clinic end generated code: output=c809d7a84a2205e1 input=c95e2e1ec93035ad]*/
+/*[clinic end generated code: output=2dd7c662cf7ddd10 input=c95e2e1ec93035ad]*/
 
 
 /*[clinic input]
@@ -3116,8 +3117,9 @@ test_posonly_opt_keywords_opt_kwonly_opt
 [clinic start generated code]*/
 
 PyDoc_STRVAR(test_posonly_opt_keywords_opt_kwonly_opt__doc__,
-"test_posonly_opt_keywords_opt_kwonly_opt($module, a, b=None, /, c=None,\n"
-"                                         d=None, *, e=None, f=None)\n"
+"test_posonly_opt_keywords_opt_kwonly_opt($module, __a, __b=None,\n"
+"                                         c=None, d=None, *, e=None,\n"
+"                                         f=None)\n"
 "--\n"
 "\n");
 
@@ -3194,4 +3196,4 @@ test_posonly_opt_keywords_opt_kwonly_opt_impl(PyObject *module, PyObject *a,
                                               PyObject *b, PyObject *c,
                                               PyObject *d, PyObject *e,
                                               PyObject *f)
-/*[clinic end generated code: output=719e4f6c224402d4 input=9914857713c5bbf8]*/
+/*[clinic end generated code: output=39e49478fc160796 input=9914857713c5bbf8]*/

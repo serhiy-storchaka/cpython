@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(fcntl_fcntl__doc__,
-"fcntl($module, fd, cmd, arg=0, /)\n"
+"fcntl($module, __fd, __cmd, __arg=0)\n"
 "--\n"
 "\n"
 "Perform the operation `cmd` on file descriptor fd.\n"
@@ -59,7 +59,7 @@ exit:
 }
 
 PyDoc_STRVAR(fcntl_ioctl__doc__,
-"ioctl($module, fd, request, arg=0, mutate_flag=True, /)\n"
+"ioctl($module, __fd, __request, __arg=0, __mutate_flag=True)\n"
 "--\n"
 "\n"
 "Perform the operation `request` on file descriptor `fd`.\n"
@@ -141,7 +141,7 @@ exit:
 }
 
 PyDoc_STRVAR(fcntl_flock__doc__,
-"flock($module, fd, operation, /)\n"
+"flock($module, __fd, __operation)\n"
 "--\n"
 "\n"
 "Perform the lock operation `operation` on file descriptor `fd`.\n"
@@ -184,7 +184,7 @@ exit:
 }
 
 PyDoc_STRVAR(fcntl_lockf__doc__,
-"lockf($module, fd, cmd, len=0, start=0, whence=0, /)\n"
+"lockf($module, __fd, __cmd, __len=0, __start=0, __whence=0)\n"
 "--\n"
 "\n"
 "A wrapper around the fcntl() locking calls.\n"
@@ -268,4 +268,4 @@ skip_optional:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=e912d25e28362c52 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5df0adf611679fdf input=a9049054013a1b77]*/

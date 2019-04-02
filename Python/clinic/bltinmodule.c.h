@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(builtin_abs__doc__,
-"abs($module, x, /)\n"
+"abs($module, __x)\n"
 "--\n"
 "\n"
 "Return the absolute value of the argument.");
@@ -12,7 +12,7 @@ PyDoc_STRVAR(builtin_abs__doc__,
     {"abs", (PyCFunction)builtin_abs, METH_O, builtin_abs__doc__},
 
 PyDoc_STRVAR(builtin_all__doc__,
-"all($module, iterable, /)\n"
+"all($module, __iterable)\n"
 "--\n"
 "\n"
 "Return True if bool(x) is True for all values x in the iterable.\n"
@@ -23,7 +23,7 @@ PyDoc_STRVAR(builtin_all__doc__,
     {"all", (PyCFunction)builtin_all, METH_O, builtin_all__doc__},
 
 PyDoc_STRVAR(builtin_any__doc__,
-"any($module, iterable, /)\n"
+"any($module, __iterable)\n"
 "--\n"
 "\n"
 "Return True if bool(x) is True for any x in the iterable.\n"
@@ -34,7 +34,7 @@ PyDoc_STRVAR(builtin_any__doc__,
     {"any", (PyCFunction)builtin_any, METH_O, builtin_any__doc__},
 
 PyDoc_STRVAR(builtin_ascii__doc__,
-"ascii($module, obj, /)\n"
+"ascii($module, __obj)\n"
 "--\n"
 "\n"
 "Return an ASCII-only representation of an object.\n"
@@ -48,7 +48,7 @@ PyDoc_STRVAR(builtin_ascii__doc__,
     {"ascii", (PyCFunction)builtin_ascii, METH_O, builtin_ascii__doc__},
 
 PyDoc_STRVAR(builtin_bin__doc__,
-"bin($module, number, /)\n"
+"bin($module, __number)\n"
 "--\n"
 "\n"
 "Return the binary representation of an integer.\n"
@@ -60,7 +60,7 @@ PyDoc_STRVAR(builtin_bin__doc__,
     {"bin", (PyCFunction)builtin_bin, METH_O, builtin_bin__doc__},
 
 PyDoc_STRVAR(builtin_callable__doc__,
-"callable($module, obj, /)\n"
+"callable($module, __obj)\n"
 "--\n"
 "\n"
 "Return whether the object is callable (i.e., some kind of function).\n"
@@ -72,7 +72,7 @@ PyDoc_STRVAR(builtin_callable__doc__,
     {"callable", (PyCFunction)builtin_callable, METH_O, builtin_callable__doc__},
 
 PyDoc_STRVAR(builtin_format__doc__,
-"format($module, value, format_spec=\'\', /)\n"
+"format($module, __value, __format_spec=\'\')\n"
 "--\n"
 "\n"
 "Return value.__format__(format_spec)\n"
@@ -117,7 +117,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_chr__doc__,
-"chr($module, i, /)\n"
+"chr($module, __i)\n"
 "--\n"
 "\n"
 "Return a Unicode string of one character with ordinal i; 0 <= i <= 0x10ffff.");
@@ -150,8 +150,8 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_compile__doc__,
-"compile($module, /, source, filename, mode, flags=0,\n"
-"        dont_inherit=False, optimize=-1, feature_version=-1)\n"
+"compile($module, source, filename, mode, flags=0, dont_inherit=False,\n"
+"        optimize=-1, feature_version=-1)\n"
 "--\n"
 "\n"
 "Compile source into a code object that can be executed by exec() or eval().\n"
@@ -274,7 +274,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_divmod__doc__,
-"divmod($module, x, y, /)\n"
+"divmod($module, __x, __y)\n"
 "--\n"
 "\n"
 "Return the tuple (x//y, x%y).  Invariant: div*y + mod == x.");
@@ -304,7 +304,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_eval__doc__,
-"eval($module, source, globals=None, locals=None, /)\n"
+"eval($module, __source, __globals=None, __locals=None)\n"
 "--\n"
 "\n"
 "Evaluate the given source in the context of globals and locals.\n"
@@ -350,7 +350,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_exec__doc__,
-"exec($module, source, globals=None, locals=None, /)\n"
+"exec($module, __source, __globals=None, __locals=None)\n"
 "--\n"
 "\n"
 "Execute the given source in the context of globals and locals.\n"
@@ -396,7 +396,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_globals__doc__,
-"globals($module, /)\n"
+"globals($module)\n"
 "--\n"
 "\n"
 "Return the dictionary containing the current scope\'s global variables.\n"
@@ -417,7 +417,7 @@ builtin_globals(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(builtin_hasattr__doc__,
-"hasattr($module, obj, name, /)\n"
+"hasattr($module, __obj, __name)\n"
 "--\n"
 "\n"
 "Return whether the object has an attribute with the given name.\n"
@@ -449,7 +449,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_id__doc__,
-"id($module, obj, /)\n"
+"id($module, __obj)\n"
 "--\n"
 "\n"
 "Return the identity of an object.\n"
@@ -461,7 +461,7 @@ PyDoc_STRVAR(builtin_id__doc__,
     {"id", (PyCFunction)builtin_id, METH_O, builtin_id__doc__},
 
 PyDoc_STRVAR(builtin_setattr__doc__,
-"setattr($module, obj, name, value, /)\n"
+"setattr($module, __obj, __name, __value)\n"
 "--\n"
 "\n"
 "Sets the named attribute on the given object to the specified value.\n"
@@ -496,7 +496,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_delattr__doc__,
-"delattr($module, obj, name, /)\n"
+"delattr($module, __obj, __name)\n"
 "--\n"
 "\n"
 "Deletes the named attribute from the given object.\n"
@@ -528,7 +528,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_hash__doc__,
-"hash($module, obj, /)\n"
+"hash($module, __obj)\n"
 "--\n"
 "\n"
 "Return the hash value for the given object.\n"
@@ -540,7 +540,7 @@ PyDoc_STRVAR(builtin_hash__doc__,
     {"hash", (PyCFunction)builtin_hash, METH_O, builtin_hash__doc__},
 
 PyDoc_STRVAR(builtin_hex__doc__,
-"hex($module, number, /)\n"
+"hex($module, __number)\n"
 "--\n"
 "\n"
 "Return the hexadecimal representation of an integer.\n"
@@ -552,7 +552,7 @@ PyDoc_STRVAR(builtin_hex__doc__,
     {"hex", (PyCFunction)builtin_hex, METH_O, builtin_hex__doc__},
 
 PyDoc_STRVAR(builtin_len__doc__,
-"len($module, obj, /)\n"
+"len($module, __obj)\n"
 "--\n"
 "\n"
 "Return the number of items in a container.");
@@ -561,7 +561,7 @@ PyDoc_STRVAR(builtin_len__doc__,
     {"len", (PyCFunction)builtin_len, METH_O, builtin_len__doc__},
 
 PyDoc_STRVAR(builtin_locals__doc__,
-"locals($module, /)\n"
+"locals($module)\n"
 "--\n"
 "\n"
 "Return a dictionary containing the current scope\'s local variables.\n"
@@ -583,7 +583,7 @@ builtin_locals(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(builtin_oct__doc__,
-"oct($module, number, /)\n"
+"oct($module, __number)\n"
 "--\n"
 "\n"
 "Return the octal representation of an integer.\n"
@@ -595,7 +595,7 @@ PyDoc_STRVAR(builtin_oct__doc__,
     {"oct", (PyCFunction)builtin_oct, METH_O, builtin_oct__doc__},
 
 PyDoc_STRVAR(builtin_ord__doc__,
-"ord($module, c, /)\n"
+"ord($module, __c)\n"
 "--\n"
 "\n"
 "Return the Unicode code point for a one-character string.");
@@ -604,7 +604,7 @@ PyDoc_STRVAR(builtin_ord__doc__,
     {"ord", (PyCFunction)builtin_ord, METH_O, builtin_ord__doc__},
 
 PyDoc_STRVAR(builtin_pow__doc__,
-"pow($module, x, y, z=None, /)\n"
+"pow($module, __x, __y, __z=None)\n"
 "--\n"
 "\n"
 "Equivalent to x**y (with two arguments) or x**y % z (with three arguments)\n"
@@ -643,7 +643,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_input__doc__,
-"input($module, prompt=None, /)\n"
+"input($module, __prompt=None)\n"
 "--\n"
 "\n"
 "Read a string from standard input.  The trailing newline is stripped.\n"
@@ -681,7 +681,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_repr__doc__,
-"repr($module, obj, /)\n"
+"repr($module, __obj)\n"
 "--\n"
 "\n"
 "Return the canonical string representation of the object.\n"
@@ -692,7 +692,7 @@ PyDoc_STRVAR(builtin_repr__doc__,
     {"repr", (PyCFunction)builtin_repr, METH_O, builtin_repr__doc__},
 
 PyDoc_STRVAR(builtin_round__doc__,
-"round($module, /, number, ndigits=None)\n"
+"round($module, number, ndigits=None)\n"
 "--\n"
 "\n"
 "Round a number to a given precision in decimal digits.\n"
@@ -734,7 +734,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_sum__doc__,
-"sum($module, iterable, /, start=0)\n"
+"sum($module, __iterable, start=0)\n"
 "--\n"
 "\n"
 "Return the sum of a \'start\' value (default: 0) plus an iterable of numbers\n"
@@ -777,7 +777,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_isinstance__doc__,
-"isinstance($module, obj, class_or_tuple, /)\n"
+"isinstance($module, __obj, __class_or_tuple)\n"
 "--\n"
 "\n"
 "Return whether an object is an instance of a class or of a subclass thereof.\n"
@@ -812,7 +812,7 @@ exit:
 }
 
 PyDoc_STRVAR(builtin_issubclass__doc__,
-"issubclass($module, cls, class_or_tuple, /)\n"
+"issubclass($module, __cls, __class_or_tuple)\n"
 "--\n"
 "\n"
 "Return whether \'cls\' is a derived from another class or is the same class.\n"
@@ -845,4 +845,4 @@ builtin_issubclass(PyObject *module, PyObject *const *args, Py_ssize_t nargs)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=3f690311ac556c31 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=de3d28afa8e6956a input=a9049054013a1b77]*/

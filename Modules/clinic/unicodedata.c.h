@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(unicodedata_UCD_decimal__doc__,
-"decimal($self, chr, default=None, /)\n"
+"decimal($self, __chr, __default=None)\n"
 "--\n"
 "\n"
 "Converts a Unicode character into its equivalent decimal value.\n"
@@ -53,7 +53,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_digit__doc__,
-"digit($self, chr, default=None, /)\n"
+"digit($self, __chr, __default=None)\n"
 "--\n"
 "\n"
 "Converts a Unicode character into its equivalent digit value.\n"
@@ -102,7 +102,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_numeric__doc__,
-"numeric($self, chr, default=None, /)\n"
+"numeric($self, __chr, __default=None)\n"
 "--\n"
 "\n"
 "Converts a Unicode character into its equivalent numeric value.\n"
@@ -152,7 +152,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_category__doc__,
-"category($self, chr, /)\n"
+"category($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the general category assigned to the character chr as string.");
@@ -188,7 +188,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_bidirectional__doc__,
-"bidirectional($self, chr, /)\n"
+"bidirectional($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the bidirectional class assigned to the character chr as string.\n"
@@ -226,7 +226,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_combining__doc__,
-"combining($self, chr, /)\n"
+"combining($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the canonical combining class assigned to the character chr as integer.\n"
@@ -269,7 +269,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_mirrored__doc__,
-"mirrored($self, chr, /)\n"
+"mirrored($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the mirrored property assigned to the character chr as integer.\n"
@@ -313,7 +313,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_east_asian_width__doc__,
-"east_asian_width($self, chr, /)\n"
+"east_asian_width($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the east asian width assigned to the character chr as string.");
@@ -349,7 +349,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_decomposition__doc__,
-"decomposition($self, chr, /)\n"
+"decomposition($self, __chr)\n"
 "--\n"
 "\n"
 "Returns the character decomposition mapping assigned to the character chr as string.\n"
@@ -387,7 +387,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_is_normalized__doc__,
-"is_normalized($self, form, unistr, /)\n"
+"is_normalized($self, __form, __unistr)\n"
 "--\n"
 "\n"
 "Return whether the Unicode string unistr is in the normal form \'form\'.\n"
@@ -434,7 +434,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_normalize__doc__,
-"normalize($self, form, unistr, /)\n"
+"normalize($self, __form, __unistr)\n"
 "--\n"
 "\n"
 "Return the normal form \'form\' for the Unicode string unistr.\n"
@@ -481,7 +481,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_name__doc__,
-"name($self, chr, default=None, /)\n"
+"name($self, __chr, __default=None)\n"
 "--\n"
 "\n"
 "Returns the name assigned to the character chr as a string.\n"
@@ -529,7 +529,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicodedata_UCD_lookup__doc__,
-"lookup($self, name, /)\n"
+"lookup($self, __name)\n"
 "--\n"
 "\n"
 "Look up character by name.\n"
@@ -559,4 +559,4 @@ unicodedata_UCD_lookup(PyObject *self, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=0fc850fe5b6b312c input=a9049054013a1b77]*/
+/*[clinic end generated code: output=f0303db99d703567 input=a9049054013a1b77]*/

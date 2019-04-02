@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(bytes_split__doc__,
-"split($self, /, sep=None, maxsplit=-1)\n"
+"split($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the sections in the bytes, using sep as the delimiter.\n"
@@ -71,7 +71,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_partition__doc__,
-"partition($self, sep, /)\n"
+"partition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the bytes into three parts using the given separator.\n"
@@ -114,7 +114,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_rpartition__doc__,
-"rpartition($self, sep, /)\n"
+"rpartition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the bytes into three parts using the given separator.\n"
@@ -157,7 +157,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_rsplit__doc__,
-"rsplit($self, /, sep=None, maxsplit=-1)\n"
+"rsplit($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the sections in the bytes, using sep as the delimiter.\n"
@@ -227,7 +227,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_join__doc__,
-"join($self, iterable_of_bytes, /)\n"
+"join($self, __iterable_of_bytes)\n"
 "--\n"
 "\n"
 "Concatenate any number of bytes objects.\n"
@@ -242,7 +242,7 @@ PyDoc_STRVAR(bytes_join__doc__,
     {"join", (PyCFunction)bytes_join, METH_O, bytes_join__doc__},
 
 PyDoc_STRVAR(bytes_strip__doc__,
-"strip($self, bytes=None, /)\n"
+"strip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip leading and trailing bytes contained in the argument.\n"
@@ -276,7 +276,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_lstrip__doc__,
-"lstrip($self, bytes=None, /)\n"
+"lstrip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip leading bytes contained in the argument.\n"
@@ -310,7 +310,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_rstrip__doc__,
-"rstrip($self, bytes=None, /)\n"
+"rstrip($self, __bytes=None)\n"
 "--\n"
 "\n"
 "Strip trailing bytes contained in the argument.\n"
@@ -344,7 +344,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_translate__doc__,
-"translate($self, table, /, delete=b\'\')\n"
+"translate($self, __table, delete=b\'\')\n"
 "--\n"
 "\n"
 "Return a copy with each character mapped by the given translation table.\n"
@@ -390,7 +390,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_maketrans__doc__,
-"maketrans(frm, to, /)\n"
+"maketrans(__frm, __to)\n"
 "--\n"
 "\n"
 "Return a translation table useable for the bytes or bytearray translate method.\n"
@@ -446,7 +446,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_replace__doc__,
-"replace($self, old, new, count=-1, /)\n"
+"replace($self, __old, __new, __count=-1)\n"
 "--\n"
 "\n"
 "Return a copy with all occurrences of substring old replaced by new.\n"
@@ -527,7 +527,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_decode__doc__,
-"decode($self, /, encoding=\'utf-8\', errors=\'strict\')\n"
+"decode($self, encoding=\'utf-8\', errors=\'strict\')\n"
 "--\n"
 "\n"
 "Decode the bytes using the codec registered for encoding.\n"
@@ -605,7 +605,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_splitlines__doc__,
-"splitlines($self, /, keepends=False)\n"
+"splitlines($self, keepends=False)\n"
 "--\n"
 "\n"
 "Return a list of the lines in the bytes, breaking at line boundaries.\n"
@@ -653,7 +653,7 @@ exit:
 }
 
 PyDoc_STRVAR(bytes_fromhex__doc__,
-"fromhex($type, string, /)\n"
+"fromhex($type, __string)\n"
 "--\n"
 "\n"
 "Create a bytes object from a string of hexadecimal numbers.\n"
@@ -686,4 +686,4 @@ bytes_fromhex(PyTypeObject *type, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=af9f51b9b185567d input=a9049054013a1b77]*/
+/*[clinic end generated code: output=65413cf0f5ae3840 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_contextvars_Context_get__doc__,
-"get($self, key, default=None, /)\n"
+"get($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Return the value for `key` if `key` has the value in the context object.\n"
@@ -41,7 +41,7 @@ exit:
 }
 
 PyDoc_STRVAR(_contextvars_Context_items__doc__,
-"items($self, /)\n"
+"items($self)\n"
 "--\n"
 "\n"
 "Return all variables and their values in the context object.\n"
@@ -61,7 +61,7 @@ _contextvars_Context_items(PyContext *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_contextvars_Context_keys__doc__,
-"keys($self, /)\n"
+"keys($self)\n"
 "--\n"
 "\n"
 "Return a list of all variables in the context object.");
@@ -79,7 +79,7 @@ _contextvars_Context_keys(PyContext *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_contextvars_Context_values__doc__,
-"values($self, /)\n"
+"values($self)\n"
 "--\n"
 "\n"
 "Return a list of all variables\' values in the context object.");
@@ -97,7 +97,7 @@ _contextvars_Context_values(PyContext *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_contextvars_Context_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a shallow copy of the context object.");
@@ -115,7 +115,7 @@ _contextvars_Context_copy(PyContext *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_contextvars_ContextVar_get__doc__,
-"get($self, default=None, /)\n"
+"get($self, __default=None)\n"
 "--\n"
 "\n"
 "Return a value for the context variable for the current context.\n"
@@ -153,7 +153,7 @@ exit:
 }
 
 PyDoc_STRVAR(_contextvars_ContextVar_set__doc__,
-"set($self, value, /)\n"
+"set($self, __value)\n"
 "--\n"
 "\n"
 "Call to set a new value for the context variable in the current context.\n"
@@ -167,7 +167,7 @@ PyDoc_STRVAR(_contextvars_ContextVar_set__doc__,
     {"set", (PyCFunction)_contextvars_ContextVar_set, METH_O, _contextvars_ContextVar_set__doc__},
 
 PyDoc_STRVAR(_contextvars_ContextVar_reset__doc__,
-"reset($self, token, /)\n"
+"reset($self, __token)\n"
 "--\n"
 "\n"
 "Reset the context variable.\n"
@@ -177,4 +177,4 @@ PyDoc_STRVAR(_contextvars_ContextVar_reset__doc__,
 
 #define _CONTEXTVARS_CONTEXTVAR_RESET_METHODDEF    \
     {"reset", (PyCFunction)_contextvars_ContextVar_reset, METH_O, _contextvars_ContextVar_reset__doc__},
-/*[clinic end generated code: output=a86b66e1516c25d4 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=9370634c92be04b0 input=a9049054013a1b77]*/

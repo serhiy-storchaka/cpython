@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(dict_fromkeys__doc__,
-"fromkeys($type, iterable, value=None, /)\n"
+"fromkeys($type, __iterable, __value=None)\n"
 "--\n"
 "\n"
 "Create a new dictionary with keys from iterable and values set to value.");
@@ -37,7 +37,7 @@ exit:
 }
 
 PyDoc_STRVAR(dict___contains____doc__,
-"__contains__($self, key, /)\n"
+"__contains__($self, __key)\n"
 "--\n"
 "\n"
 "True if the dictionary has the specified key, else False.");
@@ -46,7 +46,7 @@ PyDoc_STRVAR(dict___contains____doc__,
     {"__contains__", (PyCFunction)dict___contains__, METH_O|METH_COEXIST, dict___contains____doc__},
 
 PyDoc_STRVAR(dict_get__doc__,
-"get($self, key, default=None, /)\n"
+"get($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Return the value for key if key is in the dictionary, else default.");
@@ -80,7 +80,7 @@ exit:
 }
 
 PyDoc_STRVAR(dict_setdefault__doc__,
-"setdefault($self, key, default=None, /)\n"
+"setdefault($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Insert key with a value of default if key is not in the dictionary.\n"
@@ -117,7 +117,7 @@ exit:
 }
 
 PyDoc_STRVAR(dict___reversed____doc__,
-"__reversed__($self, /)\n"
+"__reversed__($self)\n"
 "--\n"
 "\n"
 "Return a reverse iterator over the dict keys.");
@@ -133,4 +133,4 @@ dict___reversed__(PyDictObject *self, PyObject *Py_UNUSED(ignored))
 {
     return dict___reversed___impl(self);
 }
-/*[clinic end generated code: output=12c21ce3552d9617 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=a47b8c97edab6988 input=a9049054013a1b77]*/

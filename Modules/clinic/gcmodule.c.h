@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(gc_enable__doc__,
-"enable($module, /)\n"
+"enable($module)\n"
 "--\n"
 "\n"
 "Enable automatic garbage collection.");
@@ -21,7 +21,7 @@ gc_enable(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_disable__doc__,
-"disable($module, /)\n"
+"disable($module)\n"
 "--\n"
 "\n"
 "Disable automatic garbage collection.");
@@ -39,7 +39,7 @@ gc_disable(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_isenabled__doc__,
-"isenabled($module, /)\n"
+"isenabled($module)\n"
 "--\n"
 "\n"
 "Returns true if automatic garbage collection is enabled.");
@@ -67,7 +67,7 @@ exit:
 }
 
 PyDoc_STRVAR(gc_collect__doc__,
-"collect($module, /, generation=2)\n"
+"collect($module, generation=2)\n"
 "--\n"
 "\n"
 "Run the garbage collector.\n"
@@ -123,7 +123,7 @@ exit:
 }
 
 PyDoc_STRVAR(gc_set_debug__doc__,
-"set_debug($module, flags, /)\n"
+"set_debug($module, __flags)\n"
 "--\n"
 "\n"
 "Set the garbage collection debugging flags.\n"
@@ -167,7 +167,7 @@ exit:
 }
 
 PyDoc_STRVAR(gc_get_debug__doc__,
-"get_debug($module, /)\n"
+"get_debug($module)\n"
 "--\n"
 "\n"
 "Get the garbage collection debugging flags.");
@@ -195,7 +195,7 @@ exit:
 }
 
 PyDoc_STRVAR(gc_get_threshold__doc__,
-"get_threshold($module, /)\n"
+"get_threshold($module)\n"
 "--\n"
 "\n"
 "Return the current collection thresholds.");
@@ -213,7 +213,7 @@ gc_get_threshold(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_get_count__doc__,
-"get_count($module, /)\n"
+"get_count($module)\n"
 "--\n"
 "\n"
 "Return a three-tuple of the current collection counts.");
@@ -231,7 +231,7 @@ gc_get_count(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_get_objects__doc__,
-"get_objects($module, /, generation=None)\n"
+"get_objects($module, generation=None)\n"
 "--\n"
 "\n"
 "Return a list of objects tracked by the collector (excluding the list returned).\n"
@@ -276,7 +276,7 @@ exit:
 }
 
 PyDoc_STRVAR(gc_get_stats__doc__,
-"get_stats($module, /)\n"
+"get_stats($module)\n"
 "--\n"
 "\n"
 "Return a list of dictionaries containing per-generation statistics.");
@@ -294,7 +294,7 @@ gc_get_stats(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_is_tracked__doc__,
-"is_tracked($module, obj, /)\n"
+"is_tracked($module, __obj)\n"
 "--\n"
 "\n"
 "Returns true if the object is tracked by the garbage collector.\n"
@@ -305,7 +305,7 @@ PyDoc_STRVAR(gc_is_tracked__doc__,
     {"is_tracked", (PyCFunction)gc_is_tracked, METH_O, gc_is_tracked__doc__},
 
 PyDoc_STRVAR(gc_freeze__doc__,
-"freeze($module, /)\n"
+"freeze($module)\n"
 "--\n"
 "\n"
 "Freeze all current tracked objects and ignore them for future collections.\n"
@@ -327,7 +327,7 @@ gc_freeze(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_unfreeze__doc__,
-"unfreeze($module, /)\n"
+"unfreeze($module)\n"
 "--\n"
 "\n"
 "Unfreeze all objects in the permanent generation.\n"
@@ -347,7 +347,7 @@ gc_unfreeze(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(gc_get_freeze_count__doc__,
-"get_freeze_count($module, /)\n"
+"get_freeze_count($module)\n"
 "--\n"
 "\n"
 "Return the number of objects in the permanent generation.");
@@ -373,4 +373,4 @@ gc_get_freeze_count(PyObject *module, PyObject *Py_UNUSED(ignored))
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=e40d384b1f0d513c input=a9049054013a1b77]*/
+/*[clinic end generated code: output=1003f0a0be4b64a0 input=a9049054013a1b77]*/

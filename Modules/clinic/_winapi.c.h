@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_winapi_Overlapped_GetOverlappedResult__doc__,
-"GetOverlappedResult($self, wait, /)\n"
+"GetOverlappedResult($self, __wait)\n"
 "--\n"
 "\n");
 
@@ -30,7 +30,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_Overlapped_getbuffer__doc__,
-"getbuffer($self, /)\n"
+"getbuffer($self)\n"
 "--\n"
 "\n");
 
@@ -47,7 +47,7 @@ _winapi_Overlapped_getbuffer(OverlappedObject *self, PyObject *Py_UNUSED(ignored
 }
 
 PyDoc_STRVAR(_winapi_Overlapped_cancel__doc__,
-"cancel($self, /)\n"
+"cancel($self)\n"
 "--\n"
 "\n");
 
@@ -64,7 +64,7 @@ _winapi_Overlapped_cancel(OverlappedObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_winapi_CloseHandle__doc__,
-"CloseHandle($module, handle, /)\n"
+"CloseHandle($module, __handle)\n"
 "--\n"
 "\n"
 "Close handle.");
@@ -91,7 +91,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_ConnectNamedPipe__doc__,
-"ConnectNamedPipe($module, /, handle, overlapped=False)\n"
+"ConnectNamedPipe($module, handle, overlapped=False)\n"
 "--\n"
 "\n");
 
@@ -122,9 +122,9 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreateFile__doc__,
-"CreateFile($module, file_name, desired_access, share_mode,\n"
-"           security_attributes, creation_disposition,\n"
-"           flags_and_attributes, template_file, /)\n"
+"CreateFile($module, __file_name, __desired_access, __share_mode,\n"
+"           __security_attributes, __creation_disposition,\n"
+"           __flags_and_attributes, __template_file)\n"
 "--\n"
 "\n");
 
@@ -169,8 +169,8 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreateFileMapping__doc__,
-"CreateFileMapping($module, file_handle, security_attributes, protect,\n"
-"                  max_size_high, max_size_low, name, /)\n"
+"CreateFileMapping($module, __file_handle, __security_attributes,\n"
+"                  __protect, __max_size_high, __max_size_low, __name)\n"
 "--\n"
 "\n");
 
@@ -213,7 +213,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreateJunction__doc__,
-"CreateJunction($module, src_path, dst_path, /)\n"
+"CreateJunction($module, __src_path, __dst_path)\n"
 "--\n"
 "\n");
 
@@ -242,9 +242,9 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreateNamedPipe__doc__,
-"CreateNamedPipe($module, name, open_mode, pipe_mode, max_instances,\n"
-"                out_buffer_size, in_buffer_size, default_timeout,\n"
-"                security_attributes, /)\n"
+"CreateNamedPipe($module, __name, __open_mode, __pipe_mode,\n"
+"                __max_instances, __out_buffer_size, __in_buffer_size,\n"
+"                __default_timeout, __security_attributes)\n"
 "--\n"
 "\n");
 
@@ -290,7 +290,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreatePipe__doc__,
-"CreatePipe($module, pipe_attrs, size, /)\n"
+"CreatePipe($module, __pipe_attrs, __size)\n"
 "--\n"
 "\n"
 "Create an anonymous pipe.\n"
@@ -324,9 +324,10 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_CreateProcess__doc__,
-"CreateProcess($module, application_name, command_line, proc_attrs,\n"
-"              thread_attrs, inherit_handles, creation_flags,\n"
-"              env_mapping, current_directory, startup_info, /)\n"
+"CreateProcess($module, __application_name, __command_line,\n"
+"              __proc_attrs, __thread_attrs, __inherit_handles,\n"
+"              __creation_flags, __env_mapping, __current_directory,\n"
+"              __startup_info)\n"
 "--\n"
 "\n"
 "Create a new process and its primary thread.\n"
@@ -378,9 +379,9 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_DuplicateHandle__doc__,
-"DuplicateHandle($module, source_process_handle, source_handle,\n"
-"                target_process_handle, desired_access, inherit_handle,\n"
-"                options=0, /)\n"
+"DuplicateHandle($module, __source_process_handle, __source_handle,\n"
+"                __target_process_handle, __desired_access,\n"
+"                __inherit_handle, __options=0)\n"
 "--\n"
 "\n"
 "Return a duplicate handle object.\n"
@@ -429,7 +430,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_ExitProcess__doc__,
-"ExitProcess($module, ExitCode, /)\n"
+"ExitProcess($module, __ExitCode)\n"
 "--\n"
 "\n");
 
@@ -455,7 +456,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetCurrentProcess__doc__,
-"GetCurrentProcess($module, /)\n"
+"GetCurrentProcess($module)\n"
 "--\n"
 "\n"
 "Return a handle object for the current process.");
@@ -486,7 +487,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetExitCodeProcess__doc__,
-"GetExitCodeProcess($module, process, /)\n"
+"GetExitCodeProcess($module, __process)\n"
 "--\n"
 "\n"
 "Return the termination status of the specified process.");
@@ -518,7 +519,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetLastError__doc__,
-"GetLastError($module, /)\n"
+"GetLastError($module)\n"
 "--\n"
 "\n");
 
@@ -545,7 +546,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetModuleFileName__doc__,
-"GetModuleFileName($module, module_handle, /)\n"
+"GetModuleFileName($module, __module_handle)\n"
 "--\n"
 "\n"
 "Return the fully-qualified path for the file that contains module.\n"
@@ -579,7 +580,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetStdHandle__doc__,
-"GetStdHandle($module, std_handle, /)\n"
+"GetStdHandle($module, __std_handle)\n"
 "--\n"
 "\n"
 "Return a handle to the specified standard device.\n"
@@ -619,7 +620,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetVersion__doc__,
-"GetVersion($module, /)\n"
+"GetVersion($module)\n"
 "--\n"
 "\n"
 "Return the version number of the current operating system.");
@@ -647,8 +648,8 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_MapViewOfFile__doc__,
-"MapViewOfFile($module, file_map, desired_access, file_offset_high,\n"
-"              file_offset_low, number_bytes, /)\n"
+"MapViewOfFile($module, __file_map, __desired_access,\n"
+"              __file_offset_high, __file_offset_low, __number_bytes)\n"
 "--\n"
 "\n");
 
@@ -686,7 +687,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_OpenFileMapping__doc__,
-"OpenFileMapping($module, desired_access, inherit_handle, name, /)\n"
+"OpenFileMapping($module, __desired_access, __inherit_handle, __name)\n"
 "--\n"
 "\n");
 
@@ -724,7 +725,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_OpenProcess__doc__,
-"OpenProcess($module, desired_access, inherit_handle, process_id, /)\n"
+"OpenProcess($module, __desired_access, __inherit_handle, __process_id)\n"
 "--\n"
 "\n");
 
@@ -762,7 +763,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_PeekNamedPipe__doc__,
-"PeekNamedPipe($module, handle, size=0, /)\n"
+"PeekNamedPipe($module, __handle, __size=0)\n"
 "--\n"
 "\n");
 
@@ -790,7 +791,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_ReadFile__doc__,
-"ReadFile($module, /, handle, size, overlapped=False)\n"
+"ReadFile($module, handle, size, overlapped=False)\n"
 "--\n"
 "\n");
 
@@ -822,8 +823,8 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_SetNamedPipeHandleState__doc__,
-"SetNamedPipeHandleState($module, named_pipe, mode,\n"
-"                        max_collection_count, collect_data_timeout, /)\n"
+"SetNamedPipeHandleState($module, __named_pipe, __mode,\n"
+"                        __max_collection_count, __collect_data_timeout)\n"
 "--\n"
 "\n");
 
@@ -856,7 +857,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_TerminateProcess__doc__,
-"TerminateProcess($module, handle, exit_code, /)\n"
+"TerminateProcess($module, __handle, __exit_code)\n"
 "--\n"
 "\n"
 "Terminate the specified process and all of its threads.");
@@ -886,7 +887,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_VirtualQuerySize__doc__,
-"VirtualQuerySize($module, address, /)\n"
+"VirtualQuerySize($module, __address)\n"
 "--\n"
 "\n");
 
@@ -917,7 +918,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_WaitNamedPipe__doc__,
-"WaitNamedPipe($module, name, timeout, /)\n"
+"WaitNamedPipe($module, __name, __timeout)\n"
 "--\n"
 "\n");
 
@@ -945,8 +946,8 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_WaitForMultipleObjects__doc__,
-"WaitForMultipleObjects($module, handle_seq, wait_flag,\n"
-"                       milliseconds=_winapi.INFINITE, /)\n"
+"WaitForMultipleObjects($module, __handle_seq, __wait_flag,\n"
+"                       __milliseconds=_winapi.INFINITE)\n"
 "--\n"
 "\n");
 
@@ -976,7 +977,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_WaitForSingleObject__doc__,
-"WaitForSingleObject($module, handle, milliseconds, /)\n"
+"WaitForSingleObject($module, __handle, __milliseconds)\n"
 "--\n"
 "\n"
 "Wait for a single object.\n"
@@ -1015,7 +1016,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_WriteFile__doc__,
-"WriteFile($module, /, handle, buffer, overlapped=False)\n"
+"WriteFile($module, handle, buffer, overlapped=False)\n"
 "--\n"
 "\n");
 
@@ -1047,7 +1048,7 @@ exit:
 }
 
 PyDoc_STRVAR(_winapi_GetACP__doc__,
-"GetACP($module, /)\n"
+"GetACP($module)\n"
 "--\n"
 "\n"
 "Get the current Windows ANSI code page identifier.");
@@ -1065,7 +1066,7 @@ _winapi_GetACP(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_winapi_GetFileType__doc__,
-"GetFileType($module, /, handle)\n"
+"GetFileType($module, handle)\n"
 "--\n"
 "\n");
 
@@ -1097,4 +1098,4 @@ _winapi_GetFileType(PyObject *module, PyObject *const *args, Py_ssize_t nargs, P
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=f3897898ea1da99d input=a9049054013a1b77]*/
+/*[clinic end generated code: output=925473dd77ad5b68 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(binascii_a2b_uu__doc__,
-"a2b_uu($module, data, /)\n"
+"a2b_uu($module, __data)\n"
 "--\n"
 "\n"
 "Decode a line of uuencoded data.");
@@ -34,7 +34,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_b2a_uu__doc__,
-"b2a_uu($module, data, /, *, backtick=False)\n"
+"b2a_uu($module, __data, *, backtick=False)\n"
 "--\n"
 "\n"
 "Uuencode line of data.");
@@ -92,7 +92,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_a2b_base64__doc__,
-"a2b_base64($module, data, /)\n"
+"a2b_base64($module, __data)\n"
 "--\n"
 "\n"
 "Decode a line of base64 data.");
@@ -123,7 +123,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_b2a_base64__doc__,
-"b2a_base64($module, data, /, *, newline=True)\n"
+"b2a_base64($module, __data, *, newline=True)\n"
 "--\n"
 "\n"
 "Base64-code line of data.");
@@ -181,7 +181,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_a2b_hqx__doc__,
-"a2b_hqx($module, data, /)\n"
+"a2b_hqx($module, __data)\n"
 "--\n"
 "\n"
 "Decode .hqx coding.");
@@ -212,7 +212,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_rlecode_hqx__doc__,
-"rlecode_hqx($module, data, /)\n"
+"rlecode_hqx($module, __data)\n"
 "--\n"
 "\n"
 "Binhex RLE-code binary data.");
@@ -248,7 +248,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_b2a_hqx__doc__,
-"b2a_hqx($module, data, /)\n"
+"b2a_hqx($module, __data)\n"
 "--\n"
 "\n"
 "Encode .hqx data.");
@@ -284,7 +284,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_rledecode_hqx__doc__,
-"rledecode_hqx($module, data, /)\n"
+"rledecode_hqx($module, __data)\n"
 "--\n"
 "\n"
 "Decode hexbin RLE-coded string.");
@@ -320,7 +320,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_crc_hqx__doc__,
-"crc_hqx($module, data, crc, /)\n"
+"crc_hqx($module, __data, __crc)\n"
 "--\n"
 "\n"
 "Compute CRC-CCITT incrementally.");
@@ -374,7 +374,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_crc32__doc__,
-"crc32($module, data, crc=0, /)\n"
+"crc32($module, __data, __crc=0)\n"
 "--\n"
 "\n"
 "Compute CRC-32 incrementally.");
@@ -432,7 +432,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_b2a_hex__doc__,
-"b2a_hex($module, data, /)\n"
+"b2a_hex($module, __data)\n"
 "--\n"
 "\n"
 "Hexadecimal representation of binary data.\n"
@@ -471,7 +471,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_hexlify__doc__,
-"hexlify($module, data, /)\n"
+"hexlify($module, __data)\n"
 "--\n"
 "\n"
 "Hexadecimal representation of binary data.\n"
@@ -509,7 +509,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_a2b_hex__doc__,
-"a2b_hex($module, hexstr, /)\n"
+"a2b_hex($module, __hexstr)\n"
 "--\n"
 "\n"
 "Binary data of hexadecimal representation.\n"
@@ -543,7 +543,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_unhexlify__doc__,
-"unhexlify($module, hexstr, /)\n"
+"unhexlify($module, __hexstr)\n"
 "--\n"
 "\n"
 "Binary data of hexadecimal representation.\n"
@@ -576,7 +576,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_a2b_qp__doc__,
-"a2b_qp($module, /, data, header=False)\n"
+"a2b_qp($module, data, header=False)\n"
 "--\n"
 "\n"
 "Decode a string of qp-encoded data.");
@@ -629,7 +629,7 @@ exit:
 }
 
 PyDoc_STRVAR(binascii_b2a_qp__doc__,
-"b2a_qp($module, /, data, quotetabs=False, istext=True, header=False)\n"
+"b2a_qp($module, data, quotetabs=False, istext=True, header=False)\n"
 "--\n"
 "\n"
 "Encode a string using quoted-printable encoding.\n"
@@ -720,4 +720,4 @@ exit:
 
     return return_value;
 }
-/*[clinic end generated code: output=a4a38e162605aca2 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=1eb4b5ee1bd1b038 input=a9049054013a1b77]*/

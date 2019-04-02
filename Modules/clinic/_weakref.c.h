@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_weakref_getweakrefcount__doc__,
-"getweakrefcount($module, object, /)\n"
+"getweakrefcount($module, __object)\n"
 "--\n"
 "\n"
 "Return the number of weak references to \'object\'.");
@@ -31,7 +31,7 @@ exit:
 }
 
 PyDoc_STRVAR(_weakref__remove_dead_weakref__doc__,
-"_remove_dead_weakref($module, dct, key, /)\n"
+"_remove_dead_weakref($module, __dct, __key)\n"
 "--\n"
 "\n"
 "Atomically remove key from dict if it points to a dead weakref.");
@@ -64,4 +64,4 @@ _weakref__remove_dead_weakref(PyObject *module, PyObject *const *args, Py_ssize_
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=eae22e2d2e43120e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=127a1a8bd0405dc6 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(winsound_PlaySound__doc__,
-"PlaySound($module, /, sound, flags)\n"
+"PlaySound($module, sound, flags)\n"
 "--\n"
 "\n"
 "A wrapper around the Windows PlaySound API.\n"
@@ -50,7 +50,7 @@ exit:
 }
 
 PyDoc_STRVAR(winsound_Beep__doc__,
-"Beep($module, /, frequency, duration)\n"
+"Beep($module, frequency, duration)\n"
 "--\n"
 "\n"
 "A wrapper around the Windows Beep API.\n"
@@ -106,7 +106,7 @@ exit:
 }
 
 PyDoc_STRVAR(winsound_MessageBeep__doc__,
-"MessageBeep($module, /, type=MB_OK)\n"
+"MessageBeep($module, type=MB_OK)\n"
 "--\n"
 "\n"
 "Call Windows MessageBeep(x).\n"
@@ -151,4 +151,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=28d1cd033282723d input=a9049054013a1b77]*/
+/*[clinic end generated code: output=7b97be1f78165787 input=a9049054013a1b77]*/

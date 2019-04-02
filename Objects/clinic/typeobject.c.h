@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(type___instancecheck____doc__,
-"__instancecheck__($self, instance, /)\n"
+"__instancecheck__($self, __instance)\n"
 "--\n"
 "\n"
 "Check if an object is an instance.");
@@ -31,7 +31,7 @@ exit:
 }
 
 PyDoc_STRVAR(type___subclasscheck____doc__,
-"__subclasscheck__($self, subclass, /)\n"
+"__subclasscheck__($self, __subclass)\n"
 "--\n"
 "\n"
 "Check if a class is a subclass.");
@@ -59,7 +59,7 @@ exit:
 }
 
 PyDoc_STRVAR(type_mro__doc__,
-"mro($self, /)\n"
+"mro($self)\n"
 "--\n"
 "\n"
 "Return a type\'s method resolution order.");
@@ -77,7 +77,7 @@ type_mro(PyTypeObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(type___subclasses____doc__,
-"__subclasses__($self, /)\n"
+"__subclasses__($self)\n"
 "--\n"
 "\n"
 "Return a list of immediate subclasses.");
@@ -95,7 +95,7 @@ type___subclasses__(PyTypeObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(type___dir____doc__,
-"__dir__($self, /)\n"
+"__dir__($self)\n"
 "--\n"
 "\n"
 "Specialized __dir__ implementation for types.");
@@ -113,7 +113,7 @@ type___dir__(PyTypeObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(type___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Return memory consumption of the type object.");
@@ -131,7 +131,7 @@ type___sizeof__(PyTypeObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(object___reduce____doc__,
-"__reduce__($self, /)\n"
+"__reduce__($self)\n"
 "--\n"
 "\n"
 "Helper for pickle.");
@@ -149,7 +149,7 @@ object___reduce__(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(object___reduce_ex____doc__,
-"__reduce_ex__($self, protocol, /)\n"
+"__reduce_ex__($self, __protocol)\n"
 "--\n"
 "\n"
 "Helper for pickle.");
@@ -182,7 +182,7 @@ exit:
 }
 
 PyDoc_STRVAR(object___format____doc__,
-"__format__($self, format_spec, /)\n"
+"__format__($self, __format_spec)\n"
 "--\n"
 "\n"
 "Default object formatter.");
@@ -214,7 +214,7 @@ exit:
 }
 
 PyDoc_STRVAR(object___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Size of object in memory, in bytes.");
@@ -232,7 +232,7 @@ object___sizeof__(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(object___dir____doc__,
-"__dir__($self, /)\n"
+"__dir__($self)\n"
 "--\n"
 "\n"
 "Default dir() implementation.");
@@ -248,4 +248,4 @@ object___dir__(PyObject *self, PyObject *Py_UNUSED(ignored))
 {
     return object___dir___impl(self);
 }
-/*[clinic end generated code: output=ea5734413064fa7e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=16381baca5064849 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io__BufferedIOBase_readinto__doc__,
-"readinto($self, buffer, /)\n"
+"readinto($self, __buffer)\n"
 "--\n"
 "\n");
 
@@ -40,7 +40,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__BufferedIOBase_readinto1__doc__,
-"readinto1($self, buffer, /)\n"
+"readinto1($self, __buffer)\n"
 "--\n"
 "\n");
 
@@ -77,7 +77,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__BufferedIOBase_detach__doc__,
-"detach($self, /)\n"
+"detach($self)\n"
 "--\n"
 "\n"
 "Disconnect this buffer from its underlying raw stream and return it.\n"
@@ -98,7 +98,7 @@ _io__BufferedIOBase_detach(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__Buffered_peek__doc__,
-"peek($self, size=0, /)\n"
+"peek($self, __size=0)\n"
 "--\n"
 "\n");
 
@@ -145,7 +145,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -178,7 +178,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_read1__doc__,
-"read1($self, size=-1, /)\n"
+"read1($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -225,7 +225,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_readinto__doc__,
-"readinto($self, buffer, /)\n"
+"readinto($self, __buffer)\n"
 "--\n"
 "\n");
 
@@ -262,7 +262,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_readinto1__doc__,
-"readinto1($self, buffer, /)\n"
+"readinto1($self, __buffer)\n"
 "--\n"
 "\n");
 
@@ -299,7 +299,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_readline__doc__,
-"readline($self, size=-1, /)\n"
+"readline($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -332,7 +332,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_seek__doc__,
-"seek($self, target, whence=0, /)\n"
+"seek($self, __target, __whence=0)\n"
 "--\n"
 "\n");
 
@@ -373,7 +373,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__Buffered_truncate__doc__,
-"truncate($self, pos=None, /)\n"
+"truncate($self, __pos=None)\n"
 "--\n"
 "\n");
 
@@ -518,7 +518,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BufferedWriter_write__doc__,
-"write($self, buffer, /)\n"
+"write($self, __buffer)\n"
 "--\n"
 "\n");
 
@@ -553,7 +553,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BufferedRWPair___init____doc__,
-"BufferedRWPair(reader, writer, buffer_size=DEFAULT_BUFFER_SIZE, /)\n"
+"BufferedRWPair(__reader, __writer, __buffer_size=DEFAULT_BUFFER_SIZE)\n"
 "--\n"
 "\n"
 "A buffered reader and writer object together.\n"
@@ -672,4 +672,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=b22b4aedd53c340a input=a9049054013a1b77]*/
+/*[clinic end generated code: output=4caa99759db12ac9 input=a9049054013a1b77]*/

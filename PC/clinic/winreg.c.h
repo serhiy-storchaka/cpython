@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(winreg_HKEYType_Close__doc__,
-"Close($self, /)\n"
+"Close($self)\n"
 "--\n"
 "\n"
 "Closes the underlying Windows handle.\n"
@@ -23,7 +23,7 @@ winreg_HKEYType_Close(PyHKEYObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(winreg_HKEYType_Detach__doc__,
-"Detach($self, /)\n"
+"Detach($self)\n"
 "--\n"
 "\n"
 "Detaches the Windows handle from the handle object.\n"
@@ -49,7 +49,7 @@ winreg_HKEYType_Detach(PyHKEYObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(winreg_HKEYType___enter____doc__,
-"__enter__($self, /)\n"
+"__enter__($self)\n"
 "--\n"
 "\n");
 
@@ -72,7 +72,7 @@ winreg_HKEYType___enter__(PyHKEYObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(winreg_HKEYType___exit____doc__,
-"__exit__($self, /, exc_type, exc_value, traceback)\n"
+"__exit__($self, exc_type, exc_value, traceback)\n"
 "--\n"
 "\n");
 
@@ -108,7 +108,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_CloseKey__doc__,
-"CloseKey($module, hkey, /)\n"
+"CloseKey($module, __hkey)\n"
 "--\n"
 "\n"
 "Closes a previously opened registry key.\n"
@@ -123,7 +123,7 @@ PyDoc_STRVAR(winreg_CloseKey__doc__,
     {"CloseKey", (PyCFunction)winreg_CloseKey, METH_O, winreg_CloseKey__doc__},
 
 PyDoc_STRVAR(winreg_ConnectRegistry__doc__,
-"ConnectRegistry($module, computer_name, key, /)\n"
+"ConnectRegistry($module, __computer_name, __key)\n"
 "--\n"
 "\n"
 "Establishes a connection to the registry on another computer.\n"
@@ -167,7 +167,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_CreateKey__doc__,
-"CreateKey($module, key, sub_key, /)\n"
+"CreateKey($module, __key, __sub_key)\n"
 "--\n"
 "\n"
 "Creates or opens the specified key.\n"
@@ -214,8 +214,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_CreateKeyEx__doc__,
-"CreateKeyEx($module, /, key, sub_key, reserved=0,\n"
-"            access=winreg.KEY_WRITE)\n"
+"CreateKeyEx($module, key, sub_key, reserved=0, access=winreg.KEY_WRITE)\n"
 "--\n"
 "\n"
 "Creates or opens the specified key.\n"
@@ -273,7 +272,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_DeleteKey__doc__,
-"DeleteKey($module, key, sub_key, /)\n"
+"DeleteKey($module, __key, __sub_key)\n"
 "--\n"
 "\n"
 "Deletes the specified key.\n"
@@ -314,7 +313,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_DeleteKeyEx__doc__,
-"DeleteKeyEx($module, /, key, sub_key, access=winreg.KEY_WOW64_64KEY,\n"
+"DeleteKeyEx($module, key, sub_key, access=winreg.KEY_WOW64_64KEY,\n"
 "            reserved=0)\n"
 "--\n"
 "\n"
@@ -368,7 +367,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_DeleteValue__doc__,
-"DeleteValue($module, key, value, /)\n"
+"DeleteValue($module, __key, __value)\n"
 "--\n"
 "\n"
 "Removes a named value from a registry key.\n"
@@ -402,7 +401,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_EnumKey__doc__,
-"EnumKey($module, key, index, /)\n"
+"EnumKey($module, __key, __index)\n"
 "--\n"
 "\n"
 "Enumerates subkeys of an open registry key.\n"
@@ -451,7 +450,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_EnumValue__doc__,
-"EnumValue($module, key, index, /)\n"
+"EnumValue($module, __key, __index)\n"
 "--\n"
 "\n"
 "Enumerates values of an open registry key.\n"
@@ -509,7 +508,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_ExpandEnvironmentStrings__doc__,
-"ExpandEnvironmentStrings($module, string, /)\n"
+"ExpandEnvironmentStrings($module, __string)\n"
 "--\n"
 "\n"
 "Expand environment vars.");
@@ -537,7 +536,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_FlushKey__doc__,
-"FlushKey($module, key, /)\n"
+"FlushKey($module, __key)\n"
 "--\n"
 "\n"
 "Writes all the attributes of a key to the registry.\n"
@@ -577,7 +576,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_LoadKey__doc__,
-"LoadKey($module, key, sub_key, file_name, /)\n"
+"LoadKey($module, __key, __sub_key, __file_name)\n"
 "--\n"
 "\n"
 "Insert data into the registry from a file.\n"
@@ -630,7 +629,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_OpenKey__doc__,
-"OpenKey($module, /, key, sub_key, reserved=0, access=winreg.KEY_READ)\n"
+"OpenKey($module, key, sub_key, reserved=0, access=winreg.KEY_READ)\n"
 "--\n"
 "\n"
 "Opens the specified key.\n"
@@ -682,7 +681,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_OpenKeyEx__doc__,
-"OpenKeyEx($module, /, key, sub_key, reserved=0, access=winreg.KEY_READ)\n"
+"OpenKeyEx($module, key, sub_key, reserved=0, access=winreg.KEY_READ)\n"
 "--\n"
 "\n"
 "Opens the specified key.\n"
@@ -734,7 +733,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_QueryInfoKey__doc__,
-"QueryInfoKey($module, key, /)\n"
+"QueryInfoKey($module, __key)\n"
 "--\n"
 "\n"
 "Returns information about a key.\n"
@@ -770,7 +769,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_QueryValue__doc__,
-"QueryValue($module, key, sub_key, /)\n"
+"QueryValue($module, __key, __sub_key)\n"
 "--\n"
 "\n"
 "Retrieves the unnamed value for a key.\n"
@@ -813,7 +812,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_QueryValueEx__doc__,
-"QueryValueEx($module, key, name, /)\n"
+"QueryValueEx($module, __key, __name)\n"
 "--\n"
 "\n"
 "Retrieves the type and value of a specified sub-key.\n"
@@ -852,7 +851,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_SaveKey__doc__,
-"SaveKey($module, key, file_name, /)\n"
+"SaveKey($module, __key, __file_name)\n"
 "--\n"
 "\n"
 "Saves the specified key, and all its subkeys to the specified file.\n"
@@ -896,7 +895,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_SetValue__doc__,
-"SetValue($module, key, sub_key, type, value, /)\n"
+"SetValue($module, __key, __sub_key, __type, __value)\n"
 "--\n"
 "\n"
 "Associates a value with a specified key.\n"
@@ -950,7 +949,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_SetValueEx__doc__,
-"SetValueEx($module, key, value_name, reserved, type, value, /)\n"
+"SetValueEx($module, __key, __value_name, __reserved, __type, __value)\n"
 "--\n"
 "\n"
 "Stores data in the value field of an open registry key.\n"
@@ -1021,7 +1020,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_DisableReflectionKey__doc__,
-"DisableReflectionKey($module, key, /)\n"
+"DisableReflectionKey($module, __key)\n"
 "--\n"
 "\n"
 "Disables registry reflection for 32bit processes running on a 64bit OS.\n"
@@ -1057,7 +1056,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_EnableReflectionKey__doc__,
-"EnableReflectionKey($module, key, /)\n"
+"EnableReflectionKey($module, __key)\n"
 "--\n"
 "\n"
 "Restores registry reflection for the specified disabled key.\n"
@@ -1091,7 +1090,7 @@ exit:
 }
 
 PyDoc_STRVAR(winreg_QueryReflectionKey__doc__,
-"QueryReflectionKey($module, key, /)\n"
+"QueryReflectionKey($module, __key)\n"
 "--\n"
 "\n"
 "Returns the reflection state for the specified key as a bool.\n"
@@ -1121,4 +1120,4 @@ winreg_QueryReflectionKey(PyObject *module, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=1204d20c543b5b4a input=a9049054013a1b77]*/
+/*[clinic end generated code: output=8cbf7bf223fb59a0 input=a9049054013a1b77]*/

@@ -5,7 +5,7 @@ preserve
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the handle.\n"
@@ -112,7 +112,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Return the underlying file descriptor (an integer).\n"
@@ -137,7 +137,7 @@ _io__WindowsConsoleIO_fileno(winconsoleio *self, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n"
 "True if console is an input buffer.");
@@ -159,7 +159,7 @@ _io__WindowsConsoleIO_readable(winconsoleio *self, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n"
 "True if console is an output buffer.");
@@ -181,7 +181,7 @@ _io__WindowsConsoleIO_writable(winconsoleio *self, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_readinto__doc__,
-"readinto($self, buffer, /)\n"
+"readinto($self, __buffer)\n"
 "--\n"
 "\n"
 "Same as RawIOBase.readinto().");
@@ -223,7 +223,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_readall__doc__,
-"readall($self, /)\n"
+"readall($self)\n"
 "--\n"
 "\n"
 "Read all data from the console, returned as bytes.\n"
@@ -247,7 +247,7 @@ _io__WindowsConsoleIO_readall(winconsoleio *self, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read at most size bytes, returned as bytes.\n"
@@ -289,7 +289,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_write__doc__,
-"write($self, b, /)\n"
+"write($self, __b)\n"
 "--\n"
 "\n"
 "Write buffer b to file, return number of bytes written.\n"
@@ -332,7 +332,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_io__WindowsConsoleIO_isatty__doc__,
-"isatty($self, /)\n"
+"isatty($self)\n"
 "--\n"
 "\n"
 "Always True.");
@@ -386,4 +386,4 @@ _io__WindowsConsoleIO_isatty(winconsoleio *self, PyObject *Py_UNUSED(ignored))
 #ifndef _IO__WINDOWSCONSOLEIO_ISATTY_METHODDEF
     #define _IO__WINDOWSCONSOLEIO_ISATTY_METHODDEF
 #endif /* !defined(_IO__WINDOWSCONSOLEIO_ISATTY_METHODDEF) */
-/*[clinic end generated code: output=57bf2c09a42bd330 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5be5a9d91e465ebf input=a9049054013a1b77]*/

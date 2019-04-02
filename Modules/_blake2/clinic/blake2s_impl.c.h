@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(py_blake2s_new__doc__,
-"blake2s(data=b\'\', /, *, digest_size=_blake2.blake2s.MAX_DIGEST_SIZE,\n"
+"blake2s(__data=b\'\', *, digest_size=_blake2.blake2s.MAX_DIGEST_SIZE,\n"
 "        key=b\'\', salt=b\'\', person=b\'\', fanout=1, depth=1, leaf_size=0,\n"
 "        node_offset=0, node_depth=0, inner_size=0, last_node=False)\n"
 "--\n"
@@ -200,7 +200,7 @@ exit:
 }
 
 PyDoc_STRVAR(_blake2_blake2s_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -218,7 +218,7 @@ _blake2_blake2s_copy(BLAKE2sObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_blake2_blake2s_update__doc__,
-"update($self, data, /)\n"
+"update($self, __data)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided bytes-like object.");
@@ -227,7 +227,7 @@ PyDoc_STRVAR(_blake2_blake2s_update__doc__,
     {"update", (PyCFunction)_blake2_blake2s_update, METH_O, _blake2_blake2s_update__doc__},
 
 PyDoc_STRVAR(_blake2_blake2s_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -245,7 +245,7 @@ _blake2_blake2s_digest(BLAKE2sObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_blake2_blake2s_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -261,4 +261,4 @@ _blake2_blake2s_hexdigest(BLAKE2sObject *self, PyObject *Py_UNUSED(ignored))
 {
     return _blake2_blake2s_hexdigest_impl(self);
 }
-/*[clinic end generated code: output=ae8e9b7301d092b4 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=7d657ed421cec272 input=a9049054013a1b77]*/

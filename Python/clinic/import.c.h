@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_imp_lock_held__doc__,
-"lock_held($module, /)\n"
+"lock_held($module)\n"
 "--\n"
 "\n"
 "Return True if the import lock is currently held, else False.\n"
@@ -23,7 +23,7 @@ _imp_lock_held(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_imp_acquire_lock__doc__,
-"acquire_lock($module, /)\n"
+"acquire_lock($module)\n"
 "--\n"
 "\n"
 "Acquires the interpreter\'s import lock for the current thread.\n"
@@ -44,7 +44,7 @@ _imp_acquire_lock(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_imp_release_lock__doc__,
-"release_lock($module, /)\n"
+"release_lock($module)\n"
 "--\n"
 "\n"
 "Release the interpreter\'s import lock.\n"
@@ -64,7 +64,7 @@ _imp_release_lock(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_imp__fix_co_filename__doc__,
-"_fix_co_filename($module, code, path, /)\n"
+"_fix_co_filename($module, __code, __path)\n"
 "--\n"
 "\n"
 "Changes code.co_filename to specify the passed-in file path.\n"
@@ -111,7 +111,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_create_builtin__doc__,
-"create_builtin($module, spec, /)\n"
+"create_builtin($module, __spec)\n"
 "--\n"
 "\n"
 "Create an extension module.");
@@ -120,7 +120,7 @@ PyDoc_STRVAR(_imp_create_builtin__doc__,
     {"create_builtin", (PyCFunction)_imp_create_builtin, METH_O, _imp_create_builtin__doc__},
 
 PyDoc_STRVAR(_imp_extension_suffixes__doc__,
-"extension_suffixes($module, /)\n"
+"extension_suffixes($module)\n"
 "--\n"
 "\n"
 "Returns the list of file suffixes used to identify extension modules.");
@@ -138,7 +138,7 @@ _imp_extension_suffixes(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_imp_init_frozen__doc__,
-"init_frozen($module, name, /)\n"
+"init_frozen($module, __name)\n"
 "--\n"
 "\n"
 "Initializes a frozen module.");
@@ -170,7 +170,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_get_frozen_object__doc__,
-"get_frozen_object($module, name, /)\n"
+"get_frozen_object($module, __name)\n"
 "--\n"
 "\n"
 "Create a code object for a frozen module.");
@@ -202,7 +202,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_is_frozen_package__doc__,
-"is_frozen_package($module, name, /)\n"
+"is_frozen_package($module, __name)\n"
 "--\n"
 "\n"
 "Returns True if the module name is of a frozen package.");
@@ -234,7 +234,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_is_builtin__doc__,
-"is_builtin($module, name, /)\n"
+"is_builtin($module, __name)\n"
 "--\n"
 "\n"
 "Returns True if the module name corresponds to a built-in module.");
@@ -266,7 +266,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_is_frozen__doc__,
-"is_frozen($module, name, /)\n"
+"is_frozen($module, __name)\n"
 "--\n"
 "\n"
 "Returns True if the module name corresponds to a frozen module.");
@@ -300,7 +300,7 @@ exit:
 #if defined(HAVE_DYNAMIC_LOADING)
 
 PyDoc_STRVAR(_imp_create_dynamic__doc__,
-"create_dynamic($module, spec, file=None, /)\n"
+"create_dynamic($module, __spec, __file=None)\n"
 "--\n"
 "\n"
 "Create an extension module.");
@@ -338,7 +338,7 @@ exit:
 #if defined(HAVE_DYNAMIC_LOADING)
 
 PyDoc_STRVAR(_imp_exec_dynamic__doc__,
-"exec_dynamic($module, mod, /)\n"
+"exec_dynamic($module, __mod)\n"
 "--\n"
 "\n"
 "Initialize an extension module.");
@@ -368,7 +368,7 @@ exit:
 #endif /* defined(HAVE_DYNAMIC_LOADING) */
 
 PyDoc_STRVAR(_imp_exec_builtin__doc__,
-"exec_builtin($module, mod, /)\n"
+"exec_builtin($module, __mod)\n"
 "--\n"
 "\n"
 "Initialize a built-in module.");
@@ -396,7 +396,7 @@ exit:
 }
 
 PyDoc_STRVAR(_imp_source_hash__doc__,
-"source_hash($module, /, key, source)\n"
+"source_hash($module, key, source)\n"
 "--\n"
 "\n");
 
@@ -454,4 +454,4 @@ exit:
 #ifndef _IMP_EXEC_DYNAMIC_METHODDEF
     #define _IMP_EXEC_DYNAMIC_METHODDEF
 #endif /* !defined(_IMP_EXEC_DYNAMIC_METHODDEF) */
-/*[clinic end generated code: output=b51244770fdcf4b8 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=0f64817b6faa617e input=a9049054013a1b77]*/

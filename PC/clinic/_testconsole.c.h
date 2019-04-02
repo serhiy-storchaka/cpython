@@ -5,7 +5,7 @@ preserve
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_testconsole_write_input__doc__,
-"write_input($module, /, file, s)\n"
+"write_input($module, file, s)\n"
 "--\n"
 "\n"
 "Writes UTF-16-LE encoded bytes to the console as if typed by a user.");
@@ -48,7 +48,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_testconsole_read_output__doc__,
-"read_output($module, /, file)\n"
+"read_output($module, file)\n"
 "--\n"
 "\n"
 "Reads a str from the console as written to stdout.");
@@ -88,4 +88,4 @@ exit:
 #ifndef _TESTCONSOLE_READ_OUTPUT_METHODDEF
     #define _TESTCONSOLE_READ_OUTPUT_METHODDEF
 #endif /* !defined(_TESTCONSOLE_READ_OUTPUT_METHODDEF) */
-/*[clinic end generated code: output=ef452d5fb9287fc2 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=19f7fb593e4aac35 input=a9049054013a1b77]*/

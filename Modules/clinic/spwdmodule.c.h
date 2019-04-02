@@ -5,7 +5,7 @@ preserve
 #if defined(HAVE_GETSPNAM)
 
 PyDoc_STRVAR(spwd_getspnam__doc__,
-"getspnam($module, arg, /)\n"
+"getspnam($module, __arg)\n"
 "--\n"
 "\n"
 "Return the shadow password database entry for the given user name.\n"
@@ -43,7 +43,7 @@ exit:
 #if defined(HAVE_GETSPENT)
 
 PyDoc_STRVAR(spwd_getspall__doc__,
-"getspall($module, /)\n"
+"getspall($module)\n"
 "--\n"
 "\n"
 "Return a list of all available shadow password database entries, in arbitrary order.\n"
@@ -71,4 +71,4 @@ spwd_getspall(PyObject *module, PyObject *Py_UNUSED(ignored))
 #ifndef SPWD_GETSPALL_METHODDEF
     #define SPWD_GETSPALL_METHODDEF
 #endif /* !defined(SPWD_GETSPALL_METHODDEF) */
-/*[clinic end generated code: output=2bbaa6bab1d9116e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=1298aba24c277823 input=a9049054013a1b77]*/

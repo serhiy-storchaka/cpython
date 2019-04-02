@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_dbm_dbm_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the database.");
@@ -21,7 +21,7 @@ _dbm_dbm_close(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_dbm_dbm_keys__doc__,
-"keys($self, /)\n"
+"keys($self)\n"
 "--\n"
 "\n"
 "Return a list of all keys in the database.");
@@ -39,7 +39,7 @@ _dbm_dbm_keys(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_dbm_dbm_get__doc__,
-"get($self, key, default=None, /)\n"
+"get($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Return the value for key if present, otherwise default.");
@@ -70,7 +70,7 @@ exit:
 }
 
 PyDoc_STRVAR(_dbm_dbm_setdefault__doc__,
-"setdefault($self, key, default=b\'\', /)\n"
+"setdefault($self, __key, __default=b\'\')\n"
 "--\n"
 "\n"
 "Return the value for key if present, otherwise default.\n"
@@ -104,7 +104,7 @@ exit:
 }
 
 PyDoc_STRVAR(dbmopen__doc__,
-"open($module, filename, flags=\'r\', mode=0o666, /)\n"
+"open($module, __filename, __flags=\'r\', __mode=0o666)\n"
 "--\n"
 "\n"
 "Return a database object.\n"
@@ -177,4 +177,4 @@ skip_optional:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=7f5d30ef5d820b8a input=a9049054013a1b77]*/
+/*[clinic end generated code: output=6fb0f7f58c6c1977 input=a9049054013a1b77]*/
