@@ -2196,7 +2196,7 @@ def _signature_from_function(cls, func):
     # parameters list (for correct order and defaults), it should be OK.
     return cls(parameters,
                return_annotation=annotations.get('return', _empty),
-               __validate_parameters__=is_duck_function)
+               _validate_parameters_=is_duck_function)
 
 
 def _signature_from_callable(obj, *,
@@ -2753,7 +2753,7 @@ class Signature:
     empty = _empty
 
     def __init__(self, parameters=None, *, return_annotation=_empty,
-                 __validate_parameters__=True):
+                 _validate_parameters_=True):
         """Constructs Signature from the given list of Parameter
         objects and 'return_annotation'.  All arguments are optional.
         """
@@ -2761,7 +2761,7 @@ class Signature:
         if parameters is None:
             params = OrderedDict()
         else:
-            if __validate_parameters__:
+            if _validate_parameters_:
                 params = OrderedDict()
                 top_kind = _POSITIONAL_ONLY
                 kind_defaults = False
