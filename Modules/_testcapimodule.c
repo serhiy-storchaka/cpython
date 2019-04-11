@@ -3725,13 +3725,13 @@ PyDoc_STRVAR(docstring_no_signature,
 );
 
 PyDoc_STRVAR(docstring_with_invalid_signature,
-"docstring_with_invalid_signature($module, /, boo)\n"
+"docstring_with_invalid_signature($module, boo)\n"
 "\n"
 "This docstring has an invalid signature."
 );
 
 PyDoc_STRVAR(docstring_with_invalid_signature2,
-"docstring_with_invalid_signature2($module, /, boo)\n"
+"docstring_with_invalid_signature2($module, boo)\n"
 "\n"
 "--\n"
 "\n"
@@ -3739,20 +3739,20 @@ PyDoc_STRVAR(docstring_with_invalid_signature2,
 );
 
 PyDoc_STRVAR(docstring_with_signature,
-"docstring_with_signature($module, /, sig)\n"
+"docstring_with_signature($module, sig)\n"
 "--\n"
 "\n"
 "This docstring has a valid signature."
 );
 
 PyDoc_STRVAR(docstring_with_signature_but_no_doc,
-"docstring_with_signature_but_no_doc($module, /, sig)\n"
+"docstring_with_signature_but_no_doc($module, sig)\n"
 "--\n"
 "\n"
 );
 
 PyDoc_STRVAR(docstring_with_signature_and_extra_newlines,
-"docstring_with_signature_and_extra_newlines($module, /, parameter)\n"
+"docstring_with_signature_and_extra_newlines($module, parameter)\n"
 "--\n"
 "\n"
 "\n"

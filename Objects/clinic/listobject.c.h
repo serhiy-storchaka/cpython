@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(list_insert__doc__,
-"insert($self, index, object, /)\n"
+"insert($self, __index, __object)\n"
 "--\n"
 "\n"
 "Insert object before index.");
@@ -49,7 +49,7 @@ exit:
 }
 
 PyDoc_STRVAR(list_clear__doc__,
-"clear($self, /)\n"
+"clear($self)\n"
 "--\n"
 "\n"
 "Remove all items from list.");
@@ -67,7 +67,7 @@ list_clear(PyListObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(list_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a shallow copy of the list.");
@@ -85,7 +85,7 @@ list_copy(PyListObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(list_append__doc__,
-"append($self, object, /)\n"
+"append($self, __object)\n"
 "--\n"
 "\n"
 "Append object to the end of the list.");
@@ -94,7 +94,7 @@ PyDoc_STRVAR(list_append__doc__,
     {"append", (PyCFunction)list_append, METH_O, list_append__doc__},
 
 PyDoc_STRVAR(list_extend__doc__,
-"extend($self, iterable, /)\n"
+"extend($self, __iterable)\n"
 "--\n"
 "\n"
 "Extend list by appending elements from the iterable.");
@@ -103,7 +103,7 @@ PyDoc_STRVAR(list_extend__doc__,
     {"extend", (PyCFunction)list_extend, METH_O, list_extend__doc__},
 
 PyDoc_STRVAR(list_pop__doc__,
-"pop($self, index=-1, /)\n"
+"pop($self, __index=-1)\n"
 "--\n"
 "\n"
 "Remove and return item at index (default last).\n"
@@ -153,7 +153,7 @@ exit:
 }
 
 PyDoc_STRVAR(list_sort__doc__,
-"sort($self, /, *, key=None, reverse=False)\n"
+"sort($self, *, key=None, reverse=False)\n"
 "--\n"
 "\n"
 "Stable sort *IN PLACE*.");
@@ -205,7 +205,7 @@ exit:
 }
 
 PyDoc_STRVAR(list_reverse__doc__,
-"reverse($self, /)\n"
+"reverse($self)\n"
 "--\n"
 "\n"
 "Reverse *IN PLACE*.");
@@ -223,7 +223,7 @@ list_reverse(PyListObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(list_index__doc__,
-"index($self, value, start=0, stop=sys.maxsize, /)\n"
+"index($self, __value, __start=0, __stop=sys.maxsize)\n"
 "--\n"
 "\n"
 "Return first index of value.\n"
@@ -269,7 +269,7 @@ exit:
 }
 
 PyDoc_STRVAR(list_count__doc__,
-"count($self, value, /)\n"
+"count($self, __value)\n"
 "--\n"
 "\n"
 "Return number of occurrences of value.");
@@ -278,7 +278,7 @@ PyDoc_STRVAR(list_count__doc__,
     {"count", (PyCFunction)list_count, METH_O, list_count__doc__},
 
 PyDoc_STRVAR(list_remove__doc__,
-"remove($self, value, /)\n"
+"remove($self, __value)\n"
 "--\n"
 "\n"
 "Remove first occurrence of value.\n"
@@ -289,7 +289,7 @@ PyDoc_STRVAR(list_remove__doc__,
     {"remove", (PyCFunction)list_remove, METH_O, list_remove__doc__},
 
 PyDoc_STRVAR(list___init____doc__,
-"list(iterable=(), /)\n"
+"list(__iterable=())\n"
 "--\n"
 "\n"
 "Built-in mutable sequence.\n"
@@ -325,7 +325,7 @@ exit:
 }
 
 PyDoc_STRVAR(list___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Return the size of the list in memory, in bytes.");
@@ -343,7 +343,7 @@ list___sizeof__(PyListObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(list___reversed____doc__,
-"__reversed__($self, /)\n"
+"__reversed__($self)\n"
 "--\n"
 "\n"
 "Return a reverse iterator over the list.");
@@ -359,4 +359,4 @@ list___reversed__(PyListObject *self, PyObject *Py_UNUSED(ignored))
 {
     return list___reversed___impl(self);
 }
-/*[clinic end generated code: output=d1d5078edb7d3cf4 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=33dfcd8a48447ddf input=a9049054013a1b77]*/

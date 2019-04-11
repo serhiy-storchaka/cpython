@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(sys_displayhook__doc__,
-"displayhook($module, object, /)\n"
+"displayhook($module, __object)\n"
 "--\n"
 "\n"
 "Print an object to sys.stdout and also save it in builtins._");
@@ -12,7 +12,7 @@ PyDoc_STRVAR(sys_displayhook__doc__,
     {"displayhook", (PyCFunction)sys_displayhook, METH_O, sys_displayhook__doc__},
 
 PyDoc_STRVAR(sys_excepthook__doc__,
-"excepthook($module, exctype, value, traceback, /)\n"
+"excepthook($module, __exctype, __value, __traceback)\n"
 "--\n"
 "\n"
 "Handle an exception by displaying it with a traceback on sys.stderr.");
@@ -45,7 +45,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_exc_info__doc__,
-"exc_info($module, /)\n"
+"exc_info($module)\n"
 "--\n"
 "\n"
 "Return current exception information: (type, value, traceback).\n"
@@ -66,7 +66,7 @@ sys_exc_info(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_exit__doc__,
-"exit($module, status=None, /)\n"
+"exit($module, __status=None)\n"
 "--\n"
 "\n"
 "Exit the interpreter by raising SystemExit(status).\n"
@@ -103,7 +103,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_getdefaultencoding__doc__,
-"getdefaultencoding($module, /)\n"
+"getdefaultencoding($module)\n"
 "--\n"
 "\n"
 "Return the current default encoding used by the Unicode implementation.");
@@ -121,7 +121,7 @@ sys_getdefaultencoding(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_getfilesystemencoding__doc__,
-"getfilesystemencoding($module, /)\n"
+"getfilesystemencoding($module)\n"
 "--\n"
 "\n"
 "Return the encoding used to convert Unicode filenames to OS filenames.");
@@ -139,7 +139,7 @@ sys_getfilesystemencoding(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_getfilesystemencodeerrors__doc__,
-"getfilesystemencodeerrors($module, /)\n"
+"getfilesystemencodeerrors($module)\n"
 "--\n"
 "\n"
 "Return the error mode used Unicode to OS filename conversion.");
@@ -157,7 +157,7 @@ sys_getfilesystemencodeerrors(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_intern__doc__,
-"intern($module, string, /)\n"
+"intern($module, __string)\n"
 "--\n"
 "\n"
 "``Intern\'\' the given string.\n"
@@ -193,7 +193,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_gettrace__doc__,
-"gettrace($module, /)\n"
+"gettrace($module)\n"
 "--\n"
 "\n"
 "Return the global debug tracing function set with sys.settrace.\n"
@@ -213,7 +213,7 @@ sys_gettrace(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_getprofile__doc__,
-"getprofile($module, /)\n"
+"getprofile($module)\n"
 "--\n"
 "\n"
 "Return the profiling function set with sys.setprofile.\n"
@@ -233,7 +233,7 @@ sys_getprofile(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_setcheckinterval__doc__,
-"setcheckinterval($module, n, /)\n"
+"setcheckinterval($module, __n)\n"
 "--\n"
 "\n"
 "Set the async event check interval to n instructions.\n"
@@ -271,7 +271,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_getcheckinterval__doc__,
-"getcheckinterval($module, /)\n"
+"getcheckinterval($module)\n"
 "--\n"
 "\n"
 "Return the current check interval; see sys.setcheckinterval().");
@@ -289,7 +289,7 @@ sys_getcheckinterval(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_setswitchinterval__doc__,
-"setswitchinterval($module, interval, /)\n"
+"setswitchinterval($module, __interval)\n"
 "--\n"
 "\n"
 "Set the ideal thread switching delay inside the Python interpreter.\n"
@@ -324,7 +324,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_getswitchinterval__doc__,
-"getswitchinterval($module, /)\n"
+"getswitchinterval($module)\n"
 "--\n"
 "\n"
 "Return the current thread switch interval; see sys.setswitchinterval().");
@@ -352,7 +352,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_setrecursionlimit__doc__,
-"setrecursionlimit($module, limit, /)\n"
+"setrecursionlimit($module, __limit)\n"
 "--\n"
 "\n"
 "Set the maximum depth of the Python interpreter stack to n.\n"
@@ -389,7 +389,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_set_coroutine_origin_tracking_depth__doc__,
-"set_coroutine_origin_tracking_depth($module, /, depth)\n"
+"set_coroutine_origin_tracking_depth($module, depth)\n"
 "--\n"
 "\n"
 "Enable or disable origin tracking for coroutine objects in this thread.\n"
@@ -434,7 +434,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_get_coroutine_origin_tracking_depth__doc__,
-"get_coroutine_origin_tracking_depth($module, /)\n"
+"get_coroutine_origin_tracking_depth($module)\n"
 "--\n"
 "\n"
 "Check status of origin tracking for coroutine objects in this thread.");
@@ -462,7 +462,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_set_coroutine_wrapper__doc__,
-"set_coroutine_wrapper($module, wrapper, /)\n"
+"set_coroutine_wrapper($module, __wrapper)\n"
 "--\n"
 "\n"
 "Set a wrapper for coroutine objects.");
@@ -471,7 +471,7 @@ PyDoc_STRVAR(sys_set_coroutine_wrapper__doc__,
     {"set_coroutine_wrapper", (PyCFunction)sys_set_coroutine_wrapper, METH_O, sys_set_coroutine_wrapper__doc__},
 
 PyDoc_STRVAR(sys_get_coroutine_wrapper__doc__,
-"get_coroutine_wrapper($module, /)\n"
+"get_coroutine_wrapper($module)\n"
 "--\n"
 "\n"
 "Return the wrapper for coroutines set by sys.set_coroutine_wrapper.");
@@ -489,7 +489,7 @@ sys_get_coroutine_wrapper(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_get_asyncgen_hooks__doc__,
-"get_asyncgen_hooks($module, /)\n"
+"get_asyncgen_hooks($module)\n"
 "--\n"
 "\n"
 "Return the installed asynchronous generators hooks.\n"
@@ -509,7 +509,7 @@ sys_get_asyncgen_hooks(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_getrecursionlimit__doc__,
-"getrecursionlimit($module, /)\n"
+"getrecursionlimit($module)\n"
 "--\n"
 "\n"
 "Return the current value of the recursion limit.\n"
@@ -533,7 +533,7 @@ sys_getrecursionlimit(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(sys_getwindowsversion__doc__,
-"getwindowsversion($module, /)\n"
+"getwindowsversion($module)\n"
 "--\n"
 "\n"
 "Return info about the running version of Windows as a named tuple.\n"
@@ -565,7 +565,7 @@ sys_getwindowsversion(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(sys__enablelegacywindowsfsencoding__doc__,
-"_enablelegacywindowsfsencoding($module, /)\n"
+"_enablelegacywindowsfsencoding($module)\n"
 "--\n"
 "\n"
 "Changes the default filesystem encoding to mbcs:replace.\n"
@@ -593,7 +593,7 @@ sys__enablelegacywindowsfsencoding(PyObject *module, PyObject *Py_UNUSED(ignored
 #if defined(HAVE_DLOPEN)
 
 PyDoc_STRVAR(sys_setdlopenflags__doc__,
-"setdlopenflags($module, flags, /)\n"
+"setdlopenflags($module, __flags)\n"
 "--\n"
 "\n"
 "Set the flags used by the interpreter for dlopen calls.\n"
@@ -638,7 +638,7 @@ exit:
 #if defined(HAVE_DLOPEN)
 
 PyDoc_STRVAR(sys_getdlopenflags__doc__,
-"getdlopenflags($module, /)\n"
+"getdlopenflags($module)\n"
 "--\n"
 "\n"
 "Return the current value of the flags that are used for dlopen calls.\n"
@@ -662,7 +662,7 @@ sys_getdlopenflags(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(USE_MALLOPT)
 
 PyDoc_STRVAR(sys_mdebug__doc__,
-"mdebug($module, flag, /)\n"
+"mdebug($module, __flag)\n"
 "--\n"
 "\n");
 
@@ -696,7 +696,7 @@ exit:
 #endif /* defined(USE_MALLOPT) */
 
 PyDoc_STRVAR(sys_getrefcount__doc__,
-"getrefcount($module, object, /)\n"
+"getrefcount($module, __object)\n"
 "--\n"
 "\n"
 "Return the reference count of object.\n"
@@ -730,7 +730,7 @@ exit:
 #if defined(Py_REF_DEBUG)
 
 PyDoc_STRVAR(sys_gettotalrefcount__doc__,
-"gettotalrefcount($module, /)\n"
+"gettotalrefcount($module)\n"
 "--\n"
 "\n");
 
@@ -759,7 +759,7 @@ exit:
 #endif /* defined(Py_REF_DEBUG) */
 
 PyDoc_STRVAR(sys_getallocatedblocks__doc__,
-"getallocatedblocks($module, /)\n"
+"getallocatedblocks($module)\n"
 "--\n"
 "\n"
 "Return the number of memory blocks currently allocated.");
@@ -789,7 +789,7 @@ exit:
 #if defined(COUNT_ALLOCS)
 
 PyDoc_STRVAR(sys_getcounts__doc__,
-"getcounts($module, /)\n"
+"getcounts($module)\n"
 "--\n"
 "\n");
 
@@ -808,7 +808,7 @@ sys_getcounts(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(COUNT_ALLOCS) */
 
 PyDoc_STRVAR(sys__getframe__doc__,
-"_getframe($module, depth=0, /)\n"
+"_getframe($module, __depth=0)\n"
 "--\n"
 "\n"
 "Return a frame object from the call stack.\n"
@@ -856,7 +856,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys__current_frames__doc__,
-"_current_frames($module, /)\n"
+"_current_frames($module)\n"
 "--\n"
 "\n"
 "Return a dict mapping each thread\'s thread id to its current stack frame.\n"
@@ -876,7 +876,7 @@ sys__current_frames(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_call_tracing__doc__,
-"call_tracing($module, func, args, /)\n"
+"call_tracing($module, __func, __args)\n"
 "--\n"
 "\n"
 "Call func(*args), while tracing is enabled.\n"
@@ -914,7 +914,7 @@ exit:
 }
 
 PyDoc_STRVAR(sys_callstats__doc__,
-"callstats($module, /)\n"
+"callstats($module)\n"
 "--\n"
 "\n"
 "Return a tuple of function call statistics.\n"
@@ -951,7 +951,7 @@ sys_callstats(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys__debugmallocstats__doc__,
-"_debugmallocstats($module, /)\n"
+"_debugmallocstats($module)\n"
 "--\n"
 "\n"
 "Print summary info to stderr about the state of pymalloc\'s structures.\n"
@@ -972,7 +972,7 @@ sys__debugmallocstats(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys__clear_type_cache__doc__,
-"_clear_type_cache($module, /)\n"
+"_clear_type_cache($module)\n"
 "--\n"
 "\n"
 "Clear the internal type lookup cache.");
@@ -990,7 +990,7 @@ sys__clear_type_cache(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(sys_is_finalizing__doc__,
-"is_finalizing($module, /)\n"
+"is_finalizing($module)\n"
 "--\n"
 "\n"
 "Return True if Python is exiting.");
@@ -1010,7 +1010,7 @@ sys_is_finalizing(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(ANDROID_API_LEVEL)
 
 PyDoc_STRVAR(sys_getandroidapilevel__doc__,
-"getandroidapilevel($module, /)\n"
+"getandroidapilevel($module)\n"
 "--\n"
 "\n"
 "Return the build time API version of Android as an integer.");
@@ -1060,4 +1060,4 @@ sys_getandroidapilevel(PyObject *module, PyObject *Py_UNUSED(ignored))
 #ifndef SYS_GETANDROIDAPILEVEL_METHODDEF
     #define SYS_GETANDROIDAPILEVEL_METHODDEF
 #endif /* !defined(SYS_GETANDROIDAPILEVEL_METHODDEF) */
-/*[clinic end generated code: output=3ba4c194d00f1866 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=89a406548da450de input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_abc__reset_registry__doc__,
-"_reset_registry($module, self, /)\n"
+"_reset_registry($module, __self)\n"
 "--\n"
 "\n"
 "Internal ABC helper to reset registry of a given class.\n"
@@ -14,7 +14,7 @@ PyDoc_STRVAR(_abc__reset_registry__doc__,
     {"_reset_registry", (PyCFunction)_abc__reset_registry, METH_O, _abc__reset_registry__doc__},
 
 PyDoc_STRVAR(_abc__reset_caches__doc__,
-"_reset_caches($module, self, /)\n"
+"_reset_caches($module, __self)\n"
 "--\n"
 "\n"
 "Internal ABC helper to reset both caches of a given class.\n"
@@ -25,7 +25,7 @@ PyDoc_STRVAR(_abc__reset_caches__doc__,
     {"_reset_caches", (PyCFunction)_abc__reset_caches, METH_O, _abc__reset_caches__doc__},
 
 PyDoc_STRVAR(_abc__get_dump__doc__,
-"_get_dump($module, self, /)\n"
+"_get_dump($module, __self)\n"
 "--\n"
 "\n"
 "Internal ABC helper for cache and registry debugging.\n"
@@ -38,7 +38,7 @@ PyDoc_STRVAR(_abc__get_dump__doc__,
     {"_get_dump", (PyCFunction)_abc__get_dump, METH_O, _abc__get_dump__doc__},
 
 PyDoc_STRVAR(_abc__abc_init__doc__,
-"_abc_init($module, self, /)\n"
+"_abc_init($module, __self)\n"
 "--\n"
 "\n"
 "Internal ABC helper for class set-up. Should be never used outside abc module.");
@@ -47,7 +47,7 @@ PyDoc_STRVAR(_abc__abc_init__doc__,
     {"_abc_init", (PyCFunction)_abc__abc_init, METH_O, _abc__abc_init__doc__},
 
 PyDoc_STRVAR(_abc__abc_register__doc__,
-"_abc_register($module, self, subclass, /)\n"
+"_abc_register($module, __self, __subclass)\n"
 "--\n"
 "\n"
 "Internal ABC helper for subclasss registration. Should be never used outside abc module.");
@@ -77,7 +77,7 @@ exit:
 }
 
 PyDoc_STRVAR(_abc__abc_instancecheck__doc__,
-"_abc_instancecheck($module, self, instance, /)\n"
+"_abc_instancecheck($module, __self, __instance)\n"
 "--\n"
 "\n"
 "Internal ABC helper for instance checks. Should be never used outside abc module.");
@@ -108,7 +108,7 @@ exit:
 }
 
 PyDoc_STRVAR(_abc__abc_subclasscheck__doc__,
-"_abc_subclasscheck($module, self, subclass, /)\n"
+"_abc_subclasscheck($module, __self, __subclass)\n"
 "--\n"
 "\n"
 "Internal ABC helper for subclasss checks. Should be never used outside abc module.");
@@ -139,7 +139,7 @@ exit:
 }
 
 PyDoc_STRVAR(_abc_get_cache_token__doc__,
-"get_cache_token($module, /)\n"
+"get_cache_token($module)\n"
 "--\n"
 "\n"
 "Returns the current ABC cache token.\n"
@@ -159,4 +159,4 @@ _abc_get_cache_token(PyObject *module, PyObject *Py_UNUSED(ignored))
 {
     return _abc_get_cache_token_impl(module);
 }
-/*[clinic end generated code: output=2544b4b5ae50a089 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=076bde139a8359aa input=a9049054013a1b77]*/

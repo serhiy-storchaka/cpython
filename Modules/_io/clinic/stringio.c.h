@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io_StringIO_getvalue__doc__,
-"getvalue($self, /)\n"
+"getvalue($self)\n"
 "--\n"
 "\n"
 "Retrieve the entire contents of the object.");
@@ -21,7 +21,7 @@ _io_StringIO_getvalue(stringio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_StringIO_tell__doc__,
-"tell($self, /)\n"
+"tell($self)\n"
 "--\n"
 "\n"
 "Tell the current file position.");
@@ -39,7 +39,7 @@ _io_StringIO_tell(stringio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_StringIO_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read at most size characters, returned as a string.\n"
@@ -76,7 +76,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_StringIO_readline__doc__,
-"readline($self, size=-1, /)\n"
+"readline($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read until newline or EOF.\n"
@@ -112,7 +112,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_StringIO_truncate__doc__,
-"truncate($self, pos=None, /)\n"
+"truncate($self, __pos=None)\n"
 "--\n"
 "\n"
 "Truncate size to pos.\n"
@@ -150,7 +150,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_StringIO_seek__doc__,
-"seek($self, pos, whence=0, /)\n"
+"seek($self, __pos, __whence=0)\n"
 "--\n"
 "\n"
 "Change stream position.\n"
@@ -214,7 +214,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_StringIO_write__doc__,
-"write($self, s, /)\n"
+"write($self, __s)\n"
 "--\n"
 "\n"
 "Write string to file.\n"
@@ -226,7 +226,7 @@ PyDoc_STRVAR(_io_StringIO_write__doc__,
     {"write", (PyCFunction)_io_StringIO_write, METH_O, _io_StringIO_write__doc__},
 
 PyDoc_STRVAR(_io_StringIO_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the IO object.\n"
@@ -296,7 +296,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_StringIO_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be read.");
@@ -314,7 +314,7 @@ _io_StringIO_readable(stringio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_StringIO_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be written.");
@@ -332,7 +332,7 @@ _io_StringIO_writable(stringio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_StringIO_seekable__doc__,
-"seekable($self, /)\n"
+"seekable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be seeked.");
@@ -348,4 +348,4 @@ _io_StringIO_seekable(stringio *self, PyObject *Py_UNUSED(ignored))
 {
     return _io_StringIO_seekable_impl(self);
 }
-/*[clinic end generated code: output=7aad5ab2e64a25b8 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=50a4b9d7f5c946c2 input=a9049054013a1b77]*/

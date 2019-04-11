@@ -5,7 +5,7 @@ preserve
 #if defined(HAVE_SHM_OPEN)
 
 PyDoc_STRVAR(_posixshmem_shm_open__doc__,
-"shm_open($module, /, path, flags, mode=511)\n"
+"shm_open($module, path, flags, mode=511)\n"
 "--\n"
 "\n"
 "Open a shared memory object.  Returns a file descriptor (integer).");
@@ -79,7 +79,7 @@ exit:
 #if defined(HAVE_SHM_UNLINK)
 
 PyDoc_STRVAR(_posixshmem_shm_unlink__doc__,
-"shm_unlink($module, /, path)\n"
+"shm_unlink($module, path)\n"
 "--\n"
 "\n"
 "Remove a shared memory object (similar to unlink()).\n"
@@ -130,4 +130,4 @@ exit:
 #ifndef _POSIXSHMEM_SHM_UNLINK_METHODDEF
     #define _POSIXSHMEM_SHM_UNLINK_METHODDEF
 #endif /* !defined(_POSIXSHMEM_SHM_UNLINK_METHODDEF) */
-/*[clinic end generated code: output=be42e23c18677c0f input=a9049054013a1b77]*/
+/*[clinic end generated code: output=b2a1312c4979f28f input=a9049054013a1b77]*/

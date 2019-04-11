@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_sha3_sha3_224_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -21,7 +21,7 @@ _sha3_sha3_224_copy(SHA3object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sha3_sha3_224_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -39,7 +39,7 @@ _sha3_sha3_224_digest(SHA3object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sha3_sha3_224_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -57,7 +57,7 @@ _sha3_sha3_224_hexdigest(SHA3object *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sha3_sha3_224_update__doc__,
-"update($self, data, /)\n"
+"update($self, __data)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided bytes-like object.");
@@ -66,7 +66,7 @@ PyDoc_STRVAR(_sha3_sha3_224_update__doc__,
     {"update", (PyCFunction)_sha3_sha3_224_update, METH_O, _sha3_sha3_224_update__doc__},
 
 PyDoc_STRVAR(_sha3_shake_128_digest__doc__,
-"digest($self, length, /)\n"
+"digest($self, __length)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -93,7 +93,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sha3_shake_128_hexdigest__doc__,
-"hexdigest($self, length, /)\n"
+"hexdigest($self, __length)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -118,4 +118,4 @@ _sha3_shake_128_hexdigest(SHA3object *self, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=5b3e99b9a96471e8 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=dac786813964de6d input=a9049054013a1b77]*/

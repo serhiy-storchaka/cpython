@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io_FileIO_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the file.\n"
@@ -109,7 +109,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_FileIO_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Return the underlying file descriptor (an integer).");
@@ -127,7 +127,7 @@ _io_FileIO_fileno(fileio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_FileIO_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n"
 "True if file was opened in a read mode.");
@@ -145,7 +145,7 @@ _io_FileIO_readable(fileio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_FileIO_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n"
 "True if file was opened in a write mode.");
@@ -163,7 +163,7 @@ _io_FileIO_writable(fileio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_FileIO_seekable__doc__,
-"seekable($self, /)\n"
+"seekable($self)\n"
 "--\n"
 "\n"
 "True if file supports random-access.");
@@ -181,7 +181,7 @@ _io_FileIO_seekable(fileio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_FileIO_readinto__doc__,
-"readinto($self, buffer, /)\n"
+"readinto($self, __buffer)\n"
 "--\n"
 "\n"
 "Same as RawIOBase.readinto().");
@@ -219,7 +219,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_FileIO_readall__doc__,
-"readall($self, /)\n"
+"readall($self)\n"
 "--\n"
 "\n"
 "Read all data from the file, returned as bytes.\n"
@@ -240,7 +240,7 @@ _io_FileIO_readall(fileio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_FileIO_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read at most size bytes, returned as bytes.\n"
@@ -278,7 +278,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_FileIO_write__doc__,
-"write($self, b, /)\n"
+"write($self, __b)\n"
 "--\n"
 "\n"
 "Write buffer b to file, return number of bytes written.\n"
@@ -318,7 +318,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_FileIO_seek__doc__,
-"seek($self, pos, whence=0, /)\n"
+"seek($self, __pos, __whence=0)\n"
 "--\n"
 "\n"
 "Move to new file position and return the file position.\n"
@@ -368,7 +368,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_FileIO_tell__doc__,
-"tell($self, /)\n"
+"tell($self)\n"
 "--\n"
 "\n"
 "Current file position.\n"
@@ -390,7 +390,7 @@ _io_FileIO_tell(fileio *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_FTRUNCATE)
 
 PyDoc_STRVAR(_io_FileIO_truncate__doc__,
-"truncate($self, size=None, /)\n"
+"truncate($self, __size=None)\n"
 "--\n"
 "\n"
 "Truncate the file to at most size bytes and return the truncated size.\n"
@@ -427,7 +427,7 @@ exit:
 #endif /* defined(HAVE_FTRUNCATE) */
 
 PyDoc_STRVAR(_io_FileIO_isatty__doc__,
-"isatty($self, /)\n"
+"isatty($self)\n"
 "--\n"
 "\n"
 "True if the file is connected to a TTY device.");
@@ -447,4 +447,4 @@ _io_FileIO_isatty(fileio *self, PyObject *Py_UNUSED(ignored))
 #ifndef _IO_FILEIO_TRUNCATE_METHODDEF
     #define _IO_FILEIO_TRUNCATE_METHODDEF
 #endif /* !defined(_IO_FILEIO_TRUNCATE_METHODDEF) */
-/*[clinic end generated code: output=7ee4f3ae584fc6d2 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=64a6502e922a30e3 input=a9049054013a1b77]*/

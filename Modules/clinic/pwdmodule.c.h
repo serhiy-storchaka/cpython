@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(pwd_getpwuid__doc__,
-"getpwuid($module, uidobj, /)\n"
+"getpwuid($module, __uidobj)\n"
 "--\n"
 "\n"
 "Return the password database entry for the given numeric user ID.\n"
@@ -14,7 +14,7 @@ PyDoc_STRVAR(pwd_getpwuid__doc__,
     {"getpwuid", (PyCFunction)pwd_getpwuid, METH_O, pwd_getpwuid__doc__},
 
 PyDoc_STRVAR(pwd_getpwnam__doc__,
-"getpwnam($module, name, /)\n"
+"getpwnam($module, __name)\n"
 "--\n"
 "\n"
 "Return the password database entry for the given user name.\n"
@@ -50,7 +50,7 @@ exit:
 #if defined(HAVE_GETPWENT)
 
 PyDoc_STRVAR(pwd_getpwall__doc__,
-"getpwall($module, /)\n"
+"getpwall($module)\n"
 "--\n"
 "\n"
 "Return a list of all available password database entries, in arbitrary order.\n"
@@ -74,4 +74,4 @@ pwd_getpwall(PyObject *module, PyObject *Py_UNUSED(ignored))
 #ifndef PWD_GETPWALL_METHODDEF
     #define PWD_GETPWALL_METHODDEF
 #endif /* !defined(PWD_GETPWALL_METHODDEF) */
-/*[clinic end generated code: output=f9412bdedc69706c input=a9049054013a1b77]*/
+/*[clinic end generated code: output=c57976e880ea05e1 input=a9049054013a1b77]*/

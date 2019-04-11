@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(stringlib_expandtabs__doc__,
-"expandtabs($self, /, tabsize=8)\n"
+"expandtabs($self, tabsize=8)\n"
 "--\n"
 "\n"
 "Return a copy where all tab characters are expanded using spaces.\n"
@@ -50,7 +50,7 @@ exit:
 }
 
 PyDoc_STRVAR(stringlib_ljust__doc__,
-"ljust($self, width, fillchar=b\' \', /)\n"
+"ljust($self, __width, __fillchar=b\' \')\n"
 "--\n"
 "\n"
 "Return a left-justified string of length width.\n"
@@ -111,7 +111,7 @@ exit:
 }
 
 PyDoc_STRVAR(stringlib_rjust__doc__,
-"rjust($self, width, fillchar=b\' \', /)\n"
+"rjust($self, __width, __fillchar=b\' \')\n"
 "--\n"
 "\n"
 "Return a right-justified string of length width.\n"
@@ -172,7 +172,7 @@ exit:
 }
 
 PyDoc_STRVAR(stringlib_center__doc__,
-"center($self, width, fillchar=b\' \', /)\n"
+"center($self, __width, __fillchar=b\' \')\n"
 "--\n"
 "\n"
 "Return a centered string of length width.\n"
@@ -233,7 +233,7 @@ exit:
 }
 
 PyDoc_STRVAR(stringlib_zfill__doc__,
-"zfill($self, width, /)\n"
+"zfill($self, __width)\n"
 "--\n"
 "\n"
 "Pad a numeric string with zeros on the left, to fill a field of the given width.\n"
@@ -274,4 +274,4 @@ stringlib_zfill(PyObject *self, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=96cbb19b238d0e84 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=67f04933a67c05fd input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_ssl__SSLSocket_do_handshake__doc__,
-"do_handshake($self, /)\n"
+"do_handshake($self)\n"
 "--\n"
 "\n");
 
@@ -20,7 +20,7 @@ _ssl__SSLSocket_do_handshake(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__test_decode_cert__doc__,
-"_test_decode_cert($module, path, /)\n"
+"_test_decode_cert($module, __path)\n"
 "--\n"
 "\n");
 
@@ -46,7 +46,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_getpeercert__doc__,
-"getpeercert($self, der=False, /)\n"
+"getpeercert($self, __der=False)\n"
 "--\n"
 "\n"
 "Returns the certificate for the peer.\n"
@@ -89,7 +89,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_shared_ciphers__doc__,
-"shared_ciphers($self, /)\n"
+"shared_ciphers($self)\n"
 "--\n"
 "\n");
 
@@ -106,7 +106,7 @@ _ssl__SSLSocket_shared_ciphers(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_cipher__doc__,
-"cipher($self, /)\n"
+"cipher($self)\n"
 "--\n"
 "\n");
 
@@ -123,7 +123,7 @@ _ssl__SSLSocket_cipher(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_version__doc__,
-"version($self, /)\n"
+"version($self)\n"
 "--\n"
 "\n");
 
@@ -142,7 +142,7 @@ _ssl__SSLSocket_version(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 #if (HAVE_NPN)
 
 PyDoc_STRVAR(_ssl__SSLSocket_selected_npn_protocol__doc__,
-"selected_npn_protocol($self, /)\n"
+"selected_npn_protocol($self)\n"
 "--\n"
 "\n");
 
@@ -163,7 +163,7 @@ _ssl__SSLSocket_selected_npn_protocol(PySSLSocket *self, PyObject *Py_UNUSED(ign
 #if (HAVE_ALPN)
 
 PyDoc_STRVAR(_ssl__SSLSocket_selected_alpn_protocol__doc__,
-"selected_alpn_protocol($self, /)\n"
+"selected_alpn_protocol($self)\n"
 "--\n"
 "\n");
 
@@ -182,7 +182,7 @@ _ssl__SSLSocket_selected_alpn_protocol(PySSLSocket *self, PyObject *Py_UNUSED(ig
 #endif /* (HAVE_ALPN) */
 
 PyDoc_STRVAR(_ssl__SSLSocket_compression__doc__,
-"compression($self, /)\n"
+"compression($self)\n"
 "--\n"
 "\n");
 
@@ -199,7 +199,7 @@ _ssl__SSLSocket_compression(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_write__doc__,
-"write($self, b, /)\n"
+"write($self, __b)\n"
 "--\n"
 "\n"
 "Writes the bytes-like object b into the SSL object.\n"
@@ -237,7 +237,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_pending__doc__,
-"pending($self, /)\n"
+"pending($self)\n"
 "--\n"
 "\n"
 "Returns the number of already decrypted bytes available for read, pending on the connection.");
@@ -301,7 +301,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_shutdown__doc__,
-"shutdown($self, /)\n"
+"shutdown($self)\n"
 "--\n"
 "\n"
 "Does the SSL shutdown handshake with the remote end.");
@@ -319,7 +319,7 @@ _ssl__SSLSocket_shutdown(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_get_channel_binding__doc__,
-"get_channel_binding($self, /, cb_type=\'tls-unique\')\n"
+"get_channel_binding($self, cb_type=\'tls-unique\')\n"
 "--\n"
 "\n"
 "Get channel binding data for current connection.\n"
@@ -373,7 +373,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLSocket_verify_client_post_handshake__doc__,
-"verify_client_post_handshake($self, /)\n"
+"verify_client_post_handshake($self)\n"
 "--\n"
 "\n"
 "Initiate TLS 1.3 post-handshake authentication");
@@ -422,7 +422,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_set_ciphers__doc__,
-"set_ciphers($self, cipherlist, /)\n"
+"set_ciphers($self, __cipherlist)\n"
 "--\n"
 "\n");
 
@@ -460,7 +460,7 @@ exit:
 #if (OPENSSL_VERSION_NUMBER >= 0x10002000UL)
 
 PyDoc_STRVAR(_ssl__SSLContext_get_ciphers__doc__,
-"get_ciphers($self, /)\n"
+"get_ciphers($self)\n"
 "--\n"
 "\n");
 
@@ -479,7 +479,7 @@ _ssl__SSLContext_get_ciphers(PySSLContext *self, PyObject *Py_UNUSED(ignored))
 #endif /* (OPENSSL_VERSION_NUMBER >= 0x10002000UL) */
 
 PyDoc_STRVAR(_ssl__SSLContext__set_npn_protocols__doc__,
-"_set_npn_protocols($self, protos, /)\n"
+"_set_npn_protocols($self, __protos)\n"
 "--\n"
 "\n");
 
@@ -515,7 +515,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext__set_alpn_protocols__doc__,
-"_set_alpn_protocols($self, protos, /)\n"
+"_set_alpn_protocols($self, __protos)\n"
 "--\n"
 "\n");
 
@@ -551,7 +551,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_load_cert_chain__doc__,
-"load_cert_chain($self, /, certfile, keyfile=None, password=None)\n"
+"load_cert_chain($self, certfile, keyfile=None, password=None)\n"
 "--\n"
 "\n");
 
@@ -597,7 +597,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_load_verify_locations__doc__,
-"load_verify_locations($self, /, cafile=None, capath=None, cadata=None)\n"
+"load_verify_locations($self, cafile=None, capath=None, cadata=None)\n"
 "--\n"
 "\n");
 
@@ -650,7 +650,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_load_dh_params__doc__,
-"load_dh_params($self, path, /)\n"
+"load_dh_params($self, __path)\n"
 "--\n"
 "\n");
 
@@ -658,7 +658,7 @@ PyDoc_STRVAR(_ssl__SSLContext_load_dh_params__doc__,
     {"load_dh_params", (PyCFunction)_ssl__SSLContext_load_dh_params, METH_O, _ssl__SSLContext_load_dh_params__doc__},
 
 PyDoc_STRVAR(_ssl__SSLContext__wrap_socket__doc__,
-"_wrap_socket($self, /, sock, server_side, server_hostname=None, *,\n"
+"_wrap_socket($self, sock, server_side, server_hostname=None, *,\n"
 "             owner=None, session=None)\n"
 "--\n"
 "\n");
@@ -731,8 +731,8 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext__wrap_bio__doc__,
-"_wrap_bio($self, /, incoming, outgoing, server_side,\n"
-"          server_hostname=None, *, owner=None, session=None)\n"
+"_wrap_bio($self, incoming, outgoing, server_side, server_hostname=None,\n"
+"          *, owner=None, session=None)\n"
 "--\n"
 "\n");
 
@@ -811,7 +811,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_session_stats__doc__,
-"session_stats($self, /)\n"
+"session_stats($self)\n"
 "--\n"
 "\n");
 
@@ -828,7 +828,7 @@ _ssl__SSLContext_session_stats(PySSLContext *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_set_default_verify_paths__doc__,
-"set_default_verify_paths($self, /)\n"
+"set_default_verify_paths($self)\n"
 "--\n"
 "\n");
 
@@ -847,7 +847,7 @@ _ssl__SSLContext_set_default_verify_paths(PySSLContext *self, PyObject *Py_UNUSE
 #if !defined(OPENSSL_NO_ECDH)
 
 PyDoc_STRVAR(_ssl__SSLContext_set_ecdh_curve__doc__,
-"set_ecdh_curve($self, name, /)\n"
+"set_ecdh_curve($self, __name)\n"
 "--\n"
 "\n");
 
@@ -857,7 +857,7 @@ PyDoc_STRVAR(_ssl__SSLContext_set_ecdh_curve__doc__,
 #endif /* !defined(OPENSSL_NO_ECDH) */
 
 PyDoc_STRVAR(_ssl__SSLContext_cert_store_stats__doc__,
-"cert_store_stats($self, /)\n"
+"cert_store_stats($self)\n"
 "--\n"
 "\n"
 "Returns quantities of loaded X.509 certificates.\n"
@@ -881,7 +881,7 @@ _ssl__SSLContext_cert_store_stats(PySSLContext *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_ssl__SSLContext_get_ca_certs__doc__,
-"get_ca_certs($self, /, binary_form=False)\n"
+"get_ca_certs($self, binary_form=False)\n"
 "--\n"
 "\n"
 "Returns a list of dicts with information of loaded CA certs.\n"
@@ -949,7 +949,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_MemoryBIO_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read up to size bytes from the memory BIO.\n"
@@ -994,7 +994,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_MemoryBIO_write__doc__,
-"write($self, b, /)\n"
+"write($self, __b)\n"
 "--\n"
 "\n"
 "Writes the bytes b into the memory BIO.\n"
@@ -1032,7 +1032,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_MemoryBIO_write_eof__doc__,
-"write_eof($self, /)\n"
+"write_eof($self)\n"
 "--\n"
 "\n"
 "Write an EOF marker to the memory BIO.\n"
@@ -1052,7 +1052,7 @@ _ssl_MemoryBIO_write_eof(PySSLMemoryBIO *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl_RAND_add__doc__,
-"RAND_add($module, string, entropy, /)\n"
+"RAND_add($module, __string, __entropy)\n"
 "--\n"
 "\n"
 "Mix string into the OpenSSL PRNG state.\n"
@@ -1109,7 +1109,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_RAND_bytes__doc__,
-"RAND_bytes($module, n, /)\n"
+"RAND_bytes($module, __n)\n"
 "--\n"
 "\n"
 "Generate n cryptographically strong pseudo-random bytes.");
@@ -1142,7 +1142,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_RAND_pseudo_bytes__doc__,
-"RAND_pseudo_bytes($module, n, /)\n"
+"RAND_pseudo_bytes($module, __n)\n"
 "--\n"
 "\n"
 "Generate n pseudo-random bytes.\n"
@@ -1178,7 +1178,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_RAND_status__doc__,
-"RAND_status($module, /)\n"
+"RAND_status($module)\n"
 "--\n"
 "\n"
 "Returns 1 if the OpenSSL PRNG has been seeded with enough data and 0 if not.\n"
@@ -1201,7 +1201,7 @@ _ssl_RAND_status(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if !defined(OPENSSL_NO_EGD)
 
 PyDoc_STRVAR(_ssl_RAND_egd__doc__,
-"RAND_egd($module, path, /)\n"
+"RAND_egd($module, __path)\n"
 "--\n"
 "\n"
 "Queries the entropy gather daemon (EGD) on the socket named by \'path\'.\n"
@@ -1233,7 +1233,7 @@ exit:
 #endif /* !defined(OPENSSL_NO_EGD) */
 
 PyDoc_STRVAR(_ssl_get_default_verify_paths__doc__,
-"get_default_verify_paths($module, /)\n"
+"get_default_verify_paths($module)\n"
 "--\n"
 "\n"
 "Return search paths and environment vars that are used by SSLContext\'s set_default_verify_paths() to load default CAs.\n"
@@ -1253,7 +1253,7 @@ _ssl_get_default_verify_paths(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_ssl_txt2obj__doc__,
-"txt2obj($module, /, txt, name=False)\n"
+"txt2obj($module, txt, name=False)\n"
 "--\n"
 "\n"
 "Lookup NID, short name, long name and OID of an ASN1_OBJECT.\n"
@@ -1310,7 +1310,7 @@ exit:
 }
 
 PyDoc_STRVAR(_ssl_nid2obj__doc__,
-"nid2obj($module, nid, /)\n"
+"nid2obj($module, __nid)\n"
 "--\n"
 "\n"
 "Lookup NID, short name, long name and OID of an ASN1_OBJECT by NID.");
@@ -1345,7 +1345,7 @@ exit:
 #if defined(_MSC_VER)
 
 PyDoc_STRVAR(_ssl_enum_certificates__doc__,
-"enum_certificates($module, /, store_name)\n"
+"enum_certificates($module, store_name)\n"
 "--\n"
 "\n"
 "Retrieve certificates from Windows\' cert store.\n"
@@ -1399,7 +1399,7 @@ exit:
 #if defined(_MSC_VER)
 
 PyDoc_STRVAR(_ssl_enum_crls__doc__,
-"enum_crls($module, /, store_name)\n"
+"enum_crls($module, store_name)\n"
 "--\n"
 "\n"
 "Retrieve CRLs from Windows\' cert store.\n"
@@ -1476,4 +1476,4 @@ exit:
 #ifndef _SSL_ENUM_CRLS_METHODDEF
     #define _SSL_ENUM_CRLS_METHODDEF
 #endif /* !defined(_SSL_ENUM_CRLS_METHODDEF) */
-/*[clinic end generated code: output=a399d0eb393b6fab input=a9049054013a1b77]*/
+/*[clinic end generated code: output=6fc8362a4c45d3d7 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_curses_panel_panel_bottom__doc__,
-"bottom($self, /)\n"
+"bottom($self)\n"
 "--\n"
 "\n"
 "Push the panel to the bottom of the stack.");
@@ -21,7 +21,7 @@ _curses_panel_panel_bottom(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_curses_panel_panel_hide__doc__,
-"hide($self, /)\n"
+"hide($self)\n"
 "--\n"
 "\n"
 "Hide the panel.\n"
@@ -41,7 +41,7 @@ _curses_panel_panel_hide(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignored)
 }
 
 PyDoc_STRVAR(_curses_panel_panel_show__doc__,
-"show($self, /)\n"
+"show($self)\n"
 "--\n"
 "\n"
 "Display the panel (which might have been hidden).");
@@ -59,7 +59,7 @@ _curses_panel_panel_show(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignored)
 }
 
 PyDoc_STRVAR(_curses_panel_panel_top__doc__,
-"top($self, /)\n"
+"top($self)\n"
 "--\n"
 "\n"
 "Push panel to the top of the stack.");
@@ -77,7 +77,7 @@ _curses_panel_panel_top(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_panel_panel_above__doc__,
-"above($self, /)\n"
+"above($self)\n"
 "--\n"
 "\n"
 "Return the panel above the current panel.");
@@ -95,7 +95,7 @@ _curses_panel_panel_above(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignored
 }
 
 PyDoc_STRVAR(_curses_panel_panel_below__doc__,
-"below($self, /)\n"
+"below($self)\n"
 "--\n"
 "\n"
 "Return the panel below the current panel.");
@@ -113,7 +113,7 @@ _curses_panel_panel_below(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignored
 }
 
 PyDoc_STRVAR(_curses_panel_panel_hidden__doc__,
-"hidden($self, /)\n"
+"hidden($self)\n"
 "--\n"
 "\n"
 "Return True if the panel is hidden (not visible), False otherwise.");
@@ -131,7 +131,7 @@ _curses_panel_panel_hidden(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_curses_panel_panel_move__doc__,
-"move($self, y, x, /)\n"
+"move($self, __y, __x)\n"
 "--\n"
 "\n"
 "Move the panel to the screen coordinates (y, x).");
@@ -177,7 +177,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_panel_panel_window__doc__,
-"window($self, /)\n"
+"window($self)\n"
 "--\n"
 "\n"
 "Return the window object associated with the panel.");
@@ -195,7 +195,7 @@ _curses_panel_panel_window(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_curses_panel_panel_replace__doc__,
-"replace($self, win, /)\n"
+"replace($self, __win)\n"
 "--\n"
 "\n"
 "Change the window associated with the panel to the window win.");
@@ -225,7 +225,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_panel_panel_set_userptr__doc__,
-"set_userptr($self, obj, /)\n"
+"set_userptr($self, __obj)\n"
 "--\n"
 "\n"
 "Set the panel\'s user pointer to obj.");
@@ -234,7 +234,7 @@ PyDoc_STRVAR(_curses_panel_panel_set_userptr__doc__,
     {"set_userptr", (PyCFunction)_curses_panel_panel_set_userptr, METH_O, _curses_panel_panel_set_userptr__doc__},
 
 PyDoc_STRVAR(_curses_panel_panel_userptr__doc__,
-"userptr($self, /)\n"
+"userptr($self)\n"
 "--\n"
 "\n"
 "Return the user pointer for the panel.");
@@ -252,7 +252,7 @@ _curses_panel_panel_userptr(PyCursesPanelObject *self, PyObject *Py_UNUSED(ignor
 }
 
 PyDoc_STRVAR(_curses_panel_bottom_panel__doc__,
-"bottom_panel($module, /)\n"
+"bottom_panel($module)\n"
 "--\n"
 "\n"
 "Return the bottom panel in the panel stack.");
@@ -270,7 +270,7 @@ _curses_panel_bottom_panel(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_panel_new_panel__doc__,
-"new_panel($module, win, /)\n"
+"new_panel($module, __win)\n"
 "--\n"
 "\n"
 "Return a panel object, associating it with the given window win.");
@@ -299,7 +299,7 @@ exit:
 }
 
 PyDoc_STRVAR(_curses_panel_top_panel__doc__,
-"top_panel($module, /)\n"
+"top_panel($module)\n"
 "--\n"
 "\n"
 "Return the top panel in the panel stack.");
@@ -317,7 +317,7 @@ _curses_panel_top_panel(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_curses_panel_update_panels__doc__,
-"update_panels($module, /)\n"
+"update_panels($module)\n"
 "--\n"
 "\n"
 "Updates the virtual screen after changes in the panel stack.\n"
@@ -335,4 +335,4 @@ _curses_panel_update_panels(PyObject *module, PyObject *Py_UNUSED(ignored))
 {
     return _curses_panel_update_panels_impl(module);
 }
-/*[clinic end generated code: output=3cc16062281b7e07 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=eeedaba7292ce2e8 input=a9049054013a1b77]*/

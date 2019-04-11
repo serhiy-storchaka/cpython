@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(array_array___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n"
 "Return a copy of the array.");
@@ -21,7 +21,7 @@ array_array___copy__(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array___deepcopy____doc__,
-"__deepcopy__($self, unused, /)\n"
+"__deepcopy__($self, __unused)\n"
 "--\n"
 "\n"
 "Return a copy of the array.");
@@ -30,7 +30,7 @@ PyDoc_STRVAR(array_array___deepcopy____doc__,
     {"__deepcopy__", (PyCFunction)array_array___deepcopy__, METH_O, array_array___deepcopy____doc__},
 
 PyDoc_STRVAR(array_array_count__doc__,
-"count($self, v, /)\n"
+"count($self, __v)\n"
 "--\n"
 "\n"
 "Return number of occurrences of v in the array.");
@@ -39,7 +39,7 @@ PyDoc_STRVAR(array_array_count__doc__,
     {"count", (PyCFunction)array_array_count, METH_O, array_array_count__doc__},
 
 PyDoc_STRVAR(array_array_index__doc__,
-"index($self, v, /)\n"
+"index($self, __v)\n"
 "--\n"
 "\n"
 "Return index of first occurrence of v in the array.");
@@ -48,7 +48,7 @@ PyDoc_STRVAR(array_array_index__doc__,
     {"index", (PyCFunction)array_array_index, METH_O, array_array_index__doc__},
 
 PyDoc_STRVAR(array_array_remove__doc__,
-"remove($self, v, /)\n"
+"remove($self, __v)\n"
 "--\n"
 "\n"
 "Remove the first occurrence of v in the array.");
@@ -57,7 +57,7 @@ PyDoc_STRVAR(array_array_remove__doc__,
     {"remove", (PyCFunction)array_array_remove, METH_O, array_array_remove__doc__},
 
 PyDoc_STRVAR(array_array_pop__doc__,
-"pop($self, i=-1, /)\n"
+"pop($self, __i=-1)\n"
 "--\n"
 "\n"
 "Return the i-th element and delete it from the array.\n"
@@ -107,7 +107,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_extend__doc__,
-"extend($self, bb, /)\n"
+"extend($self, __bb)\n"
 "--\n"
 "\n"
 "Append items to the end of the array.");
@@ -116,7 +116,7 @@ PyDoc_STRVAR(array_array_extend__doc__,
     {"extend", (PyCFunction)array_array_extend, METH_O, array_array_extend__doc__},
 
 PyDoc_STRVAR(array_array_insert__doc__,
-"insert($self, i, v, /)\n"
+"insert($self, __i, __v)\n"
 "--\n"
 "\n"
 "Insert a new item v into the array before position i.");
@@ -162,7 +162,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_buffer_info__doc__,
-"buffer_info($self, /)\n"
+"buffer_info($self)\n"
 "--\n"
 "\n"
 "Return a tuple (address, length) giving the current memory address and the length in items of the buffer used to hold array\'s contents.\n"
@@ -183,7 +183,7 @@ array_array_buffer_info(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_append__doc__,
-"append($self, v, /)\n"
+"append($self, __v)\n"
 "--\n"
 "\n"
 "Append new value v to the end of the array.");
@@ -192,7 +192,7 @@ PyDoc_STRVAR(array_array_append__doc__,
     {"append", (PyCFunction)array_array_append, METH_O, array_array_append__doc__},
 
 PyDoc_STRVAR(array_array_byteswap__doc__,
-"byteswap($self, /)\n"
+"byteswap($self)\n"
 "--\n"
 "\n"
 "Byteswap all items of the array.\n"
@@ -213,7 +213,7 @@ array_array_byteswap(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_reverse__doc__,
-"reverse($self, /)\n"
+"reverse($self)\n"
 "--\n"
 "\n"
 "Reverse the order of the items in the array.");
@@ -231,7 +231,7 @@ array_array_reverse(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_fromfile__doc__,
-"fromfile($self, f, n, /)\n"
+"fromfile($self, __f, __n)\n"
 "--\n"
 "\n"
 "Read n objects from the file object f and append them to the end of the array.");
@@ -277,7 +277,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_tofile__doc__,
-"tofile($self, f, /)\n"
+"tofile($self, __f)\n"
 "--\n"
 "\n"
 "Write all items (as machine values) to the file object f.");
@@ -286,7 +286,7 @@ PyDoc_STRVAR(array_array_tofile__doc__,
     {"tofile", (PyCFunction)array_array_tofile, METH_O, array_array_tofile__doc__},
 
 PyDoc_STRVAR(array_array_fromlist__doc__,
-"fromlist($self, list, /)\n"
+"fromlist($self, __list)\n"
 "--\n"
 "\n"
 "Append items to array from list.");
@@ -295,7 +295,7 @@ PyDoc_STRVAR(array_array_fromlist__doc__,
     {"fromlist", (PyCFunction)array_array_fromlist, METH_O, array_array_fromlist__doc__},
 
 PyDoc_STRVAR(array_array_tolist__doc__,
-"tolist($self, /)\n"
+"tolist($self)\n"
 "--\n"
 "\n"
 "Convert array to an ordinary list with the same items.");
@@ -313,7 +313,7 @@ array_array_tolist(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_fromstring__doc__,
-"fromstring($self, buffer, /)\n"
+"fromstring($self, __buffer)\n"
 "--\n"
 "\n"
 "Appends items from the string, interpreting it as an array of machine values, as if it had been read from a file using the fromfile() method).\n"
@@ -361,7 +361,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_frombytes__doc__,
-"frombytes($self, buffer, /)\n"
+"frombytes($self, __buffer)\n"
 "--\n"
 "\n"
 "Appends items from the string, interpreting it as an array of machine values, as if it had been read from a file using the fromfile() method).");
@@ -397,7 +397,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_tobytes__doc__,
-"tobytes($self, /)\n"
+"tobytes($self)\n"
 "--\n"
 "\n"
 "Convert the array to an array of machine values and return the bytes representation.");
@@ -415,7 +415,7 @@ array_array_tobytes(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_tostring__doc__,
-"tostring($self, /)\n"
+"tostring($self)\n"
 "--\n"
 "\n"
 "Convert the array to an array of machine values and return the bytes representation.\n"
@@ -435,7 +435,7 @@ array_array_tostring(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array_fromunicode__doc__,
-"fromunicode($self, ustr, /)\n"
+"fromunicode($self, __ustr)\n"
 "--\n"
 "\n"
 "Extends this array with data from the unicode string ustr.\n"
@@ -468,7 +468,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array_tounicode__doc__,
-"tounicode($self, /)\n"
+"tounicode($self)\n"
 "--\n"
 "\n"
 "Extends this array with data from the unicode string ustr.\n"
@@ -490,7 +490,7 @@ array_array_tounicode(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array_array___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Size of the array in memory, in bytes.");
@@ -508,8 +508,8 @@ array_array___sizeof__(arrayobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(array__array_reconstructor__doc__,
-"_array_reconstructor($module, arraytype, typecode, mformat_code, items,\n"
-"                     /)\n"
+"_array_reconstructor($module, __arraytype, __typecode, __mformat_code,\n"
+"                     __items)\n"
 "--\n"
 "\n"
 "Internal. Used for pickling support.");
@@ -565,7 +565,7 @@ exit:
 }
 
 PyDoc_STRVAR(array_array___reduce_ex____doc__,
-"__reduce_ex__($self, value, /)\n"
+"__reduce_ex__($self, __value)\n"
 "--\n"
 "\n"
 "Return state information for pickling.");
@@ -574,7 +574,7 @@ PyDoc_STRVAR(array_array___reduce_ex____doc__,
     {"__reduce_ex__", (PyCFunction)array_array___reduce_ex__, METH_O, array_array___reduce_ex____doc__},
 
 PyDoc_STRVAR(array_arrayiterator___reduce____doc__,
-"__reduce__($self, /)\n"
+"__reduce__($self)\n"
 "--\n"
 "\n"
 "Return state information for pickling.");
@@ -592,11 +592,11 @@ array_arrayiterator___reduce__(arrayiterobject *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(array_arrayiterator___setstate____doc__,
-"__setstate__($self, state, /)\n"
+"__setstate__($self, __state)\n"
 "--\n"
 "\n"
 "Set state information for unpickling.");
 
 #define ARRAY_ARRAYITERATOR___SETSTATE___METHODDEF    \
     {"__setstate__", (PyCFunction)array_arrayiterator___setstate__, METH_O, array_arrayiterator___setstate____doc__},
-/*[clinic end generated code: output=c9a40f11f1a866fb input=a9049054013a1b77]*/
+/*[clinic end generated code: output=9187e5f527fc03d5 input=a9049054013a1b77]*/

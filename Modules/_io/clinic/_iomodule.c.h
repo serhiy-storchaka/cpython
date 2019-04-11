@@ -3,8 +3,8 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io_open__doc__,
-"open($module, /, file, mode=\'r\', buffering=-1, encoding=None,\n"
-"     errors=None, newline=None, closefd=True, opener=None)\n"
+"open($module, file, mode=\'r\', buffering=-1, encoding=None, errors=None,\n"
+"     newline=None, closefd=True, opener=None)\n"
 "--\n"
 "\n"
 "Open file and return a stream.  Raise OSError upon failure.\n"
@@ -281,4 +281,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=19fc9b69a5166f63 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=258e26879c986a4f input=a9049054013a1b77]*/

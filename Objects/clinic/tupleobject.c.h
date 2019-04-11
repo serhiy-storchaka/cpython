@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(tuple_index__doc__,
-"index($self, value, start=0, stop=sys.maxsize, /)\n"
+"index($self, __value, __start=0, __stop=sys.maxsize)\n"
 "--\n"
 "\n"
 "Return first index of value.\n"
@@ -49,7 +49,7 @@ exit:
 }
 
 PyDoc_STRVAR(tuple_count__doc__,
-"count($self, value, /)\n"
+"count($self, __value)\n"
 "--\n"
 "\n"
 "Return number of occurrences of value.");
@@ -58,7 +58,7 @@ PyDoc_STRVAR(tuple_count__doc__,
     {"count", (PyCFunction)tuple_count, METH_O, tuple_count__doc__},
 
 PyDoc_STRVAR(tuple_new__doc__,
-"tuple(iterable=(), /)\n"
+"tuple(__iterable=())\n"
 "--\n"
 "\n"
 "Built-in immutable sequence.\n"
@@ -96,7 +96,7 @@ exit:
 }
 
 PyDoc_STRVAR(tuple___getnewargs____doc__,
-"__getnewargs__($self, /)\n"
+"__getnewargs__($self)\n"
 "--\n"
 "\n");
 
@@ -111,4 +111,4 @@ tuple___getnewargs__(PyTupleObject *self, PyObject *Py_UNUSED(ignored))
 {
     return tuple___getnewargs___impl(self);
 }
-/*[clinic end generated code: output=56fab9b7368aba49 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=144f34ea6c725933 input=a9049054013a1b77]*/

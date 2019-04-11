@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(select_select__doc__,
-"select($module, rlist, wlist, xlist, timeout=None, /)\n"
+"select($module, __rlist, __wlist, __xlist, __timeout=None)\n"
 "--\n"
 "\n"
 "Wait until one or more file descriptors are ready for some kind of I/O.\n"
@@ -65,7 +65,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL))
 
 PyDoc_STRVAR(select_poll_register__doc__,
-"register($self, fd, eventmask=POLLIN | POLLPRI | POLLOUT, /)\n"
+"register($self, __fd, __eventmask=POLLIN | POLLPRI | POLLOUT)\n"
 "--\n"
 "\n"
 "Register a file descriptor with the polling object.\n"
@@ -112,7 +112,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL))
 
 PyDoc_STRVAR(select_poll_modify__doc__,
-"modify($self, fd, eventmask, /)\n"
+"modify($self, __fd, __eventmask)\n"
 "--\n"
 "\n"
 "Modify an already registered file descriptor.\n"
@@ -156,7 +156,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL))
 
 PyDoc_STRVAR(select_poll_unregister__doc__,
-"unregister($self, fd, /)\n"
+"unregister($self, __fd)\n"
 "--\n"
 "\n"
 "Remove a file descriptor being tracked by the polling object.");
@@ -187,7 +187,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL))
 
 PyDoc_STRVAR(select_poll_poll__doc__,
-"poll($self, timeout=None, /)\n"
+"poll($self, __timeout=None)\n"
 "--\n"
 "\n"
 "Polls the set of registered file descriptors.\n"
@@ -226,7 +226,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_register__doc__,
-"register($self, fd, eventmask=POLLIN | POLLPRI | POLLOUT, /)\n"
+"register($self, __fd, __eventmask=POLLIN | POLLPRI | POLLOUT)\n"
 "--\n"
 "\n"
 "Register a file descriptor with the polling object.\n"
@@ -275,7 +275,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_modify__doc__,
-"modify($self, fd, eventmask=POLLIN | POLLPRI | POLLOUT, /)\n"
+"modify($self, __fd, __eventmask=POLLIN | POLLPRI | POLLOUT)\n"
 "--\n"
 "\n"
 "Modify a possible already registered file descriptor.\n"
@@ -324,7 +324,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_unregister__doc__,
-"unregister($self, fd, /)\n"
+"unregister($self, __fd)\n"
 "--\n"
 "\n"
 "Remove a file descriptor being tracked by the polling object.");
@@ -355,7 +355,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_poll__doc__,
-"poll($self, timeout=None, /)\n"
+"poll($self, __timeout=None)\n"
 "--\n"
 "\n"
 "Polls the set of registered file descriptors.\n"
@@ -394,7 +394,7 @@ exit:
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the devpoll file descriptor.\n"
@@ -418,7 +418,7 @@ select_devpoll_close(devpollObject *self, PyObject *Py_UNUSED(ignored))
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Return the file descriptor.");
@@ -440,7 +440,7 @@ select_devpoll_fileno(devpollObject *self, PyObject *Py_UNUSED(ignored))
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL))
 
 PyDoc_STRVAR(select_poll__doc__,
-"poll($module, /)\n"
+"poll($module)\n"
 "--\n"
 "\n"
 "Returns a polling object.\n"
@@ -465,7 +465,7 @@ select_poll(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if (defined(HAVE_POLL) && !defined(HAVE_BROKEN_POLL)) && defined(HAVE_SYS_DEVPOLL_H)
 
 PyDoc_STRVAR(select_devpoll__doc__,
-"devpoll($module, /)\n"
+"devpoll($module)\n"
 "--\n"
 "\n"
 "Returns a polling object.\n"
@@ -562,7 +562,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the epoll control file descriptor.\n"
@@ -586,7 +586,7 @@ select_epoll_close(pyEpoll_Object *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Return the epoll control file descriptor.");
@@ -608,7 +608,7 @@ select_epoll_fileno(pyEpoll_Object *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_fromfd__doc__,
-"fromfd($type, fd, /)\n"
+"fromfd($type, __fd)\n"
 "--\n"
 "\n"
 "Create an epoll object from a given control fd.");
@@ -645,7 +645,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_register__doc__,
-"register($self, /, fd, eventmask=EPOLLIN | EPOLLPRI | EPOLLOUT)\n"
+"register($self, fd, eventmask=EPOLLIN | EPOLLPRI | EPOLLOUT)\n"
 "--\n"
 "\n"
 "Registers a new fd or raises an OSError if the fd is already registered.\n"
@@ -706,7 +706,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_modify__doc__,
-"modify($self, /, fd, eventmask)\n"
+"modify($self, fd, eventmask)\n"
 "--\n"
 "\n"
 "Modify event mask for a registered file descriptor.\n"
@@ -760,7 +760,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_unregister__doc__,
-"unregister($self, /, fd)\n"
+"unregister($self, fd)\n"
 "--\n"
 "\n"
 "Remove a registered file descriptor from the epoll object.\n"
@@ -801,7 +801,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll_poll__doc__,
-"poll($self, /, timeout=None, maxevents=-1)\n"
+"poll($self, timeout=None, maxevents=-1)\n"
 "--\n"
 "\n"
 "Wait for events on the epoll file descriptor.\n"
@@ -867,7 +867,7 @@ exit:
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll___enter____doc__,
-"__enter__($self, /)\n"
+"__enter__($self)\n"
 "--\n"
 "\n");
 
@@ -888,7 +888,7 @@ select_epoll___enter__(pyEpoll_Object *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_EPOLL)
 
 PyDoc_STRVAR(select_epoll___exit____doc__,
-"__exit__($self, exc_type=None, exc_value=None, exc_tb=None, /)\n"
+"__exit__($self, __exc_type=None, __exc_value=None, __exc_tb=None)\n"
 "--\n"
 "\n");
 
@@ -978,7 +978,7 @@ exit:
 #if defined(HAVE_KQUEUE)
 
 PyDoc_STRVAR(select_kqueue_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the kqueue control file descriptor.\n"
@@ -1002,7 +1002,7 @@ select_kqueue_close(kqueue_queue_Object *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_KQUEUE)
 
 PyDoc_STRVAR(select_kqueue_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Return the kqueue control file descriptor.");
@@ -1024,7 +1024,7 @@ select_kqueue_fileno(kqueue_queue_Object *self, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_KQUEUE)
 
 PyDoc_STRVAR(select_kqueue_fromfd__doc__,
-"fromfd($type, fd, /)\n"
+"fromfd($type, __fd)\n"
 "--\n"
 "\n"
 "Create a kqueue object from a given control fd.");
@@ -1061,7 +1061,7 @@ exit:
 #if defined(HAVE_KQUEUE)
 
 PyDoc_STRVAR(select_kqueue_control__doc__,
-"control($self, changelist, maxevents, timeout=None, /)\n"
+"control($self, __changelist, __maxevents, __timeout=None)\n"
 "--\n"
 "\n"
 "Calls the kernel kevent function.\n"
@@ -1215,4 +1215,4 @@ exit:
 #ifndef SELECT_KQUEUE_CONTROL_METHODDEF
     #define SELECT_KQUEUE_CONTROL_METHODDEF
 #endif /* !defined(SELECT_KQUEUE_CONTROL_METHODDEF) */
-/*[clinic end generated code: output=03041f3d09b04a3d input=a9049054013a1b77]*/
+/*[clinic end generated code: output=fb09297575fba7e5 input=a9049054013a1b77]*/

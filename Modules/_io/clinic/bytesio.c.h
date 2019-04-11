@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io_BytesIO_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be read.");
@@ -21,7 +21,7 @@ _io_BytesIO_readable(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be written.");
@@ -39,7 +39,7 @@ _io_BytesIO_writable(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_seekable__doc__,
-"seekable($self, /)\n"
+"seekable($self)\n"
 "--\n"
 "\n"
 "Returns True if the IO object can be seeked.");
@@ -57,7 +57,7 @@ _io_BytesIO_seekable(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_flush__doc__,
-"flush($self, /)\n"
+"flush($self)\n"
 "--\n"
 "\n"
 "Does nothing.");
@@ -75,7 +75,7 @@ _io_BytesIO_flush(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_getbuffer__doc__,
-"getbuffer($self, /)\n"
+"getbuffer($self)\n"
 "--\n"
 "\n"
 "Get a read-write view over the contents of the BytesIO object.");
@@ -93,7 +93,7 @@ _io_BytesIO_getbuffer(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_getvalue__doc__,
-"getvalue($self, /)\n"
+"getvalue($self)\n"
 "--\n"
 "\n"
 "Retrieve the entire contents of the BytesIO object.");
@@ -111,7 +111,7 @@ _io_BytesIO_getvalue(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_isatty__doc__,
-"isatty($self, /)\n"
+"isatty($self)\n"
 "--\n"
 "\n"
 "Always returns False.\n"
@@ -131,7 +131,7 @@ _io_BytesIO_isatty(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_tell__doc__,
-"tell($self, /)\n"
+"tell($self)\n"
 "--\n"
 "\n"
 "Current file position, an integer.");
@@ -149,7 +149,7 @@ _io_BytesIO_tell(bytesio *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io_BytesIO_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read at most size bytes, returned as a bytes object.\n"
@@ -186,7 +186,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_read1__doc__,
-"read1($self, size=-1, /)\n"
+"read1($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read at most size bytes, returned as a bytes object.\n"
@@ -223,7 +223,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_readline__doc__,
-"readline($self, size=-1, /)\n"
+"readline($self, __size=-1)\n"
 "--\n"
 "\n"
 "Next line from the file, as a bytes object.\n"
@@ -261,7 +261,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_readlines__doc__,
-"readlines($self, size=None, /)\n"
+"readlines($self, __size=None)\n"
 "--\n"
 "\n"
 "List of bytes objects, each a line from the file.\n"
@@ -297,7 +297,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_readinto__doc__,
-"readinto($self, buffer, /)\n"
+"readinto($self, __buffer)\n"
 "--\n"
 "\n"
 "Read bytes into buffer.\n"
@@ -338,7 +338,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_truncate__doc__,
-"truncate($self, size=None, /)\n"
+"truncate($self, __size=None)\n"
 "--\n"
 "\n"
 "Truncate the file to at most size bytes.\n"
@@ -375,7 +375,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_seek__doc__,
-"seek($self, pos, whence=0, /)\n"
+"seek($self, __pos, __whence=0)\n"
 "--\n"
 "\n"
 "Change stream position.\n"
@@ -439,7 +439,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io_BytesIO_write__doc__,
-"write($self, b, /)\n"
+"write($self, __b)\n"
 "--\n"
 "\n"
 "Write bytes to file.\n"
@@ -450,7 +450,7 @@ PyDoc_STRVAR(_io_BytesIO_write__doc__,
     {"write", (PyCFunction)_io_BytesIO_write, METH_O, _io_BytesIO_write__doc__},
 
 PyDoc_STRVAR(_io_BytesIO_writelines__doc__,
-"writelines($self, lines, /)\n"
+"writelines($self, __lines)\n"
 "--\n"
 "\n"
 "Write lines to the file.\n"
@@ -463,7 +463,7 @@ PyDoc_STRVAR(_io_BytesIO_writelines__doc__,
     {"writelines", (PyCFunction)_io_BytesIO_writelines, METH_O, _io_BytesIO_writelines__doc__},
 
 PyDoc_STRVAR(_io_BytesIO_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Disable all I/O operations.");
@@ -515,4 +515,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=22e8fb54874b6ee5 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=1210ae4435823c33 input=a9049054013a1b77]*/

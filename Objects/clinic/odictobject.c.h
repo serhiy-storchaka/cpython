@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(OrderedDict_fromkeys__doc__,
-"fromkeys($type, /, iterable, value=None)\n"
+"fromkeys($type, iterable, value=None)\n"
 "--\n"
 "\n"
 "Create a new ordered dictionary with keys from iterable and values set to value.");
@@ -42,7 +42,7 @@ exit:
 }
 
 PyDoc_STRVAR(OrderedDict_setdefault__doc__,
-"setdefault($self, /, key, default=None)\n"
+"setdefault($self, key, default=None)\n"
 "--\n"
 "\n"
 "Insert key with a value of default if key is not in the dictionary.\n"
@@ -84,7 +84,7 @@ exit:
 }
 
 PyDoc_STRVAR(OrderedDict_popitem__doc__,
-"popitem($self, /, last=True)\n"
+"popitem($self, last=True)\n"
 "--\n"
 "\n"
 "Remove and return a (key, value) pair from the dictionary.\n"
@@ -126,7 +126,7 @@ exit:
 }
 
 PyDoc_STRVAR(OrderedDict_move_to_end__doc__,
-"move_to_end($self, /, key, last=True)\n"
+"move_to_end($self, key, last=True)\n"
 "--\n"
 "\n"
 "Move an existing element to the end (or beginning if last is false).\n"
@@ -168,4 +168,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=8eb1296df9142908 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=ad1f3c172f8ecc33 input=a9049054013a1b77]*/

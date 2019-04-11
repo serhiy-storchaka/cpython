@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(math_gcd__doc__,
-"gcd($module, x, y, /)\n"
+"gcd($module, __x, __y)\n"
 "--\n"
 "\n"
 "greatest common divisor of x and y");
@@ -33,7 +33,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_ceil__doc__,
-"ceil($module, x, /)\n"
+"ceil($module, __x)\n"
 "--\n"
 "\n"
 "Return the ceiling of x as an Integral.\n"
@@ -44,7 +44,7 @@ PyDoc_STRVAR(math_ceil__doc__,
     {"ceil", (PyCFunction)math_ceil, METH_O, math_ceil__doc__},
 
 PyDoc_STRVAR(math_floor__doc__,
-"floor($module, x, /)\n"
+"floor($module, __x)\n"
 "--\n"
 "\n"
 "Return the floor of x as an Integral.\n"
@@ -55,7 +55,7 @@ PyDoc_STRVAR(math_floor__doc__,
     {"floor", (PyCFunction)math_floor, METH_O, math_floor__doc__},
 
 PyDoc_STRVAR(math_fsum__doc__,
-"fsum($module, seq, /)\n"
+"fsum($module, __seq)\n"
 "--\n"
 "\n"
 "Return an accurate floating point sum of values in the iterable seq.\n"
@@ -66,7 +66,7 @@ PyDoc_STRVAR(math_fsum__doc__,
     {"fsum", (PyCFunction)math_fsum, METH_O, math_fsum__doc__},
 
 PyDoc_STRVAR(math_factorial__doc__,
-"factorial($module, x, /)\n"
+"factorial($module, __x)\n"
 "--\n"
 "\n"
 "Find x!.\n"
@@ -77,7 +77,7 @@ PyDoc_STRVAR(math_factorial__doc__,
     {"factorial", (PyCFunction)math_factorial, METH_O, math_factorial__doc__},
 
 PyDoc_STRVAR(math_trunc__doc__,
-"trunc($module, x, /)\n"
+"trunc($module, __x)\n"
 "--\n"
 "\n"
 "Truncates the Real x to the nearest Integral toward 0.\n"
@@ -88,7 +88,7 @@ PyDoc_STRVAR(math_trunc__doc__,
     {"trunc", (PyCFunction)math_trunc, METH_O, math_trunc__doc__},
 
 PyDoc_STRVAR(math_frexp__doc__,
-"frexp($module, x, /)\n"
+"frexp($module, __x)\n"
 "--\n"
 "\n"
 "Return the mantissa and exponent of x, as pair (m, e).\n"
@@ -119,7 +119,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_ldexp__doc__,
-"ldexp($module, x, i, /)\n"
+"ldexp($module, __x, __i)\n"
 "--\n"
 "\n"
 "Return x * (2**i).\n"
@@ -154,7 +154,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_modf__doc__,
-"modf($module, x, /)\n"
+"modf($module, __x)\n"
 "--\n"
 "\n"
 "Return the fractional and integer parts of x.\n"
@@ -227,7 +227,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_log2__doc__,
-"log2($module, x, /)\n"
+"log2($module, __x)\n"
 "--\n"
 "\n"
 "Return the base 2 logarithm of x.");
@@ -236,7 +236,7 @@ PyDoc_STRVAR(math_log2__doc__,
     {"log2", (PyCFunction)math_log2, METH_O, math_log2__doc__},
 
 PyDoc_STRVAR(math_log10__doc__,
-"log10($module, x, /)\n"
+"log10($module, __x)\n"
 "--\n"
 "\n"
 "Return the base 10 logarithm of x.");
@@ -245,7 +245,7 @@ PyDoc_STRVAR(math_log10__doc__,
     {"log10", (PyCFunction)math_log10, METH_O, math_log10__doc__},
 
 PyDoc_STRVAR(math_fmod__doc__,
-"fmod($module, x, y, /)\n"
+"fmod($module, __x, __y)\n"
 "--\n"
 "\n"
 "Return fmod(x, y), according to platform C.\n"
@@ -283,7 +283,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_dist__doc__,
-"dist($module, p, q, /)\n"
+"dist($module, __p, __q)\n"
 "--\n"
 "\n"
 "Return the Euclidean distance between two points p and q.\n"
@@ -327,7 +327,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_pow__doc__,
-"pow($module, x, y, /)\n"
+"pow($module, __x, __y)\n"
 "--\n"
 "\n"
 "Return x**y (x to the power of y).");
@@ -363,7 +363,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_degrees__doc__,
-"degrees($module, x, /)\n"
+"degrees($module, __x)\n"
 "--\n"
 "\n"
 "Convert angle x from radians to degrees.");
@@ -391,7 +391,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_radians__doc__,
-"radians($module, x, /)\n"
+"radians($module, __x)\n"
 "--\n"
 "\n"
 "Convert angle x from degrees to radians.");
@@ -419,7 +419,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_isfinite__doc__,
-"isfinite($module, x, /)\n"
+"isfinite($module, __x)\n"
 "--\n"
 "\n"
 "Return True if x is neither an infinity nor a NaN, and False otherwise.");
@@ -447,7 +447,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_isnan__doc__,
-"isnan($module, x, /)\n"
+"isnan($module, __x)\n"
 "--\n"
 "\n"
 "Return True if x is a NaN (not a number), and False otherwise.");
@@ -475,7 +475,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_isinf__doc__,
-"isinf($module, x, /)\n"
+"isinf($module, __x)\n"
 "--\n"
 "\n"
 "Return True if x is a positive or negative infinity, and False otherwise.");
@@ -503,7 +503,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_isclose__doc__,
-"isclose($module, /, a, b, *, rel_tol=1e-09, abs_tol=0.0)\n"
+"isclose($module, a, b, *, rel_tol=1e-09, abs_tol=0.0)\n"
 "--\n"
 "\n"
 "Determine whether two floating point numbers are close in value.\n"
@@ -585,7 +585,7 @@ exit:
 }
 
 PyDoc_STRVAR(math_prod__doc__,
-"prod($module, iterable, /, *, start=1)\n"
+"prod($module, __iterable, *, start=1)\n"
 "--\n"
 "\n"
 "Calculate the product of all the elements in the input iterable.\n"
@@ -628,4 +628,4 @@ skip_optional_kwonly:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=96e71135dce41c48 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=6e71a2f2e6ae2028 input=a9049054013a1b77]*/

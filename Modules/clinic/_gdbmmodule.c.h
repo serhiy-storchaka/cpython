@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_gdbm_gdbm_get__doc__,
-"get($self, key, default=None, /)\n"
+"get($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Get the value for key, or default if not present.");
@@ -37,7 +37,7 @@ exit:
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_setdefault__doc__,
-"setdefault($self, key, default=None, /)\n"
+"setdefault($self, __key, __default=None)\n"
 "--\n"
 "\n"
 "Get value for key, or set it to default and return default if not present.");
@@ -72,7 +72,7 @@ exit:
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Close the database.");
@@ -90,7 +90,7 @@ _gdbm_gdbm_close(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_keys__doc__,
-"keys($self, /)\n"
+"keys($self)\n"
 "--\n"
 "\n"
 "Get a list of all keys in the database.");
@@ -108,7 +108,7 @@ _gdbm_gdbm_keys(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_firstkey__doc__,
-"firstkey($self, /)\n"
+"firstkey($self)\n"
 "--\n"
 "\n"
 "Return the starting key for the traversal.\n"
@@ -130,7 +130,7 @@ _gdbm_gdbm_firstkey(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_nextkey__doc__,
-"nextkey($self, key, /)\n"
+"nextkey($self, __key)\n"
 "--\n"
 "\n"
 "Returns the key that follows key in the traversal.\n"
@@ -167,7 +167,7 @@ exit:
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_reorganize__doc__,
-"reorganize($self, /)\n"
+"reorganize($self)\n"
 "--\n"
 "\n"
 "Reorganize the database.\n"
@@ -191,7 +191,7 @@ _gdbm_gdbm_reorganize(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_gdbm_gdbm_sync__doc__,
-"sync($self, /)\n"
+"sync($self)\n"
 "--\n"
 "\n"
 "Flush the database to the disk file.\n"
@@ -212,7 +212,7 @@ _gdbm_gdbm_sync(dbmobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(dbmopen__doc__,
-"open($module, filename, flags=\'r\', mode=0o666, /)\n"
+"open($module, __filename, __flags=\'r\', __mode=0o666)\n"
 "--\n"
 "\n"
 "Open a dbm database and return a dbm object.\n"
@@ -298,4 +298,4 @@ skip_optional:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=0a72598e5a3acd60 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=1da7a1411a7e814d input=a9049054013a1b77]*/

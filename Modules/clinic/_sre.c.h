@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_sre_getcodesize__doc__,
-"getcodesize($module, /)\n"
+"getcodesize($module)\n"
 "--\n"
 "\n");
 
@@ -30,7 +30,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_ascii_iscased__doc__,
-"ascii_iscased($module, character, /)\n"
+"ascii_iscased($module, __character)\n"
 "--\n"
 "\n");
 
@@ -67,7 +67,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_unicode_iscased__doc__,
-"unicode_iscased($module, character, /)\n"
+"unicode_iscased($module, __character)\n"
 "--\n"
 "\n");
 
@@ -104,7 +104,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_ascii_tolower__doc__,
-"ascii_tolower($module, character, /)\n"
+"ascii_tolower($module, __character)\n"
 "--\n"
 "\n");
 
@@ -141,7 +141,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_unicode_tolower__doc__,
-"unicode_tolower($module, character, /)\n"
+"unicode_tolower($module, __character)\n"
 "--\n"
 "\n");
 
@@ -178,7 +178,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_match__doc__,
-"match($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"match($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n"
 "Matches zero or more characters at the beginning of the string.");
@@ -257,7 +257,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_fullmatch__doc__,
-"fullmatch($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"fullmatch($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n"
 "Matches against all of the string.");
@@ -336,7 +336,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_search__doc__,
-"search($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"search($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n"
 "Scan through string looking for a match, and return a corresponding match object instance.\n"
@@ -417,7 +417,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_findall__doc__,
-"findall($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"findall($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n"
 "Return a list of all non-overlapping matches of pattern in string.");
@@ -496,7 +496,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_finditer__doc__,
-"finditer($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"finditer($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n"
 "Return an iterator over all non-overlapping matches for the RE pattern in string.\n"
@@ -577,7 +577,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_scanner__doc__,
-"scanner($self, /, string, pos=0, endpos=sys.maxsize)\n"
+"scanner($self, string, pos=0, endpos=sys.maxsize)\n"
 "--\n"
 "\n");
 
@@ -655,7 +655,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_split__doc__,
-"split($self, /, string, maxsplit=0)\n"
+"split($self, string, maxsplit=0)\n"
 "--\n"
 "\n"
 "Split string by the occurrences of pattern.");
@@ -711,7 +711,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_sub__doc__,
-"sub($self, /, repl, string, count=0)\n"
+"sub($self, repl, string, count=0)\n"
 "--\n"
 "\n"
 "Return the string obtained by replacing the leftmost non-overlapping occurrences of pattern in string by the replacement repl.");
@@ -769,7 +769,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern_subn__doc__,
-"subn($self, /, repl, string, count=0)\n"
+"subn($self, repl, string, count=0)\n"
 "--\n"
 "\n"
 "Return the tuple (new_string, number_of_subs_made) found by replacing the leftmost non-overlapping occurrences of pattern with the replacement repl.");
@@ -827,7 +827,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n");
 
@@ -844,7 +844,7 @@ _sre_SRE_Pattern___copy__(PatternObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sre_SRE_Pattern___deepcopy____doc__,
-"__deepcopy__($self, memo, /)\n"
+"__deepcopy__($self, __memo)\n"
 "--\n"
 "\n");
 
@@ -852,8 +852,7 @@ PyDoc_STRVAR(_sre_SRE_Pattern___deepcopy____doc__,
     {"__deepcopy__", (PyCFunction)_sre_SRE_Pattern___deepcopy__, METH_O, _sre_SRE_Pattern___deepcopy____doc__},
 
 PyDoc_STRVAR(_sre_compile__doc__,
-"compile($module, /, pattern, flags, code, groups, groupindex,\n"
-"        indexgroup)\n"
+"compile($module, pattern, flags, code, groups, groupindex, indexgroup)\n"
 "--\n"
 "\n");
 
@@ -932,7 +931,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_expand__doc__,
-"expand($self, /, template)\n"
+"expand($self, template)\n"
 "--\n"
 "\n"
 "Return the string obtained by doing backslash substitution on the string template, as done by the sub() method.");
@@ -964,7 +963,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_groups__doc__,
-"groups($self, /, default=None)\n"
+"groups($self, default=None)\n"
 "--\n"
 "\n"
 "Return a tuple containing all the subgroups of the match, from 1.\n"
@@ -1004,7 +1003,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_groupdict__doc__,
-"groupdict($self, /, default=None)\n"
+"groupdict($self, default=None)\n"
 "--\n"
 "\n"
 "Return a dictionary containing all the named subgroups of the match, keyed by the subgroup name.\n"
@@ -1044,7 +1043,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_start__doc__,
-"start($self, group=0, /)\n"
+"start($self, __group=0)\n"
 "--\n"
 "\n"
 "Return index of the start of the substring matched by group.");
@@ -1081,7 +1080,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_end__doc__,
-"end($self, group=0, /)\n"
+"end($self, __group=0)\n"
 "--\n"
 "\n"
 "Return index of the end of the substring matched by group.");
@@ -1118,7 +1117,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match_span__doc__,
-"span($self, group=0, /)\n"
+"span($self, __group=0)\n"
 "--\n"
 "\n"
 "For match object m, return the 2-tuple (m.start(group), m.end(group)).");
@@ -1150,7 +1149,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_SRE_Match___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n");
 
@@ -1167,7 +1166,7 @@ _sre_SRE_Match___copy__(MatchObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sre_SRE_Match___deepcopy____doc__,
-"__deepcopy__($self, memo, /)\n"
+"__deepcopy__($self, __memo)\n"
 "--\n"
 "\n");
 
@@ -1175,7 +1174,7 @@ PyDoc_STRVAR(_sre_SRE_Match___deepcopy____doc__,
     {"__deepcopy__", (PyCFunction)_sre_SRE_Match___deepcopy__, METH_O, _sre_SRE_Match___deepcopy____doc__},
 
 PyDoc_STRVAR(_sre_SRE_Scanner_match__doc__,
-"match($self, /)\n"
+"match($self)\n"
 "--\n"
 "\n");
 
@@ -1192,7 +1191,7 @@ _sre_SRE_Scanner_match(ScannerObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_sre_SRE_Scanner_search__doc__,
-"search($self, /)\n"
+"search($self)\n"
 "--\n"
 "\n");
 
@@ -1207,4 +1206,4 @@ _sre_SRE_Scanner_search(ScannerObject *self, PyObject *Py_UNUSED(ignored))
 {
     return _sre_SRE_Scanner_search_impl(self);
 }
-/*[clinic end generated code: output=67b702da5bdc9cac input=a9049054013a1b77]*/
+/*[clinic end generated code: output=4f308f0f4c0f3758 input=a9049054013a1b77]*/

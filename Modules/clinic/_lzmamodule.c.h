@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_lzma_LZMACompressor_compress__doc__,
-"compress($self, data, /)\n"
+"compress($self, __data)\n"
 "--\n"
 "\n"
 "Provide data to the compressor object.\n"
@@ -44,7 +44,7 @@ exit:
 }
 
 PyDoc_STRVAR(_lzma_LZMACompressor_flush__doc__,
-"flush($self, /)\n"
+"flush($self)\n"
 "--\n"
 "\n"
 "Finish the compression process.\n"
@@ -66,7 +66,7 @@ _lzma_LZMACompressor_flush(Compressor *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_lzma_LZMADecompressor_decompress__doc__,
-"decompress($self, /, data, max_length=-1)\n"
+"decompress($self, data, max_length=-1)\n"
 "--\n"
 "\n"
 "Decompress *data*, returning uncompressed data as bytes.\n"
@@ -222,7 +222,7 @@ exit:
 }
 
 PyDoc_STRVAR(_lzma_is_check_supported__doc__,
-"is_check_supported($module, check_id, /)\n"
+"is_check_supported($module, __check_id)\n"
 "--\n"
 "\n"
 "Test whether the given integrity check is supported.\n"
@@ -257,7 +257,7 @@ exit:
 }
 
 PyDoc_STRVAR(_lzma__encode_filter_properties__doc__,
-"_encode_filter_properties($module, filter, /)\n"
+"_encode_filter_properties($module, __filter)\n"
 "--\n"
 "\n"
 "Return a bytes object encoding the options (properties) of the filter specified by *filter* (a dict).\n"
@@ -290,7 +290,7 @@ exit:
 }
 
 PyDoc_STRVAR(_lzma__decode_filter_properties__doc__,
-"_decode_filter_properties($module, filter_id, encoded_props, /)\n"
+"_decode_filter_properties($module, __filter_id, __encoded_props)\n"
 "--\n"
 "\n"
 "Return a bytes object encoding the options (properties) of the filter specified by *filter* (a dict).\n"
@@ -334,4 +334,4 @@ exit:
 
     return return_value;
 }
-/*[clinic end generated code: output=1a290aa478603107 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=ddb80bad824dd66b input=a9049054013a1b77]*/

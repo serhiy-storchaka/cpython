@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_codecs_register__doc__,
-"register($module, search_function, /)\n"
+"register($module, __search_function)\n"
 "--\n"
 "\n"
 "Register a codec search function.\n"
@@ -16,7 +16,7 @@ PyDoc_STRVAR(_codecs_register__doc__,
     {"register", (PyCFunction)_codecs_register, METH_O, _codecs_register__doc__},
 
 PyDoc_STRVAR(_codecs_lookup__doc__,
-"lookup($module, encoding, /)\n"
+"lookup($module, __encoding)\n"
 "--\n"
 "\n"
 "Looks up a codec tuple in the Python codec registry and returns a CodecInfo object.");
@@ -53,7 +53,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_encode__doc__,
-"encode($module, /, obj, encoding=\'utf-8\', errors=\'strict\')\n"
+"encode($module, obj, encoding=\'utf-8\', errors=\'strict\')\n"
 "--\n"
 "\n"
 "Encodes obj using the codec registered for encoding.\n"
@@ -130,7 +130,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_decode__doc__,
-"decode($module, /, obj, encoding=\'utf-8\', errors=\'strict\')\n"
+"decode($module, obj, encoding=\'utf-8\', errors=\'strict\')\n"
 "--\n"
 "\n"
 "Decodes obj using the codec registered for encoding.\n"
@@ -207,7 +207,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs__forget_codec__doc__,
-"_forget_codec($module, encoding, /)\n"
+"_forget_codec($module, __encoding)\n"
 "--\n"
 "\n"
 "Purge the named codec from the internal codec lookup cache");
@@ -244,7 +244,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_escape_decode__doc__,
-"escape_decode($module, data, errors=None, /)\n"
+"escape_decode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -316,7 +316,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_escape_encode__doc__,
-"escape_encode($module, data, errors=None, /)\n"
+"escape_encode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -371,7 +371,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_7_decode__doc__,
-"utf_7_decode($module, data, errors=None, final=False, /)\n"
+"utf_7_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -446,7 +446,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_8_decode__doc__,
-"utf_8_decode($module, data, errors=None, final=False, /)\n"
+"utf_8_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -521,7 +521,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_decode__doc__,
-"utf_16_decode($module, data, errors=None, final=False, /)\n"
+"utf_16_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -596,7 +596,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_le_decode__doc__,
-"utf_16_le_decode($module, data, errors=None, final=False, /)\n"
+"utf_16_le_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -671,7 +671,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_be_decode__doc__,
-"utf_16_be_decode($module, data, errors=None, final=False, /)\n"
+"utf_16_be_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -746,8 +746,8 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_ex_decode__doc__,
-"utf_16_ex_decode($module, data, errors=None, byteorder=0, final=False,\n"
-"                 /)\n"
+"utf_16_ex_decode($module, __data, __errors=None, __byteorder=0,\n"
+"                 __final=False)\n"
 "--\n"
 "\n");
 
@@ -835,7 +835,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_decode__doc__,
-"utf_32_decode($module, data, errors=None, final=False, /)\n"
+"utf_32_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -910,7 +910,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_le_decode__doc__,
-"utf_32_le_decode($module, data, errors=None, final=False, /)\n"
+"utf_32_le_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -985,7 +985,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_be_decode__doc__,
-"utf_32_be_decode($module, data, errors=None, final=False, /)\n"
+"utf_32_be_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -1060,8 +1060,8 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_ex_decode__doc__,
-"utf_32_ex_decode($module, data, errors=None, byteorder=0, final=False,\n"
-"                 /)\n"
+"utf_32_ex_decode($module, __data, __errors=None, __byteorder=0,\n"
+"                 __final=False)\n"
 "--\n"
 "\n");
 
@@ -1149,7 +1149,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_unicode_escape_decode__doc__,
-"unicode_escape_decode($module, data, errors=None, /)\n"
+"unicode_escape_decode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1221,7 +1221,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_raw_unicode_escape_decode__doc__,
-"raw_unicode_escape_decode($module, data, errors=None, /)\n"
+"raw_unicode_escape_decode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1293,7 +1293,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_latin_1_decode__doc__,
-"latin_1_decode($module, data, errors=None, /)\n"
+"latin_1_decode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1355,7 +1355,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_ascii_decode__doc__,
-"ascii_decode($module, data, errors=None, /)\n"
+"ascii_decode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1417,7 +1417,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_charmap_decode__doc__,
-"charmap_decode($module, data, errors=None, mapping=None, /)\n"
+"charmap_decode($module, __data, __errors=None, __mapping=None)\n"
 "--\n"
 "\n");
 
@@ -1486,7 +1486,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_mbcs_decode__doc__,
-"mbcs_decode($module, data, errors=None, final=False, /)\n"
+"mbcs_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -1565,7 +1565,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_oem_decode__doc__,
-"oem_decode($module, data, errors=None, final=False, /)\n"
+"oem_decode($module, __data, __errors=None, __final=False)\n"
 "--\n"
 "\n");
 
@@ -1644,7 +1644,8 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_code_page_decode__doc__,
-"code_page_decode($module, codepage, data, errors=None, final=False, /)\n"
+"code_page_decode($module, __codepage, __data, __errors=None,\n"
+"                 __final=False)\n"
 "--\n"
 "\n");
 
@@ -1731,7 +1732,7 @@ exit:
 #endif /* defined(MS_WINDOWS) */
 
 PyDoc_STRVAR(_codecs_readbuffer_encode__doc__,
-"readbuffer_encode($module, data, errors=None, /)\n"
+"readbuffer_encode($module, __data, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1803,7 +1804,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_7_encode__doc__,
-"utf_7_encode($module, str, errors=None, /)\n"
+"utf_7_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1861,7 +1862,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_8_encode__doc__,
-"utf_8_encode($module, str, errors=None, /)\n"
+"utf_8_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -1919,7 +1920,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_encode__doc__,
-"utf_16_encode($module, str, errors=None, byteorder=0, /)\n"
+"utf_16_encode($module, __str, __errors=None, __byteorder=0)\n"
 "--\n"
 "\n");
 
@@ -1990,7 +1991,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_le_encode__doc__,
-"utf_16_le_encode($module, str, errors=None, /)\n"
+"utf_16_le_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2048,7 +2049,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_16_be_encode__doc__,
-"utf_16_be_encode($module, str, errors=None, /)\n"
+"utf_16_be_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2106,7 +2107,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_encode__doc__,
-"utf_32_encode($module, str, errors=None, byteorder=0, /)\n"
+"utf_32_encode($module, __str, __errors=None, __byteorder=0)\n"
 "--\n"
 "\n");
 
@@ -2177,7 +2178,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_le_encode__doc__,
-"utf_32_le_encode($module, str, errors=None, /)\n"
+"utf_32_le_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2235,7 +2236,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_utf_32_be_encode__doc__,
-"utf_32_be_encode($module, str, errors=None, /)\n"
+"utf_32_be_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2293,7 +2294,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_unicode_escape_encode__doc__,
-"unicode_escape_encode($module, str, errors=None, /)\n"
+"unicode_escape_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2351,7 +2352,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_raw_unicode_escape_encode__doc__,
-"raw_unicode_escape_encode($module, str, errors=None, /)\n"
+"raw_unicode_escape_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2409,7 +2410,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_latin_1_encode__doc__,
-"latin_1_encode($module, str, errors=None, /)\n"
+"latin_1_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2467,7 +2468,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_ascii_encode__doc__,
-"ascii_encode($module, str, errors=None, /)\n"
+"ascii_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2525,7 +2526,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_charmap_encode__doc__,
-"charmap_encode($module, str, errors=None, mapping=None, /)\n"
+"charmap_encode($module, __str, __errors=None, __mapping=None)\n"
 "--\n"
 "\n");
 
@@ -2588,7 +2589,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_charmap_build__doc__,
-"charmap_build($module, map, /)\n"
+"charmap_build($module, __map)\n"
 "--\n"
 "\n");
 
@@ -2621,7 +2622,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_mbcs_encode__doc__,
-"mbcs_encode($module, str, errors=None, /)\n"
+"mbcs_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2682,7 +2683,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_oem_encode__doc__,
-"oem_encode($module, str, errors=None, /)\n"
+"oem_encode($module, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2743,7 +2744,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(_codecs_code_page_encode__doc__,
-"code_page_encode($module, code_page, str, errors=None, /)\n"
+"code_page_encode($module, __code_page, __str, __errors=None)\n"
 "--\n"
 "\n");
 
@@ -2813,7 +2814,7 @@ exit:
 #endif /* defined(MS_WINDOWS) */
 
 PyDoc_STRVAR(_codecs_register_error__doc__,
-"register_error($module, errors, handler, /)\n"
+"register_error($module, __errors, __handler)\n"
 "--\n"
 "\n"
 "Register the specified error handler under the name errors.\n"
@@ -2860,7 +2861,7 @@ exit:
 }
 
 PyDoc_STRVAR(_codecs_lookup_error__doc__,
-"lookup_error($module, name, /)\n"
+"lookup_error($module, __name)\n"
 "--\n"
 "\n"
 "lookup_error(errors) -> handler\n"
@@ -2922,4 +2923,4 @@ exit:
 #ifndef _CODECS_CODE_PAGE_ENCODE_METHODDEF
     #define _CODECS_CODE_PAGE_ENCODE_METHODDEF
 #endif /* !defined(_CODECS_CODE_PAGE_ENCODE_METHODDEF) */
-/*[clinic end generated code: output=da3c47709a55a05e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=c06383ab29cd1f48 input=a9049054013a1b77]*/

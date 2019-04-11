@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_elementtree_Element_append__doc__,
-"append($self, subelement, /)\n"
+"append($self, __subelement)\n"
 "--\n"
 "\n");
 
@@ -31,7 +31,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_clear__doc__,
-"clear($self, /)\n"
+"clear($self)\n"
 "--\n"
 "\n");
 
@@ -48,7 +48,7 @@ _elementtree_Element_clear(ElementObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_elementtree_Element___copy____doc__,
-"__copy__($self, /)\n"
+"__copy__($self)\n"
 "--\n"
 "\n");
 
@@ -65,7 +65,7 @@ _elementtree_Element___copy__(ElementObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_elementtree_Element___deepcopy____doc__,
-"__deepcopy__($self, memo, /)\n"
+"__deepcopy__($self, __memo)\n"
 "--\n"
 "\n");
 
@@ -93,7 +93,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n");
 
@@ -120,7 +120,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element___getstate____doc__,
-"__getstate__($self, /)\n"
+"__getstate__($self)\n"
 "--\n"
 "\n");
 
@@ -137,7 +137,7 @@ _elementtree_Element___getstate__(ElementObject *self, PyObject *Py_UNUSED(ignor
 }
 
 PyDoc_STRVAR(_elementtree_Element___setstate____doc__,
-"__setstate__($self, state, /)\n"
+"__setstate__($self, __state)\n"
 "--\n"
 "\n");
 
@@ -145,7 +145,7 @@ PyDoc_STRVAR(_elementtree_Element___setstate____doc__,
     {"__setstate__", (PyCFunction)_elementtree_Element___setstate__, METH_O, _elementtree_Element___setstate____doc__},
 
 PyDoc_STRVAR(_elementtree_Element_extend__doc__,
-"extend($self, elements, /)\n"
+"extend($self, __elements)\n"
 "--\n"
 "\n");
 
@@ -153,7 +153,7 @@ PyDoc_STRVAR(_elementtree_Element_extend__doc__,
     {"extend", (PyCFunction)_elementtree_Element_extend, METH_O, _elementtree_Element_extend__doc__},
 
 PyDoc_STRVAR(_elementtree_Element_find__doc__,
-"find($self, /, path, namespaces=None)\n"
+"find($self, path, namespaces=None)\n"
 "--\n"
 "\n");
 
@@ -192,7 +192,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_findtext__doc__,
-"findtext($self, /, path, default=None, namespaces=None)\n"
+"findtext($self, path, default=None, namespaces=None)\n"
 "--\n"
 "\n");
 
@@ -239,7 +239,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_findall__doc__,
-"findall($self, /, path, namespaces=None)\n"
+"findall($self, path, namespaces=None)\n"
 "--\n"
 "\n");
 
@@ -278,7 +278,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_iterfind__doc__,
-"iterfind($self, /, path, namespaces=None)\n"
+"iterfind($self, path, namespaces=None)\n"
 "--\n"
 "\n");
 
@@ -317,7 +317,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_get__doc__,
-"get($self, /, key, default=None)\n"
+"get($self, key, default=None)\n"
 "--\n"
 "\n");
 
@@ -356,7 +356,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_getchildren__doc__,
-"getchildren($self, /)\n"
+"getchildren($self)\n"
 "--\n"
 "\n");
 
@@ -373,7 +373,7 @@ _elementtree_Element_getchildren(ElementObject *self, PyObject *Py_UNUSED(ignore
 }
 
 PyDoc_STRVAR(_elementtree_Element_iter__doc__,
-"iter($self, /, tag=None)\n"
+"iter($self, tag=None)\n"
 "--\n"
 "\n");
 
@@ -409,7 +409,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_getiterator__doc__,
-"getiterator($self, /, tag=None)\n"
+"getiterator($self, tag=None)\n"
 "--\n"
 "\n");
 
@@ -445,7 +445,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_itertext__doc__,
-"itertext($self, /)\n"
+"itertext($self)\n"
 "--\n"
 "\n");
 
@@ -462,7 +462,7 @@ _elementtree_Element_itertext(ElementObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_elementtree_Element_insert__doc__,
-"insert($self, index, subelement, /)\n"
+"insert($self, __index, __subelement)\n"
 "--\n"
 "\n");
 
@@ -512,7 +512,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_items__doc__,
-"items($self, /)\n"
+"items($self)\n"
 "--\n"
 "\n");
 
@@ -529,7 +529,7 @@ _elementtree_Element_items(ElementObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_elementtree_Element_keys__doc__,
-"keys($self, /)\n"
+"keys($self)\n"
 "--\n"
 "\n");
 
@@ -546,7 +546,7 @@ _elementtree_Element_keys(ElementObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_elementtree_Element_makeelement__doc__,
-"makeelement($self, tag, attrib, /)\n"
+"makeelement($self, __tag, __attrib)\n"
 "--\n"
 "\n");
 
@@ -576,7 +576,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_remove__doc__,
-"remove($self, subelement, /)\n"
+"remove($self, __subelement)\n"
 "--\n"
 "\n");
 
@@ -604,7 +604,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_Element_set__doc__,
-"set($self, key, value, /)\n"
+"set($self, __key, __value)\n"
 "--\n"
 "\n");
 
@@ -665,7 +665,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_TreeBuilder_data__doc__,
-"data($self, data, /)\n"
+"data($self, __data)\n"
 "--\n"
 "\n");
 
@@ -673,7 +673,7 @@ PyDoc_STRVAR(_elementtree_TreeBuilder_data__doc__,
     {"data", (PyCFunction)_elementtree_TreeBuilder_data, METH_O, _elementtree_TreeBuilder_data__doc__},
 
 PyDoc_STRVAR(_elementtree_TreeBuilder_end__doc__,
-"end($self, tag, /)\n"
+"end($self, __tag)\n"
 "--\n"
 "\n");
 
@@ -681,7 +681,7 @@ PyDoc_STRVAR(_elementtree_TreeBuilder_end__doc__,
     {"end", (PyCFunction)_elementtree_TreeBuilder_end, METH_O, _elementtree_TreeBuilder_end__doc__},
 
 PyDoc_STRVAR(_elementtree_TreeBuilder_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n");
 
@@ -698,7 +698,7 @@ _elementtree_TreeBuilder_close(TreeBuilderObject *self, PyObject *Py_UNUSED(igno
 }
 
 PyDoc_STRVAR(_elementtree_TreeBuilder_start__doc__,
-"start($self, tag, attrs=None, /)\n"
+"start($self, __tag, __attrs=None)\n"
 "--\n"
 "\n");
 
@@ -787,7 +787,7 @@ exit:
 }
 
 PyDoc_STRVAR(_elementtree_XMLParser_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n");
 
@@ -804,7 +804,7 @@ _elementtree_XMLParser_close(XMLParserObject *self, PyObject *Py_UNUSED(ignored)
 }
 
 PyDoc_STRVAR(_elementtree_XMLParser_feed__doc__,
-"feed($self, data, /)\n"
+"feed($self, __data)\n"
 "--\n"
 "\n");
 
@@ -812,7 +812,7 @@ PyDoc_STRVAR(_elementtree_XMLParser_feed__doc__,
     {"feed", (PyCFunction)_elementtree_XMLParser_feed, METH_O, _elementtree_XMLParser_feed__doc__},
 
 PyDoc_STRVAR(_elementtree_XMLParser__parse_whole__doc__,
-"_parse_whole($self, file, /)\n"
+"_parse_whole($self, __file)\n"
 "--\n"
 "\n");
 
@@ -820,7 +820,7 @@ PyDoc_STRVAR(_elementtree_XMLParser__parse_whole__doc__,
     {"_parse_whole", (PyCFunction)_elementtree_XMLParser__parse_whole, METH_O, _elementtree_XMLParser__parse_whole__doc__},
 
 PyDoc_STRVAR(_elementtree_XMLParser__setevents__doc__,
-"_setevents($self, events_queue, events_to_report=None, /)\n"
+"_setevents($self, __events_queue, __events_to_report=None)\n"
 "--\n"
 "\n");
 
@@ -853,4 +853,4 @@ skip_optional:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=440b5d90a4b86590 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=70482e6c5dda0623 input=a9049054013a1b77]*/

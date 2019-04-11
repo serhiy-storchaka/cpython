@@ -3764,6 +3764,16 @@ too_many_positional(PyCodeObject *co, Py_ssize_t given, Py_ssize_t defcount,
     Py_DECREF(kwonly_sig);
 }
 
+/* Check if the name starts from the double underscores. */
+
+static int
+is_dunder(PyObject *name)
+{
+    return (PyUnicode_GET_LENGTH(name) >= 2
+        && PyUnicode_READ_CHAR(name, 0) == '_'
+        && PyUnicode_READ_CHAR(name, 1) == '_');
+}
+
 /* This is gonna seem *real weird*, but if you put some other code between
    PyEval_EvalFrame() and _PyEval_EvalFrameDefault() you will need to adjust
    the test in the if statements in Misc/gdbinit (pystack and pystackv). */
@@ -3855,29 +3865,31 @@ _PyEval_EvalCodeWithName(PyObject *_co, PyObject *globals, PyObject *locals,
             goto fail;
         }
 
-        /* Speed hack: do raw pointer compares. As names are
-           normally interned this should almost always hit. */
-        co_varnames = ((PyTupleObject *)(co->co_varnames))->ob_item;
-        for (j = 0; j < total_args; j++) {
-            PyObject *name = co_varnames[j];
-            if (name == keyword) {
-                goto kw_found;
+        if (!is_dunder(keyword)) {
+            /* Speed hack: do raw pointer compares. As names are
+               normally interned this should almost always hit. */
+            co_varnames = ((PyTupleObject *)(co->co_varnames))->ob_item;
+            for (j = 0; j < total_args; j++) {
+                PyObject *name = co_varnames[j];
+                if (name == keyword) {
+                    goto kw_found;
+                }
             }
+
+            /* Slow fallback, just in case */
+            for (j = 0; j < total_args; j++) {
+                PyObject *name = co_varnames[j];
+                int cmp = PyObject_RichCompareBool( keyword, name, Py_EQ);
+                if (cmp > 0) {
+                    goto kw_found;
+                }
+                else if (cmp < 0) {
+                    goto fail;
+                }
+            }
+            assert(j >= total_args);
         }
 
-        /* Slow fallback, just in case */
-        for (j = 0; j < total_args; j++) {
-            PyObject *name = co_varnames[j];
-            int cmp = PyObject_RichCompareBool( keyword, name, Py_EQ);
-            if (cmp > 0) {
-                goto kw_found;
-            }
-            else if (cmp < 0) {
-                goto fail;
-            }
-        }
-
-        assert(j >= total_args);
         if (kwdict == NULL) {
             PyErr_Format(PyExc_TypeError,
                          "%U() got an unexpected keyword argument '%S'",

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(pyexpat_xmlparser_Parse__doc__,
-"Parse($self, data, isfinal=False, /)\n"
+"Parse($self, __data, __isfinal=False)\n"
 "--\n"
 "\n"
 "Parse XML data.\n"
@@ -48,7 +48,7 @@ exit:
 }
 
 PyDoc_STRVAR(pyexpat_xmlparser_ParseFile__doc__,
-"ParseFile($self, file, /)\n"
+"ParseFile($self, __file)\n"
 "--\n"
 "\n"
 "Parse XML data from file-like object.");
@@ -57,7 +57,7 @@ PyDoc_STRVAR(pyexpat_xmlparser_ParseFile__doc__,
     {"ParseFile", (PyCFunction)pyexpat_xmlparser_ParseFile, METH_O, pyexpat_xmlparser_ParseFile__doc__},
 
 PyDoc_STRVAR(pyexpat_xmlparser_SetBase__doc__,
-"SetBase($self, base, /)\n"
+"SetBase($self, __base)\n"
 "--\n"
 "\n"
 "Set the base URL for the parser.");
@@ -94,7 +94,7 @@ exit:
 }
 
 PyDoc_STRVAR(pyexpat_xmlparser_GetBase__doc__,
-"GetBase($self, /)\n"
+"GetBase($self)\n"
 "--\n"
 "\n"
 "Return base URL string for the parser.");
@@ -112,7 +112,7 @@ pyexpat_xmlparser_GetBase(xmlparseobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(pyexpat_xmlparser_GetInputContext__doc__,
-"GetInputContext($self, /)\n"
+"GetInputContext($self)\n"
 "--\n"
 "\n"
 "Return the untranslated text of the input that caused the current event.\n"
@@ -133,7 +133,7 @@ pyexpat_xmlparser_GetInputContext(xmlparseobject *self, PyObject *Py_UNUSED(igno
 }
 
 PyDoc_STRVAR(pyexpat_xmlparser_ExternalEntityParserCreate__doc__,
-"ExternalEntityParserCreate($self, context, encoding=None, /)\n"
+"ExternalEntityParserCreate($self, __context, __encoding=None)\n"
 "--\n"
 "\n"
 "Create a parser for parsing an external entity based on the information passed to the ExternalEntityRefHandler.");
@@ -198,7 +198,7 @@ exit:
 }
 
 PyDoc_STRVAR(pyexpat_xmlparser_SetParamEntityParsing__doc__,
-"SetParamEntityParsing($self, flag, /)\n"
+"SetParamEntityParsing($self, __flag)\n"
 "--\n"
 "\n"
 "Controls parsing of parameter entities (including the external DTD subset).\n"
@@ -238,7 +238,7 @@ exit:
 #if (XML_COMBINED_VERSION >= 19505)
 
 PyDoc_STRVAR(pyexpat_xmlparser_UseForeignDTD__doc__,
-"UseForeignDTD($self, flag=True, /)\n"
+"UseForeignDTD($self, __flag=True)\n"
 "--\n"
 "\n"
 "Allows the application to provide an artificial external subset if one is not specified as part of the document instance.\n"
@@ -279,7 +279,7 @@ exit:
 #endif /* (XML_COMBINED_VERSION >= 19505) */
 
 PyDoc_STRVAR(pyexpat_ParserCreate__doc__,
-"ParserCreate($module, /, encoding=None, namespace_separator=None,\n"
+"ParserCreate($module, encoding=None, namespace_separator=None,\n"
 "             intern=None)\n"
 "--\n"
 "\n"
@@ -366,7 +366,7 @@ exit:
 }
 
 PyDoc_STRVAR(pyexpat_ErrorString__doc__,
-"ErrorString($module, code, /)\n"
+"ErrorString($module, __code)\n"
 "--\n"
 "\n"
 "Returns string error for given number.");
@@ -401,4 +401,4 @@ exit:
 #ifndef PYEXPAT_XMLPARSER_USEFOREIGNDTD_METHODDEF
     #define PYEXPAT_XMLPARSER_USEFOREIGNDTD_METHODDEF
 #endif /* !defined(PYEXPAT_XMLPARSER_USEFOREIGNDTD_METHODDEF) */
-/*[clinic end generated code: output=e48f37d326956bdd input=a9049054013a1b77]*/
+/*[clinic end generated code: output=460e65786190a9c1 input=a9049054013a1b77]*/

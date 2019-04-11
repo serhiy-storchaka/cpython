@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(resource_getrusage__doc__,
-"getrusage($module, who, /)\n"
+"getrusage($module, __who)\n"
 "--\n"
 "\n");
 
@@ -35,7 +35,7 @@ exit:
 }
 
 PyDoc_STRVAR(resource_getrlimit__doc__,
-"getrlimit($module, resource, /)\n"
+"getrlimit($module, __resource)\n"
 "--\n"
 "\n");
 
@@ -67,7 +67,7 @@ exit:
 }
 
 PyDoc_STRVAR(resource_setrlimit__doc__,
-"setrlimit($module, resource, limits, /)\n"
+"setrlimit($module, __resource, __limits)\n"
 "--\n"
 "\n");
 
@@ -149,7 +149,7 @@ exit:
 #endif /* defined(HAVE_PRLIMIT) */
 
 PyDoc_STRVAR(resource_getpagesize__doc__,
-"getpagesize($module, /)\n"
+"getpagesize($module)\n"
 "--\n"
 "\n");
 
@@ -178,4 +178,4 @@ exit:
 #ifndef RESOURCE_PRLIMIT_METHODDEF
     #define RESOURCE_PRLIMIT_METHODDEF
 #endif /* !defined(RESOURCE_PRLIMIT_METHODDEF) */
-/*[clinic end generated code: output=ef3034f291156a34 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=3a39fcc608b455c7 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_opcode_stack_effect__doc__,
-"stack_effect($module, opcode, oparg=None, /, *, jump=None)\n"
+"stack_effect($module, __opcode, __oparg=None, *, jump=None)\n"
 "--\n"
 "\n"
 "Compute the stack effect of the opcode.");
@@ -61,4 +61,4 @@ skip_optional_kwonly:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=7bc08f2835b2cf89 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=bc35eb4837d421d0 input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(os_stat__doc__,
-"stat($module, /, path, *, dir_fd=None, follow_symlinks=True)\n"
+"stat($module, path, *, dir_fd=None, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Perform a stat system call on the given path.\n"
@@ -78,7 +78,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_lstat__doc__,
-"lstat($module, /, path, *, dir_fd=None)\n"
+"lstat($module, path, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Perform a stat system call on the given path, without following symbolic links.\n"
@@ -127,7 +127,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_access__doc__,
-"access($module, /, path, mode, *, dir_fd=None, effective_ids=False,\n"
+"access($module, path, mode, *, dir_fd=None, effective_ids=False,\n"
 "       follow_symlinks=True)\n"
 "--\n"
 "\n"
@@ -237,7 +237,7 @@ exit:
 #if defined(HAVE_TTYNAME)
 
 PyDoc_STRVAR(os_ttyname__doc__,
-"ttyname($module, fd, /)\n"
+"ttyname($module, __fd)\n"
 "--\n"
 "\n"
 "Return the name of the terminal device connected to \'fd\'.\n"
@@ -277,7 +277,7 @@ exit:
 #if defined(HAVE_CTERMID)
 
 PyDoc_STRVAR(os_ctermid__doc__,
-"ctermid($module, /)\n"
+"ctermid($module)\n"
 "--\n"
 "\n"
 "Return the name of the controlling terminal for this process.");
@@ -297,7 +297,7 @@ os_ctermid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(HAVE_CTERMID) */
 
 PyDoc_STRVAR(os_chdir__doc__,
-"chdir($module, /, path)\n"
+"chdir($module, path)\n"
 "--\n"
 "\n"
 "Change the current working directory to the specified path.\n"
@@ -340,7 +340,7 @@ exit:
 #if defined(HAVE_FCHDIR)
 
 PyDoc_STRVAR(os_fchdir__doc__,
-"fchdir($module, /, fd)\n"
+"fchdir($module, fd)\n"
 "--\n"
 "\n"
 "Change to the directory of the given file descriptor.\n"
@@ -379,7 +379,7 @@ exit:
 #endif /* defined(HAVE_FCHDIR) */
 
 PyDoc_STRVAR(os_chmod__doc__,
-"chmod($module, /, path, mode, *, dir_fd=None, follow_symlinks=True)\n"
+"chmod($module, path, mode, *, dir_fd=None, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Change the access permissions of a file.\n"
@@ -468,7 +468,7 @@ exit:
 #if defined(HAVE_FCHMOD)
 
 PyDoc_STRVAR(os_fchmod__doc__,
-"fchmod($module, /, fd, mode)\n"
+"fchmod($module, fd, mode)\n"
 "--\n"
 "\n"
 "Change the access permissions of the file given by file descriptor fd.\n"
@@ -524,7 +524,7 @@ exit:
 #if defined(HAVE_LCHMOD)
 
 PyDoc_STRVAR(os_lchmod__doc__,
-"lchmod($module, /, path, mode)\n"
+"lchmod($module, path, mode)\n"
 "--\n"
 "\n"
 "Change the access permissions of a file, without following symbolic links.\n"
@@ -578,7 +578,7 @@ exit:
 #if defined(HAVE_CHFLAGS)
 
 PyDoc_STRVAR(os_chflags__doc__,
-"chflags($module, /, path, flags, follow_symlinks=True)\n"
+"chflags($module, path, flags, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Set file flags.\n"
@@ -642,7 +642,7 @@ exit:
 #if defined(HAVE_LCHFLAGS)
 
 PyDoc_STRVAR(os_lchflags__doc__,
-"lchflags($module, /, path, flags)\n"
+"lchflags($module, path, flags)\n"
 "--\n"
 "\n"
 "Set file flags.\n"
@@ -692,7 +692,7 @@ exit:
 #if defined(HAVE_CHROOT)
 
 PyDoc_STRVAR(os_chroot__doc__,
-"chroot($module, /, path)\n"
+"chroot($module, path)\n"
 "--\n"
 "\n"
 "Change root directory to path.");
@@ -733,7 +733,7 @@ exit:
 #if defined(HAVE_FSYNC)
 
 PyDoc_STRVAR(os_fsync__doc__,
-"fsync($module, /, fd)\n"
+"fsync($module, fd)\n"
 "--\n"
 "\n"
 "Force write of fd to disk.");
@@ -771,7 +771,7 @@ exit:
 #if defined(HAVE_SYNC)
 
 PyDoc_STRVAR(os_sync__doc__,
-"sync($module, /)\n"
+"sync($module)\n"
 "--\n"
 "\n"
 "Force write of everything to disk.");
@@ -793,7 +793,7 @@ os_sync(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_FDATASYNC)
 
 PyDoc_STRVAR(os_fdatasync__doc__,
-"fdatasync($module, /, fd)\n"
+"fdatasync($module, fd)\n"
 "--\n"
 "\n"
 "Force write of fd to disk without forcing update of metadata.");
@@ -831,7 +831,7 @@ exit:
 #if defined(HAVE_CHOWN)
 
 PyDoc_STRVAR(os_chown__doc__,
-"chown($module, /, path, uid, gid, *, dir_fd=None, follow_symlinks=True)\n"
+"chown($module, path, uid, gid, *, dir_fd=None, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Change the owner and group id of path to the numeric uid and gid.\\\n"
@@ -924,7 +924,7 @@ exit:
 #if defined(HAVE_FCHOWN)
 
 PyDoc_STRVAR(os_fchown__doc__,
-"fchown($module, /, fd, uid, gid)\n"
+"fchown($module, fd, uid, gid)\n"
 "--\n"
 "\n"
 "Change the owner and group id of the file specified by file descriptor.\n"
@@ -978,7 +978,7 @@ exit:
 #if defined(HAVE_LCHOWN)
 
 PyDoc_STRVAR(os_lchown__doc__,
-"lchown($module, /, path, uid, gid)\n"
+"lchown($module, path, uid, gid)\n"
 "--\n"
 "\n"
 "Change the owner and group id of path to the numeric uid and gid.\n"
@@ -1028,7 +1028,7 @@ exit:
 #endif /* defined(HAVE_LCHOWN) */
 
 PyDoc_STRVAR(os_getcwd__doc__,
-"getcwd($module, /)\n"
+"getcwd($module)\n"
 "--\n"
 "\n"
 "Return a unicode string representing the current working directory.");
@@ -1046,7 +1046,7 @@ os_getcwd(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(os_getcwdb__doc__,
-"getcwdb($module, /)\n"
+"getcwdb($module)\n"
 "--\n"
 "\n"
 "Return a bytes string representing the current working directory.");
@@ -1066,7 +1066,7 @@ os_getcwdb(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_LINK)
 
 PyDoc_STRVAR(os_link__doc__,
-"link($module, /, src, dst, *, src_dir_fd=None, dst_dir_fd=None,\n"
+"link($module, src, dst, *, src_dir_fd=None, dst_dir_fd=None,\n"
 "     follow_symlinks=True)\n"
 "--\n"
 "\n"
@@ -1151,7 +1151,7 @@ exit:
 #endif /* defined(HAVE_LINK) */
 
 PyDoc_STRVAR(os_listdir__doc__,
-"listdir($module, /, path=None)\n"
+"listdir($module, path=None)\n"
 "--\n"
 "\n"
 "Return a list containing the names of the files in the directory.\n"
@@ -1206,7 +1206,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__getfullpathname__doc__,
-"_getfullpathname($module, path, /)\n"
+"_getfullpathname($module, __path)\n"
 "--\n"
 "\n");
 
@@ -1239,7 +1239,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__getfinalpathname__doc__,
-"_getfinalpathname($module, path, /)\n"
+"_getfinalpathname($module, __path)\n"
 "--\n"
 "\n"
 "A helper function for samepath on windows.");
@@ -1273,7 +1273,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__isdir__doc__,
-"_isdir($module, path, /)\n"
+"_isdir($module, __path)\n"
 "--\n"
 "\n"
 "Return true if the pathname refers to an existing directory.");
@@ -1286,7 +1286,7 @@ PyDoc_STRVAR(os__isdir__doc__,
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__getvolumepathname__doc__,
-"_getvolumepathname($module, /, path)\n"
+"_getvolumepathname($module, path)\n"
 "--\n"
 "\n"
 "A helper function for ismount on Win32.");
@@ -1325,7 +1325,7 @@ exit:
 #endif /* defined(MS_WINDOWS) */
 
 PyDoc_STRVAR(os_mkdir__doc__,
-"mkdir($module, /, path, mode=511, *, dir_fd=None)\n"
+"mkdir($module, path, mode=511, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Create a directory.\n"
@@ -1399,7 +1399,7 @@ exit:
 #if defined(HAVE_NICE)
 
 PyDoc_STRVAR(os_nice__doc__,
-"nice($module, increment, /)\n"
+"nice($module, __increment)\n"
 "--\n"
 "\n"
 "Add increment to the priority of process and return the new priority.");
@@ -1436,7 +1436,7 @@ exit:
 #if defined(HAVE_GETPRIORITY)
 
 PyDoc_STRVAR(os_getpriority__doc__,
-"getpriority($module, /, which, who)\n"
+"getpriority($module, which, who)\n"
 "--\n"
 "\n"
 "Return program scheduling priority.");
@@ -1490,7 +1490,7 @@ exit:
 #if defined(HAVE_SETPRIORITY)
 
 PyDoc_STRVAR(os_setpriority__doc__,
-"setpriority($module, /, which, who, priority)\n"
+"setpriority($module, which, who, priority)\n"
 "--\n"
 "\n"
 "Set program scheduling priority.");
@@ -1552,7 +1552,7 @@ exit:
 #endif /* defined(HAVE_SETPRIORITY) */
 
 PyDoc_STRVAR(os_rename__doc__,
-"rename($module, /, src, dst, *, src_dir_fd=None, dst_dir_fd=None)\n"
+"rename($module, src, dst, *, src_dir_fd=None, dst_dir_fd=None)\n"
 "--\n"
 "\n"
 "Rename a file or directory.\n"
@@ -1620,7 +1620,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_replace__doc__,
-"replace($module, /, src, dst, *, src_dir_fd=None, dst_dir_fd=None)\n"
+"replace($module, src, dst, *, src_dir_fd=None, dst_dir_fd=None)\n"
 "--\n"
 "\n"
 "Rename a file or directory, overwriting the destination.\n"
@@ -1688,7 +1688,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_rmdir__doc__,
-"rmdir($module, /, path, *, dir_fd=None)\n"
+"rmdir($module, path, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Remove a directory.\n"
@@ -1741,7 +1741,7 @@ exit:
 #if defined(HAVE_SYSTEM) && defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_system__doc__,
-"system($module, /, command)\n"
+"system($module, command)\n"
 "--\n"
 "\n"
 "Execute the command in a subshell.");
@@ -1780,7 +1780,7 @@ exit:
 #if defined(HAVE_SYSTEM) && !defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_system__doc__,
-"system($module, /, command)\n"
+"system($module, command)\n"
 "--\n"
 "\n"
 "Execute the command in a subshell.");
@@ -1824,7 +1824,7 @@ exit:
 #endif /* defined(HAVE_SYSTEM) && !defined(MS_WINDOWS) */
 
 PyDoc_STRVAR(os_umask__doc__,
-"umask($module, mask, /)\n"
+"umask($module, __mask)\n"
 "--\n"
 "\n"
 "Set the current numeric umask and return the previous umask.");
@@ -1857,7 +1857,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_unlink__doc__,
-"unlink($module, /, path, *, dir_fd=None)\n"
+"unlink($module, path, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Remove a file (same as remove()).\n"
@@ -1908,7 +1908,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_remove__doc__,
-"remove($module, /, path, *, dir_fd=None)\n"
+"remove($module, path, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Remove a file (same as unlink()).\n"
@@ -1961,7 +1961,7 @@ exit:
 #if defined(HAVE_UNAME)
 
 PyDoc_STRVAR(os_uname__doc__,
-"uname($module, /)\n"
+"uname($module)\n"
 "--\n"
 "\n"
 "Return an object identifying the current operating system.\n"
@@ -1984,7 +1984,7 @@ os_uname(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(HAVE_UNAME) */
 
 PyDoc_STRVAR(os_utime__doc__,
-"utime($module, /, path, times=None, *, ns=None, dir_fd=None,\n"
+"utime($module, path, times=None, *, ns=None, dir_fd=None,\n"
 "      follow_symlinks=True)\n"
 "--\n"
 "\n"
@@ -2082,7 +2082,7 @@ exit:
 }
 
 PyDoc_STRVAR(os__exit__doc__,
-"_exit($module, /, status)\n"
+"_exit($module, status)\n"
 "--\n"
 "\n"
 "Exit to the system with specified status, without normal exit processing.");
@@ -2124,7 +2124,7 @@ exit:
 #if defined(HAVE_EXECV)
 
 PyDoc_STRVAR(os_execv__doc__,
-"execv($module, path, argv, /)\n"
+"execv($module, __path, __argv)\n"
 "--\n"
 "\n"
 "Execute an executable path with arguments, replacing current process.\n"
@@ -2168,7 +2168,7 @@ exit:
 #if defined(HAVE_EXECV)
 
 PyDoc_STRVAR(os_execve__doc__,
-"execve($module, /, path, argv, env)\n"
+"execve($module, path, argv, env)\n"
 "--\n"
 "\n"
 "Execute an executable path with arguments, replacing current process.\n"
@@ -2220,7 +2220,7 @@ exit:
 #if defined(HAVE_POSIX_SPAWN)
 
 PyDoc_STRVAR(os_posix_spawn__doc__,
-"posix_spawn($module, path, argv, env, /, *, file_actions=(),\n"
+"posix_spawn($module, __path, __argv, __env, *, file_actions=(),\n"
 "            setpgroup=None, resetids=False, setsid=False,\n"
 "            setsigmask=(), setsigdef=(), scheduler=None)\n"
 "--\n"
@@ -2357,7 +2357,7 @@ exit:
 #if defined(HAVE_POSIX_SPAWNP)
 
 PyDoc_STRVAR(os_posix_spawnp__doc__,
-"posix_spawnp($module, path, argv, env, /, *, file_actions=(),\n"
+"posix_spawnp($module, __path, __argv, __env, *, file_actions=(),\n"
 "             setpgroup=None, resetids=False, setsid=False,\n"
 "             setsigmask=(), setsigdef=(), scheduler=None)\n"
 "--\n"
@@ -2494,7 +2494,7 @@ exit:
 #if (defined(HAVE_SPAWNV) || defined(HAVE_WSPAWNV))
 
 PyDoc_STRVAR(os_spawnv__doc__,
-"spawnv($module, mode, path, argv, /)\n"
+"spawnv($module, __mode, __path, __argv)\n"
 "--\n"
 "\n"
 "Execute the program specified by path in a new process.\n"
@@ -2550,7 +2550,7 @@ exit:
 #if (defined(HAVE_SPAWNV) || defined(HAVE_WSPAWNV))
 
 PyDoc_STRVAR(os_spawnve__doc__,
-"spawnve($module, mode, path, argv, env, /)\n"
+"spawnve($module, __mode, __path, __argv, __env)\n"
 "--\n"
 "\n"
 "Execute the program specified by path in a new process.\n"
@@ -2611,7 +2611,7 @@ exit:
 #if defined(HAVE_FORK)
 
 PyDoc_STRVAR(os_register_at_fork__doc__,
-"register_at_fork($module, /, *, before=None, after_in_child=None,\n"
+"register_at_fork($module, *, before=None, after_in_child=None,\n"
 "                 after_in_parent=None)\n"
 "--\n"
 "\n"
@@ -2678,7 +2678,7 @@ exit:
 #if defined(HAVE_FORK1)
 
 PyDoc_STRVAR(os_fork1__doc__,
-"fork1($module, /)\n"
+"fork1($module)\n"
 "--\n"
 "\n"
 "Fork a child process with a single multiplexed (i.e., not bound) thread.\n"
@@ -2702,7 +2702,7 @@ os_fork1(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_FORK)
 
 PyDoc_STRVAR(os_fork__doc__,
-"fork($module, /)\n"
+"fork($module)\n"
 "--\n"
 "\n"
 "Fork a child process.\n"
@@ -2726,7 +2726,7 @@ os_fork(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_GET_PRIORITY_MAX)
 
 PyDoc_STRVAR(os_sched_get_priority_max__doc__,
-"sched_get_priority_max($module, /, policy)\n"
+"sched_get_priority_max($module, policy)\n"
 "--\n"
 "\n"
 "Get the maximum scheduling priority for policy.");
@@ -2770,7 +2770,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_GET_PRIORITY_MAX)
 
 PyDoc_STRVAR(os_sched_get_priority_min__doc__,
-"sched_get_priority_min($module, /, policy)\n"
+"sched_get_priority_min($module, policy)\n"
 "--\n"
 "\n"
 "Get the minimum scheduling priority for policy.");
@@ -2814,7 +2814,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETSCHEDULER)
 
 PyDoc_STRVAR(os_sched_getscheduler__doc__,
-"sched_getscheduler($module, pid, /)\n"
+"sched_getscheduler($module, __pid)\n"
 "--\n"
 "\n"
 "Get the scheduling policy for the process identifiedy by pid.\n"
@@ -2885,7 +2885,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETSCHEDULER)
 
 PyDoc_STRVAR(os_sched_setscheduler__doc__,
-"sched_setscheduler($module, pid, policy, param, /)\n"
+"sched_setscheduler($module, __pid, __policy, __param)\n"
 "--\n"
 "\n"
 "Set the scheduling policy for the process identified by pid.\n"
@@ -2923,7 +2923,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETPARAM)
 
 PyDoc_STRVAR(os_sched_getparam__doc__,
-"sched_getparam($module, pid, /)\n"
+"sched_getparam($module, __pid)\n"
 "--\n"
 "\n"
 "Returns scheduling parameters for the process identified by pid.\n"
@@ -2957,7 +2957,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETPARAM)
 
 PyDoc_STRVAR(os_sched_setparam__doc__,
-"sched_setparam($module, pid, param, /)\n"
+"sched_setparam($module, __pid, __param)\n"
 "--\n"
 "\n"
 "Set scheduling parameters for the process identified by pid.\n"
@@ -2994,7 +2994,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_RR_GET_INTERVAL)
 
 PyDoc_STRVAR(os_sched_rr_get_interval__doc__,
-"sched_rr_get_interval($module, pid, /)\n"
+"sched_rr_get_interval($module, __pid)\n"
 "--\n"
 "\n"
 "Return the round-robin quantum for the process identified by pid, in seconds.\n"
@@ -3032,7 +3032,7 @@ exit:
 #if defined(HAVE_SCHED_H)
 
 PyDoc_STRVAR(os_sched_yield__doc__,
-"sched_yield($module, /)\n"
+"sched_yield($module)\n"
 "--\n"
 "\n"
 "Voluntarily relinquish the CPU.");
@@ -3054,7 +3054,7 @@ os_sched_yield(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETAFFINITY)
 
 PyDoc_STRVAR(os_sched_setaffinity__doc__,
-"sched_setaffinity($module, pid, mask, /)\n"
+"sched_setaffinity($module, __pid, __mask)\n"
 "--\n"
 "\n"
 "Set the CPU affinity of the process identified by pid to mask.\n"
@@ -3089,7 +3089,7 @@ exit:
 #if defined(HAVE_SCHED_H) && defined(HAVE_SCHED_SETAFFINITY)
 
 PyDoc_STRVAR(os_sched_getaffinity__doc__,
-"sched_getaffinity($module, pid, /)\n"
+"sched_getaffinity($module, __pid)\n"
 "--\n"
 "\n"
 "Return the affinity of the process identified by pid (or the current process if zero).\n"
@@ -3122,7 +3122,7 @@ exit:
 #if (defined(HAVE_OPENPTY) || defined(HAVE__GETPTY) || defined(HAVE_DEV_PTMX))
 
 PyDoc_STRVAR(os_openpty__doc__,
-"openpty($module, /)\n"
+"openpty($module)\n"
 "--\n"
 "\n"
 "Open a pseudo-terminal.\n"
@@ -3147,7 +3147,7 @@ os_openpty(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_FORKPTY)
 
 PyDoc_STRVAR(os_forkpty__doc__,
-"forkpty($module, /)\n"
+"forkpty($module)\n"
 "--\n"
 "\n"
 "Fork a new process with a new pseudo-terminal as controlling tty.\n"
@@ -3174,7 +3174,7 @@ os_forkpty(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETEGID)
 
 PyDoc_STRVAR(os_getegid__doc__,
-"getegid($module, /)\n"
+"getegid($module)\n"
 "--\n"
 "\n"
 "Return the current process\'s effective group id.");
@@ -3196,7 +3196,7 @@ os_getegid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETEUID)
 
 PyDoc_STRVAR(os_geteuid__doc__,
-"geteuid($module, /)\n"
+"geteuid($module)\n"
 "--\n"
 "\n"
 "Return the current process\'s effective user id.");
@@ -3218,7 +3218,7 @@ os_geteuid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETGID)
 
 PyDoc_STRVAR(os_getgid__doc__,
-"getgid($module, /)\n"
+"getgid($module)\n"
 "--\n"
 "\n"
 "Return the current process\'s group id.");
@@ -3240,7 +3240,7 @@ os_getgid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETPID)
 
 PyDoc_STRVAR(os_getpid__doc__,
-"getpid($module, /)\n"
+"getpid($module)\n"
 "--\n"
 "\n"
 "Return the current process id.");
@@ -3262,7 +3262,7 @@ os_getpid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETGROUPS)
 
 PyDoc_STRVAR(os_getgroups__doc__,
-"getgroups($module, /)\n"
+"getgroups($module)\n"
 "--\n"
 "\n"
 "Return list of supplemental group IDs for the process.");
@@ -3284,7 +3284,7 @@ os_getgroups(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETPGID)
 
 PyDoc_STRVAR(os_getpgid__doc__,
-"getpgid($module, /, pid)\n"
+"getpgid($module, pid)\n"
 "--\n"
 "\n"
 "Call the system call getpgid(), and return the result.");
@@ -3318,7 +3318,7 @@ exit:
 #if defined(HAVE_GETPGRP)
 
 PyDoc_STRVAR(os_getpgrp__doc__,
-"getpgrp($module, /)\n"
+"getpgrp($module)\n"
 "--\n"
 "\n"
 "Return the current process group id.");
@@ -3340,7 +3340,7 @@ os_getpgrp(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SETPGRP)
 
 PyDoc_STRVAR(os_setpgrp__doc__,
-"setpgrp($module, /)\n"
+"setpgrp($module)\n"
 "--\n"
 "\n"
 "Make the current process the leader of its process group.");
@@ -3362,7 +3362,7 @@ os_setpgrp(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETPPID)
 
 PyDoc_STRVAR(os_getppid__doc__,
-"getppid($module, /)\n"
+"getppid($module)\n"
 "--\n"
 "\n"
 "Return the parent\'s process id.\n"
@@ -3387,7 +3387,7 @@ os_getppid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETLOGIN)
 
 PyDoc_STRVAR(os_getlogin__doc__,
-"getlogin($module, /)\n"
+"getlogin($module)\n"
 "--\n"
 "\n"
 "Return the actual login name.");
@@ -3409,7 +3409,7 @@ os_getlogin(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETUID)
 
 PyDoc_STRVAR(os_getuid__doc__,
-"getuid($module, /)\n"
+"getuid($module)\n"
 "--\n"
 "\n"
 "Return the current process\'s user id.");
@@ -3431,7 +3431,7 @@ os_getuid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_KILL)
 
 PyDoc_STRVAR(os_kill__doc__,
-"kill($module, pid, signal, /)\n"
+"kill($module, __pid, __signal)\n"
 "--\n"
 "\n"
 "Kill a process with a signal.");
@@ -3464,7 +3464,7 @@ exit:
 #if defined(HAVE_KILLPG)
 
 PyDoc_STRVAR(os_killpg__doc__,
-"killpg($module, pgid, signal, /)\n"
+"killpg($module, __pgid, __signal)\n"
 "--\n"
 "\n"
 "Kill a process group with a signal.");
@@ -3497,7 +3497,7 @@ exit:
 #if defined(HAVE_PLOCK)
 
 PyDoc_STRVAR(os_plock__doc__,
-"plock($module, op, /)\n"
+"plock($module, __op)\n"
 "--\n"
 "\n"
 "Lock program segments into memory.\");");
@@ -3534,7 +3534,7 @@ exit:
 #if defined(HAVE_SETUID)
 
 PyDoc_STRVAR(os_setuid__doc__,
-"setuid($module, uid, /)\n"
+"setuid($module, __uid)\n"
 "--\n"
 "\n"
 "Set the current process\'s user id.");
@@ -3565,7 +3565,7 @@ exit:
 #if defined(HAVE_SETEUID)
 
 PyDoc_STRVAR(os_seteuid__doc__,
-"seteuid($module, euid, /)\n"
+"seteuid($module, __euid)\n"
 "--\n"
 "\n"
 "Set the current process\'s effective user id.");
@@ -3596,7 +3596,7 @@ exit:
 #if defined(HAVE_SETEGID)
 
 PyDoc_STRVAR(os_setegid__doc__,
-"setegid($module, egid, /)\n"
+"setegid($module, __egid)\n"
 "--\n"
 "\n"
 "Set the current process\'s effective group id.");
@@ -3627,7 +3627,7 @@ exit:
 #if defined(HAVE_SETREUID)
 
 PyDoc_STRVAR(os_setreuid__doc__,
-"setreuid($module, ruid, euid, /)\n"
+"setreuid($module, __ruid, __euid)\n"
 "--\n"
 "\n"
 "Set the current process\'s real and effective user ids.");
@@ -3665,7 +3665,7 @@ exit:
 #if defined(HAVE_SETREGID)
 
 PyDoc_STRVAR(os_setregid__doc__,
-"setregid($module, rgid, egid, /)\n"
+"setregid($module, __rgid, __egid)\n"
 "--\n"
 "\n"
 "Set the current process\'s real and effective group ids.");
@@ -3703,7 +3703,7 @@ exit:
 #if defined(HAVE_SETGID)
 
 PyDoc_STRVAR(os_setgid__doc__,
-"setgid($module, gid, /)\n"
+"setgid($module, __gid)\n"
 "--\n"
 "\n"
 "Set the current process\'s group id.");
@@ -3734,7 +3734,7 @@ exit:
 #if defined(HAVE_SETGROUPS)
 
 PyDoc_STRVAR(os_setgroups__doc__,
-"setgroups($module, groups, /)\n"
+"setgroups($module, __groups)\n"
 "--\n"
 "\n"
 "Set the groups of the current process to list.");
@@ -3747,7 +3747,7 @@ PyDoc_STRVAR(os_setgroups__doc__,
 #if defined(HAVE_WAIT3)
 
 PyDoc_STRVAR(os_wait3__doc__,
-"wait3($module, /, options)\n"
+"wait3($module, options)\n"
 "--\n"
 "\n"
 "Wait for completion of a child process.\n"
@@ -3794,7 +3794,7 @@ exit:
 #if defined(HAVE_WAIT4)
 
 PyDoc_STRVAR(os_wait4__doc__,
-"wait4($module, /, pid, options)\n"
+"wait4($module, pid, options)\n"
 "--\n"
 "\n"
 "Wait for completion of a specific child process.\n"
@@ -3832,7 +3832,7 @@ exit:
 #if (defined(HAVE_WAITID) && !defined(__APPLE__))
 
 PyDoc_STRVAR(os_waitid__doc__,
-"waitid($module, idtype, id, options, /)\n"
+"waitid($module, __idtype, __id, __options)\n"
 "--\n"
 "\n"
 "Returns the result of waiting for a process or processes.\n"
@@ -3877,7 +3877,7 @@ exit:
 #if defined(HAVE_WAITPID)
 
 PyDoc_STRVAR(os_waitpid__doc__,
-"waitpid($module, pid, options, /)\n"
+"waitpid($module, __pid, __options)\n"
 "--\n"
 "\n"
 "Wait for completion of a given child process.\n"
@@ -3915,7 +3915,7 @@ exit:
 #if defined(HAVE_CWAIT)
 
 PyDoc_STRVAR(os_waitpid__doc__,
-"waitpid($module, pid, options, /)\n"
+"waitpid($module, __pid, __options)\n"
 "--\n"
 "\n"
 "Wait for completion of a given process.\n"
@@ -3953,7 +3953,7 @@ exit:
 #if defined(HAVE_WAIT)
 
 PyDoc_STRVAR(os_wait__doc__,
-"wait($module, /)\n"
+"wait($module)\n"
 "--\n"
 "\n"
 "Wait for completion of a child process.\n"
@@ -3978,7 +3978,7 @@ os_wait(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if (defined(HAVE_READLINK) || defined(MS_WINDOWS))
 
 PyDoc_STRVAR(os_readlink__doc__,
-"readlink($module, /, path, *, dir_fd=None)\n"
+"readlink($module, path, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Return a string representing the path to which the symbolic link points.\n"
@@ -4034,7 +4034,7 @@ exit:
 #if defined(HAVE_SYMLINK)
 
 PyDoc_STRVAR(os_symlink__doc__,
-"symlink($module, /, src, dst, target_is_directory=False, *, dir_fd=None)\n"
+"symlink($module, src, dst, target_is_directory=False, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Create a symbolic link pointing to src named dst.\n"
@@ -4115,7 +4115,7 @@ exit:
 #if defined(HAVE_TIMES)
 
 PyDoc_STRVAR(os_times__doc__,
-"times($module, /)\n"
+"times($module)\n"
 "--\n"
 "\n"
 "Return a collection containing process timing information.\n"
@@ -4141,7 +4141,7 @@ os_times(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETSID)
 
 PyDoc_STRVAR(os_getsid__doc__,
-"getsid($module, pid, /)\n"
+"getsid($module, __pid)\n"
 "--\n"
 "\n"
 "Call the system call getsid(pid) and return the result.");
@@ -4172,7 +4172,7 @@ exit:
 #if defined(HAVE_SETSID)
 
 PyDoc_STRVAR(os_setsid__doc__,
-"setsid($module, /)\n"
+"setsid($module)\n"
 "--\n"
 "\n"
 "Call the system call setsid().");
@@ -4194,7 +4194,7 @@ os_setsid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SETPGID)
 
 PyDoc_STRVAR(os_setpgid__doc__,
-"setpgid($module, pid, pgrp, /)\n"
+"setpgid($module, __pid, __pgrp)\n"
 "--\n"
 "\n"
 "Call the system call setpgid(pid, pgrp).");
@@ -4227,7 +4227,7 @@ exit:
 #if defined(HAVE_TCGETPGRP)
 
 PyDoc_STRVAR(os_tcgetpgrp__doc__,
-"tcgetpgrp($module, fd, /)\n"
+"tcgetpgrp($module, __fd)\n"
 "--\n"
 "\n"
 "Return the process group associated with the terminal specified by fd.");
@@ -4264,7 +4264,7 @@ exit:
 #if defined(HAVE_TCSETPGRP)
 
 PyDoc_STRVAR(os_tcsetpgrp__doc__,
-"tcsetpgrp($module, fd, pgid, /)\n"
+"tcsetpgrp($module, __fd, __pgid)\n"
 "--\n"
 "\n"
 "Set the process group associated with the terminal specified by fd.");
@@ -4295,7 +4295,7 @@ exit:
 #endif /* defined(HAVE_TCSETPGRP) */
 
 PyDoc_STRVAR(os_open__doc__,
-"open($module, /, path, flags, mode=511, *, dir_fd=None)\n"
+"open($module, path, flags, mode=511, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Open a file for low level IO.  Returns a file descriptor (integer).\n"
@@ -4380,7 +4380,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_close__doc__,
-"close($module, /, fd)\n"
+"close($module, fd)\n"
 "--\n"
 "\n"
 "Close a file descriptor.");
@@ -4420,7 +4420,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_closerange__doc__,
-"closerange($module, fd_low, fd_high, /)\n"
+"closerange($module, __fd_low, __fd_high)\n"
 "--\n"
 "\n"
 "Closes all file descriptors in [fd_low, fd_high), ignoring errors.");
@@ -4466,7 +4466,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_dup__doc__,
-"dup($module, fd, /)\n"
+"dup($module, __fd)\n"
 "--\n"
 "\n"
 "Return a duplicate of a file descriptor.");
@@ -4504,7 +4504,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_dup2__doc__,
-"dup2($module, /, fd, fd2, inheritable=True)\n"
+"dup2($module, fd, fd2, inheritable=True)\n"
 "--\n"
 "\n"
 "Duplicate file descriptor.");
@@ -4571,7 +4571,7 @@ exit:
 #if defined(HAVE_LOCKF)
 
 PyDoc_STRVAR(os_lockf__doc__,
-"lockf($module, fd, command, length, /)\n"
+"lockf($module, __fd, __command, __length)\n"
 "--\n"
 "\n"
 "Apply, test or remove a POSIX lock on an open file descriptor.\n"
@@ -4630,7 +4630,7 @@ exit:
 #endif /* defined(HAVE_LOCKF) */
 
 PyDoc_STRVAR(os_lseek__doc__,
-"lseek($module, fd, position, how, /)\n"
+"lseek($module, __fd, __position, __how)\n"
 "--\n"
 "\n"
 "Set the position of a file descriptor.  Return the new position.\n"
@@ -4688,7 +4688,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_read__doc__,
-"read($module, fd, length, /)\n"
+"read($module, __fd, __length)\n"
 "--\n"
 "\n"
 "Read from a file descriptor.  Returns a bytes object.");
@@ -4744,7 +4744,7 @@ exit:
 #if defined(HAVE_READV)
 
 PyDoc_STRVAR(os_readv__doc__,
-"readv($module, fd, buffers, /)\n"
+"readv($module, __fd, __buffers)\n"
 "--\n"
 "\n"
 "Read from a file descriptor fd into an iterable of buffers.\n"
@@ -4799,7 +4799,7 @@ exit:
 #if defined(HAVE_PREAD)
 
 PyDoc_STRVAR(os_pread__doc__,
-"pread($module, fd, length, offset, /)\n"
+"pread($module, __fd, __length, __offset)\n"
 "--\n"
 "\n"
 "Read a number of bytes from a file descriptor starting at a particular offset.\n"
@@ -4856,7 +4856,7 @@ exit:
 #if (defined(HAVE_PREADV) || defined (HAVE_PREADV2))
 
 PyDoc_STRVAR(os_preadv__doc__,
-"preadv($module, fd, buffers, offset, flags=0, /)\n"
+"preadv($module, __fd, __buffers, __offset, __flags=0)\n"
 "--\n"
 "\n"
 "Reads from a file descriptor into a number of mutable bytes-like objects.\n"
@@ -4934,7 +4934,7 @@ exit:
 #endif /* (defined(HAVE_PREADV) || defined (HAVE_PREADV2)) */
 
 PyDoc_STRVAR(os_write__doc__,
-"write($module, fd, data, /)\n"
+"write($module, __fd, __data)\n"
 "--\n"
 "\n"
 "Write a bytes object to a file descriptor.");
@@ -4990,7 +4990,7 @@ exit:
 #if defined(__APPLE__)
 
 PyDoc_STRVAR(os__fcopyfile__doc__,
-"_fcopyfile($module, infd, outfd, flags, /)\n"
+"_fcopyfile($module, __infd, __outfd, __flags)\n"
 "--\n"
 "\n"
 "Efficiently copy content or metadata of 2 regular file descriptors (macOS).");
@@ -5048,7 +5048,7 @@ exit:
 #endif /* defined(__APPLE__) */
 
 PyDoc_STRVAR(os_fstat__doc__,
-"fstat($module, /, fd)\n"
+"fstat($module, fd)\n"
 "--\n"
 "\n"
 "Perform a stat system call on the given file descriptor.\n"
@@ -5091,7 +5091,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_isatty__doc__,
-"isatty($module, fd, /)\n"
+"isatty($module, __fd)\n"
 "--\n"
 "\n"
 "Return True if the fd is connected to a terminal.\n"
@@ -5134,7 +5134,7 @@ exit:
 #if defined(HAVE_PIPE)
 
 PyDoc_STRVAR(os_pipe__doc__,
-"pipe($module, /)\n"
+"pipe($module)\n"
 "--\n"
 "\n"
 "Create a pipe.\n"
@@ -5159,7 +5159,7 @@ os_pipe(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_PIPE2)
 
 PyDoc_STRVAR(os_pipe2__doc__,
-"pipe2($module, flags, /)\n"
+"pipe2($module, __flags)\n"
 "--\n"
 "\n"
 "Create a pipe with flags set atomically.\n"
@@ -5202,7 +5202,7 @@ exit:
 #if defined(HAVE_WRITEV)
 
 PyDoc_STRVAR(os_writev__doc__,
-"writev($module, fd, buffers, /)\n"
+"writev($module, __fd, __buffers)\n"
 "--\n"
 "\n"
 "Iterate over buffers, and write the contents of each to a file descriptor.\n"
@@ -5252,7 +5252,7 @@ exit:
 #if defined(HAVE_PWRITE)
 
 PyDoc_STRVAR(os_pwrite__doc__,
-"pwrite($module, fd, buffer, offset, /)\n"
+"pwrite($module, __fd, __buffer, __offset)\n"
 "--\n"
 "\n"
 "Write bytes to a file descriptor starting at a particular offset.\n"
@@ -5318,7 +5318,7 @@ exit:
 #if (defined(HAVE_PWRITEV) || defined (HAVE_PWRITEV2))
 
 PyDoc_STRVAR(os_pwritev__doc__,
-"pwritev($module, fd, buffers, offset, flags=0, /)\n"
+"pwritev($module, __fd, __buffers, __offset, __flags=0)\n"
 "--\n"
 "\n"
 "Writes the contents of bytes-like objects to a file descriptor at a given offset.\n"
@@ -5398,7 +5398,7 @@ exit:
 #if defined(HAVE_MKFIFO)
 
 PyDoc_STRVAR(os_mkfifo__doc__,
-"mkfifo($module, /, path, mode=438, *, dir_fd=None)\n"
+"mkfifo($module, path, mode=438, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Create a \"fifo\" (a POSIX named pipe).\n"
@@ -5472,7 +5472,7 @@ exit:
 #if (defined(HAVE_MKNOD) && defined(HAVE_MAKEDEV))
 
 PyDoc_STRVAR(os_mknod__doc__,
-"mknod($module, /, path, mode=384, device=0, *, dir_fd=None)\n"
+"mknod($module, path, mode=384, device=0, *, dir_fd=None)\n"
 "--\n"
 "\n"
 "Create a node in the file system.\n"
@@ -5563,7 +5563,7 @@ exit:
 #if defined(HAVE_DEVICE_MACROS)
 
 PyDoc_STRVAR(os_major__doc__,
-"major($module, device, /)\n"
+"major($module, __device)\n"
 "--\n"
 "\n"
 "Extracts a device major number from a raw device number.");
@@ -5599,7 +5599,7 @@ exit:
 #if defined(HAVE_DEVICE_MACROS)
 
 PyDoc_STRVAR(os_minor__doc__,
-"minor($module, device, /)\n"
+"minor($module, __device)\n"
 "--\n"
 "\n"
 "Extracts a device minor number from a raw device number.");
@@ -5635,7 +5635,7 @@ exit:
 #if defined(HAVE_DEVICE_MACROS)
 
 PyDoc_STRVAR(os_makedev__doc__,
-"makedev($module, major, minor, /)\n"
+"makedev($module, __major, __minor)\n"
 "--\n"
 "\n"
 "Composes a raw device number from the major and minor device numbers.");
@@ -5690,7 +5690,7 @@ exit:
 #if (defined HAVE_FTRUNCATE || defined MS_WINDOWS)
 
 PyDoc_STRVAR(os_ftruncate__doc__,
-"ftruncate($module, fd, length, /)\n"
+"ftruncate($module, __fd, __length)\n"
 "--\n"
 "\n"
 "Truncate a file, specified by file descriptor, to a specific length.");
@@ -5734,7 +5734,7 @@ exit:
 #if (defined HAVE_TRUNCATE || defined MS_WINDOWS)
 
 PyDoc_STRVAR(os_truncate__doc__,
-"truncate($module, /, path, length)\n"
+"truncate($module, path, length)\n"
 "--\n"
 "\n"
 "Truncate a file, specified by path, to a specific length.\n"
@@ -5782,7 +5782,7 @@ exit:
 #if (defined(HAVE_POSIX_FALLOCATE) && !defined(POSIX_FADVISE_AIX_BUG))
 
 PyDoc_STRVAR(os_posix_fallocate__doc__,
-"posix_fallocate($module, fd, offset, length, /)\n"
+"posix_fallocate($module, __fd, __offset, __length)\n"
 "--\n"
 "\n"
 "Ensure a file has allocated at least a particular number of bytes on disk.\n"
@@ -5834,7 +5834,7 @@ exit:
 #if (defined(HAVE_POSIX_FADVISE) && !defined(POSIX_FADVISE_AIX_BUG))
 
 PyDoc_STRVAR(os_posix_fadvise__doc__,
-"posix_fadvise($module, fd, offset, length, advice, /)\n"
+"posix_fadvise($module, __fd, __offset, __length, __advice)\n"
 "--\n"
 "\n"
 "Announce an intention to access data in a specific pattern.\n"
@@ -5901,7 +5901,7 @@ exit:
 #if defined(HAVE_PUTENV) && defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_putenv__doc__,
-"putenv($module, name, value, /)\n"
+"putenv($module, __name, __value)\n"
 "--\n"
 "\n"
 "Change or add an environment variable.");
@@ -5949,7 +5949,7 @@ exit:
 #if defined(HAVE_PUTENV) && !defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_putenv__doc__,
-"putenv($module, name, value, /)\n"
+"putenv($module, __name, __value)\n"
 "--\n"
 "\n"
 "Change or add an environment variable.");
@@ -5992,7 +5992,7 @@ exit:
 #if defined(HAVE_UNSETENV)
 
 PyDoc_STRVAR(os_unsetenv__doc__,
-"unsetenv($module, name, /)\n"
+"unsetenv($module, __name)\n"
 "--\n"
 "\n"
 "Delete an environment variable.");
@@ -6024,7 +6024,7 @@ exit:
 #endif /* defined(HAVE_UNSETENV) */
 
 PyDoc_STRVAR(os_strerror__doc__,
-"strerror($module, code, /)\n"
+"strerror($module, __code)\n"
 "--\n"
 "\n"
 "Translate an error code to a message string.");
@@ -6059,7 +6059,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WCOREDUMP)
 
 PyDoc_STRVAR(os_WCOREDUMP__doc__,
-"WCOREDUMP($module, status, /)\n"
+"WCOREDUMP($module, __status)\n"
 "--\n"
 "\n"
 "Return True if the process returning status was dumped to a core file.");
@@ -6101,7 +6101,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WIFCONTINUED)
 
 PyDoc_STRVAR(os_WIFCONTINUED__doc__,
-"WIFCONTINUED($module, /, status)\n"
+"WIFCONTINUED($module, status)\n"
 "--\n"
 "\n"
 "Return True if a particular process was continued from a job control stop.\n"
@@ -6153,7 +6153,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WIFSTOPPED)
 
 PyDoc_STRVAR(os_WIFSTOPPED__doc__,
-"WIFSTOPPED($module, /, status)\n"
+"WIFSTOPPED($module, status)\n"
 "--\n"
 "\n"
 "Return True if the process returning status was stopped.");
@@ -6202,7 +6202,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WIFSIGNALED)
 
 PyDoc_STRVAR(os_WIFSIGNALED__doc__,
-"WIFSIGNALED($module, /, status)\n"
+"WIFSIGNALED($module, status)\n"
 "--\n"
 "\n"
 "Return True if the process returning status was terminated by a signal.");
@@ -6251,7 +6251,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WIFEXITED)
 
 PyDoc_STRVAR(os_WIFEXITED__doc__,
-"WIFEXITED($module, /, status)\n"
+"WIFEXITED($module, status)\n"
 "--\n"
 "\n"
 "Return True if the process returning status exited via the exit() system call.");
@@ -6300,7 +6300,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WEXITSTATUS)
 
 PyDoc_STRVAR(os_WEXITSTATUS__doc__,
-"WEXITSTATUS($module, /, status)\n"
+"WEXITSTATUS($module, status)\n"
 "--\n"
 "\n"
 "Return the process return code from status.");
@@ -6349,7 +6349,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WTERMSIG)
 
 PyDoc_STRVAR(os_WTERMSIG__doc__,
-"WTERMSIG($module, /, status)\n"
+"WTERMSIG($module, status)\n"
 "--\n"
 "\n"
 "Return the signal that terminated the process that provided the status value.");
@@ -6398,7 +6398,7 @@ exit:
 #if defined(HAVE_SYS_WAIT_H) && defined(WSTOPSIG)
 
 PyDoc_STRVAR(os_WSTOPSIG__doc__,
-"WSTOPSIG($module, /, status)\n"
+"WSTOPSIG($module, status)\n"
 "--\n"
 "\n"
 "Return the signal that stopped the process that provided the status value.");
@@ -6447,7 +6447,7 @@ exit:
 #if (defined(HAVE_FSTATVFS) && defined(HAVE_SYS_STATVFS_H))
 
 PyDoc_STRVAR(os_fstatvfs__doc__,
-"fstatvfs($module, fd, /)\n"
+"fstatvfs($module, __fd)\n"
 "--\n"
 "\n"
 "Perform an fstatvfs system call on the given fd.\n"
@@ -6486,7 +6486,7 @@ exit:
 #if (defined(HAVE_STATVFS) && defined(HAVE_SYS_STATVFS_H))
 
 PyDoc_STRVAR(os_statvfs__doc__,
-"statvfs($module, /, path)\n"
+"statvfs($module, path)\n"
 "--\n"
 "\n"
 "Perform a statvfs system call on the given path.\n"
@@ -6531,7 +6531,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__getdiskusage__doc__,
-"_getdiskusage($module, /, path)\n"
+"_getdiskusage($module, path)\n"
 "--\n"
 "\n"
 "Return disk usage statistics about the given path as a (total, free) tuple.");
@@ -6572,7 +6572,7 @@ exit:
 #if defined(HAVE_FPATHCONF)
 
 PyDoc_STRVAR(os_fpathconf__doc__,
-"fpathconf($module, fd, name, /)\n"
+"fpathconf($module, __fd, __name)\n"
 "--\n"
 "\n"
 "Return the configuration limit name for the file descriptor fd.\n"
@@ -6623,7 +6623,7 @@ exit:
 #if defined(HAVE_PATHCONF)
 
 PyDoc_STRVAR(os_pathconf__doc__,
-"pathconf($module, /, path, name)\n"
+"pathconf($module, path, name)\n"
 "--\n"
 "\n"
 "Return the configuration limit name for the file or directory path.\n"
@@ -6677,7 +6677,7 @@ exit:
 #if defined(HAVE_CONFSTR)
 
 PyDoc_STRVAR(os_confstr__doc__,
-"confstr($module, name, /)\n"
+"confstr($module, __name)\n"
 "--\n"
 "\n"
 "Return a string-valued system configuration variable.");
@@ -6708,7 +6708,7 @@ exit:
 #if defined(HAVE_SYSCONF)
 
 PyDoc_STRVAR(os_sysconf__doc__,
-"sysconf($module, name, /)\n"
+"sysconf($module, __name)\n"
 "--\n"
 "\n"
 "Return an integer-valued system configuration variable.");
@@ -6742,7 +6742,7 @@ exit:
 #endif /* defined(HAVE_SYSCONF) */
 
 PyDoc_STRVAR(os_abort__doc__,
-"abort($module, /)\n"
+"abort($module)\n"
 "--\n"
 "\n"
 "Abort the interpreter immediately.\n"
@@ -6765,7 +6765,7 @@ os_abort(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_startfile__doc__,
-"startfile($module, /, filepath, operation=None)\n"
+"startfile($module, filepath, operation=None)\n"
 "--\n"
 "\n"
 "startfile(filepath [, operation])\n"
@@ -6821,7 +6821,7 @@ exit:
 #if defined(HAVE_GETLOADAVG)
 
 PyDoc_STRVAR(os_getloadavg__doc__,
-"getloadavg($module, /)\n"
+"getloadavg($module)\n"
 "--\n"
 "\n"
 "Return average recent system load information.\n"
@@ -6845,7 +6845,7 @@ os_getloadavg(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(HAVE_GETLOADAVG) */
 
 PyDoc_STRVAR(os_device_encoding__doc__,
-"device_encoding($module, /, fd)\n"
+"device_encoding($module, fd)\n"
 "--\n"
 "\n"
 "Return a string describing the encoding of a terminal\'s file descriptor.\n"
@@ -6890,7 +6890,7 @@ exit:
 #if defined(HAVE_SETRESUID)
 
 PyDoc_STRVAR(os_setresuid__doc__,
-"setresuid($module, ruid, euid, suid, /)\n"
+"setresuid($module, __ruid, __euid, __suid)\n"
 "--\n"
 "\n"
 "Set the current process\'s real, effective, and saved user ids.");
@@ -6932,7 +6932,7 @@ exit:
 #if defined(HAVE_SETRESGID)
 
 PyDoc_STRVAR(os_setresgid__doc__,
-"setresgid($module, rgid, egid, sgid, /)\n"
+"setresgid($module, __rgid, __egid, __sgid)\n"
 "--\n"
 "\n"
 "Set the current process\'s real, effective, and saved group ids.");
@@ -6974,7 +6974,7 @@ exit:
 #if defined(HAVE_GETRESUID)
 
 PyDoc_STRVAR(os_getresuid__doc__,
-"getresuid($module, /)\n"
+"getresuid($module)\n"
 "--\n"
 "\n"
 "Return a tuple of the current process\'s real, effective, and saved user ids.");
@@ -6996,7 +6996,7 @@ os_getresuid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_GETRESGID)
 
 PyDoc_STRVAR(os_getresgid__doc__,
-"getresgid($module, /)\n"
+"getresgid($module)\n"
 "--\n"
 "\n"
 "Return a tuple of the current process\'s real, effective, and saved group ids.");
@@ -7018,7 +7018,7 @@ os_getresgid(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(USE_XATTRS)
 
 PyDoc_STRVAR(os_getxattr__doc__,
-"getxattr($module, /, path, attribute, *, follow_symlinks=True)\n"
+"getxattr($module, path, attribute, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Return the value of extended attribute attribute on path.\n"
@@ -7081,7 +7081,7 @@ exit:
 #if defined(USE_XATTRS)
 
 PyDoc_STRVAR(os_setxattr__doc__,
-"setxattr($module, /, path, attribute, value, flags=0, *,\n"
+"setxattr($module, path, attribute, value, flags=0, *,\n"
 "         follow_symlinks=True)\n"
 "--\n"
 "\n"
@@ -7176,7 +7176,7 @@ exit:
 #if defined(USE_XATTRS)
 
 PyDoc_STRVAR(os_removexattr__doc__,
-"removexattr($module, /, path, attribute, *, follow_symlinks=True)\n"
+"removexattr($module, path, attribute, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Remove extended attribute attribute on path.\n"
@@ -7239,7 +7239,7 @@ exit:
 #if defined(USE_XATTRS)
 
 PyDoc_STRVAR(os_listxattr__doc__,
-"listxattr($module, /, path=None, *, follow_symlinks=True)\n"
+"listxattr($module, path=None, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Return a list of extended attributes on path.\n"
@@ -7303,7 +7303,7 @@ exit:
 #endif /* defined(USE_XATTRS) */
 
 PyDoc_STRVAR(os_urandom__doc__,
-"urandom($module, size, /)\n"
+"urandom($module, __size)\n"
 "--\n"
 "\n"
 "Return a bytes object containing random bytes suitable for cryptographic use.");
@@ -7344,7 +7344,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_cpu_count__doc__,
-"cpu_count($module, /)\n"
+"cpu_count($module)\n"
 "--\n"
 "\n"
 "Return the number of CPUs in the system; return None if indeterminable.\n"
@@ -7366,7 +7366,7 @@ os_cpu_count(PyObject *module, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(os_get_inheritable__doc__,
-"get_inheritable($module, fd, /)\n"
+"get_inheritable($module, __fd)\n"
 "--\n"
 "\n"
 "Get the close-on-exe flag of the specified file descriptor.");
@@ -7404,7 +7404,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_set_inheritable__doc__,
-"set_inheritable($module, fd, inheritable, /)\n"
+"set_inheritable($module, __fd, __inheritable)\n"
 "--\n"
 "\n"
 "Set the inheritable flag of the specified file descriptor.");
@@ -7452,7 +7452,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_get_handle_inheritable__doc__,
-"get_handle_inheritable($module, handle, /)\n"
+"get_handle_inheritable($module, __handle)\n"
 "--\n"
 "\n"
 "Get the close-on-exe flag of the specified file descriptor.");
@@ -7488,7 +7488,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_set_handle_inheritable__doc__,
-"set_handle_inheritable($module, handle, inheritable, /)\n"
+"set_handle_inheritable($module, __handle, __inheritable)\n"
 "--\n"
 "\n"
 "Set the inheritable flag of the specified handle.");
@@ -7522,7 +7522,7 @@ exit:
 #if !defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_get_blocking__doc__,
-"get_blocking($module, fd, /)\n"
+"get_blocking($module, __fd)\n"
 "--\n"
 "\n"
 "Get the blocking mode of the file descriptor.\n"
@@ -7566,7 +7566,7 @@ exit:
 #if !defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os_set_blocking__doc__,
-"set_blocking($module, fd, blocking, /)\n"
+"set_blocking($module, __fd, __blocking)\n"
 "--\n"
 "\n"
 "Set the blocking mode of the specified file descriptor.\n"
@@ -7617,7 +7617,7 @@ exit:
 #endif /* !defined(MS_WINDOWS) */
 
 PyDoc_STRVAR(os_DirEntry_is_symlink__doc__,
-"is_symlink($self, /)\n"
+"is_symlink($self)\n"
 "--\n"
 "\n"
 "Return True if the entry is a symbolic link; cached per entry.");
@@ -7645,7 +7645,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_DirEntry_stat__doc__,
-"stat($self, /, *, follow_symlinks=True)\n"
+"stat($self, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Return stat_result object for the entry; cached per entry.");
@@ -7685,7 +7685,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_DirEntry_is_dir__doc__,
-"is_dir($self, /, *, follow_symlinks=True)\n"
+"is_dir($self, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Return True if the entry is a directory; cached per entry.");
@@ -7730,7 +7730,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_DirEntry_is_file__doc__,
-"is_file($self, /, *, follow_symlinks=True)\n"
+"is_file($self, *, follow_symlinks=True)\n"
 "--\n"
 "\n"
 "Return True if the entry is a file; cached per entry.");
@@ -7775,7 +7775,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_DirEntry_inode__doc__,
-"inode($self, /)\n"
+"inode($self)\n"
 "--\n"
 "\n"
 "Return inode of the entry; cached per entry.");
@@ -7793,7 +7793,7 @@ os_DirEntry_inode(DirEntry *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(os_DirEntry___fspath____doc__,
-"__fspath__($self, /)\n"
+"__fspath__($self)\n"
 "--\n"
 "\n"
 "Returns the path for the entry.");
@@ -7811,7 +7811,7 @@ os_DirEntry___fspath__(DirEntry *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(os_scandir__doc__,
-"scandir($module, /, path=None)\n"
+"scandir($module, path=None)\n"
 "--\n"
 "\n"
 "Return an iterator of DirEntry objects for given path.\n"
@@ -7859,7 +7859,7 @@ exit:
 }
 
 PyDoc_STRVAR(os_fspath__doc__,
-"fspath($module, /, path)\n"
+"fspath($module, path)\n"
 "--\n"
 "\n"
 "Return the file system path representation of the object.\n"
@@ -7897,7 +7897,7 @@ exit:
 #if defined(HAVE_GETRANDOM_SYSCALL)
 
 PyDoc_STRVAR(os_getrandom__doc__,
-"getrandom($module, /, size, flags=0)\n"
+"getrandom($module, size, flags=0)\n"
 "--\n"
 "\n"
 "Obtain a series of random bytes.");
@@ -7964,7 +7964,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__add_dll_directory__doc__,
-"_add_dll_directory($module, /, path)\n"
+"_add_dll_directory($module, path)\n"
 "--\n"
 "\n"
 "Add a path to the DLL search path.\n"
@@ -8012,7 +8012,7 @@ exit:
 #if defined(MS_WINDOWS)
 
 PyDoc_STRVAR(os__remove_dll_directory__doc__,
-"_remove_dll_directory($module, /, cookie)\n"
+"_remove_dll_directory($module, cookie)\n"
 "--\n"
 "\n"
 "Removes a path from the DLL search path.\n"
@@ -8576,4 +8576,4 @@ exit:
 #ifndef OS__REMOVE_DLL_DIRECTORY_METHODDEF
     #define OS__REMOVE_DLL_DIRECTORY_METHODDEF
 #endif /* !defined(OS__REMOVE_DLL_DIRECTORY_METHODDEF) */
-/*[clinic end generated code: output=ab36ec0376a422ae input=a9049054013a1b77]*/
+/*[clinic end generated code: output=75a7a4dcce7a22a1 input=a9049054013a1b77]*/

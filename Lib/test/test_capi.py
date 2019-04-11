@@ -131,14 +131,14 @@ class CAPITest(unittest.TestCase):
         self.assertEqual(_testcapi.docstring_no_signature.__text_signature__, None)
 
         self.assertEqual(_testcapi.docstring_with_invalid_signature.__doc__,
-            "docstring_with_invalid_signature($module, /, boo)\n"
+            "docstring_with_invalid_signature($module, boo)\n"
             "\n"
             "This docstring has an invalid signature."
             )
         self.assertEqual(_testcapi.docstring_with_invalid_signature.__text_signature__, None)
 
         self.assertEqual(_testcapi.docstring_with_invalid_signature2.__doc__,
-            "docstring_with_invalid_signature2($module, /, boo)\n"
+            "docstring_with_invalid_signature2($module, boo)\n"
             "\n"
             "--\n"
             "\n"
@@ -148,16 +148,16 @@ class CAPITest(unittest.TestCase):
 
         self.assertEqual(_testcapi.docstring_with_signature.__doc__,
             "This docstring has a valid signature.")
-        self.assertEqual(_testcapi.docstring_with_signature.__text_signature__, "($module, /, sig)")
+        self.assertEqual(_testcapi.docstring_with_signature.__text_signature__, "($module, sig)")
 
         self.assertEqual(_testcapi.docstring_with_signature_but_no_doc.__doc__, None)
         self.assertEqual(_testcapi.docstring_with_signature_but_no_doc.__text_signature__,
-            "($module, /, sig)")
+            "($module, sig)")
 
         self.assertEqual(_testcapi.docstring_with_signature_and_extra_newlines.__doc__,
             "\nThis docstring has a valid signature and some extra newlines.")
         self.assertEqual(_testcapi.docstring_with_signature_and_extra_newlines.__text_signature__,
-            "($module, /, parameter)")
+            "($module, parameter)")
 
     def test_c_type_with_matrix_multiplication(self):
         M = _testcapi.matmulType

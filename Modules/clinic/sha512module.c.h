@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(SHA512Type_copy__doc__,
-"copy($self, /)\n"
+"copy($self)\n"
 "--\n"
 "\n"
 "Return a copy of the hash object.");
@@ -21,7 +21,7 @@ SHA512Type_copy(SHAobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA512Type_digest__doc__,
-"digest($self, /)\n"
+"digest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a bytes object.");
@@ -39,7 +39,7 @@ SHA512Type_digest(SHAobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA512Type_hexdigest__doc__,
-"hexdigest($self, /)\n"
+"hexdigest($self)\n"
 "--\n"
 "\n"
 "Return the digest value as a string of hexadecimal digits.");
@@ -57,7 +57,7 @@ SHA512Type_hexdigest(SHAobject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(SHA512Type_update__doc__,
-"update($self, obj, /)\n"
+"update($self, __obj)\n"
 "--\n"
 "\n"
 "Update this hash object\'s state with the provided string.");
@@ -66,7 +66,7 @@ PyDoc_STRVAR(SHA512Type_update__doc__,
     {"update", (PyCFunction)SHA512Type_update, METH_O, SHA512Type_update__doc__},
 
 PyDoc_STRVAR(_sha512_sha512__doc__,
-"sha512($module, /, string=b\'\')\n"
+"sha512($module, string=b\'\')\n"
 "--\n"
 "\n"
 "Return a new SHA-512 hash object; optionally initialized with a string.");
@@ -103,7 +103,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sha512_sha384__doc__,
-"sha384($module, /, string=b\'\')\n"
+"sha384($module, string=b\'\')\n"
 "--\n"
 "\n"
 "Return a new SHA-384 hash object; optionally initialized with a string.");
@@ -138,4 +138,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=580df4b667084a7e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=6ce07d7a8ce55303 input=a9049054013a1b77]*/

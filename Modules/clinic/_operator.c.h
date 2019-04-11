@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_operator_truth__doc__,
-"truth($module, a, /)\n"
+"truth($module, __a)\n"
 "--\n"
 "\n"
 "Return True if a is true, False otherwise.");
@@ -31,7 +31,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_add__doc__,
-"add($module, a, b, /)\n"
+"add($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a + b.");
@@ -61,7 +61,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_sub__doc__,
-"sub($module, a, b, /)\n"
+"sub($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a - b.");
@@ -91,7 +91,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_mul__doc__,
-"mul($module, a, b, /)\n"
+"mul($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a * b.");
@@ -121,7 +121,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_matmul__doc__,
-"matmul($module, a, b, /)\n"
+"matmul($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a @ b.");
@@ -151,7 +151,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_floordiv__doc__,
-"floordiv($module, a, b, /)\n"
+"floordiv($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a // b.");
@@ -181,7 +181,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_truediv__doc__,
-"truediv($module, a, b, /)\n"
+"truediv($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a / b.");
@@ -211,7 +211,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_mod__doc__,
-"mod($module, a, b, /)\n"
+"mod($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a % b.");
@@ -241,7 +241,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_neg__doc__,
-"neg($module, a, /)\n"
+"neg($module, __a)\n"
 "--\n"
 "\n"
 "Same as -a.");
@@ -250,7 +250,7 @@ PyDoc_STRVAR(_operator_neg__doc__,
     {"neg", (PyCFunction)_operator_neg, METH_O, _operator_neg__doc__},
 
 PyDoc_STRVAR(_operator_pos__doc__,
-"pos($module, a, /)\n"
+"pos($module, __a)\n"
 "--\n"
 "\n"
 "Same as +a.");
@@ -259,7 +259,7 @@ PyDoc_STRVAR(_operator_pos__doc__,
     {"pos", (PyCFunction)_operator_pos, METH_O, _operator_pos__doc__},
 
 PyDoc_STRVAR(_operator_abs__doc__,
-"abs($module, a, /)\n"
+"abs($module, __a)\n"
 "--\n"
 "\n"
 "Same as abs(a).");
@@ -268,7 +268,7 @@ PyDoc_STRVAR(_operator_abs__doc__,
     {"abs", (PyCFunction)_operator_abs, METH_O, _operator_abs__doc__},
 
 PyDoc_STRVAR(_operator_inv__doc__,
-"inv($module, a, /)\n"
+"inv($module, __a)\n"
 "--\n"
 "\n"
 "Same as ~a.");
@@ -277,7 +277,7 @@ PyDoc_STRVAR(_operator_inv__doc__,
     {"inv", (PyCFunction)_operator_inv, METH_O, _operator_inv__doc__},
 
 PyDoc_STRVAR(_operator_invert__doc__,
-"invert($module, a, /)\n"
+"invert($module, __a)\n"
 "--\n"
 "\n"
 "Same as ~a.");
@@ -286,7 +286,7 @@ PyDoc_STRVAR(_operator_invert__doc__,
     {"invert", (PyCFunction)_operator_invert, METH_O, _operator_invert__doc__},
 
 PyDoc_STRVAR(_operator_lshift__doc__,
-"lshift($module, a, b, /)\n"
+"lshift($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a << b.");
@@ -316,7 +316,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_rshift__doc__,
-"rshift($module, a, b, /)\n"
+"rshift($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a >> b.");
@@ -346,7 +346,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_not___doc__,
-"not_($module, a, /)\n"
+"not_($module, __a)\n"
 "--\n"
 "\n"
 "Same as not a.");
@@ -374,7 +374,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_and___doc__,
-"and_($module, a, b, /)\n"
+"and_($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a & b.");
@@ -404,7 +404,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_xor__doc__,
-"xor($module, a, b, /)\n"
+"xor($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a ^ b.");
@@ -434,7 +434,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_or___doc__,
-"or_($module, a, b, /)\n"
+"or_($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a | b.");
@@ -464,7 +464,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_iadd__doc__,
-"iadd($module, a, b, /)\n"
+"iadd($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a += b.");
@@ -494,7 +494,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_isub__doc__,
-"isub($module, a, b, /)\n"
+"isub($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a -= b.");
@@ -524,7 +524,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_imul__doc__,
-"imul($module, a, b, /)\n"
+"imul($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a *= b.");
@@ -554,7 +554,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_imatmul__doc__,
-"imatmul($module, a, b, /)\n"
+"imatmul($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a @= b.");
@@ -584,7 +584,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ifloordiv__doc__,
-"ifloordiv($module, a, b, /)\n"
+"ifloordiv($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a //= b.");
@@ -614,7 +614,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_itruediv__doc__,
-"itruediv($module, a, b, /)\n"
+"itruediv($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a /= b.");
@@ -644,7 +644,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_imod__doc__,
-"imod($module, a, b, /)\n"
+"imod($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a %= b.");
@@ -674,7 +674,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ilshift__doc__,
-"ilshift($module, a, b, /)\n"
+"ilshift($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a <<= b.");
@@ -704,7 +704,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_irshift__doc__,
-"irshift($module, a, b, /)\n"
+"irshift($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a >>= b.");
@@ -734,7 +734,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_iand__doc__,
-"iand($module, a, b, /)\n"
+"iand($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a &= b.");
@@ -764,7 +764,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ixor__doc__,
-"ixor($module, a, b, /)\n"
+"ixor($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a ^= b.");
@@ -794,7 +794,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ior__doc__,
-"ior($module, a, b, /)\n"
+"ior($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a |= b.");
@@ -824,7 +824,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_concat__doc__,
-"concat($module, a, b, /)\n"
+"concat($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a + b, for a and b sequences.");
@@ -854,7 +854,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_iconcat__doc__,
-"iconcat($module, a, b, /)\n"
+"iconcat($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a += b, for a and b sequences.");
@@ -884,7 +884,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_contains__doc__,
-"contains($module, a, b, /)\n"
+"contains($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as b in a (note reversed operands).");
@@ -919,7 +919,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_indexOf__doc__,
-"indexOf($module, a, b, /)\n"
+"indexOf($module, __a, __b)\n"
 "--\n"
 "\n"
 "Return the first index of b in a.");
@@ -954,7 +954,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_countOf__doc__,
-"countOf($module, a, b, /)\n"
+"countOf($module, __a, __b)\n"
 "--\n"
 "\n"
 "Return the number of times b occurs in a.");
@@ -989,7 +989,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_getitem__doc__,
-"getitem($module, a, b, /)\n"
+"getitem($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a[b].");
@@ -1019,7 +1019,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_setitem__doc__,
-"setitem($module, a, b, c, /)\n"
+"setitem($module, __a, __b, __c)\n"
 "--\n"
 "\n"
 "Same as a[b] = c.");
@@ -1052,7 +1052,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_delitem__doc__,
-"delitem($module, a, b, /)\n"
+"delitem($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as del a[b].");
@@ -1082,7 +1082,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_eq__doc__,
-"eq($module, a, b, /)\n"
+"eq($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a == b.");
@@ -1112,7 +1112,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ne__doc__,
-"ne($module, a, b, /)\n"
+"ne($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a != b.");
@@ -1142,7 +1142,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_lt__doc__,
-"lt($module, a, b, /)\n"
+"lt($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a < b.");
@@ -1172,7 +1172,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_le__doc__,
-"le($module, a, b, /)\n"
+"le($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a <= b.");
@@ -1202,7 +1202,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_gt__doc__,
-"gt($module, a, b, /)\n"
+"gt($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a > b.");
@@ -1232,7 +1232,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ge__doc__,
-"ge($module, a, b, /)\n"
+"ge($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a >= b.");
@@ -1262,7 +1262,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_pow__doc__,
-"pow($module, a, b, /)\n"
+"pow($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a ** b.");
@@ -1292,7 +1292,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_ipow__doc__,
-"ipow($module, a, b, /)\n"
+"ipow($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a **= b.");
@@ -1322,7 +1322,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_index__doc__,
-"index($module, a, /)\n"
+"index($module, __a)\n"
 "--\n"
 "\n"
 "Same as a.__index__()");
@@ -1331,7 +1331,7 @@ PyDoc_STRVAR(_operator_index__doc__,
     {"index", (PyCFunction)_operator_index, METH_O, _operator_index__doc__},
 
 PyDoc_STRVAR(_operator_is___doc__,
-"is_($module, a, b, /)\n"
+"is_($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a is b.");
@@ -1361,7 +1361,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_is_not__doc__,
-"is_not($module, a, b, /)\n"
+"is_not($module, __a, __b)\n"
 "--\n"
 "\n"
 "Same as a is not b.");
@@ -1391,7 +1391,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator_length_hint__doc__,
-"length_hint($module, obj, default=0, /)\n"
+"length_hint($module, __obj, __default=0)\n"
 "--\n"
 "\n"
 "Return an estimate of the number of items in obj.\n"
@@ -1453,7 +1453,7 @@ exit:
 }
 
 PyDoc_STRVAR(_operator__compare_digest__doc__,
-"_compare_digest($module, a, b, /)\n"
+"_compare_digest($module, __a, __b)\n"
 "--\n"
 "\n"
 "Return \'a == b\'.\n"
@@ -1491,4 +1491,4 @@ _operator__compare_digest(PyObject *module, PyObject *const *args, Py_ssize_t na
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=e7ed71a8c475a901 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=8b09b6ae95fcb809 input=a9049054013a1b77]*/

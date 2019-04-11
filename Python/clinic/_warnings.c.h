@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(warnings_warn__doc__,
-"warn($module, /, message, category=None, stacklevel=1, source=None)\n"
+"warn($module, message, category=None, stacklevel=1, source=None)\n"
 "--\n"
 "\n"
 "Issue a warning, or maybe ignore it or raise an exception.");
@@ -71,4 +71,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=b7bb54c73b5433ec input=a9049054013a1b77]*/
+/*[clinic end generated code: output=e2e813fa8a69f05a input=a9049054013a1b77]*/

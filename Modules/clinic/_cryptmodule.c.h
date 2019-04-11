@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(crypt_crypt__doc__,
-"crypt($module, word, salt, /)\n"
+"crypt($module, __word, __salt)\n"
 "--\n"
 "\n"
 "Hash a *word* with the given *salt* and return the hashed password.\n"
@@ -60,4 +60,4 @@ crypt_crypt(PyObject *module, PyObject *const *args, Py_ssize_t nargs)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=3f75d4d4be4dddbb input=a9049054013a1b77]*/
+/*[clinic end generated code: output=7b29220bbdb4db94 input=a9049054013a1b77]*/

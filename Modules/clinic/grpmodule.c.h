@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(grp_getgrgid__doc__,
-"getgrgid($module, /, id)\n"
+"getgrgid($module, id)\n"
 "--\n"
 "\n"
 "Return the group database entry for the given numeric group ID.\n"
@@ -37,7 +37,7 @@ exit:
 }
 
 PyDoc_STRVAR(grp_getgrnam__doc__,
-"getgrnam($module, /, name)\n"
+"getgrnam($module, name)\n"
 "--\n"
 "\n"
 "Return the group database entry for the given group name.\n"
@@ -78,7 +78,7 @@ exit:
 }
 
 PyDoc_STRVAR(grp_getgrall__doc__,
-"getgrall($module, /)\n"
+"getgrall($module)\n"
 "--\n"
 "\n"
 "Return a list of all available group entries, in arbitrary order.\n"
@@ -97,4 +97,4 @@ grp_getgrall(PyObject *module, PyObject *Py_UNUSED(ignored))
 {
     return grp_getgrall_impl(module);
 }
-/*[clinic end generated code: output=2aa6c60873d41ee8 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=53a491b0d77399f0 input=a9049054013a1b77]*/

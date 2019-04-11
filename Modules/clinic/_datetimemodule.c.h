@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(datetime_date_fromtimestamp__doc__,
-"fromtimestamp($type, timestamp, /)\n"
+"fromtimestamp($type, __timestamp)\n"
 "--\n"
 "\n"
 "Create a date from a POSIX timestamp.\n"
@@ -15,7 +15,7 @@ PyDoc_STRVAR(datetime_date_fromtimestamp__doc__,
     {"fromtimestamp", (PyCFunction)datetime_date_fromtimestamp, METH_O|METH_CLASS, datetime_date_fromtimestamp__doc__},
 
 PyDoc_STRVAR(datetime_datetime_now__doc__,
-"now($type, /, tz=None)\n"
+"now($type, tz=None)\n"
 "--\n"
 "\n"
 "Returns new datetime object representing current time local to tz.\n"
@@ -55,4 +55,4 @@ skip_optional_pos:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=aae916ab728ca85b input=a9049054013a1b77]*/
+/*[clinic end generated code: output=90709debd07e4f3e input=a9049054013a1b77]*/

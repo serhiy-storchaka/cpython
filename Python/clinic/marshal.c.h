@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(marshal_dump__doc__,
-"dump($module, value, file, version=version, /)\n"
+"dump($module, __value, __file, __version=version)\n"
 "--\n"
 "\n"
 "Write the value on the open file.\n"
@@ -59,7 +59,7 @@ exit:
 }
 
 PyDoc_STRVAR(marshal_load__doc__,
-"load($module, file, /)\n"
+"load($module, __file)\n"
 "--\n"
 "\n"
 "Read one value from the open file and return it.\n"
@@ -78,7 +78,7 @@ PyDoc_STRVAR(marshal_load__doc__,
     {"load", (PyCFunction)marshal_load, METH_O, marshal_load__doc__},
 
 PyDoc_STRVAR(marshal_dumps__doc__,
-"dumps($module, value, version=version, /)\n"
+"dumps($module, __value, __version=version)\n"
 "--\n"
 "\n"
 "Return the bytes object that would be written to a file by dump(value, file).\n"
@@ -128,7 +128,7 @@ exit:
 }
 
 PyDoc_STRVAR(marshal_loads__doc__,
-"loads($module, bytes, /)\n"
+"loads($module, __bytes)\n"
 "--\n"
 "\n"
 "Convert the bytes-like object to a value.\n"
@@ -165,4 +165,4 @@ exit:
 
     return return_value;
 }
-/*[clinic end generated code: output=ae2bca1aa239e095 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=4c093d877c849942 input=a9049054013a1b77]*/

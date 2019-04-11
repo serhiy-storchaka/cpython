@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_heapq_heappush__doc__,
-"heappush($module, heap, item, /)\n"
+"heappush($module, __heap, __item)\n"
 "--\n"
 "\n"
 "Push item onto heap, maintaining the heap invariant.");
@@ -33,7 +33,7 @@ exit:
 }
 
 PyDoc_STRVAR(_heapq_heappop__doc__,
-"heappop($module, heap, /)\n"
+"heappop($module, __heap)\n"
 "--\n"
 "\n"
 "Pop the smallest item off the heap, maintaining the heap invariant.");
@@ -42,7 +42,7 @@ PyDoc_STRVAR(_heapq_heappop__doc__,
     {"heappop", (PyCFunction)_heapq_heappop, METH_O, _heapq_heappop__doc__},
 
 PyDoc_STRVAR(_heapq_heapreplace__doc__,
-"heapreplace($module, heap, item, /)\n"
+"heapreplace($module, __heap, __item)\n"
 "--\n"
 "\n"
 "Pop and return the current smallest value, and add the new item.\n"
@@ -80,7 +80,7 @@ exit:
 }
 
 PyDoc_STRVAR(_heapq_heappushpop__doc__,
-"heappushpop($module, heap, item, /)\n"
+"heappushpop($module, __heap, __item)\n"
 "--\n"
 "\n"
 "Push item on the heap, then pop and return the smallest item from the heap.\n"
@@ -113,7 +113,7 @@ exit:
 }
 
 PyDoc_STRVAR(_heapq_heapify__doc__,
-"heapify($module, heap, /)\n"
+"heapify($module, __heap)\n"
 "--\n"
 "\n"
 "Transform list into a heap, in-place, in O(len(heap)) time.");
@@ -122,7 +122,7 @@ PyDoc_STRVAR(_heapq_heapify__doc__,
     {"heapify", (PyCFunction)_heapq_heapify, METH_O, _heapq_heapify__doc__},
 
 PyDoc_STRVAR(_heapq__heappop_max__doc__,
-"_heappop_max($module, heap, /)\n"
+"_heappop_max($module, __heap)\n"
 "--\n"
 "\n"
 "Maxheap variant of heappop.");
@@ -131,7 +131,7 @@ PyDoc_STRVAR(_heapq__heappop_max__doc__,
     {"_heappop_max", (PyCFunction)_heapq__heappop_max, METH_O, _heapq__heappop_max__doc__},
 
 PyDoc_STRVAR(_heapq__heapreplace_max__doc__,
-"_heapreplace_max($module, heap, item, /)\n"
+"_heapreplace_max($module, __heap, __item)\n"
 "--\n"
 "\n"
 "Maxheap variant of heapreplace.");
@@ -162,11 +162,11 @@ exit:
 }
 
 PyDoc_STRVAR(_heapq__heapify_max__doc__,
-"_heapify_max($module, heap, /)\n"
+"_heapify_max($module, __heap)\n"
 "--\n"
 "\n"
 "Maxheap variant of heapify.");
 
 #define _HEAPQ__HEAPIFY_MAX_METHODDEF    \
     {"_heapify_max", (PyCFunction)_heapq__heapify_max, METH_O, _heapq__heapify_max__doc__},
-/*[clinic end generated code: output=37ef2a3319971c8d input=a9049054013a1b77]*/
+/*[clinic end generated code: output=d13716e3828f6088 input=a9049054013a1b77]*/

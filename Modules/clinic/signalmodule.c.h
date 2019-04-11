@@ -5,7 +5,7 @@ preserve
 #if defined(HAVE_ALARM)
 
 PyDoc_STRVAR(signal_alarm__doc__,
-"alarm($module, seconds, /)\n"
+"alarm($module, __seconds)\n"
 "--\n"
 "\n"
 "Arrange for SIGALRM to arrive after the given number of seconds.");
@@ -47,7 +47,7 @@ exit:
 #if defined(HAVE_PAUSE)
 
 PyDoc_STRVAR(signal_pause__doc__,
-"pause($module, /)\n"
+"pause($module)\n"
 "--\n"
 "\n"
 "Wait until a signal arrives.");
@@ -67,7 +67,7 @@ signal_pause(PyObject *module, PyObject *Py_UNUSED(ignored))
 #endif /* defined(HAVE_PAUSE) */
 
 PyDoc_STRVAR(signal_raise_signal__doc__,
-"raise_signal($module, signalnum, /)\n"
+"raise_signal($module, __signalnum)\n"
 "--\n"
 "\n"
 "Send a signal to the executing process.");
@@ -100,7 +100,7 @@ exit:
 }
 
 PyDoc_STRVAR(signal_signal__doc__,
-"signal($module, signalnum, handler, /)\n"
+"signal($module, __signalnum, __handler)\n"
 "--\n"
 "\n"
 "Set the action for the given signal.\n"
@@ -145,7 +145,7 @@ exit:
 }
 
 PyDoc_STRVAR(signal_getsignal__doc__,
-"getsignal($module, signalnum, /)\n"
+"getsignal($module, __signalnum)\n"
 "--\n"
 "\n"
 "Return the current action for the given signal.\n"
@@ -184,7 +184,7 @@ exit:
 }
 
 PyDoc_STRVAR(signal_strsignal__doc__,
-"strsignal($module, signalnum, /)\n"
+"strsignal($module, __signalnum)\n"
 "--\n"
 "\n"
 "Return the system description of the given signal.\n"
@@ -222,7 +222,7 @@ exit:
 #if defined(HAVE_SIGINTERRUPT)
 
 PyDoc_STRVAR(signal_siginterrupt__doc__,
-"siginterrupt($module, signalnum, flag, /)\n"
+"siginterrupt($module, __signalnum, __flag)\n"
 "--\n"
 "\n"
 "Change system call restart behaviour.\n"
@@ -275,7 +275,7 @@ exit:
 #if defined(HAVE_SETITIMER)
 
 PyDoc_STRVAR(signal_setitimer__doc__,
-"setitimer($module, which, seconds, interval=0.0, /)\n"
+"setitimer($module, __which, __seconds, __interval=0.0)\n"
 "--\n"
 "\n"
 "Sets given itimer (one of ITIMER_REAL, ITIMER_VIRTUAL or ITIMER_PROF).\n"
@@ -329,7 +329,7 @@ exit:
 #if defined(HAVE_GETITIMER)
 
 PyDoc_STRVAR(signal_getitimer__doc__,
-"getitimer($module, which, /)\n"
+"getitimer($module, __which)\n"
 "--\n"
 "\n"
 "Returns current value of given itimer.");
@@ -366,7 +366,7 @@ exit:
 #if defined(PYPTHREAD_SIGMASK)
 
 PyDoc_STRVAR(signal_pthread_sigmask__doc__,
-"pthread_sigmask($module, how, mask, /)\n"
+"pthread_sigmask($module, __how, __mask)\n"
 "--\n"
 "\n"
 "Fetch and/or change the signal mask of the calling thread.");
@@ -410,7 +410,7 @@ exit:
 #if defined(HAVE_SIGPENDING)
 
 PyDoc_STRVAR(signal_sigpending__doc__,
-"sigpending($module, /)\n"
+"sigpending($module)\n"
 "--\n"
 "\n"
 "Examine pending signals.\n"
@@ -435,7 +435,7 @@ signal_sigpending(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SIGWAIT)
 
 PyDoc_STRVAR(signal_sigwait__doc__,
-"sigwait($module, sigset, /)\n"
+"sigwait($module, __sigset)\n"
 "--\n"
 "\n"
 "Wait for a signal.\n"
@@ -470,7 +470,7 @@ exit:
 #if (defined(HAVE_SIGFILLSET) || defined(MS_WINDOWS))
 
 PyDoc_STRVAR(signal_valid_signals__doc__,
-"valid_signals($module, /)\n"
+"valid_signals($module)\n"
 "--\n"
 "\n"
 "Return a set of valid signal numbers on this platform.\n"
@@ -495,7 +495,7 @@ signal_valid_signals(PyObject *module, PyObject *Py_UNUSED(ignored))
 #if defined(HAVE_SIGWAITINFO)
 
 PyDoc_STRVAR(signal_sigwaitinfo__doc__,
-"sigwaitinfo($module, sigset, /)\n"
+"sigwaitinfo($module, __sigset)\n"
 "--\n"
 "\n"
 "Wait synchronously until one of the signals in *sigset* is delivered.\n"
@@ -528,7 +528,7 @@ exit:
 #if defined(HAVE_SIGTIMEDWAIT)
 
 PyDoc_STRVAR(signal_sigtimedwait__doc__,
-"sigtimedwait($module, sigset, timeout, /)\n"
+"sigtimedwait($module, __sigset, __timeout)\n"
 "--\n"
 "\n"
 "Like sigwaitinfo(), but with a timeout.\n"
@@ -567,7 +567,7 @@ exit:
 #if defined(HAVE_PTHREAD_KILL)
 
 PyDoc_STRVAR(signal_pthread_kill__doc__,
-"pthread_kill($module, thread_id, signalnum, /)\n"
+"pthread_kill($module, __thread_id, __signalnum)\n"
 "--\n"
 "\n"
 "Send a signal to a thread.");
@@ -658,4 +658,4 @@ exit:
 #ifndef SIGNAL_PTHREAD_KILL_METHODDEF
     #define SIGNAL_PTHREAD_KILL_METHODDEF
 #endif /* !defined(SIGNAL_PTHREAD_KILL_METHODDEF) */
-/*[clinic end generated code: output=f0d3a5703581da76 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5d2d3cdc9cb16136 input=a9049054013a1b77]*/

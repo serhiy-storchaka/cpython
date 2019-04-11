@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_multibytecodec_MultibyteCodec_encode__doc__,
-"encode($self, /, input, errors=None)\n"
+"encode($self, input, errors=None)\n"
 "--\n"
 "\n"
 "Return an encoded string version of `input\'.\n"
@@ -66,7 +66,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteCodec_decode__doc__,
-"decode($self, /, input, errors=None)\n"
+"decode($self, input, errors=None)\n"
 "--\n"
 "\n"
 "Decodes \'input\'.\n"
@@ -140,7 +140,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalEncoder_encode__doc__,
-"encode($self, /, input, final=False)\n"
+"encode($self, input, final=False)\n"
 "--\n"
 "\n");
 
@@ -188,7 +188,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalEncoder_getstate__doc__,
-"getstate($self, /)\n"
+"getstate($self)\n"
 "--\n"
 "\n");
 
@@ -205,7 +205,7 @@ _multibytecodec_MultibyteIncrementalEncoder_getstate(MultibyteIncrementalEncoder
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalEncoder_setstate__doc__,
-"setstate($self, state, /)\n"
+"setstate($self, __state)\n"
 "--\n"
 "\n");
 
@@ -234,7 +234,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalEncoder_reset__doc__,
-"reset($self, /)\n"
+"reset($self)\n"
 "--\n"
 "\n");
 
@@ -251,7 +251,7 @@ _multibytecodec_MultibyteIncrementalEncoder_reset(MultibyteIncrementalEncoderObj
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalDecoder_decode__doc__,
-"decode($self, /, input, final=False)\n"
+"decode($self, input, final=False)\n"
 "--\n"
 "\n");
 
@@ -310,7 +310,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalDecoder_getstate__doc__,
-"getstate($self, /)\n"
+"getstate($self)\n"
 "--\n"
 "\n");
 
@@ -327,7 +327,7 @@ _multibytecodec_MultibyteIncrementalDecoder_getstate(MultibyteIncrementalDecoder
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalDecoder_setstate__doc__,
-"setstate($self, state, /)\n"
+"setstate($self, __state)\n"
 "--\n"
 "\n");
 
@@ -356,7 +356,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteIncrementalDecoder_reset__doc__,
-"reset($self, /)\n"
+"reset($self)\n"
 "--\n"
 "\n");
 
@@ -373,7 +373,7 @@ _multibytecodec_MultibyteIncrementalDecoder_reset(MultibyteIncrementalDecoderObj
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamReader_read__doc__,
-"read($self, sizeobj=None, /)\n"
+"read($self, __sizeobj=None)\n"
 "--\n"
 "\n");
 
@@ -405,7 +405,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamReader_readline__doc__,
-"readline($self, sizeobj=None, /)\n"
+"readline($self, __sizeobj=None)\n"
 "--\n"
 "\n");
 
@@ -437,7 +437,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamReader_readlines__doc__,
-"readlines($self, sizehintobj=None, /)\n"
+"readlines($self, __sizehintobj=None)\n"
 "--\n"
 "\n");
 
@@ -469,7 +469,7 @@ exit:
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamReader_reset__doc__,
-"reset($self, /)\n"
+"reset($self)\n"
 "--\n"
 "\n");
 
@@ -486,7 +486,7 @@ _multibytecodec_MultibyteStreamReader_reset(MultibyteStreamReaderObject *self, P
 }
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamWriter_write__doc__,
-"write($self, strobj, /)\n"
+"write($self, __strobj)\n"
 "--\n"
 "\n");
 
@@ -494,7 +494,7 @@ PyDoc_STRVAR(_multibytecodec_MultibyteStreamWriter_write__doc__,
     {"write", (PyCFunction)_multibytecodec_MultibyteStreamWriter_write, METH_O, _multibytecodec_MultibyteStreamWriter_write__doc__},
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamWriter_writelines__doc__,
-"writelines($self, lines, /)\n"
+"writelines($self, __lines)\n"
 "--\n"
 "\n");
 
@@ -502,7 +502,7 @@ PyDoc_STRVAR(_multibytecodec_MultibyteStreamWriter_writelines__doc__,
     {"writelines", (PyCFunction)_multibytecodec_MultibyteStreamWriter_writelines, METH_O, _multibytecodec_MultibyteStreamWriter_writelines__doc__},
 
 PyDoc_STRVAR(_multibytecodec_MultibyteStreamWriter_reset__doc__,
-"reset($self, /)\n"
+"reset($self)\n"
 "--\n"
 "\n");
 
@@ -519,10 +519,10 @@ _multibytecodec_MultibyteStreamWriter_reset(MultibyteStreamWriterObject *self, P
 }
 
 PyDoc_STRVAR(_multibytecodec___create_codec__doc__,
-"__create_codec($module, arg, /)\n"
+"__create_codec($module, __arg)\n"
 "--\n"
 "\n");
 
 #define _MULTIBYTECODEC___CREATE_CODEC_METHODDEF    \
     {"__create_codec", (PyCFunction)_multibytecodec___create_codec, METH_O, _multibytecodec___create_codec__doc__},
-/*[clinic end generated code: output=eb95a408c4ddbfff input=a9049054013a1b77]*/
+/*[clinic end generated code: output=9dc8d3aa0d60a33e input=a9049054013a1b77]*/

@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(_io__IOBase_tell__doc__,
-"tell($self, /)\n"
+"tell($self)\n"
 "--\n"
 "\n"
 "Return current stream position.");
@@ -21,7 +21,7 @@ _io__IOBase_tell(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_flush__doc__,
-"flush($self, /)\n"
+"flush($self)\n"
 "--\n"
 "\n"
 "Flush write buffers, if applicable.\n"
@@ -41,7 +41,7 @@ _io__IOBase_flush(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_close__doc__,
-"close($self, /)\n"
+"close($self)\n"
 "--\n"
 "\n"
 "Flush and close the IO object.\n"
@@ -61,7 +61,7 @@ _io__IOBase_close(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_seekable__doc__,
-"seekable($self, /)\n"
+"seekable($self)\n"
 "--\n"
 "\n"
 "Return whether object supports random access.\n"
@@ -82,7 +82,7 @@ _io__IOBase_seekable(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_readable__doc__,
-"readable($self, /)\n"
+"readable($self)\n"
 "--\n"
 "\n"
 "Return whether object was opened for reading.\n"
@@ -102,7 +102,7 @@ _io__IOBase_readable(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_writable__doc__,
-"writable($self, /)\n"
+"writable($self)\n"
 "--\n"
 "\n"
 "Return whether object was opened for writing.\n"
@@ -122,7 +122,7 @@ _io__IOBase_writable(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_fileno__doc__,
-"fileno($self, /)\n"
+"fileno($self)\n"
 "--\n"
 "\n"
 "Returns underlying file descriptor if one exists.\n"
@@ -142,7 +142,7 @@ _io__IOBase_fileno(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_isatty__doc__,
-"isatty($self, /)\n"
+"isatty($self)\n"
 "--\n"
 "\n"
 "Return whether this is an \'interactive\' stream.\n"
@@ -162,7 +162,7 @@ _io__IOBase_isatty(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(_io__IOBase_readline__doc__,
-"readline($self, size=-1, /)\n"
+"readline($self, __size=-1)\n"
 "--\n"
 "\n"
 "Read and return a line from the stream.\n"
@@ -202,7 +202,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__IOBase_readlines__doc__,
-"readlines($self, hint=-1, /)\n"
+"readlines($self, __hint=-1)\n"
 "--\n"
 "\n"
 "Return a list of lines from the stream.\n"
@@ -240,7 +240,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__IOBase_writelines__doc__,
-"writelines($self, lines, /)\n"
+"writelines($self, __lines)\n"
 "--\n"
 "\n");
 
@@ -248,7 +248,7 @@ PyDoc_STRVAR(_io__IOBase_writelines__doc__,
     {"writelines", (PyCFunction)_io__IOBase_writelines, METH_O, _io__IOBase_writelines__doc__},
 
 PyDoc_STRVAR(_io__RawIOBase_read__doc__,
-"read($self, size=-1, /)\n"
+"read($self, __size=-1)\n"
 "--\n"
 "\n");
 
@@ -295,7 +295,7 @@ exit:
 }
 
 PyDoc_STRVAR(_io__RawIOBase_readall__doc__,
-"readall($self, /)\n"
+"readall($self)\n"
 "--\n"
 "\n"
 "Read until EOF, using multiple read() call.");
@@ -311,4 +311,4 @@ _io__RawIOBase_readall(PyObject *self, PyObject *Py_UNUSED(ignored))
 {
     return _io__RawIOBase_readall_impl(self);
 }
-/*[clinic end generated code: output=60e43a7cbd9f314e input=a9049054013a1b77]*/
+/*[clinic end generated code: output=c940f9b16ecff796 input=a9049054013a1b77]*/

@@ -5493,7 +5493,7 @@ class SignatureTest(unittest.TestCase):
                 c_sig = inspect.signature(c_func)
 
                 # parameter names:
-                c_names = list(c_sig.parameters.keys())
+                c_names = [x.lstrip('_') for x in c_sig.parameters.keys()]
                 p_names = [x for x in p_sig.parameters.keys() if not
                            x.startswith('_')]
 
@@ -5547,7 +5547,7 @@ class SignatureTest(unittest.TestCase):
             for name, param in sig.parameters.items():
                 if name == 'self': continue
                 if param.kind == POS:
-                    args.append(pdict[module][name])
+                    args.append(pdict[module][name.lstrip('_')])
                 elif param.kind == POS_KWD:
                     kwargs[name] = pdict[module][name]
                 else:
@@ -5576,7 +5576,7 @@ class SignatureTest(unittest.TestCase):
 
                     # parameter names:
                     p_names = list(p_sig.parameters.keys())
-                    c_names = [tr(x) for x in c_sig.parameters.keys()]
+                    c_names = [tr(x.lstrip('_')) for x in c_sig.parameters.keys()]
 
                     self.assertEqual(c_names, p_names,
                                      msg="parameter name mismatch in %s" % p_func)

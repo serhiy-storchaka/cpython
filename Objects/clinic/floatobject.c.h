@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(float_is_integer__doc__,
-"is_integer($self, /)\n"
+"is_integer($self)\n"
 "--\n"
 "\n"
 "Return True if the float is an integer.");
@@ -21,7 +21,7 @@ float_is_integer(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float___trunc____doc__,
-"__trunc__($self, /)\n"
+"__trunc__($self)\n"
 "--\n"
 "\n"
 "Return the Integral closest to x between 0 and x.");
@@ -39,7 +39,7 @@ float___trunc__(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float___round____doc__,
-"__round__($self, ndigits=None, /)\n"
+"__round__($self, __ndigits=None)\n"
 "--\n"
 "\n"
 "Return the Integral closest to x, rounding half toward even.\n"
@@ -73,7 +73,7 @@ exit:
 }
 
 PyDoc_STRVAR(float_conjugate__doc__,
-"conjugate($self, /)\n"
+"conjugate($self)\n"
 "--\n"
 "\n"
 "Return self, the complex conjugate of any float.");
@@ -91,7 +91,7 @@ float_conjugate(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float_hex__doc__,
-"hex($self, /)\n"
+"hex($self)\n"
 "--\n"
 "\n"
 "Return a hexadecimal representation of a floating-point number.\n"
@@ -114,7 +114,7 @@ float_hex(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float_fromhex__doc__,
-"fromhex($type, string, /)\n"
+"fromhex($type, __string)\n"
 "--\n"
 "\n"
 "Create a floating-point number from a hexadecimal string.\n"
@@ -128,7 +128,7 @@ PyDoc_STRVAR(float_fromhex__doc__,
     {"fromhex", (PyCFunction)float_fromhex, METH_O|METH_CLASS, float_fromhex__doc__},
 
 PyDoc_STRVAR(float_as_integer_ratio__doc__,
-"as_integer_ratio($self, /)\n"
+"as_integer_ratio($self)\n"
 "--\n"
 "\n"
 "Return integer ratio.\n"
@@ -158,7 +158,7 @@ float_as_integer_ratio(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float_new__doc__,
-"float(x=0, /)\n"
+"float(__x=0)\n"
 "--\n"
 "\n"
 "Convert a string or number to a floating point number, if possible.");
@@ -191,7 +191,7 @@ exit:
 }
 
 PyDoc_STRVAR(float___getnewargs____doc__,
-"__getnewargs__($self, /)\n"
+"__getnewargs__($self)\n"
 "--\n"
 "\n");
 
@@ -208,7 +208,7 @@ float___getnewargs__(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(float___getformat____doc__,
-"__getformat__($type, typestr, /)\n"
+"__getformat__($type, __typestr)\n"
 "--\n"
 "\n"
 "You probably don\'t want to use this function.\n"
@@ -254,7 +254,7 @@ exit:
 }
 
 PyDoc_STRVAR(float___set_format____doc__,
-"__set_format__($type, typestr, fmt, /)\n"
+"__set_format__($type, __typestr, __fmt)\n"
 "--\n"
 "\n"
 "You probably don\'t want to use this function.\n"
@@ -321,7 +321,7 @@ exit:
 }
 
 PyDoc_STRVAR(float___format____doc__,
-"__format__($self, format_spec, /)\n"
+"__format__($self, __format_spec)\n"
 "--\n"
 "\n"
 "Formats the float according to format_spec.");
@@ -351,4 +351,4 @@ float___format__(PyObject *self, PyObject *arg)
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=c183029d87dd41fa input=a9049054013a1b77]*/
+/*[clinic end generated code: output=5891289bb8b6b26f input=a9049054013a1b77]*/

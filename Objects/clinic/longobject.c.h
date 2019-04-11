@@ -40,7 +40,7 @@ exit:
 }
 
 PyDoc_STRVAR(int___getnewargs____doc__,
-"__getnewargs__($self, /)\n"
+"__getnewargs__($self)\n"
 "--\n"
 "\n");
 
@@ -57,7 +57,7 @@ int___getnewargs__(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(int___format____doc__,
-"__format__($self, format_spec, /)\n"
+"__format__($self, __format_spec)\n"
 "--\n"
 "\n");
 
@@ -88,7 +88,7 @@ exit:
 }
 
 PyDoc_STRVAR(int___sizeof____doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Returns size in memory, in bytes.");
@@ -116,7 +116,7 @@ exit:
 }
 
 PyDoc_STRVAR(int_bit_length__doc__,
-"bit_length($self, /)\n"
+"bit_length($self)\n"
 "--\n"
 "\n"
 "Number of bits necessary to represent self in binary.\n"
@@ -139,7 +139,7 @@ int_bit_length(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(int_as_integer_ratio__doc__,
-"as_integer_ratio($self, /)\n"
+"as_integer_ratio($self)\n"
 "--\n"
 "\n"
 "Return integer ratio.\n"
@@ -167,7 +167,7 @@ int_as_integer_ratio(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(int_to_bytes__doc__,
-"to_bytes($self, /, length, byteorder, *, signed=False)\n"
+"to_bytes($self, length, byteorder, *, signed=False)\n"
 "--\n"
 "\n"
 "Return an array of bytes representing an integer.\n"
@@ -249,7 +249,7 @@ exit:
 }
 
 PyDoc_STRVAR(int_from_bytes__doc__,
-"from_bytes($type, /, bytes, byteorder, *, signed=False)\n"
+"from_bytes($type, bytes, byteorder, *, signed=False)\n"
 "--\n"
 "\n"
 "Return the integer represented by the given array of bytes.\n"
@@ -313,4 +313,4 @@ skip_optional_kwonly:
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=709503897c55bca1 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=6be504f257f0a01d input=a9049054013a1b77]*/

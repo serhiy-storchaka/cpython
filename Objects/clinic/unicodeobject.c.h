@@ -3,7 +3,7 @@ preserve
 [clinic start generated code]*/
 
 PyDoc_STRVAR(unicode_title__doc__,
-"title($self, /)\n"
+"title($self)\n"
 "--\n"
 "\n"
 "Return a version of the string where each word is titlecased.\n"
@@ -24,7 +24,7 @@ unicode_title(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_capitalize__doc__,
-"capitalize($self, /)\n"
+"capitalize($self)\n"
 "--\n"
 "\n"
 "Return a capitalized version of the string.\n"
@@ -45,7 +45,7 @@ unicode_capitalize(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_casefold__doc__,
-"casefold($self, /)\n"
+"casefold($self)\n"
 "--\n"
 "\n"
 "Return a version of the string suitable for caseless comparisons.");
@@ -63,7 +63,7 @@ unicode_casefold(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_center__doc__,
-"center($self, width, fillchar=\' \', /)\n"
+"center($self, __width, __fillchar=\' \')\n"
 "--\n"
 "\n"
 "Return a centered string of length width.\n"
@@ -117,7 +117,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_encode__doc__,
-"encode($self, /, encoding=\'utf-8\', errors=\'strict\')\n"
+"encode($self, encoding=\'utf-8\', errors=\'strict\')\n"
 "--\n"
 "\n"
 "Encode the string using the codec registered for encoding.\n"
@@ -194,7 +194,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_expandtabs__doc__,
-"expandtabs($self, /, tabsize=8)\n"
+"expandtabs($self, tabsize=8)\n"
 "--\n"
 "\n"
 "Return a copy where all tab characters are expanded using spaces.\n"
@@ -241,7 +241,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_isascii__doc__,
-"isascii($self, /)\n"
+"isascii($self)\n"
 "--\n"
 "\n"
 "Return True if all characters in the string are ASCII, False otherwise.\n"
@@ -262,7 +262,7 @@ unicode_isascii(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_islower__doc__,
-"islower($self, /)\n"
+"islower($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a lowercase string, False otherwise.\n"
@@ -283,7 +283,7 @@ unicode_islower(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isupper__doc__,
-"isupper($self, /)\n"
+"isupper($self)\n"
 "--\n"
 "\n"
 "Return True if the string is an uppercase string, False otherwise.\n"
@@ -304,7 +304,7 @@ unicode_isupper(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_istitle__doc__,
-"istitle($self, /)\n"
+"istitle($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a title-cased string, False otherwise.\n"
@@ -325,7 +325,7 @@ unicode_istitle(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isspace__doc__,
-"isspace($self, /)\n"
+"isspace($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a whitespace string, False otherwise.\n"
@@ -346,7 +346,7 @@ unicode_isspace(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isalpha__doc__,
-"isalpha($self, /)\n"
+"isalpha($self)\n"
 "--\n"
 "\n"
 "Return True if the string is an alphabetic string, False otherwise.\n"
@@ -367,7 +367,7 @@ unicode_isalpha(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isalnum__doc__,
-"isalnum($self, /)\n"
+"isalnum($self)\n"
 "--\n"
 "\n"
 "Return True if the string is an alpha-numeric string, False otherwise.\n"
@@ -388,7 +388,7 @@ unicode_isalnum(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isdecimal__doc__,
-"isdecimal($self, /)\n"
+"isdecimal($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a decimal string, False otherwise.\n"
@@ -409,7 +409,7 @@ unicode_isdecimal(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isdigit__doc__,
-"isdigit($self, /)\n"
+"isdigit($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a digit string, False otherwise.\n"
@@ -430,7 +430,7 @@ unicode_isdigit(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isnumeric__doc__,
-"isnumeric($self, /)\n"
+"isnumeric($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a numeric string, False otherwise.\n"
@@ -451,7 +451,7 @@ unicode_isnumeric(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isidentifier__doc__,
-"isidentifier($self, /)\n"
+"isidentifier($self)\n"
 "--\n"
 "\n"
 "Return True if the string is a valid Python identifier, False otherwise.\n"
@@ -472,7 +472,7 @@ unicode_isidentifier(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_isprintable__doc__,
-"isprintable($self, /)\n"
+"isprintable($self)\n"
 "--\n"
 "\n"
 "Return True if the string is printable, False otherwise.\n"
@@ -493,7 +493,7 @@ unicode_isprintable(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_join__doc__,
-"join($self, iterable, /)\n"
+"join($self, __iterable)\n"
 "--\n"
 "\n"
 "Concatenate any number of strings.\n"
@@ -507,7 +507,7 @@ PyDoc_STRVAR(unicode_join__doc__,
     {"join", (PyCFunction)unicode_join, METH_O, unicode_join__doc__},
 
 PyDoc_STRVAR(unicode_ljust__doc__,
-"ljust($self, width, fillchar=\' \', /)\n"
+"ljust($self, __width, __fillchar=\' \')\n"
 "--\n"
 "\n"
 "Return a left-justified string of length width.\n"
@@ -561,7 +561,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_lower__doc__,
-"lower($self, /)\n"
+"lower($self)\n"
 "--\n"
 "\n"
 "Return a copy of the string converted to lowercase.");
@@ -579,7 +579,7 @@ unicode_lower(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_strip__doc__,
-"strip($self, chars=None, /)\n"
+"strip($self, __chars=None)\n"
 "--\n"
 "\n"
 "Return a copy of the string with leading and trailing whitespace remove.\n"
@@ -613,7 +613,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_lstrip__doc__,
-"lstrip($self, chars=None, /)\n"
+"lstrip($self, __chars=None)\n"
 "--\n"
 "\n"
 "Return a copy of the string with leading whitespace removed.\n"
@@ -647,7 +647,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_rstrip__doc__,
-"rstrip($self, chars=None, /)\n"
+"rstrip($self, __chars=None)\n"
 "--\n"
 "\n"
 "Return a copy of the string with trailing whitespace removed.\n"
@@ -681,7 +681,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_replace__doc__,
-"replace($self, old, new, count=-1, /)\n"
+"replace($self, __old, __new, __count=-1)\n"
 "--\n"
 "\n"
 "Return a copy with all occurrences of substring old replaced by new.\n"
@@ -755,7 +755,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_rjust__doc__,
-"rjust($self, width, fillchar=\' \', /)\n"
+"rjust($self, __width, __fillchar=\' \')\n"
 "--\n"
 "\n"
 "Return a right-justified string of length width.\n"
@@ -809,7 +809,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_split__doc__,
-"split($self, /, sep=None, maxsplit=-1)\n"
+"split($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the words in the string, using sep as the delimiter string.\n"
@@ -877,7 +877,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_partition__doc__,
-"partition($self, sep, /)\n"
+"partition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the string into three parts using the given separator.\n"
@@ -893,7 +893,7 @@ PyDoc_STRVAR(unicode_partition__doc__,
     {"partition", (PyCFunction)unicode_partition, METH_O, unicode_partition__doc__},
 
 PyDoc_STRVAR(unicode_rpartition__doc__,
-"rpartition($self, sep, /)\n"
+"rpartition($self, __sep)\n"
 "--\n"
 "\n"
 "Partition the string into three parts using the given separator.\n"
@@ -909,7 +909,7 @@ PyDoc_STRVAR(unicode_rpartition__doc__,
     {"rpartition", (PyCFunction)unicode_rpartition, METH_O, unicode_rpartition__doc__},
 
 PyDoc_STRVAR(unicode_rsplit__doc__,
-"rsplit($self, /, sep=None, maxsplit=-1)\n"
+"rsplit($self, sep=None, maxsplit=-1)\n"
 "--\n"
 "\n"
 "Return a list of the words in the string, using sep as the delimiter string.\n"
@@ -979,7 +979,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_splitlines__doc__,
-"splitlines($self, /, keepends=False)\n"
+"splitlines($self, keepends=False)\n"
 "--\n"
 "\n"
 "Return a list of the lines in the string, breaking at line boundaries.\n"
@@ -1027,7 +1027,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_swapcase__doc__,
-"swapcase($self, /)\n"
+"swapcase($self)\n"
 "--\n"
 "\n"
 "Convert uppercase characters to lowercase and lowercase characters to uppercase.");
@@ -1045,7 +1045,7 @@ unicode_swapcase(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_maketrans__doc__,
-"maketrans(x, y=None, z=None, /)\n"
+"maketrans(__x, __y=None, __z=None)\n"
 "--\n"
 "\n"
 "Return a translation table usable for str.translate().\n"
@@ -1106,7 +1106,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_translate__doc__,
-"translate($self, table, /)\n"
+"translate($self, __table)\n"
 "--\n"
 "\n"
 "Replace each character in the string using the given translation table.\n"
@@ -1123,7 +1123,7 @@ PyDoc_STRVAR(unicode_translate__doc__,
     {"translate", (PyCFunction)unicode_translate, METH_O, unicode_translate__doc__},
 
 PyDoc_STRVAR(unicode_upper__doc__,
-"upper($self, /)\n"
+"upper($self)\n"
 "--\n"
 "\n"
 "Return a copy of the string converted to uppercase.");
@@ -1141,7 +1141,7 @@ unicode_upper(PyObject *self, PyObject *Py_UNUSED(ignored))
 }
 
 PyDoc_STRVAR(unicode_zfill__doc__,
-"zfill($self, width, /)\n"
+"zfill($self, __width)\n"
 "--\n"
 "\n"
 "Pad a numeric string with zeros on the left, to fill a field of the given width.\n"
@@ -1184,7 +1184,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode___format____doc__,
-"__format__($self, format_spec, /)\n"
+"__format__($self, __format_spec)\n"
 "--\n"
 "\n"
 "Return a formatted version of the string as described by format_spec.");
@@ -1216,7 +1216,7 @@ exit:
 }
 
 PyDoc_STRVAR(unicode_sizeof__doc__,
-"__sizeof__($self, /)\n"
+"__sizeof__($self)\n"
 "--\n"
 "\n"
 "Return the size of the string in memory, in bytes.");
@@ -1232,4 +1232,4 @@ unicode_sizeof(PyObject *self, PyObject *Py_UNUSED(ignored))
 {
     return unicode_sizeof_impl(self);
 }
-/*[clinic end generated code: output=d1541724cb4a0070 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=54b99d59ffcd5000 input=a9049054013a1b77]*/
