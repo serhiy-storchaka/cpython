@@ -139,12 +139,12 @@ exit:
 }
 
 PyDoc_STRVAR(code_replace__doc__,
-"replace($self, /, *, co_argcount=-1, co_posonlyargcount=-1,\n"
-"        co_kwonlyargcount=-1, co_nlocals=-1, co_stacksize=-1,\n"
-"        co_flags=-1, co_firstlineno=-1, co_code=None, co_consts=None,\n"
-"        co_names=None, co_varnames=None, co_freevars=None,\n"
-"        co_cellvars=None, co_filename=None, co_name=None,\n"
-"        co_lnotab=None)\n"
+"replace($self, /, *, co_argcount=unknown, co_posonlyargcount=unknown,\n"
+"        co_kwonlyargcount=unknown, co_nlocals=unknown,\n"
+"        co_stacksize=unknown, co_flags=unknown, co_firstlineno=unknown,\n"
+"        co_code=unknown, co_consts=unknown, co_names=unknown,\n"
+"        co_varnames=unknown, co_freevars=unknown, co_cellvars=unknown,\n"
+"        co_filename=unknown, co_name=unknown, co_lnotab=unknown)\n"
 "--\n"
 "\n"
 "Return a copy of the code object with new values for the specified fields.");
@@ -156,11 +156,11 @@ static PyObject *
 code_replace_impl(PyCodeObject *self, int co_argcount,
                   int co_posonlyargcount, int co_kwonlyargcount,
                   int co_nlocals, int co_stacksize, int co_flags,
-                  int co_firstlineno, PyBytesObject *co_code,
-                  PyObject *co_consts, PyObject *co_names,
-                  PyObject *co_varnames, PyObject *co_freevars,
-                  PyObject *co_cellvars, PyObject *co_filename,
-                  PyObject *co_name, PyBytesObject *co_lnotab);
+                  int co_firstlineno, PyObject *co_code, PyObject *co_consts,
+                  PyObject *co_names, PyObject *co_varnames,
+                  PyObject *co_freevars, PyObject *co_cellvars,
+                  PyObject *co_filename, PyObject *co_name,
+                  PyObject *co_lnotab);
 
 static PyObject *
 code_replace(PyCodeObject *self, PyObject *const *args, Py_ssize_t nargs, PyObject *kwnames)
@@ -177,7 +177,7 @@ code_replace(PyCodeObject *self, PyObject *const *args, Py_ssize_t nargs, PyObje
     int co_stacksize = self->co_stacksize;
     int co_flags = self->co_flags;
     int co_firstlineno = self->co_firstlineno;
-    PyBytesObject *co_code = (PyBytesObject *)self->co_code;
+    PyObject *co_code = self->co_code;
     PyObject *co_consts = self->co_consts;
     PyObject *co_names = self->co_names;
     PyObject *co_varnames = self->co_varnames;
@@ -185,7 +185,7 @@ code_replace(PyCodeObject *self, PyObject *const *args, Py_ssize_t nargs, PyObje
     PyObject *co_cellvars = self->co_cellvars;
     PyObject *co_filename = self->co_filename;
     PyObject *co_name = self->co_name;
-    PyBytesObject *co_lnotab = (PyBytesObject *)self->co_lnotab;
+    PyObject *co_lnotab = self->co_lnotab;
 
     args = _PyArg_UnpackKeywords(args, nargs, NULL, kwnames, &_parser, 0, 0, 0, argsbuf);
     if (!args) {
@@ -262,7 +262,7 @@ code_replace(PyCodeObject *self, PyObject *const *args, Py_ssize_t nargs, PyObje
             _PyArg_BadArgument("replace", "argument 'co_code'", "bytes", args[7]);
             goto exit;
         }
-        co_code = (PyBytesObject *)args[7];
+        co_code = args[7];
         if (!--noptargs) {
             goto skip_optional_kwonly;
         }
@@ -347,11 +347,11 @@ code_replace(PyCodeObject *self, PyObject *const *args, Py_ssize_t nargs, PyObje
         _PyArg_BadArgument("replace", "argument 'co_lnotab'", "bytes", args[15]);
         goto exit;
     }
-    co_lnotab = (PyBytesObject *)args[15];
+    co_lnotab = args[15];
 skip_optional_kwonly:
     return_value = code_replace_impl(self, co_argcount, co_posonlyargcount, co_kwonlyargcount, co_nlocals, co_stacksize, co_flags, co_firstlineno, co_code, co_consts, co_names, co_varnames, co_freevars, co_cellvars, co_filename, co_name, co_lnotab);
 
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=18c31941ec09e9ca input=a9049054013a1b77]*/
+/*[clinic end generated code: output=63570ac8ac18664b input=a9049054013a1b77]*/

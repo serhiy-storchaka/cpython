@@ -621,22 +621,22 @@ code_sizeof(PyCodeObject *co, PyObject *Py_UNUSED(args))
 code.replace
 
     *
-    co_argcount: int(c_default="self->co_argcount") = -1
-    co_posonlyargcount: int(c_default="self->co_posonlyargcount") = -1
-    co_kwonlyargcount: int(c_default="self->co_kwonlyargcount") = -1
-    co_nlocals: int(c_default="self->co_nlocals") = -1
-    co_stacksize: int(c_default="self->co_stacksize") = -1
-    co_flags: int(c_default="self->co_flags") = -1
-    co_firstlineno: int(c_default="self->co_firstlineno") = -1
-    co_code: PyBytesObject(c_default="(PyBytesObject *)self->co_code") = None
-    co_consts: object(subclass_of="&PyTuple_Type", c_default="self->co_consts") = None
-    co_names: object(subclass_of="&PyTuple_Type", c_default="self->co_names") = None
-    co_varnames: object(subclass_of="&PyTuple_Type", c_default="self->co_varnames") = None
-    co_freevars: object(subclass_of="&PyTuple_Type", c_default="self->co_freevars") = None
-    co_cellvars: object(subclass_of="&PyTuple_Type", c_default="self->co_cellvars") = None
-    co_filename: unicode(c_default="self->co_filename") = None
-    co_name: unicode(c_default="self->co_name") = None
-    co_lnotab: PyBytesObject(c_default="(PyBytesObject *)self->co_lnotab") = None
+    co_argcount: int(c_default="self->co_argcount") = unknown
+    co_posonlyargcount: int(c_default="self->co_posonlyargcount") = unknown
+    co_kwonlyargcount: int(c_default="self->co_kwonlyargcount") = unknown
+    co_nlocals: int(c_default="self->co_nlocals") = unknown
+    co_stacksize: int(c_default="self->co_stacksize") = unknown
+    co_flags: int(c_default="self->co_flags") = unknown
+    co_firstlineno: int(c_default="self->co_firstlineno") = unknown
+    co_code: object(subclass_of="&PyBytes_Type", c_default="self->co_code") = unknown
+    co_consts: object(subclass_of="&PyTuple_Type", c_default="self->co_consts") = unknown
+    co_names: object(subclass_of="&PyTuple_Type", c_default="self->co_names") = unknown
+    co_varnames: object(subclass_of="&PyTuple_Type", c_default="self->co_varnames") = unknown
+    co_freevars: object(subclass_of="&PyTuple_Type", c_default="self->co_freevars") = unknown
+    co_cellvars: object(subclass_of="&PyTuple_Type", c_default="self->co_cellvars") = unknown
+    co_filename: unicode(c_default="self->co_filename") = unknown
+    co_name: unicode(c_default="self->co_name") = unknown
+    co_lnotab: object(subclass_of="&PyBytes_Type", c_default="self->co_lnotab") = unknown
 
 Return a copy of the code object with new values for the specified fields.
 [clinic start generated code]*/
@@ -645,12 +645,12 @@ static PyObject *
 code_replace_impl(PyCodeObject *self, int co_argcount,
                   int co_posonlyargcount, int co_kwonlyargcount,
                   int co_nlocals, int co_stacksize, int co_flags,
-                  int co_firstlineno, PyBytesObject *co_code,
-                  PyObject *co_consts, PyObject *co_names,
-                  PyObject *co_varnames, PyObject *co_freevars,
-                  PyObject *co_cellvars, PyObject *co_filename,
-                  PyObject *co_name, PyBytesObject *co_lnotab)
-/*[clinic end generated code: output=25c8e303913bcace input=d9051bc8f24e6b28]*/
+                  int co_firstlineno, PyObject *co_code, PyObject *co_consts,
+                  PyObject *co_names, PyObject *co_varnames,
+                  PyObject *co_freevars, PyObject *co_cellvars,
+                  PyObject *co_filename, PyObject *co_name,
+                  PyObject *co_lnotab)
+/*[clinic end generated code: output=815ecc564ee2f38f input=1e2925901c5842c3]*/
 {
 #define CHECK_INT_ARG(ARG) \
         if (ARG < 0) { \
@@ -678,9 +678,9 @@ code_replace_impl(PyCodeObject *self, int co_argcount,
 
     return (PyObject *)PyCode_NewWithPosOnlyArgs(
         co_argcount, co_posonlyargcount, co_kwonlyargcount, co_nlocals,
-        co_stacksize, co_flags, (PyObject*)co_code, co_consts, co_names,
+        co_stacksize, co_flags, co_code, co_consts, co_names,
         co_varnames, co_freevars, co_cellvars, co_filename, co_name,
-        co_firstlineno, (PyObject*)co_lnotab);
+        co_firstlineno, co_lnotab);
 }
 
 static PyObject *
