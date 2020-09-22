@@ -805,6 +805,14 @@ _fd_converter(PyObject *o, int *p)
     int overflow;
     long long_value;
 
+    assert(PyIndex_Check(o));
+    if (PyBool_Check(o)) {
+        if (PyErr_WarnEx(PyExc_UserWarning,
+                "bool is used as a file descriptor", 1))
+        {
+            return 0;
+        }
+    }
     PyObject *index = _PyNumber_Index(o);
     if (index == NULL) {
         return 0;
