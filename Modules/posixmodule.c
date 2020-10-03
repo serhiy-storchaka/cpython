@@ -805,14 +805,6 @@ _fd_converter(PyObject *o, int *p)
     int overflow;
     long long_value;
 
-    assert(PyIndex_Check(o));
-    if (PyBool_Check(o)) {
-        if (PyErr_WarnEx(PyExc_UserWarning,
-                "bool is used as a file descriptor", 1))
-        {
-            return 0;
-        }
-    }
     PyObject *index = _PyNumber_Index(o);
     if (index == NULL) {
         return 0;
@@ -1641,18 +1633,6 @@ path_error2(path_t *path, path_t *path2)
 
 
 /* POSIX generic methods */
-
-static int
-fildes_converter(PyObject *o, void *p)
-{
-    int fd;
-    int *pointer = (int *)p;
-    fd = PyObject_AsFileDescriptor(o);
-    if (fd < 0)
-        return 0;
-    *pointer = fd;
-    return 1;
-}
 
 static PyObject *
 posix_fildes_fd(int fd, int (*func)(int))
@@ -2650,10 +2630,6 @@ class dir_fd_converter(CConverter):
         else:
             self.converter = 'dir_fd_converter'
 
-class fildes_converter(CConverter):
-    type = 'int'
-    converter = 'fildes_converter'
-
 class uid_t_converter(CConverter):
     type = "uid_t"
     converter = '_Py_Uid_Converter'
@@ -2716,7 +2692,7 @@ class sysconf_confname_converter(path_confname_converter):
     converter="conv_sysconf_confname"
 
 [python start generated code]*/
-/*[python end generated code: output=da39a3ee5e6b4b0d input=f1c8ae8d744f6c8b]*/
+/*[python end generated code: output=da39a3ee5e6b4b0d input=3338733161aa7879]*/
 
 /*[clinic input]
 

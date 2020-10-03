@@ -151,13 +151,6 @@ _sanity_check_python_fd_sequence(PyObject *fd_sequence)
         if (!PyLong_Check(py_fd)) {
             return 1;
         }
-        if (PyBool_Check(py_fd)) {
-            if (PyErr_WarnEx(PyExc_UserWarning,
-                    "bool is used as a file descriptor", 1))
-            {
-                return 1;
-            }
-        }
         iter_fd = PyLong_AsLong(py_fd);
         if (iter_fd < 0 || iter_fd <= prev_fd || iter_fd > INT_MAX) {
             /* Negative, overflow, unsorted, too big for a fd. */

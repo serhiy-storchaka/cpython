@@ -281,13 +281,6 @@ _io__WindowsConsoleIO___init___impl(winconsoleio *self, PyObject *nameobj,
             self->handle = INVALID_HANDLE_VALUE;
     }
 
-    if (PyBool_Check(nameobj)) {
-        if (PyErr_WarnEx(PyExc_UserWarning,
-                "bool is used as a file descriptor", 1))
-        {
-            return -1;
-        }
-    }
     fd = _PyLong_AsInt(nameobj);
     if (fd < 0) {
         if (!PyErr_Occurred()) {

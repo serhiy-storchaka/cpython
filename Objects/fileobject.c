@@ -183,14 +183,7 @@ PyObject_AsFileDescriptor(PyObject *o)
     PyObject *meth;
     _Py_IDENTIFIER(fileno);
 
-    if (PyIndex_Check(o)) {
-        if (PyBool_Check(o)) {
-            if (PyErr_WarnEx(PyExc_UserWarning,
-                    "bool is used as a file descriptor", 1))
-            {
-                return -1;
-            }
-        }
+    if (PyLong_Check(o)) {
         fd = _PyLong_AsInt(o);
     }
     else if (_PyObject_LookupAttrId(o, &PyId_fileno, &meth) < 0) {
@@ -228,6 +221,17 @@ PyObject_AsFileDescriptor(PyObject *o)
         return -1;
     }
     return fd;
+}
+
+int
+_PyLong_FileDescriptor_Converter(PyObject *o, void *ptr)
+{
+    int fd = PyObject_AsFileDescriptor(o);
+    if (fd == -1) {
+        return 0;
+    }
+    *(int *)ptr = fd;
+    return 1;
 }
 
 /*
