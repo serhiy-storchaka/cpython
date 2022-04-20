@@ -626,7 +626,7 @@ exit:
 }
 
 PyDoc_STRVAR(_sre_template__doc__,
-"template($module, pattern, template, /)\n"
+"template($module, pattern, istext, template, /)\n"
 "--\n"
 "\n");
 
@@ -634,25 +634,31 @@ PyDoc_STRVAR(_sre_template__doc__,
     {"template", (PyCFunction)(void(*)(void))_sre_template, METH_FASTCALL, _sre_template__doc__},
 
 static PyObject *
-_sre_template_impl(PyObject *module, PyObject *pattern, PyObject *template);
+_sre_template_impl(PyObject *module, PyObject *pattern, int istext,
+                   PyObject *template);
 
 static PyObject *
 _sre_template(PyObject *module, PyObject *const *args, Py_ssize_t nargs)
 {
     PyObject *return_value = NULL;
     PyObject *pattern;
+    int istext;
     PyObject *template;
 
-    if (!_PyArg_CheckPositional("template", nargs, 2, 2)) {
+    if (!_PyArg_CheckPositional("template", nargs, 3, 3)) {
         goto exit;
     }
     pattern = args[0];
-    if (!PyList_Check(args[1])) {
-        _PyArg_BadArgument("template", "argument 2", "list", args[1]);
+    istext = PyObject_IsTrue(args[1]);
+    if (istext < 0) {
         goto exit;
     }
-    template = args[1];
-    return_value = _sre_template_impl(module, pattern, template);
+    if (!PyList_Check(args[2])) {
+        _PyArg_BadArgument("template", "argument 3", "list", args[2]);
+        goto exit;
+    }
+    template = args[2];
+    return_value = _sre_template_impl(module, pattern, istext, template);
 
 exit:
     return return_value;
@@ -956,4 +962,4 @@ _sre_SRE_Scanner_search(ScannerObject *self, PyTypeObject *cls, PyObject *const 
 exit:
     return return_value;
 }
-/*[clinic end generated code: output=9454416028280667 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=083b6d2faa5a6d8c input=a9049054013a1b77]*/

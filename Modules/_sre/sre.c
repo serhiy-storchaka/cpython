@@ -1093,7 +1093,9 @@ compile_template(_sremodulestate *module_state,
     return result;
 }
 
-static PyObject *expand_template(TemplateObject *, MatchObject *); /* Forward */
+/* Forward */
+static PyObject *expand_template(TemplateObject *, MatchObject *);
+LOCAL(PyObject*) _template_get_literal(TemplateObject *self);
 
 static PyObject*
 pattern_subx(_sremodulestate* module_state,
@@ -1558,60 +1560,80 @@ _sre_compile_impl(PyObject *module, PyObject *pattern, int flags,
 _sre.template
 
     pattern: object
+    istext: bool
     template: object(subclass_of="&PyList_Type")
     /
 
 [clinic start generated code]*/
 
 static PyObject *
-_sre_template_impl(PyObject *module, PyObject *pattern, PyObject *template)
-/*[clinic end generated code: output=d51290e596ebca86 input=56d2d1895cd04d9a]*/
+_sre_template_impl(PyObject *module, PyObject *pattern, int istext,
+                   PyObject *template)
+/*[clinic end generated code: output=7788a08b1b8879b8 input=53eb4b593b0d4144]*/
 {
-    /* template is a list containing interleaved literal strings (str or bytes)
-     * and group indices (int), as returned by _parser.parse_template:
-     * [literal1, group1, literal2, ..., literalN].
-     */
+    /* template is a list containing literal strings (str or bytes) or group
+       indices (int). */
     _sremodulestate *module_state = get_sre_module_state(module);
-    TemplateObject *self = NULL;
-    Py_ssize_t n = PyList_GET_SIZE(template);
-    if ((n & 1) == 0 || n < 1) {
-        goto bad_template;
-    }
-    n /= 2;
-    self = PyObject_GC_NewVar(TemplateObject, module_state->Template_Type, n);
+    TemplateObject *self;
+    const Py_ssize_t list_len = PyList_GET_SIZE(template);
+    assert(Py_TYPE(pattern) == module_state->Pattern_Type);
+
+    self = PyObject_GC_NewVar(TemplateObject, module_state->Template_Type,
+                              list_len ? list_len : 1); /* 1 for empty literal */
     if (!self)
         return NULL;
-    self->chunks = 1 + 2*n;
-    self->literal = PyList_GET_ITEM(template, 0);
-    Py_INCREF(self->literal);
-    for (Py_ssize_t i = 0; i < n; i++) {
-        Py_ssize_t index = PyLong_AsSsize_t(PyList_GET_ITEM(template, 2*i+1));
-        if (index == -1 && PyErr_Occurred()) {
-            Py_DECREF(self);
-            return NULL;
-        }
-        if (index < 0) {
-            goto bad_template;
-        }
-        self->items[i].index = index;
 
-        PyObject *literal = PyList_GET_ITEM(template, 2*i+2);
-        // Skip empty literals.
-        if ((PyUnicode_Check(literal) && !PyUnicode_GET_LENGTH(literal)) ||
-            (PyBytes_Check(literal) && !PyBytes_GET_SIZE(literal)))
-        {
-            literal = NULL;
-            self->chunks--;
+    for (Py_ssize_t i = 0; i < list_len; i++) {
+        PyObject *item = PyList_GET_ITEM(template, i);
+
+        if (PyLong_CheckExact(item)) {
+            Py_ssize_t index = PyLong_AsSsize_t(item);
+            if (index < 0 || index > ((PatternObject*)pattern)->groups) {
+                goto bad_template;
+            }
+            self->items[i].type = TPLT_GROUP;
+            self->items[i].u.group = index;
+        } else {  /* str or bytes */
+            self->items[i].type = TPLT_LITERAL;
+            Py_INCREF(item);
+            self->items[i].u.literal = item;
         }
-        Py_XINCREF(literal);
-        self->items[i].literal = literal;
     }
+
+    /* place an empty literal */
+    if (list_len == 0) {
+        PyObject *literal;
+
+        if (istext) {
+            literal = Py_NewRef(&_Py_STR(empty));
+        } else {
+            literal = Py_NewRef(&_Py_SINGLETON(bytes_empty));
+        }
+        self->items[0].type = TPLT_LITERAL;
+        self->items[0].u.literal = literal;
+    }
+
+    self->is_text = istext;
+    self->is_literal = (Py_SIZE(self) == 1 && self->items[0].type == TPLT_LITERAL);
+
     return (PyObject*) self;
 
 bad_template:
     PyErr_SetString(PyExc_TypeError, "invalid template");
-    Py_XDECREF(self);
+    Py_DECREF(self);
     return NULL;
+}
+
+LOCAL(PyObject*)
+_template_get_literal(TemplateObject *self)
+{
+    PyObject *ret;
+    assert(Py_SIZE(self) == 1);
+    assert(self->items[0].type == TPLT_LITERAL);
+
+    ret = self->items[0].u.literal;
+    Py_INCREF(ret);
+    return ret;
 }
 
 /* -------------------------------------------------------------------- */
@@ -2836,9 +2858,10 @@ static int
 template_traverse(TemplateObject *self, visitproc visit, void *arg)
 {
     Py_VISIT(Py_TYPE(self));
-    Py_VISIT(self->literal);
     for (Py_ssize_t i = 0, n = Py_SIZE(self); i < n; i++) {
-        Py_VISIT(self->items[i].literal);
+        if (self->items[i].type == TPLT_LITERAL) {
+            Py_VISIT(self->items[i].u.literal);
+        }
     }
     return 0;
 }
@@ -2846,9 +2869,10 @@ template_traverse(TemplateObject *self, visitproc visit, void *arg)
 static int
 template_clear(TemplateObject *self)
 {
-    Py_CLEAR(self->literal);
     for (Py_ssize_t i = 0, n = Py_SIZE(self); i < n; i++) {
-        Py_CLEAR(self->items[i].literal);
+        if (self->items[i].type == TPLT_LITERAL) {
+            Py_CLEAR(self->items[i].u.literal);
+        }
     }
     return 0;
 }
