@@ -989,13 +989,14 @@ def parse_template(source, pattern):
     literal = []
     lappend = literal.append
     def addliteral():
-        if s.istext:
-            result.append(''.join(literal))
-        else:
-            # The tokenizer implicitly decodes bytes objects as latin-1, we must
-            # therefore re-encode the final representation.
-            result.append(''.join(literal).encode('latin-1'))
-        del literal[:]
+        if literal:
+            if s.istext:
+                result.append(''.join(literal))
+            else:
+                # The tokenizer implicitly decodes bytes objects as latin-1, we must
+                # therefore re-encode the final representation.
+                result.append(''.join(literal).encode('latin-1'))
+            del literal[:]
     def addgroup(index, pos):
         if index > pattern.groups:
             raise s.error("invalid group reference %d" % index, pos)
@@ -1061,4 +1062,4 @@ def parse_template(source, pattern):
         else:
             lappend(this)
     addliteral()
-    return result
+    return s.istext, result
