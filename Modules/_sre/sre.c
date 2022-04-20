@@ -1061,32 +1061,10 @@ compile_template(_sremodulestate *module_state,
     PyObject *args[] = {(PyObject *)pattern, template};
     PyObject *result = PyObject_Vectorcall(func, args, 2, NULL);
 
-    if (result == NULL && PyErr_ExceptionMatches(PyExc_TypeError)) {
-        /* If the replacement string is unhashable (e.g. bytearray),
-         * convert it to the basic type (str or bytes) and repeat. */
-        if (PyUnicode_Check(template) && !PyUnicode_CheckExact(template)) {
-            PyErr_Clear();
-            template = _PyUnicode_Copy(template);
-        }
-        else if (PyObject_CheckBuffer(template) && !PyBytes_CheckExact(template)) {
-            PyErr_Clear();
-            template = PyBytes_FromObject(template);
-        }
-        else {
-            return NULL;
-        }
-        if (template == NULL) {
-            return NULL;
-        }
-        args[1] = template;
-        result = PyObject_Vectorcall(func, args, 2, NULL);
-        Py_DECREF(template);
-    }
-
     if (result != NULL && Py_TYPE(result) != module_state->Template_Type) {
         PyErr_Format(PyExc_RuntimeError,
-                    "the result of compiling a replacement string is %.200s",
-                    Py_TYPE(result)->tp_name);
+                     "the result of compiling a replacement string is %.200s",
+                     Py_TYPE(result)->tp_name);
         Py_DECREF(result);
         return NULL;
     }
