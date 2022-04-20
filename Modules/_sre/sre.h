@@ -56,12 +56,14 @@ typedef struct {
 
 typedef struct {
     PyObject_VAR_HEAD
-    Py_ssize_t chunks;  /* the number of group references and non-NULL literals
-                         * self->chunks <= 2*Py_SIZE(self) + 1 */
-    PyObject *literal;
+    int is_literal; /* if true, the size is 1 and items[0] is a literal. */
+    int is_text;    /* 1 str, 0 bytes. */
     struct {
-        Py_ssize_t index;
-        PyObject *literal;  /* NULL if empty */
+        enum {TPLT_LITERAL, TPLT_GROUP} type;
+        union {
+            PyObject *literal;
+            Py_ssize_t group;
+        } u;
     } items[0];
 } TemplateObject;
 
