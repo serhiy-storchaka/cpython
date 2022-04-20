@@ -1151,9 +1151,8 @@ pattern_subx(_sremodulestate* module_state,
                 return NULL;
 
             assert(Py_TYPE(filter) == module_state->Template_Type);
-            if (Py_SIZE(filter) == 0) {
-                Py_INCREF(((TemplateObject *)filter)->literal);
-                Py_SETREF(filter, ((TemplateObject *)filter)->literal);
+            if (((TemplateObject*)filter)->is_literal) {
+                Py_SETREF(filter, _template_get_literal((TemplateObject*)filter));
                 filter_type = LITERAL;
             }
             else {
@@ -2891,73 +2890,58 @@ template_dealloc(TemplateObject *self)
 static PyObject *
 expand_template(TemplateObject *self, MatchObject *match)
 {
-    if (Py_SIZE(self) == 0) {
-        Py_INCREF(self->literal);
-        return self->literal;
+    PyObject *result;
+    PyObject *list;
+    Py_ssize_t count;
+
+    if (self->is_literal) {
+        return _template_get_literal(self);
     }
 
-    PyObject *result = NULL;
-    Py_ssize_t count = 0;  // the number of non-empty chunks
-    /* For small number of strings use a buffer allocated on the stack,
-     * otherwise use a list object. */
-    PyObject *buffer[10];
-    PyObject **out = buffer;
-    PyObject *list = NULL;
-    if (self->chunks > (int)Py_ARRAY_LENGTH(buffer) ||
-        !PyUnicode_Check(self->literal))
-    {
-        list = PyList_New(self->chunks);
-        if (!list) {
-            return NULL;
-        }
-        out = &PyList_GET_ITEM(list, 0);
+    list = PyList_New(Py_SIZE(self));
+    if (!list) {
+        return NULL;
     }
 
-    Py_INCREF(self->literal);
-    out[count++] = self->literal;
+    count = 0;
     for (Py_ssize_t i = 0; i < Py_SIZE(self); i++) {
-        Py_ssize_t index = self->items[i].index;
-        if (index >= match->groups) {
-            PyErr_SetString(PyExc_IndexError, "no such group");
-            goto cleanup;
-        }
-        PyObject *item = match_getslice_by_index(match, index, Py_None);
-        if (item == NULL) {
-            goto cleanup;
-        }
-        if (item != Py_None) {
-            Py_INCREF(item);
-            out[count++] = item;
-        }
-        Py_DECREF(item);
+        PyObject *o;
 
-        PyObject *literal = self->items[i].literal;
-        if (literal != NULL) {
-            Py_INCREF(literal);
-            out[count++] = literal;
+        if (self->items[i].type == TPLT_GROUP) {
+            Py_ssize_t index = self->items[i].u.group;
+            if (index >= match->groups) {
+                PyErr_SetString(PyExc_IndexError, "no such group");
+                goto cleanup;
+            }
+            o = match_getslice_by_index(match, index, Py_None);
+            if (o == NULL) {
+                goto cleanup;
+            }
+        } else {
+            o = self->items[i].u.literal;
+            Py_INCREF(o);
         }
-    }
 
-    if (PyUnicode_Check(self->literal)) {
-        result = _PyUnicode_JoinArray(&_Py_STR(empty), out, count);
-    }
-    else {
-        Py_SET_SIZE(list, count);
-        result = _PyBytes_Join((PyObject *)&_Py_SINGLETON(bytes_empty), list);
-    }
-
-cleanup:
-    if (list) {
-        Py_DECREF(list);
-    }
-    else {
-        for (Py_ssize_t i = 0; i < count; i++) {
-            Py_DECREF(out[i]);
+        if (o == Py_None || Py_SIZE(o) == 0) {
+            Py_DECREF(o);
+            continue;
         }
+        PyList_SET_ITEM(list, count, o);
+        count++;
+    }
+    Py_SET_SIZE(list, count);
+
+    if (self->is_text) {
+        result = PyUnicode_Join(&_Py_STR(empty), list);
+    } else {
+        result = _PyBytes_Join((PyObject*)&_Py_SINGLETON(bytes_empty), list);
     }
     return result;
-}
 
+cleanup:
+    Py_DECREF(list);
+    return NULL;
+}
 
 static Py_hash_t
 pattern_hash(PatternObject *self)
