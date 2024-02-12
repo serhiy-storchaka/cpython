@@ -1190,10 +1190,10 @@ class TestDescriptions(unittest.TestCase):
         doc = pydoc.render_doc(typing.NoReturn, renderer=pydoc.plaintext)
         self.assertIn('_SpecialForm in module typing', doc)
         if typing.NoReturn.__doc__:
-            self.assertIn('NoReturn = typing.NoReturn', doc)
+            self.assertIn('\nNoReturn = typing.NoReturn\n', doc)
             self.assertIn(typing.NoReturn.__doc__.strip().splitlines()[0], doc)
         else:
-            self.assertIn('NoReturn = class _SpecialForm(_Final)', doc)
+            self.assertIn('\nNoReturn = class _SpecialForm(_Final, _NotIterable)\n', doc)
 
     def test_typing_pydoc(self):
         def foo(data: typing.List[typing.Any],
