@@ -1910,6 +1910,20 @@ Grapheme_str(PyObject *self)
     return PyUnicode_Substring(g->string, g->start, g->end);
 }
 
+static PyObject *
+Grapheme_repr(PyObject *self)
+{
+    GraphemeObject *g = (GraphemeObject *)self;
+    PyObject *substr = Grapheme_str(self);
+    if (substr == NULL) {
+        return NULL;
+    }
+    PyObject *result = PyUnicode_FromFormat("Grapheme(%R, start=%zd, end=%zd)",
+                                            substr, g->start, g->end);
+    Py_DECREF(substr);
+    return result;
+}
+
 static PyMemberDef Grapheme_members[] = {
     {"start", Py_T_PYSSIZET, offsetof(GraphemeObject, start), 0,
         PyDoc_STR("grapheme start")},
@@ -1923,6 +1937,7 @@ static PyType_Slot Grapheme_slots[] = {
     {Py_tp_iter, PyObject_SelfIter},
     {Py_tp_traverse, Grapheme_traverse},
     {Py_tp_clear, Grapheme_clear},
+    {Py_tp_repr, Grapheme_repr},
     {Py_tp_str, Grapheme_str},
     {Py_tp_members, Grapheme_members},
     {0, 0},
