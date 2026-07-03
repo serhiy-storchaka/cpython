@@ -89,6 +89,16 @@ _token_browser_spec = {
            "start of that token and the editor gets focus."
     }
 
+_ast_browser_spec = {
+    'file': 'astbrowser',
+    'kwds': {},
+    'msg': "Expand nodes in the AST tree and verify the matching source\n"
+           "regions are highlighted in the sample editor above.  Select\n"
+           "text in the editor and verify the enclosing node is selected.\n"
+           "Double-click a node and verify the editor cursor jumps to it\n"
+           "and the editor gets focus."
+    }
+
 # TODO implement ^\; adding '<Control-Key-\\>' to function does not work.
 _calltip_window_spec = {
     'file': 'calltip_w',
