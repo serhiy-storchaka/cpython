@@ -168,6 +168,8 @@ class EditorWindow:
             text.bind("<<open-path-browser>>", self.open_path_browser)
             text.bind("<<open-token-browser>>", self.open_token_browser)
             text.bind("<<open-ast-browser>>", self.open_ast_browser)
+            text.bind("<<open-disassembly-browser>>",
+                      self.open_disassembly_browser)
             text.bind("<<open-turtle-demo>>", self.open_turtle_demo)
 
         self.set_status_bar()
@@ -751,6 +753,11 @@ class EditorWindow:
     def open_ast_browser(self, event=None):
         from idlelib import astbrowser
         astbrowser.open(self)
+        return "break"
+
+    def open_disassembly_browser(self, event=None):
+        from idlelib import disbrowser
+        disbrowser.open(self)
         return "break"
 
     def open_turtle_demo(self, event = None):
