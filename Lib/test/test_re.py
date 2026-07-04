@@ -3102,6 +3102,7 @@ class OptimizerTests(unittest.TestCase):
         # a category and its complement are disjoint whatever they mean
         (r'\p{Lu}+\P{Lu}', 0), (r'\P{Cased}+\p{Cased}', 0),
         (r'\p{Lu}+\P{Lu}', re.I), (r'\d+\D', 0),
+        (r'\w+\W', 0), (r'(?a:\w+\W)', 0),
     ])
     def test_possessified(self, pattern, flags):
         self.assertTrue(self.is_possessive(pattern, flags))
@@ -3113,6 +3114,8 @@ class OptimizerTests(unittest.TestCase):
         (r'a+\b', 0), (r'a+\B', 0),                     # word boundary
         (r'a+(?=a)', 0), (r'a+(?!b)', 0),               # lookaround
         (r'(?i:a)+A', 0), (r'a+(?i:A)', 0),             # scoped flags
+        # not complement pairs: unicode \w and ascii \W overlap (e.g. é)
+        (r'(?a:\w+)\W', 0), (r'\w+(?a:\W)', 0),
         (b'a+B', re.L | re.I),                          # runtime locale folding
         (r'a+?b', 0),                                   # lazy
         (r'[a-z--b]+c', 0), (r'[\w--\d]+\w', 0),       # follower in the set

@@ -644,7 +644,10 @@ def _disjoint(atom, other, flags):
     ca = _as_single_category(*atom)
     if ca is not None:
         cb = _as_single_category(*other)
-        # a category and its complement are disjoint whatever they mean
+        # A category and its complement are disjoint whatever they mean --
+        # but only within one flag context (unicode \w and ascii \W
+        # overlap), which holds because the walk never compares atoms
+        # across a flag-scoping boundary.
         if cb is not None and cb == CH_NEGATE[ca]:
             return True
     if not (flags & SRE_FLAG_LOCALE):
