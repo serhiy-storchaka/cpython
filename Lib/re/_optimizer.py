@@ -457,6 +457,9 @@ _ASCII_SPACE = frozenset(b' \t\n\r\f\v')
 _ASCII_WORD = frozenset(b'_') | frozenset(
     range(0x30, 0x3a)) | frozenset(range(0x41, 0x5b)) | frozenset(range(0x61, 0x7b))
 _PROBE_LIMIT = 64  # cap on the size of a finite atom used as a witness set
+_FOLLOW_LIMIT = 64  # cap on the size of a follower set (each empty branch
+                    # alternative appends the continuation again, so unchecked
+                    # growth is exponential, e.g. for (|)(|)(|)...)
 
 def _tolower(c, flags):
     if flags & SRE_FLAG_UNICODE:
@@ -716,14 +719,14 @@ def _first_consumers(seq, i, flags, cont):
                 return None
             for alt in av[1]:
                 a = _first_consumers(alt.data, 0, flags, after)
-                if a is None:
+                if a is None or len(acc) + len(a) > _FOLLOW_LIMIT:
                     return None
                 acc += a
             return acc
         if op in _REPEAT_CODES:
             mn, mx, p = av
             sub = _first_consumers(p.data, 0, flags, None)
-            if sub is None:
+            if sub is None or len(acc) + len(sub) > _FOLLOW_LIMIT:
                 return None
             acc += sub
             if mn == 0:
@@ -742,7 +745,9 @@ def _first_consumers(seq, i, flags, cont):
                 return acc + [(LITERAL, 0x0a)]
             return acc
         return None  # assertion, anchor, group reference, ... -> give up
-    return None if cont is None else acc + cont
+    if cont is None or len(acc) + len(cont) > _FOLLOW_LIMIT:
+        return None
+    return acc + cont
 
 
 # Difference-fusion peephole: rewrite [A--B]-style A(?<![B]) into a single

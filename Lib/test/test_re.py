@@ -3107,6 +3107,11 @@ class OptimizerTests(unittest.TestCase):
     def test_possessified(self, pattern, flags):
         self.assertTrue(self.is_possessive(pattern, flags))
 
+    def test_follower_set_capped(self):
+        # Each empty branch alternative appends the continuation again, so
+        # an uncapped follower set grows exponentially (found by OSS-Fuzz).
+        re.compile('(|)' * 100 + 'x')
+
     @subTests('pattern,flags', [
         (r'a+a', 0), (r'.+x', 0),                       # overlapping
         (r'(ab)+a', 0), (r'(a|ab)+c', 0), (r'(ab?)+c', 0),
