@@ -3111,6 +3111,23 @@ class OptimizerTests(unittest.TestCase):
         # Each empty branch alternative appends the continuation again, so
         # an uncapped follower set grows exponentially (found by OSS-Fuzz).
         re.compile('(|)' * 100 + 'x')
+        # Each growth point gives up at the limit and no earlier (the y?
+        # followers overlap each other, so only x+ can possessify):
+        # a chain of optional followers,
+        self.assertTrue(self.is_possessive('x+' + 'y?' * 64 + 'y'))
+        self.assertFalse(self.is_possessive('x+' + 'y?' * 65 + 'y'))
+        # branch alternatives (the first characters must be distinct -- the
+        # parser factors a common prefix out of the alternation -- and there
+        # are not enough unreserved ASCII alphanumerics for 65 of them),
+        alts = ['%cz' % (0x100 + i) for i in range(65)]
+        self.assertTrue(self.is_possessive('x+(?:%s)' % '|'.join(alts[:64])))
+        self.assertFalse(self.is_possessive('x+(?:%s)' % '|'.join(alts)))
+        # and resuming what follows the group.
+        alts[0] = 'yz'
+        self.assertTrue(self.is_possessive(
+            '(x+' + 'y?' * 32 + ')(?:%s)' % '|'.join(alts[:32])))
+        self.assertFalse(self.is_possessive(
+            '(x+' + 'y?' * 32 + ')(?:%s)' % '|'.join(alts[:33])))
 
     @subTests('pattern,flags', [
         (r'a+a', 0), (r'.+x', 0),                       # overlapping
