@@ -3107,6 +3107,12 @@ class OptimizerTests(unittest.TestCase):
     def test_possessified(self, pattern, flags):
         self.assertTrue(self.is_possessive(pattern, flags))
 
+    def test_many_sequential_groups(self):
+        # The follower scan recurses once per following group; a very long
+        # sequence of groups must not turn that into a crash, and repeats
+        # outside the chain are still optimized.
+        self.assertTrue(self.is_possessive('(a)' * 2000 + 'b+c'))
+
     def test_follower_set_capped(self):
         # Each empty branch alternative appends the continuation again, so
         # an uncapped follower set grows exponentially (found by OSS-Fuzz).

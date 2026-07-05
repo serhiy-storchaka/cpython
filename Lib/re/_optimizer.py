@@ -457,9 +457,9 @@ _ASCII_SPACE = frozenset(b' \t\n\r\f\v')
 _ASCII_WORD = frozenset(b'_') | frozenset(
     range(0x30, 0x3a)) | frozenset(range(0x41, 0x5b)) | frozenset(range(0x61, 0x7b))
 _PROBE_LIMIT = 64  # cap on the size of a finite atom used as a witness set
-_FOLLOW_LIMIT = 64  # cap on the size of a follower set (each empty branch
-                    # alternative appends the continuation again, so unchecked
-                    # growth is exponential, e.g. for (|)(|)(|)...)
+_FOLLOW_LIMIT = 64  # cap on a follower set: an empty branch alternative
+                    # re-appends the continuation, exponential for (|)(|)...
+_DEPTH_LIMIT = 100  # cap on the follower-scan recursion: one level per group
 
 def _tolower(c, flags):
     if flags & SRE_FLAG_UNICODE:
@@ -689,9 +689,12 @@ def _leading_atom(data):
             lead = a
     return lead
 
-def _first_consumers(seq, i, flags, cont):
+def _first_consumers(seq, i, flags, cont, depth=0):
     # Atoms for every character that could be consumed at position i of seq;
     # cont is the same for what follows seq.  None if it can't be analyzed.
+    if depth >= _DEPTH_LIMIT:
+        return None
+    depth += 1
     acc = []
     n = len(seq)
     while i < n:
@@ -702,30 +705,30 @@ def _first_consumers(seq, i, flags, cont):
         if op is SUBPATTERN:
             if av[1] or av[2]:
                 return None  # flag-scoping group: atoms can't carry their flags
-            after = _first_consumers(seq, i + 1, flags, cont)
+            after = _first_consumers(seq, i + 1, flags, cont, depth)
             if after is None:
                 return None
-            inner = _first_consumers(av[3].data, 0, flags, after)
+            inner = _first_consumers(av[3].data, 0, flags, after, depth)
             return None if inner is None else acc + inner
         if op is ATOMIC_GROUP:
-            after = _first_consumers(seq, i + 1, flags, cont)
+            after = _first_consumers(seq, i + 1, flags, cont, depth)
             if after is None:
                 return None
-            inner = _first_consumers(av.data, 0, flags, after)
+            inner = _first_consumers(av.data, 0, flags, after, depth)
             return None if inner is None else acc + inner
         if op is BRANCH:
-            after = _first_consumers(seq, i + 1, flags, cont)
+            after = _first_consumers(seq, i + 1, flags, cont, depth)
             if after is None:
                 return None
             for alt in av[1]:
-                a = _first_consumers(alt.data, 0, flags, after)
+                a = _first_consumers(alt.data, 0, flags, after, depth)
                 if a is None or len(acc) + len(a) > _FOLLOW_LIMIT:
                     return None
                 acc += a
             return acc
         if op in _REPEAT_CODES:
             mn, mx, p = av
-            sub = _first_consumers(p.data, 0, flags, None)
+            sub = _first_consumers(p.data, 0, flags, None, depth)
             if sub is None or len(acc) + len(sub) > _FOLLOW_LIMIT:
                 return None
             acc += sub
@@ -851,5 +854,9 @@ def _walk(seq, flags, cont):
 
 def optimize(pattern, flags):
     """Rewrite a parsed pattern in place and return it."""
-    _walk(pattern.data, flags, [])
+    try:
+        _walk(pattern.data, flags, [])
+    except RecursionError:
+        # A backstop for _DEPTH_LIMIT; the rewrites already applied are sound.
+        pass
     return pattern
