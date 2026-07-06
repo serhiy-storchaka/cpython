@@ -231,9 +231,18 @@ io
 imaplib
 -------
 
+* Add the :meth:`~imaplib.IMAP4.id` method,
+  a wrapper for the ``ID`` command (:rfc:`2971`).
+  (Contributed by Serhiy Storchaka in :gh:`98092`.)
+
 * Add the :meth:`~imaplib.IMAP4.move` method,
   a wrapper for the ``MOVE`` command (:rfc:`6851`).
   (Contributed by Serhiy Storchaka in :gh:`77508`.)
+
+* Add the :meth:`~imaplib.IMAP4.login_plain` method, which authenticates
+  using the ``PLAIN`` SASL mechanism (:rfc:`4616`) and supports non-ASCII
+  user names and passwords.
+  (Contributed by Przemysław Buczkowski and Serhiy Storchaka in :gh:`89869`.)
 
 
 logging

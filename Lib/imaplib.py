@@ -73,6 +73,7 @@ Commands = {
         'GETANNOTATION':('AUTH', 'SELECTED'),
         'GETQUOTA':     ('AUTH', 'SELECTED'),
         'GETQUOTAROOT': ('AUTH', 'SELECTED'),
+        'ID':           ('NONAUTH', 'AUTH', 'SELECTED', 'LOGOUT'),
         'IDLE':         ('AUTH', 'SELECTED'),
         'MYRIGHTS':     ('AUTH', 'SELECTED'),
         'LIST':         ('AUTH', 'SELECTED'),
@@ -697,6 +698,28 @@ class IMAP4:
         return typ, [quotaroot, quota]
 
 
+    def id(self, fields=None):
+        """Send client identification information to the server.
+
+        (typ, [data]) = <instance>.id(fields)
+
+        'fields' is a mapping of field names to values; a value can be
+        None.  'data' is the identification information sent back by
+        the server, in the same parenthesized list form.
+        """
+        name = 'ID'
+        if fields:
+            items = []
+            for field, value in fields.items():
+                items.append(self._quote(field))
+                items.append(b'NIL' if value is None else self._quote(value))
+            arg = b'(' + b' '.join(items) + b')'
+        else:
+            arg = 'NIL'
+        typ, dat = self._simple_command(name, arg)
+        return self._untagged_response(typ, dat, name)
+
+
     def idle(self, duration=None):
         """Return an iterable IDLE context manager producing untagged responses.
         If the argument is not None, limit iteration to 'duration' seconds.
@@ -737,6 +760,30 @@ class IMAP4:
         self.state = 'AUTH'
         self._refresh_capabilities()
         return typ, dat
+
+
+    def login_plain(self, user, password):
+        """Authenticate using the PLAIN SASL mechanism (RFC 4616).
+
+        This is a plaintext authentication mechanism that can be used
+        instead of login() when UTF-8 support is required.  Since the
+        credentials are only base64-encoded, not encrypted, it should
+        only be used over a TLS-protected connection.
+
+        'user' and 'password' can be strings (encoded to UTF-8) or
+        bytes-like objects.
+        """
+        if isinstance(user, str):
+            user = user.encode('utf-8')
+        if isinstance(password, str):
+            password = password.encode('utf-8')
+        if b'\0' in user or b'\0' in password:
+            raise ValueError("NUL is not allowed in user name or password")
+        # An empty authorization identity (RFC 4616) makes the server
+        # derive it from the authentication identity; a non-empty one
+        # requests proxy authorization and is often rejected.
+        response = b'\0' + bytes(user) + b'\0' + bytes(password)
+        return self.authenticate("PLAIN", lambda _: response)
 
 
     def login_cram_md5(self, user, password):
