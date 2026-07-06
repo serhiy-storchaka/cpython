@@ -8360,8 +8360,8 @@ with_stmt_rule(Parser *p)
 }
 
 // with_item:
-//     | expression 'as' star_target &(',' | ')' | ':')
 //     | expression 'as' expression &(',' | ')' | ':')
+//     | expression 'as' star_target &(',' | ')' | ':')
 //     | expression
 static withitem_ty
 with_item_rule(Parser *p)
@@ -8375,38 +8375,6 @@ with_item_rule(Parser *p)
     }
     withitem_ty _res = NULL;
     int _mark = p->mark;
-    { // expression 'as' star_target &(',' | ')' | ':')
-        if (p->error_indicator) {
-            p->level--;
-            return NULL;
-        }
-        D(fprintf(stderr, "%*c> with_item[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
-        Token * _keyword;
-        expr_ty e;
-        expr_ty t;
-        if (
-            (e = expression_rule(p))  // expression
-            &&
-            (_keyword = _PyPegen_expect_token(p, 662))  // token='as'
-            &&
-            (t = star_target_rule(p))  // star_target
-            &&
-            _PyPegen_lookahead(1, _tmp_54_rule, p)
-        )
-        {
-            D(fprintf(stderr, "%*c+ with_item[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
-            _res = _PyAST_withitem ( e , t , p -> arena );
-            if ((_res == NULL || p->error_indicator) && PyErr_Occurred()) {
-                p->error_indicator = 1;
-                p->level--;
-                return NULL;
-            }
-            goto done;
-        }
-        p->mark = _mark;
-        D(fprintf(stderr, "%*c%s with_item[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
-    }
     if (p->call_invalid_rules) { // expression 'as' expression &(',' | ')' | ':')
         if (p->error_indicator) {
             p->level--;
@@ -8440,6 +8408,38 @@ with_item_rule(Parser *p)
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s with_item[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "expression 'as' expression &(',' | ')' | ':')"));
+    }
+    { // expression 'as' star_target &(',' | ')' | ':')
+        if (p->error_indicator) {
+            p->level--;
+            return NULL;
+        }
+        D(fprintf(stderr, "%*c> with_item[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
+        Token * _keyword;
+        expr_ty e;
+        expr_ty t;
+        if (
+            (e = expression_rule(p))  // expression
+            &&
+            (_keyword = _PyPegen_expect_token(p, 662))  // token='as'
+            &&
+            (t = star_target_rule(p))  // star_target
+            &&
+            _PyPegen_lookahead(1, _tmp_54_rule, p)
+        )
+        {
+            D(fprintf(stderr, "%*c+ with_item[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
+            _res = _PyAST_withitem ( e , t , p -> arena );
+            if ((_res == NULL || p->error_indicator) && PyErr_Occurred()) {
+                p->error_indicator = 1;
+                p->level--;
+                return NULL;
+            }
+            goto done;
+        }
+        p->mark = _mark;
+        D(fprintf(stderr, "%*c%s with_item[%d-%d]: %s failed!\n", p->level, ' ',
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "expression 'as' star_target &(',' | ')' | ':')"));
     }
     { // expression
         if (p->error_indicator) {

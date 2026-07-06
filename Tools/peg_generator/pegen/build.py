@@ -401,9 +401,14 @@ class _PositionDeducer:
             )
         base_items = [named_item.item for named_item in base_alt.items]
         inserted_items = [named_item.item for named_item in inserted_alt.items]
-        return self._match_prefix(base_items, inserted_items)
+        return self._match_prefix(base_items, inserted_items, seen)
 
-    def _match_prefix(self, base_items: list[Any], inserted_items: list[Any]) -> bool:
+    def _match_prefix(
+        self,
+        base_items: list[Any],
+        inserted_items: list[Any],
+        seen: frozenset[str] = frozenset(),
+    ) -> bool:
         bi = ei = 0
         while True:
             # Skip non-consuming inserted items (over-approximation).
@@ -416,8 +421,9 @@ class _PositionDeducer:
                 return ei < len(inserted_items)
             base_item = base_items[bi]
             if isinstance(base_item, Cut):
-                bi += 1
-                continue
+                # A failure after the cut fails the whole rule, so the
+                # alternative must be inserted before this one.
+                return True
             if isinstance(base_item, Lookahead):
                 if ei < len(inserted_items):
                     matches = self.overlap(base_item.node, inserted_items[ei])
@@ -431,7 +437,7 @@ class _PositionDeducer:
                 bi += 1
                 continue
             if isinstance(base_item, (Opt, Repeat0)):
-                if self._match_prefix(base_items[bi + 1:], inserted_items[ei:]):
+                if self._match_prefix(base_items[bi + 1:], inserted_items[ei:], seen):
                     return True
                 if ei == len(inserted_items):
                     return False
@@ -450,6 +456,20 @@ class _PositionDeducer:
                 bi += 1
                 ei += 1
                 continue
+            if isinstance(base_item, NameLeaf):
+                # A rule reference can match several inserted items;
+                # check the rule's alternatives in its place.
+                rule = self.rules.get(base_item.value)
+                if rule is not None and rule.name not in seen:
+                    rest = base_items[bi + 1:]
+                    return any(
+                        self._match_prefix(
+                            [item.item for item in alt.items] + rest,
+                            inserted_items[ei:],
+                            seen | {rule.name},
+                        )
+                        for alt in rule.rhs.alts
+                    )
             inserted_heads, _ = _head_symbols(inserted_item)
             if inserted_heads & self.head_set(base_item):
                 # The base item is more general: it can match the same
@@ -468,6 +488,40 @@ class _PositionDeducer:
                 )
             return False
 
+    def terminal_head_set(self, node: Any) -> set[str]:
+        """The token and string symbols which can start a match of the node."""
+        return {
+            symbol for symbol in self.head_set(node) if symbol not in self.rules
+        }
+
+    def may_cover(self, inserted_alt: Alt, base_alt: Alt) -> bool:
+        """Whether inserted_alt may match the same code as base_alt or
+        its proper prefix (every item is at least as general as the
+        corresponding base item).
+
+        Inserting it before base_alt would report a false error on
+        valid code re-parsed in the second pass.
+        """
+        base_items = [
+            named_item.item for named_item in base_alt.items
+            if not isinstance(named_item.item, (Lookahead, Cut))
+        ]
+        inserted_items = [
+            named_item.item for named_item in inserted_alt.items
+            if not isinstance(named_item.item, (Lookahead, Cut))
+        ]
+        if len(inserted_items) > len(base_items):
+            return False
+        for base_item, inserted_item in zip(base_items, inserted_items):
+            if str(base_item) == str(inserted_item):
+                continue
+            if not (
+                self.terminal_head_set(base_item)
+                <= self.terminal_head_set(inserted_item)
+            ):
+                return False
+        return True
+
     def deduce_index(self, base_alts: list[Alt], inserted_alt: Alt) -> int | None:
         rule = self._referenced_rule(inserted_alt)
         if rule is not None:
@@ -481,8 +535,13 @@ class _PositionDeducer:
                 # shadow the new alternative; their relative order is
                 # defined by the order of the extensions.
                 continue
-            if any(self.may_swallow(base_alt, alt) for alt in inserted_alts):
-                return index
+            if not any(
+                self.may_swallow(base_alt, alt) for alt in inserted_alts
+            ):
+                continue
+            if any(self.may_cover(alt, base_alt) for alt in inserted_alts):
+                continue
+            return index
         return None
 
 
@@ -593,7 +652,7 @@ def build_parser(
 
     The returned parser and tokenizer are those of the last grammar file.
     """
-    if isinstance(grammar_files, str):
+    if isinstance(grammar_files, (str, os.PathLike)):
         grammar_files = [grammar_files]
     grammars: list[Grammar] = []
     for grammar_file in grammar_files:
@@ -686,8 +745,8 @@ def build_python_generator(
 
 
 def grammars_display_name(grammar_files: str | Sequence[str]) -> str:
-    if isinstance(grammar_files, str):
-        return grammar_files
+    if isinstance(grammar_files, (str, os.PathLike)):
+        return os.fspath(grammar_files)
     return ", ".join(os.path.basename(grammar_file) for grammar_file in grammar_files)
 
 

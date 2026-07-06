@@ -220,7 +220,9 @@ class NamedItem:
             return str(self.item)
 
     def __repr__(self) -> str:
-        return f"NamedItem({self.name!r}, {self.item!r})"
+        if self.type is None:
+            return f"NamedItem({self.name!r}, {self.item!r})"
+        return f"NamedItem({self.name!r}, {self.item!r}, {self.type!r})"
 
     def __iter__(self) -> Iterator[Item]:
         yield self.item

@@ -338,7 +338,12 @@ class PythonParserGenerator(ParserGenerator, GrammarVisitor):
             self.print("):")
             with self.indent():
                 action = node.action
-                if not action:
+                if node.invalid:
+                    # An inserted alternative has a C action and is only
+                    # used in the second parsing pass, which the Python
+                    # parser does not have; make it always fail.
+                    action = "UNREACHABLE"
+                elif not action:
                     if is_gather:
                         assert len(self.local_variable_names) == 2
                         action = (

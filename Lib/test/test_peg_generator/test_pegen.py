@@ -2,6 +2,7 @@ import ast
 import difflib
 import io
 import os
+import pathlib
 import tempfile
 import textwrap
 import unittest
@@ -256,6 +257,84 @@ class TestPegen(unittest.TestCase):
         with self.assertRaisesRegex(GrammarError, "duplicates the alternative"):
             merge_grammars([base_grammar, extension_grammar])
 
+    def test_extend_rule_deduction_rule_reference_in_base(self) -> None:
+        # The base alternative can shadow the inserted alternative by
+        # matching several of its items with a single rule reference.
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: pair 'c' { PC } | 'x'
+        pair: 'a' 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'b' 'c' 'd'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        self.assertEqual(
+            str(merged.rules["rule_a"]), "rule_a: 'a' 'b' 'c' 'd' | pair 'c' | 'x'"
+        )
+
+    def test_extend_rule_deduction_cut_in_base(self) -> None:
+        # The cut commits to the base alternative, so a failure after
+        # it would never reach an alternative inserted after it.
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' ~ 'b' { AB } | 'x'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'c'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        self.assertEqual(
+            str(merged.rules["rule_a"]), "rule_a: 'a' 'c' | 'a' ~ 'b' | 'x'"
+        )
+
+    def test_extend_rule_deduction_more_general_alternative(self) -> None:
+        # An inserted alternative which can match all the code matched
+        # by the base alternative would succeed (and report its error)
+        # on valid code re-parsed in the second pass, so it is not
+        # inserted before the base alternative.
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' NAME { N } | 'x'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' expr
+        expr: NAME | NUMBER
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        self.assertEqual(
+            str(merged.rules["rule_a"]), "rule_a: 'a' NAME | 'x' | 'a' expr"
+        )
+
+    def test_extended_grammar_python_parser_skips_inserted_alternatives(self) -> None:
+        # The Python parser generator has no second pass; an inserted
+        # alternative fails like an alternative referencing an
+        # invalid_* rule.
+        base_grammar_source = """
+        start: rule_a NEWLINE { rule_a }
+        rule_a: 'a' { 1 }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'b' { RAISE_SYNTAX_ERROR("nope") }
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        out = io.StringIO()
+        genr = PythonParserGenerator(merged, out)
+        genr.generate("<string>")
+        self.assertNotIn("RAISE_SYNTAX_ERROR", out.getvalue())
+
     def test_extend_rule_marks_inserted_alternatives_invalid(self) -> None:
         base_grammar_source = """
         start: rule_a NEWLINE
@@ -375,12 +454,22 @@ class TestPegen(unittest.TestCase):
         extension_grammar = parse_string(extension_grammar_source, GrammarParser)
         merged = merge_grammars([base_grammar, extension_grammar])
         parser_class = generate_parser(merged)
-        node = parse_string("a c\n", parser_class)
-        self.assertEqual(node, "ac")
+        # The Python parser generator has no second pass, so the
+        # inserted alternative never matches.
+        with self.assertRaises(SyntaxError):
+            parse_string("a c\n", parser_class)
         node = parse_string("a b\n", parser_class)
         self.assertEqual(node, "ab")
         node = parse_string("a\n", parser_class)
         self.assertEqual(node, "a")
+
+    def test_build_parser_path_like(self) -> None:
+        grammar_source = "start: NUMBER NEWLINE\n"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            grammar_file = pathlib.Path(tmp_dir) / "grammar.gram"
+            grammar_file.write_text(grammar_source)
+            grammar, parser, tokenizer = build_parser(grammar_file)
+        self.assertEqual(list(grammar.rules), ["start"])
 
     def test_build_parser_multiple_files(self) -> None:
         first_grammar_source = """
