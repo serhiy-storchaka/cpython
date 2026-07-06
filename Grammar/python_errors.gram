@@ -429,13 +429,13 @@ strings (extend):
 dict (extend):
     | '{' invalid_double_starred_kvpairs '}'
 
-(for_stmt | for_if_clause) (extend):
-    | 'async'? 'for' a=star_expressions {
-        RAISE_SYNTAX_ERROR_INVALID_TARGET(FOR_TARGETS, a) }
-
 for_if_clause (extend):
     | 'async'? 'for' (bitwise_or (',' bitwise_or)* [',']) !'in' {
         RAISE_SYNTAX_ERROR("'in' expected after for-loop variables") }
+
+(for_stmt | for_if_clause) (extend):
+    | 'async'? 'for' a=star_expressions {
+        RAISE_SYNTAX_ERROR_INVALID_TARGET(FOR_TARGETS, a) }
 
 (listcomp | setcomp | genexp) (extend):
     | '[' a='**' b=expression for_if_clauses {

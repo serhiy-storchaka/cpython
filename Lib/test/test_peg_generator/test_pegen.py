@@ -98,6 +98,18 @@ class TestPegen(unittest.TestCase):
         with self.assertRaisesRegex(GrammarError, "Repeated meta 'header'"):
             merge_grammars([first_grammar, second_grammar])
 
+    def test_same_group_with_different_actions(self) -> None:
+        # Two groups with the same syntax but different actions must
+        # not share an artificial rule.
+        grammar_source = """
+        start: a=rule_a b=rule_b NEWLINE { (a, b) }
+        rule_a: ('a' 'b' { 1 })
+        rule_b: ('a' 'b' { 2 })
+        """
+        parser_class = make_parser(grammar_source)
+        node = parse_string("a b a b\n", parser_class)
+        self.assertEqual(node[:2], (1, 2))
+
     def test_extend_rule_append_and_prepend(self) -> None:
         base_grammar_source = """
         start: rule_a NEWLINE

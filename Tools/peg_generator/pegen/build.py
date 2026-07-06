@@ -475,6 +475,12 @@ class _PositionDeducer:
         else:
             inserted_alts = [inserted_alt]
         for index, base_alt in enumerate(base_alts):
+            if base_alt.invalid:
+                # An alternative inserted by a preceding extension
+                # raises an error rather than succeeds, so it cannot
+                # shadow the new alternative; their relative order is
+                # defined by the order of the extensions.
+                continue
             if any(self.may_swallow(base_alt, alt) for alt in inserted_alts):
                 return index
         return None

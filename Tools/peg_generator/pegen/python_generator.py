@@ -150,8 +150,10 @@ class PythonCallMakerVisitor(GrammarVisitor):
         call_by_name_func: Callable[[str], str],
         rule_generation_func: Callable[[], str],
     ) -> tuple[str, str]:
-        node_str = f"{node}"
-        key = f"{prefix}_{node_str}"
+        # str() ignores actions and variable names, so it cannot be
+        # used as a part of the key: two groups with the same syntax,
+        # but different actions must produce different artificial rules.
+        key = f"{prefix}_{node!r}"
         if key in self.cache:
             return self.cache[key]
 
