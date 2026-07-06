@@ -657,6 +657,10 @@ SyntaxError: expected default value expression
 Traceback (most recent call last):
 SyntaxError: expected default value expression
 
+>>> lambda a,d=: None
+Traceback (most recent call last):
+SyntaxError: expected default value expression
+
 >>> lambda a,d=3,c: None
 Traceback (most recent call last):
 SyntaxError: parameter without a default follows parameter with a default
@@ -2284,6 +2288,38 @@ SyntaxError: 'not' after an operator must be parenthesized
 Traceback (most recent call last):
 SyntaxError: 'not' after an operator must be parenthesized
 
+>>> 1 << not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 >> not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 & not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 ^ not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 | not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 < not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 1 == not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
+>>> 2 ** not 2
+Traceback (most recent call last):
+SyntaxError: 'not' after an operator must be parenthesized
+
 # Check that we don't introduce misleading errors
 >>> not 1 */ 2
 Traceback (most recent call last):
@@ -2587,6 +2623,26 @@ Invalid expressions in type scopes:
    Traceback (most recent call last):
    ...
    SyntaxError: Type parameter list cannot be empty
+
+   >>> type A[T=] = int
+   Traceback (most recent call last):
+   ...
+   SyntaxError: expected default value expression
+
+   >>> def f[T: int =](): ...
+   Traceback (most recent call last):
+   ...
+   SyntaxError: expected default value expression
+
+   >>> class A[*T=]: ...
+   Traceback (most recent call last):
+   ...
+   SyntaxError: expected default value expression
+
+   >>> class A[**T=, U]: ...
+   Traceback (most recent call last):
+   ...
+   SyntaxError: expected default value expression
 
    >>> class A[]: ...
    Traceback (most recent call last):

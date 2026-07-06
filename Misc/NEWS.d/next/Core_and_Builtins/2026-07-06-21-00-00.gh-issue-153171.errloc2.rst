@@ -1,0 +1,8 @@
+Produce specialized syntax error messages in more cases
+where a generic or unrelated error was previously reported:
+for ``not`` after shift, bitwise, comparison and power operators
+(such as ``1 << not x``),
+for a missing parameter default value in lambda expressions
+(such as ``lambda x=: 0``),
+and for a missing type parameter default value
+(such as ``def f[T=](): pass``).
