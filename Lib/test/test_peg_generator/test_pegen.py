@@ -1,6 +1,8 @@
 import ast
 import difflib
 import io
+import os
+import tempfile
 import textwrap
 import unittest
 
@@ -10,6 +12,7 @@ from tokenize import TokenInfo, NAME, NEWLINE, NUMBER, OP
 
 test_tools.skip_if_missing("peg_generator")
 with test_tools.imports_under_tool("peg_generator"):
+    from pegen.build import build_parser, merge_grammars
     from pegen.grammar_parser import GeneratedParser as GrammarParser
     from pegen.testutil import parse_string, generate_parser, make_parser
     from pegen.grammar import GrammarVisitor, GrammarError, Grammar
@@ -50,6 +53,340 @@ class TestPegen(unittest.TestCase):
         """
         with self.assertRaisesRegex(GrammarError, "Repeated rule 'the_rule'"):
             parse_string(grammar_source, GrammarParser)
+
+    def test_merge_grammars(self) -> None:
+        first_grammar_source = """
+        @header 'HEADER'
+        start: the_rule NEWLINE | extra_rule
+        the_rule: 'a' NEWLINE
+        """
+        second_grammar_source = """
+        @trailer 'TRAILER'
+        extra_rule: 'b' NEWLINE
+        """
+        first_grammar = parse_string(first_grammar_source, GrammarParser)
+        second_grammar = parse_string(second_grammar_source, GrammarParser)
+        merged = merge_grammars([first_grammar, second_grammar])
+        self.assertEqual(list(merged.rules), ["start", "the_rule", "extra_rule"])
+        self.assertEqual(merged.metas, {"header": "HEADER", "trailer": "TRAILER"})
+
+    def test_merge_grammars_repeated_rule(self) -> None:
+        first_grammar_source = """
+        start: the_rule NEWLINE
+        the_rule: 'a' NEWLINE
+        """
+        second_grammar_source = """
+        the_rule: 'b' NEWLINE
+        """
+        first_grammar = parse_string(first_grammar_source, GrammarParser)
+        second_grammar = parse_string(second_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, "Repeated rule 'the_rule'"):
+            merge_grammars([first_grammar, second_grammar])
+
+    def test_merge_grammars_repeated_meta(self) -> None:
+        first_grammar_source = """
+        @header 'HEADER'
+        start: the_rule NEWLINE
+        the_rule: 'a' NEWLINE
+        """
+        second_grammar_source = """
+        @header 'OTHER HEADER'
+        extra_rule: 'b' NEWLINE
+        """
+        first_grammar = parse_string(first_grammar_source, GrammarParser)
+        second_grammar = parse_string(second_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, "Repeated meta 'header'"):
+            merge_grammars([first_grammar, second_grammar])
+
+    def test_extend_rule_append_and_prepend(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' { A } | 'b' { B }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | first_extra
+            | ...
+            | last_extra
+        first_extra: 'x'
+        last_extra: 'y'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(str(rule), "rule_a: first_extra | 'a' | 'b' | last_extra")
+        # The base alternatives keep their actions.
+        self.assertEqual(rule.rhs.alts[1].action, "A")
+        self.assertEqual(rule.rhs.alts[2].action, "B")
+
+    def test_extend_rule_deduced_position(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' 'b' { AB } | 'a' { A } | 'b' { B }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'c' { AC }
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        # "'a'" can match a proper prefix of "'a' 'c'", so the inserted
+        # alternative is placed just before it.
+        self.assertEqual(str(rule), "rule_a: 'a' 'b' | 'a' 'c' | 'a' | 'b'")
+        self.assertEqual(rule.rhs.alts[2].action, "A")
+
+    def test_extend_rule_deduced_position_via_rule_reference(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' 'b' { AB } | 'a' { A } | 'b' { B }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | extra
+        extra: 'a' 'c'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(str(rule), "rule_a: 'a' 'b' | extra | 'a' | 'b'")
+
+    def test_extend_rule_deduction_negative_lookahead(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' !'c' { A } | 'a' 'b' { AB }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'd'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(str(rule), "rule_a: 'a' 'd' | 'a' !'c' | 'a' 'b'")
+        # "'a' !'c'" cannot match a prefix of "'a' 'c'" because of the
+        # negative lookahead, so the inserted alternative is appended.
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'c'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(str(rule), "rule_a: 'a' !'c' | 'a' 'b' | 'a' 'c'")
+
+    def test_extend_rule_appended_when_no_position_deduced(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'c' 'd'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(str(rule), "rule_a: 'a' | 'b' | 'c' 'd'")
+
+    def test_extend_rule_multiple_splices(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | extra
+            | ...
+            | extra_2
+            | ...
+        extra: 'x'
+        extra_2: 'y'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, 'Multiple "..."'):
+            merge_grammars([base_grammar, extension_grammar])
+
+    def test_extend_rule_redundant_splice(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | ...
+            | extra
+        extra: 'x'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, 'Redundant "..."'):
+            merge_grammars([base_grammar, extension_grammar])
+
+    def test_extend_rule_duplicates_alternative(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, "duplicates the alternative"):
+            merge_grammars([base_grammar, extension_grammar])
+
+    def test_extend_rule_marks_inserted_alternatives_invalid(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'x' 'y'
+            | ...
+            | 'a' 'c'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        # Inserted alternatives are only used in the second parsing pass.
+        self.assertEqual([alt.invalid for alt in rule.rhs.alts],
+                         [True, True, False, False])
+
+    def test_extend_several_rules_at_once(self) -> None:
+        base_grammar_source = """
+        start: rule_a rule_b NEWLINE
+        rule_a: 'a' | 'b'
+        rule_b: 'c' | 'd'
+        """
+        extension_grammar_source = """
+        (rule_a | rule_b) (extend):
+            | extra
+            | ...
+        extra: 'x'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        self.assertEqual(str(merged.rules["rule_a"]), "rule_a: extra | 'a' | 'b'")
+        self.assertEqual(str(merged.rules["rule_b"]), "rule_b: extra | 'c' | 'd'")
+
+    def test_extend_rule_several_times(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | first_extra
+            | ...
+        (rule_a | extra) (extend):
+            | last_extra
+        extra: 'x'
+        first_extra: 'y'
+        last_extra: 'z'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        self.assertEqual(str(merged.rules["rule_a"]),
+                         "rule_a: first_extra | 'a' | 'b' | last_extra")
+        self.assertEqual(str(merged.rules["extra"]), "extra: 'x' | last_extra")
+
+    def test_extend_rule_keeps_base_type_and_flags(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE
+        rule_a[expr_ty] (memo): 'a' | 'b'
+        """
+        extension_grammar_source = """
+        rule_a (extend): extra | ...
+        extra: 'x'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        rule = merged.rules["rule_a"]
+        self.assertEqual(rule.type, "expr_ty")
+        self.assertEqual(rule.flags, frozenset({"memo"}))
+
+    def test_extend_undefined_rule(self) -> None:
+        base_grammar_source = """
+        start: 'a' NEWLINE
+        """
+        extension_grammar_source = """
+        rule_a (extend): extra | ...
+        extra: 'x'
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, "Extended rule 'rule_a' is not defined"):
+            merge_grammars([base_grammar, extension_grammar])
+
+    def test_splice_without_extend_flag(self) -> None:
+        grammar_source = """
+        start: rule_a NEWLINE
+        rule_a: 'a' | ...
+        """
+        grammar = parse_string(grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, '"..." can only be used'):
+            generate_parser(grammar)
+
+    def test_extend_flag_without_base_rule(self) -> None:
+        grammar_source = """
+        start: rule_a NEWLINE
+        rule_a (extend): 'a' | ...
+        """
+        grammar = parse_string(grammar_source, GrammarParser)
+        with self.assertRaisesRegex(GrammarError, "has the 'extend' flag"):
+            generate_parser(grammar)
+
+    def test_extended_grammar_parses(self) -> None:
+        base_grammar_source = """
+        start: rule_a NEWLINE { rule_a }
+        rule_a: 'a' 'b' { "ab" } | 'a' { "a" }
+        """
+        extension_grammar_source = """
+        rule_a (extend):
+            | 'a' 'c' { "ac" }
+        """
+        base_grammar = parse_string(base_grammar_source, GrammarParser)
+        extension_grammar = parse_string(extension_grammar_source, GrammarParser)
+        merged = merge_grammars([base_grammar, extension_grammar])
+        parser_class = generate_parser(merged)
+        node = parse_string("a c\n", parser_class)
+        self.assertEqual(node, "ac")
+        node = parse_string("a b\n", parser_class)
+        self.assertEqual(node, "ab")
+        node = parse_string("a\n", parser_class)
+        self.assertEqual(node, "a")
+
+    def test_build_parser_multiple_files(self) -> None:
+        first_grammar_source = """
+        start: the_rule NEWLINE | extra_rule
+        the_rule: 'a' NEWLINE
+        """
+        second_grammar_source = """
+        extra_rule: 'b' NEWLINE
+        """
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            first_path = os.path.join(tmp_dir, "first.gram")
+            with open(first_path, "w") as file:
+                file.write(textwrap.dedent(first_grammar_source))
+            second_path = os.path.join(tmp_dir, "second.gram")
+            with open(second_path, "w") as file:
+                file.write(textwrap.dedent(second_grammar_source))
+            grammar, parser, tokenizer = build_parser([first_path, second_path])
+        self.assertEqual(list(grammar.rules), ["start", "the_rule", "extra_rule"])
 
     def test_long_rule_str(self) -> None:
         grammar_source = """

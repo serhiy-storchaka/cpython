@@ -835,7 +835,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
     def visit_Alt(
         self, node: Alt, is_loop: bool, is_gather: bool, rulename: str | None
     ) -> None:
-        if len(node.items) == 1 and str(node.items[0]).startswith("invalid_"):
+        if node.invalid or (
+            len(node.items) == 1 and str(node.items[0]).startswith("invalid_")
+        ):
             self.print(f"if (p->call_invalid_rules) {{ // {node}")
         else:
             self.print(f"{{ // {node}")
