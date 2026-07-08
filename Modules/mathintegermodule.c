@@ -133,10 +133,10 @@ math_integer_lcm_impl(PyObject *module, PyObject * const *args,
         for (; j & 1; j >>= 1) {
             top--;
             Py_SETREF(res, long_lcm(res, stack[top]));
+            Py_DECREF(stack[top]);
             if (res == NULL) {
                 goto error;
             }
-            Py_DECREF(stack[top]);
         }
         if (i >= args_length) {
             break;
