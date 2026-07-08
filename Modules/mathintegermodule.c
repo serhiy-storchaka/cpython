@@ -118,35 +118,36 @@ math_integer_lcm_impl(PyObject *module, PyObject * const *args,
         return PyLong_FromLong(1);
     }
     /* Combine intermediate results in size-balanced order: a new value
-       is merged with stacked values while it has at least half as many
-       digits, so every stack entry has more than twice as many digits
-       as the one above it.  Small arguments are thus combined with each
-       other before touching a much larger partial result.  The doubling
-       invariant bounds the stack depth by the bit width of the maximal
-       digit count, so the stack cannot overflow. */
+       is merged with stacked values while it has at least 3/4 as many
+       digits, so the sizes of stack entries grow at least 4/3 times
+       per entry.  Small arguments are thus combined with each other
+       before touching a much larger partial result.  The stack depth
+       is bounded by log(PY_SSIZE_T_MAX)/log(4/3) plus one possible
+       zero entry on top: 153 on 64-bit and 76 on 32-bit platforms. */
+    PyObject *stack[24 * sizeof(Py_ssize_t)];
+    Py_ssize_t sizes[24 * sizeof(Py_ssize_t)];
     PyObject *res;
-    PyObject *stack[8 * sizeof(Py_ssize_t)];
     int top = 0;
     for (Py_ssize_t i = 0; ; i++) {
         res = PyNumber_Index(args[i]);
         if (res == NULL) {
             goto error;
         }
-        while (top > 0
-               && (_PyLong_DigitCount((PyLongObject *)res)
-                   >= _PyLong_DigitCount((PyLongObject *)stack[top-1]) / 2))
-        {
+        Py_ssize_t dres = _PyLong_DigitCount((PyLongObject *)res);
+        while (top > 0 && dres >= sizes[top-1] - sizes[top-1] / 4) {
             top--;
             Py_SETREF(res, long_lcm(res, stack[top]));
             Py_DECREF(stack[top]);
             if (res == NULL) {
                 goto error;
             }
+            dres = _PyLong_DigitCount((PyLongObject *)res);
         }
         if (i + 1 >= args_length) {
             break;
         }
         assert(top < (int)Py_ARRAY_LENGTH(stack));
+        sizes[top] = dres;
         stack[top++] = res;
     }
     while (top > 0) {
