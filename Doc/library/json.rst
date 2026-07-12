@@ -649,6 +649,8 @@ the global :data:`copyreg.json_dispatch_table`.
 The *default* function is called last,
 only for objects that none of the above handled.
 
+.. currentmodule:: None
+
 .. method:: object.__json__()
 
    Return a substitute object to be serialized instead of *self*.
@@ -682,6 +684,8 @@ only for objects that none of the above handled.
    wrap it in :class:`copyreg.RawJSON` instead.
 
    .. versionadded:: next
+
+.. currentmodule:: json
 
 For example, a class can serialize itself as a JSON object::
 
