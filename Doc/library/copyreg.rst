@@ -1,3 +1,5 @@
+.. _copyreg-register-pickle-support-functions:
+
 :mod:`!copyreg` --- Register :mod:`!pickle` and :mod:`!json` support functions
 ==============================================================================
 
