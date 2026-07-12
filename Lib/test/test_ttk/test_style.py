@@ -161,9 +161,17 @@ class StyleTest(AbstractTkTest, unittest.TestCase):
                     newname = f'C.{name}'
                     self.assertEqual(style.configure(newname), None)
                     style.configure(newname, **default)
-                    self.assertEqual(style.configure(newname), default)
+                    # With Tk 9 and the aqua theme an empty option value is
+                    # read back as an empty tuple rather than an empty string
+                    # (see gh-128846); normalize before comparing.
+                    def norm(value):
+                        return '' if value == () else value
+                    copy = style.configure(newname)
+                    self.assertEqual({k: norm(v) for k, v in copy.items()},
+                                     default)
                     for key, value in default.items():
-                        self.assertEqual(style.configure(newname, key), value)
+                        self.assertEqual(norm(style.configure(newname, key)),
+                                         value)
 
 
     def test_map_custom_copy(self):
