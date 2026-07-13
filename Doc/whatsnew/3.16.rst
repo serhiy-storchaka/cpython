@@ -75,6 +75,12 @@ New features
 Other language changes
 ======================
 
+* :meth:`memoryview.cast` now accepts an *order* parameter.  With
+  ``order='F'`` it returns a zero-copy Fortran-contiguous (column-major)
+  view of a flat buffer, which is useful for interfacing with column-major
+  libraries.
+  (Contributed by Serhiy Storchaka in :gh:`78959`.)
+
 
 
 New modules
