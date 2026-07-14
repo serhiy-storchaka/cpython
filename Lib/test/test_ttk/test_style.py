@@ -161,11 +161,12 @@ class StyleTest(AbstractTkTest, unittest.TestCase):
                     newname = f'C.{name}'
                     self.assertEqual(style.configure(newname), None)
                     style.configure(newname, **default)
-                    # With Tk 9 and the aqua theme an empty option value is
-                    # read back as an empty tuple rather than an empty string
-                    # (see gh-128846); normalize before comparing.
+                    # gh-128846: on 3.13 the aqua theme with Tk 9 reports an
+                    # unset option as an empty tuple in the original style but
+                    # as an empty string in the copy.  Normalize the copy back
+                    # to the empty tuple before comparing.
                     def norm(value):
-                        return '' if value == () else value
+                        return () if value == '' else value
                     copy = style.configure(newname)
                     self.assertEqual({k: norm(v) for k, v in copy.items()},
                                      default)
