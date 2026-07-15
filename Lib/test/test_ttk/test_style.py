@@ -161,18 +161,16 @@ class StyleTest(AbstractTkTest, unittest.TestCase):
                     newname = f'C.{name}'
                     self.assertEqual(style.configure(newname), None)
                     style.configure(newname, **default)
-                    # gh-128846: on 3.13 the aqua theme with Tk 9 reports an
-                    # unset option as an empty tuple in the original style but
-                    # as an empty string in the copy.  Normalize the copy back
-                    # to the empty tuple before comparing.
+                    # gh-128846: the aqua theme with Tk 9 reports an unset
+                    # option as an empty tuple, while the copy reports it as an
+                    # empty string.
                     def norm(value):
-                        return () if value == '' else value
-                    copy = style.configure(newname)
-                    self.assertEqual({k: norm(v) for k, v in copy.items()},
-                                     default)
+                        return '' if value == () else value
+                    self.assertEqual(style.configure(newname),
+                                     {k: norm(v) for k, v in default.items()})
                     for key, value in default.items():
-                        self.assertEqual(norm(style.configure(newname, key)),
-                                         value)
+                        self.assertEqual(style.configure(newname, key),
+                                         norm(value))
 
 
     def test_map_custom_copy(self):
