@@ -7221,8 +7221,7 @@ AS_VAR_IF([with_curses], [curses], [
     [AC_LINK_IFELSE(
       [AC_LANG_PROGRAM([_CURSES_INCLUDES], [[
         cchar_t wcval;
-        wchar_t wch[[2]] = {0};
-        setcchar(&wcval, wch, A_NORMAL, 0, NULL);
+        setcchar(&wcval, L"x", A_NORMAL, 0, NULL);
         add_wch(&wcval);
       ]])],
       [ac_cv_curses_wide=yes],

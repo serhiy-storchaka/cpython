@@ -30203,8 +30203,7 @@ main (void)
 {
 
         cchar_t wcval;
-        wchar_t wch[[2]] = {0};
-        setcchar(&wcval, wch, A_NORMAL, 0, NULL);
+        setcchar(&wcval, L"x", A_NORMAL, 0, NULL);
         add_wch(&wcval);
 
   ;
