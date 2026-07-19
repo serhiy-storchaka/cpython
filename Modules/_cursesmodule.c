@@ -3547,7 +3547,7 @@ _curses_window_insch_impl(PyCursesWindowObject *self, int group_left_1,
     if (type == 1) {
         /* winsch() does not locale-decode a byte above 127 on a wide build,
            unlike waddch(), so decode it here and insert it as a wide
-           character. */
+           character. (gh-153864) */
         chtype cch = ch_ & A_CHARTEXT;
         if (cch > 127) {
             wint_t wc = btowc((int)cch);
