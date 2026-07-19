@@ -706,7 +706,7 @@ class HTMLDoc(Doc):
         else:
             url = '%s.html' % name
         if ispackage:
-            text = '<strong>%s</strong> (package)' % name
+            text = '<strong>%s</strong>&nbsp;(package)' % name
         else:
             text = name
         return '<a href="%s">%s</a>' % (url, text)
@@ -2499,22 +2499,22 @@ def _url_handler(url, content_type="text/html"):
                                                platform.python_compiler()))
         return """
 <nav class="navbar">
-<div class="navbar-version">Python %s<br>%s</div>
-<ul>
-<li><a href="index.html">Module Index</a></li>
-<li><a href="topics.html">Topics</a></li>
-<li><a href="keywords.html">Keywords</a></li>
-</ul>
-<div>
-<form action="get">
-<input type="search" name="key" size="15" placeholder="Get help on ...">
-<input type="submit" value="Get">
-</form>
-<form action="search">
-<input type="search" name="key" size="15" placeholder="Search modules">
-<input type="submit" value="Search">
-</form>
-</div>
+  <div class="navbar-version">Python %s<br>%s</div>
+  <ul>
+    <li><a href="index.html">Module Index</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="keywords.html">Keywords</a></li>
+  </ul>
+  <div>
+    <form action="get">
+      <input type="search" name="key" size="15" placeholder="Get help on ...">
+      <input type="submit" value="Get">
+    </form>
+    <form action="search">
+      <input type="search" name="key" size="15" placeholder="Search modules">
+      <input type="submit" value="Search">
+    </form>
+  </div>
 </nav>
 """ % (version, html.escape(platform.platform(terse=True)))
 
@@ -2601,7 +2601,8 @@ def _url_handler(url, content_type="text/html"):
         else:
             title = 'TOPIC'
         heading = html.heading('%s %s' % (title.capitalize(), topic))
-        contents = '<pre class="topic">%s</pre>' % html.markup(contents)
+        contents = ('<pre class="%s">%s</pre>'
+                    % (title.lower(), html.markup(contents)))
         if xrefs:
             xrefs = sorted(xrefs.split())
 
