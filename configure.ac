@@ -7124,7 +7124,11 @@ PKG_CHECK_MODULES([CURSES], [$1],
    PKG_CHECK_MODULES([PANEL], [$2],
     [AC_DEFINE([HAVE_]panel_var, [1], [Define if you have the '$2' library])
      AS_VAR_SET([have_panel], [yes])],
-    [AS_VAR_SET([have_panel], [no])])],
+    [dnl pkgsrc renames the ncurses panel to "gnupanel" so it does not clash
+     dnl with a system libpanel; it Requires the same ncurses, so it matches.
+     PKG_CHECK_MODULES([PANEL], [gnupanel],
+      [AS_VAR_SET([have_panel], [yes])],
+      [AS_VAR_SET([have_panel], [no])])])],
   [AS_VAR_SET([have_curses], [no])])
 AS_VAR_POPDEF([curses_var])
 AS_VAR_POPDEF([panel_var])])
@@ -7135,24 +7139,29 @@ AS_VAR_POPDEF([panel_var])])
 # empty so nothing links and have_curses stays "no".
 AS_CASE([$with_curses],
   [ncursesw], [PY_CHECK_CURSES([ncursesw], [panelw])
-               curses_libs="ncursesw"; panel_libs="panelw"],
+               curses_libs="ncursesw"; panel_libs="panelw gnupanel"],
   [ncurses],  [PY_CHECK_CURSES([ncurses], [panel])
-               curses_libs="ncurses"; panel_libs="panel"],
+               curses_libs="ncurses"; panel_libs="panel gnupanel"],
   [curses],   [curses_libs="curses"; panel_libs="panel"],
   [no],       [curses_libs=""; panel_libs=""],
   [dnl auto: prefer ncursesw, fall back to ncurses; never native curses.
    PY_CHECK_CURSES([ncursesw], [panelw])
    AS_VAR_IF([have_curses], [no], [PY_CHECK_CURSES([ncurses], [panel])])
-   curses_libs="ncursesw ncurses"; panel_libs="panelw panel"])
+   curses_libs="ncursesw ncurses"; panel_libs="panelw panel gnupanel"])
 
 WITH_SAVE_ENV([
-  # Make sure we've got the header defines.
+  # Make sure we've got the header defines.  For the native "curses" backend,
+  # probe only the plain headers: a system may also have ncurses headers (e.g.
+  # ncurses/curses.h), and picking those while linking the native library mixes
+  # incompatible declarations (e.g. tparm()) with the native <term.h>.
   AS_VAR_APPEND([CPPFLAGS], [" $CURSES_CFLAGS $PANEL_CFLAGS"])
-  AC_CHECK_HEADERS(m4_normalize([
-    ncursesw/curses.h ncursesw/ncurses.h ncursesw/panel.h
-    ncurses/curses.h ncurses/ncurses.h ncurses/panel.h
-    curses.h ncurses.h panel.h
-  ]))
+  AS_VAR_IF([with_curses], [curses],
+    [AC_CHECK_HEADERS([curses.h panel.h])],
+    [AC_CHECK_HEADERS(m4_normalize([
+      ncursesw/curses.h ncursesw/ncurses.h ncursesw/panel.h
+      ncurses/curses.h ncurses/ncurses.h ncurses/panel.h
+      curses.h ncurses.h panel.h
+    ]))])
 
   # Check that we're able to link with crucial curses/panel functions. This
   # also serves as a fallback in case pkg-config failed.

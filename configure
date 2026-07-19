@@ -29450,11 +29450,151 @@ fi
         # Put the nasty error message in config.log where it belongs
         echo "$PANEL_PKG_ERRORS" >&5
 
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
         have_panel=no
 elif test $pkg_failed = untried; then
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
         have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
+        have_panel=no
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+        have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
 else
         PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
         PANEL_LIBS=$pkg_cv_PANEL_LIBS
@@ -29468,7 +29608,7 @@ fi
 fi
 
 
-               curses_libs="ncursesw"; panel_libs="panelw" ;; #(
+               curses_libs="ncursesw"; panel_libs="panelw gnupanel" ;; #(
   ncurses) :
 
 
@@ -29604,11 +29744,151 @@ fi
         # Put the nasty error message in config.log where it belongs
         echo "$PANEL_PKG_ERRORS" >&5
 
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
         have_panel=no
 elif test $pkg_failed = untried; then
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
         have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
+        have_panel=no
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+        have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
 else
         PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
         PANEL_LIBS=$pkg_cv_PANEL_LIBS
@@ -29622,7 +29902,7 @@ fi
 fi
 
 
-               curses_libs="ncurses"; panel_libs="panel" ;; #(
+               curses_libs="ncurses"; panel_libs="panel gnupanel" ;; #(
   curses) :
     curses_libs="curses"; panel_libs="panel" ;; #(
   no) :
@@ -29762,11 +30042,151 @@ fi
         # Put the nasty error message in config.log where it belongs
         echo "$PANEL_PKG_ERRORS" >&5
 
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
         have_panel=no
 elif test $pkg_failed = untried; then
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
         have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
+        have_panel=no
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+        have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
 else
         PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
         PANEL_LIBS=$pkg_cv_PANEL_LIBS
@@ -29916,11 +30336,151 @@ fi
         # Put the nasty error message in config.log where it belongs
         echo "$PANEL_PKG_ERRORS" >&5
 
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
         have_panel=no
 elif test $pkg_failed = untried; then
         { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
         have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gnupanel" >&5
+printf %s "checking for gnupanel... " >&6; }
+
+if test -n "$PANEL_CFLAGS"; then
+    pkg_cv_PANEL_CFLAGS="$PANEL_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_CFLAGS=`$PKG_CONFIG --cflags "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$PANEL_LIBS"; then
+    pkg_cv_PANEL_LIBS="$PANEL_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gnupanel\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "gnupanel") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_PANEL_LIBS=`$PKG_CONFIG --libs "gnupanel" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "gnupanel" 2>&1`
+        else
+                PANEL_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "gnupanel" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$PANEL_PKG_ERRORS" >&5
+
+        have_panel=no
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+        have_panel=no
+else
+        PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
+        PANEL_LIBS=$pkg_cv_PANEL_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+        have_panel=yes
+fi
 else
         PANEL_CFLAGS=$pkg_cv_PANEL_CFLAGS
         PANEL_LIBS=$pkg_cv_PANEL_LIBS
@@ -29935,7 +30495,7 @@ fi
 
 
 fi
-   curses_libs="ncursesw ncurses"; panel_libs="panelw panel" ;;
+   curses_libs="ncursesw ncurses"; panel_libs="panelw panel gnupanel" ;;
 esac
 
 save_CFLAGS=$CFLAGS
@@ -29944,9 +30504,28 @@ save_LDFLAGS=$LDFLAGS
 save_LIBS=$LIBS
 
 
-  # Make sure we've got the header defines.
+  # Make sure we've got the header defines.  For the native "curses" backend,
+  # probe only the plain headers: a system may also have ncurses headers (e.g.
+  # ncurses/curses.h), and picking those while linking the native library mixes
+  # incompatible declarations (e.g. tparm()) with the native <term.h>.
   as_fn_append CPPFLAGS " $CURSES_CFLAGS $PANEL_CFLAGS"
-  ac_fn_c_check_header_compile "$LINENO" "ncursesw/curses.h" "ac_cv_header_ncursesw_curses_h" "$ac_includes_default"
+  if test "x$with_curses" = xcurses
+then :
+  ac_fn_c_check_header_compile "$LINENO" "curses.h" "ac_cv_header_curses_h" "$ac_includes_default"
+if test "x$ac_cv_header_curses_h" = xyes
+then :
+  printf "%s\n" "#define HAVE_CURSES_H 1" >>confdefs.h
+
+fi
+ac_fn_c_check_header_compile "$LINENO" "panel.h" "ac_cv_header_panel_h" "$ac_includes_default"
+if test "x$ac_cv_header_panel_h" = xyes
+then :
+  printf "%s\n" "#define HAVE_PANEL_H 1" >>confdefs.h
+
+fi
+
+else case e in #(
+  e) ac_fn_c_check_header_compile "$LINENO" "ncursesw/curses.h" "ac_cv_header_ncursesw_curses_h" "$ac_includes_default"
 if test "x$ac_cv_header_ncursesw_curses_h" = xyes
 then :
   printf "%s\n" "#define HAVE_NCURSESW_CURSES_H 1" >>confdefs.h
@@ -30000,7 +30579,9 @@ then :
   printf "%s\n" "#define HAVE_PANEL_H 1" >>confdefs.h
 
 fi
-
+ ;;
+esac
+fi
 
   # Check that we're able to link with crucial curses/panel functions. This
   # also serves as a fallback in case pkg-config failed.
