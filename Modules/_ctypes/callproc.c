@@ -1660,6 +1660,44 @@ static PyObject *py_dl_sym(PyObject *self, PyObject *args)
     PyErr_Format(PyExc_OSError, "symbol '%s' not found", name);
     return NULL;
 }
+
+// Apple platforms have dl_iterate_phdr() but ctypes.util.dllist() uses the
+// dyld API there, so do not provide it from here.
+#if defined(HAVE_DL_ITERATE_PHDR) && !defined(__APPLE__)
+#include <link.h>
+
+static int
+_dllist_callback(struct dl_phdr_info *info, size_t size, void *data)
+{
+    PyObject *list = (PyObject *)data;
+    PyObject *name = PyUnicode_DecodeFSDefault(info->dlpi_name);
+    if (name == NULL) {
+        return -1;
+    }
+    int res = PyList_Append(list, name);
+    Py_DECREF(name);
+    return res;
+}
+
+static PyObject *
+dllist(PyObject *self, PyObject *Py_UNUSED(ignored))
+{
+    // Call dl_iterate_phdr() from _ctypes, not through ctypes: on NetBSD it
+    // reports only the calling object's link-map group, and a libffi
+    // trampoline belongs to none (gh-131565).
+    PyObject *list = PyList_New(0);
+    if (list == NULL) {
+        return NULL;
+    }
+    // Its return value only echoes the callback; rely on the exception.
+    dl_iterate_phdr(_dllist_callback, list);
+    if (PyErr_Occurred()) {
+        Py_DECREF(list);
+        return NULL;
+    }
+    return list;
+}
+#endif
 #endif
 
 /*
@@ -2036,6 +2074,10 @@ PyMethodDef _ctypes_module_methods[] = {
      "dlopen(name, flag={RTLD_GLOBAL|RTLD_LOCAL}) open a shared library"},
     {"dlclose", py_dl_close, METH_VARARGS, "dlclose a library"},
     {"dlsym", py_dl_sym, METH_VARARGS, "find symbol in shared library"},
+#if defined(HAVE_DL_ITERATE_PHDR) && !defined(__APPLE__)
+    {"dllist", dllist, METH_NOARGS,
+     "dllist() return a list of loaded shared libraries"},
+#endif
 #endif
 #ifdef __APPLE__
      {"_dyld_shared_cache_contains_path", py_dyld_shared_cache_contains_path, METH_VARARGS, "check if path is in the shared cache"},
