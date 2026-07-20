@@ -1,0 +1,2 @@
+Fix ``test_posix_pty_functions`` in :mod:`!test.test_os` on Solaris
+and illumos.
