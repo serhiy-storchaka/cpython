@@ -4742,11 +4742,8 @@ printf "%s\n" "#define _BSD_SOURCE 1" >>confdefs.h
   # Marc Recht
   NetBSD/1.5 | NetBSD/1.5.* | NetBSD/1.6 | NetBSD/1.6.* | NetBSD/1.6[A-S])
     define_xopen_source=no;;
-  # From the perspective of Solaris, _XOPEN_SOURCE is not so much a
-  # request to enable features supported by the standard as a request
-  # to disable features not supported by the standard.  The best way
-  # for Python to use Solaris is simply to leave _XOPEN_SOURCE out
-  # entirely and define __EXTENSIONS__ instead.
+  # On Solaris, _XOPEN_SOURCE disables features unless __EXTENSIONS__ is
+  # also defined; a dedicated _XOPEN_SOURCE=600 is set for it below.
   SunOS/*)
     define_xopen_source=no;;
   # On UnixWare 7, u_long is never defined with _XOPEN_SOURCE,
@@ -4815,6 +4812,15 @@ printf "%s\n" "#define _POSIX_C_SOURCE 202405L" >>confdefs.h
   # with -std=c11.  Defining _ISOC23_SOURCE makes them visible again.
 
 printf "%s\n" "#define _ISOC23_SOURCE 1" >>confdefs.h
+
+fi
+
+# On Solaris the socket ancillary-data API (CMSG_*, sendmsg(), recvmsg())
+# needs _XOPEN_SOURCE >= 600; __EXTENSIONS__ keeps the other platform
+# features.  This enables the forkserver start method.  See gh-57208.
+if test "$ac_sys_system" = "SunOS"; then
+
+printf "%s\n" "#define _XOPEN_SOURCE 600" >>confdefs.h
 
 fi
 

@@ -871,11 +871,8 @@ case $ac_sys_system/$ac_sys_release in
   # Marc Recht
   NetBSD/1.5 | NetBSD/1.5.* | NetBSD/1.6 | NetBSD/1.6.* | NetBSD/1.6@<:@A-S@:>@)
     define_xopen_source=no;;
-  # From the perspective of Solaris, _XOPEN_SOURCE is not so much a
-  # request to enable features supported by the standard as a request
-  # to disable features not supported by the standard.  The best way
-  # for Python to use Solaris is simply to leave _XOPEN_SOURCE out
-  # entirely and define __EXTENSIONS__ instead.
+  # On Solaris, _XOPEN_SOURCE disables features unless __EXTENSIONS__ is
+  # also defined; a dedicated _XOPEN_SOURCE=600 is set for it below.
   SunOS/*)
     define_xopen_source=no;;
   # On UnixWare 7, u_long is never defined with _XOPEN_SOURCE,
@@ -941,6 +938,14 @@ then
   # with -std=c11.  Defining _ISOC23_SOURCE makes them visible again.
   AC_DEFINE([_ISOC23_SOURCE], [1],
             [Define to activate ISO C23 library declarations])
+fi
+
+# On Solaris the socket ancillary-data API (CMSG_*, sendmsg(), recvmsg())
+# needs _XOPEN_SOURCE >= 600; __EXTENSIONS__ keeps the other platform
+# features.  This enables the forkserver start method.  See gh-57208.
+if test "$ac_sys_system" = "SunOS"; then
+  AC_DEFINE([_XOPEN_SOURCE], [600],
+            [Define to the level of X/Open that your system supports])
 fi
 
 # On HP-UX mbstate_t requires _INCLUDE__STDC_A1_SOURCE
