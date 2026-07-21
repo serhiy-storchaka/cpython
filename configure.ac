@@ -5387,7 +5387,7 @@ DLINCLDIR=.
 # platforms have dlopen(), but don't want to use it.
 AC_CHECK_FUNCS([dlopen])
 
-# Used by ctypes.util.dllist() to enumerate loaded shared libraries.
+# Used by ctypes.util.dllist().
 AC_CHECK_FUNCS([dl_iterate_phdr])
 
 # DYNLOADFILE specifies which dynload_*.o file we will use for dynamic

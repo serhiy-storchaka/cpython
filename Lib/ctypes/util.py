@@ -450,9 +450,8 @@ elif os.name == "posix":
                    _get_soname(_findLib_gcc(name)) or _get_soname(_findLib_ld(name))
 
 
-# On platforms which provide it, dllist() is implemented in _ctypes using
-# dl_iterate_phdr().  It is not defined here otherwise (e.g. on Windows and
-# Apple, which define it above).
+# On platforms which provide dl_iterate_phdr(), dllist() is implemented
+# in _ctypes.
 try:
     from _ctypes import dllist
 except ImportError:

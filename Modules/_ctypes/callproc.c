@@ -1661,8 +1661,7 @@ static PyObject *py_dl_sym(PyObject *self, PyObject *args)
     return NULL;
 }
 
-// Apple platforms have dl_iterate_phdr() but ctypes.util.dllist() uses the
-// dyld API there, so do not provide it from here.
+// Apple platforms use the dyld API in ctypes.util instead.
 #if defined(HAVE_DL_ITERATE_PHDR) && !defined(__APPLE__)
 #include <link.h>
 
@@ -1682,14 +1681,13 @@ _dllist_callback(struct dl_phdr_info *info, size_t size, void *data)
 static PyObject *
 dllist(PyObject *self, PyObject *Py_UNUSED(ignored))
 {
-    // Call dl_iterate_phdr() from _ctypes, not through ctypes: on NetBSD it
-    // reports only the calling object's link-map group, and a libffi
-    // trampoline belongs to none (gh-131565).
+    // On NetBSD dl_iterate_phdr() only reports the link-map group of the
+    // caller, so it cannot be called via a libffi trampoline.
     PyObject *list = PyList_New(0);
     if (list == NULL) {
         return NULL;
     }
-    // Its return value only echoes the callback; rely on the exception.
+    // The return value only echoes the callback result.
     dl_iterate_phdr(_dllist_callback, list);
     if (PyErr_Occurred()) {
         Py_DECREF(list);
