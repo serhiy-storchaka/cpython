@@ -3765,6 +3765,7 @@ class ConfigDictTest(BaseTest):
             ('ERROR', '2'),
         ], pat=r"^[\w.]+ -> (\w+): (\d+)$")
 
+    @support.requires_working_socket()
     def test_listen_server_error(self):
         # The "ready" event should be set even if the server fails to start.
         t = logging.config.listen(-1)
