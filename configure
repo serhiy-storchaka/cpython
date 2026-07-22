@@ -20182,7 +20182,7 @@ then :
 fi
 
 
-# Used by ctypes.util.dllist() to enumerate loaded shared libraries.
+# Used by ctypes.util.dllist().
 ac_fn_c_check_func "$LINENO" "dl_iterate_phdr" "ac_cv_func_dl_iterate_phdr"
 if test "x$ac_cv_func_dl_iterate_phdr" = xyes
 then :
