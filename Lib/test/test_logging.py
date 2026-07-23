@@ -1953,6 +1953,7 @@ class SocketHandlerTest(BaseTest):
 
         def recv_message():
             conn, _ = server.accept()
+            self.addCleanup(conn.close)
             chunk = conn.recv(4)
             slen = struct.unpack(">L", chunk)[0]
             chunk = b''
