@@ -632,7 +632,11 @@ supports sending logging messages to a remote or local Unix syslog.
    ``('localhost', 514)`` is used.  The address is used to open a socket.  An
    alternative to providing a ``(host, port)`` tuple is providing an address as a
    string, for example '/dev/log'. In this case, a Unix domain socket is used to
-   send the message to the syslog. If *facility* is not specified,
+   send the message to the syslog.
+   If *address* is ``None``, the :mod:`syslog` module is used to log to the
+   local system logger; this works even where there is no syslog socket, such
+   as on recent versions of macOS.
+   If *facility* is not specified,
    :const:`LOG_USER` is used. The type of socket opened depends on the
    *socktype* argument, which defaults to :const:`socket.SOCK_DGRAM` and thus
    opens a UDP socket. To open a TCP socket (for use with the newer syslog
@@ -654,7 +658,8 @@ supports sending logging messages to a remote or local Unix syslog.
 
    .. note:: On macOS 12.x (Monterey), Apple has changed the behaviour of their
       syslog daemon - it no longer listens on a domain socket. Therefore, you cannot
-      expect :class:`SysLogHandler` to work on this system.
+      expect :class:`SysLogHandler` to work on this system with the default
+      *address*.  Pass ``address=None`` to use the :mod:`syslog` module instead.
 
       See :gh:`91070` for more information.
 
@@ -663,6 +668,9 @@ supports sending logging messages to a remote or local Unix syslog.
 
    .. versionchanged:: 3.14
       *timeout* was added.
+
+   .. versionchanged:: next
+      *address* can now be ``None`` to use the :mod:`syslog` module.
 
    .. method:: close()
 

@@ -888,6 +888,9 @@ class SysLogHandler(logging.Handler):
 
         If address is specified as a string, a UNIX socket is used. To log to a
         local syslogd, "SysLogHandler(address="/dev/log")" can be used.
+        If address is None, the syslog module is used to log to the local
+        system logger; this works even where there is no syslog socket, such
+        as on recent versions of macOS.
         If facility is not specified, LOG_USER is used. If socktype is
         specified as socket.SOCK_DGRAM or socket.SOCK_STREAM, that specific
         socket type will be used. For Unix sockets, you can also specify a
@@ -901,7 +904,12 @@ class SysLogHandler(logging.Handler):
         self.socktype = socktype
         self.timeout = timeout
         self.socket = None
-        self.createSocket()
+        if address is None:
+            # Use the syslog module to log to the local system logger.
+            import syslog
+            self.syslog = syslog
+        else:
+            self.createSocket()
 
     def _connect_unixsocket(self, address):
         use_socktype = self.socktype
@@ -1023,13 +1031,18 @@ class SysLogHandler(logging.Handler):
             msg = self.format(record)
             if self.ident:
                 msg = self.ident + msg
-            if self.append_nul:
-                msg += '\000'
 
             # We need to convert record level to lowercase, maybe this will
             # change in the future.
-            prio = '<%d>' % self.encodePriority(self.facility,
-                                                self.mapPriority(record.levelname))
+            prio = self.encodePriority(self.facility,
+                                       self.mapPriority(record.levelname))
+            if self.address is None:
+                self.syslog.syslog(prio, msg)
+                return
+
+            if self.append_nul:
+                msg += '\000'
+            prio = '<%d>' % prio
             prio = prio.encode('utf-8')
             # Message is a string. Convert to bytes as required by RFC 5424
             msg = msg.encode('utf-8')
