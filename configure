@@ -30915,14 +30915,9 @@ case $with_curses in #(
      ;; #(
   *) :
 
-  save_CFLAGS=$CFLAGS
-save_CPPFLAGS=$CPPFLAGS
-save_LDFLAGS=$LDFLAGS
-save_LIBS=$LIBS
-
-
-            as_fn_append CPPFLAGS " $CURSES_CFLAGS"
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether curses supports wide characters" >&5
+          save_curses_cppflags=$CPPFLAGS
+  as_fn_append CPPFLAGS " $CURSES_CFLAGS"
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether curses supports wide characters" >&5
 printf %s "checking whether curses supports wide characters... " >&6; }
 if test ${ac_cv_curses_wide+y}
 then :
@@ -30950,9 +30945,9 @@ int
 main (void)
 {
 
-          cchar_t wcval;
-          setcchar(&wcval, L"x", A_NORMAL, 0, NULL);
-          add_wch(&wcval);
+        cchar_t wcval;
+        setcchar(&wcval, L"x", A_NORMAL, 0, NULL);
+        add_wch(&wcval);
 
   ;
   return 0;
@@ -30971,13 +30966,7 @@ esac
 fi
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_curses_wide" >&5
 printf "%s\n" "$ac_cv_curses_wide" >&6; }
-
-CFLAGS=$save_CFLAGS
-CPPFLAGS=$save_CPPFLAGS
-LDFLAGS=$save_LDFLAGS
-LIBS=$save_LIBS
-
-
+  CPPFLAGS=$save_curses_cppflags
       if test "x$ac_cv_curses_wide" = xyes
 then :
   printf "%s\n" "#define HAVE_NCURSESW 1" >>confdefs.h
