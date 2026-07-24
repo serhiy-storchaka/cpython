@@ -63,7 +63,7 @@ class CapsuleImportTests(unittest.TestCase):
         with open(path, 'w', encoding='utf-8') as f:
             f.write(textwrap.dedent(source))
 
-    def check_import(self, name, *args):
+    def check_import(self, name, no_block=0):
         # _testcapi.PyCapsule_Import() returns the name stored as the
         # pointer by _testcapi.capsule_new().
         self.assertEqual(_testcapi.PyCapsule_Import(name, *args), name)
