@@ -22,7 +22,7 @@ capsule_new(PyObject *self, PyObject *arg)
             return PyErr_NoMemory();
         }
     }
-    static char dummy;
+    static const char dummy = 0;
     void *pointer = name_copy != NULL ? (void *)name_copy : (void *)&dummy;
     PyObject *capsule = PyCapsule_New(pointer, name_copy, capsule_destructor);
     if (capsule == NULL) {
