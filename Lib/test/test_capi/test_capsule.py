@@ -5,7 +5,7 @@ import textwrap
 import unittest
 from test.support import import_helper, os_helper
 
-_testcapi = import_helper.import_module('_testcapi')
+_testlimitedcapi = import_helper.import_module('_testlimitedcapi')
 
 
 class CapsuleImportTests(unittest.TestCase):
@@ -16,17 +16,17 @@ class CapsuleImportTests(unittest.TestCase):
         tmp = cls.tmp = cls.enterClassContext(os_helper.temp_dir())
         cls.enterClassContext(import_helper.DirsOnSysPath(tmp))
         cls.write_file(os.path.join(tmp, 'capsule_mod.py'), '''
-            import _testcapi
+            import _testlimitedcapi
 
-            capsule = _testcapi.capsule_new('capsule_mod.capsule')
-            капсула = _testcapi.capsule_new('capsule_mod.капсула')
-            mismatched = _testcapi.capsule_new('other.name')
-            nonutf8 = _testcapi.capsule_new(b'capsule_mod.nonutf8\\xff')
-            nullname = _testcapi.capsule_new(None)
+            capsule = _testlimitedcapi.capsule_new('capsule_mod.capsule')
+            капсула = _testlimitedcapi.capsule_new('capsule_mod.капсула')
+            mismatched = _testlimitedcapi.capsule_new('other.name')
+            nonutf8 = _testlimitedcapi.capsule_new(b'capsule_mod.nonutf8\\xff')
+            nullname = _testlimitedcapi.capsule_new(None)
             not_capsule = 42
 
             class ns:
-                nested = _testcapi.capsule_new('capsule_mod.ns.nested')
+                nested = _testlimitedcapi.capsule_new('capsule_mod.ns.nested')
 
             def __getattr__(name):
                 if name == 'bad_attr':
@@ -37,17 +37,17 @@ class CapsuleImportTests(unittest.TestCase):
         os.mkdir(pkg)
         cls.write_file(os.path.join(pkg, '__init__.py'), '')
         cls.write_file(os.path.join(pkg, 'sub.py'), '''
-            import _testcapi
+            import _testlimitedcapi
 
-            capsule = _testcapi.capsule_new('capsule_pkg.sub.capsule')
+            capsule = _testlimitedcapi.capsule_new('capsule_pkg.sub.capsule')
         ''')
         autopkg = os.path.join(tmp, 'capsule_autopkg')
         os.mkdir(autopkg)
         cls.write_file(os.path.join(autopkg, '__init__.py'), 'from . import sub\n')
         cls.write_file(os.path.join(autopkg, 'sub.py'), '''
-            import _testcapi
+            import _testlimitedcapi
 
-            capsule = _testcapi.capsule_new('capsule_autopkg.sub.capsule')
+            capsule = _testlimitedcapi.capsule_new('capsule_autopkg.sub.capsule')
         ''')
         cls.write_file(os.path.join(tmp, 'capsule_broken.py'), '1/0\n')
         importlib.invalidate_caches()
@@ -64,9 +64,9 @@ class CapsuleImportTests(unittest.TestCase):
             f.write(textwrap.dedent(source))
 
     def check_import(self, name, no_block=0):
-        # _testcapi.PyCapsule_Import() returns the name stored as the
-        # pointer by _testcapi.capsule_new().
-        self.assertEqual(_testcapi.PyCapsule_Import(name, *args), name)
+        # _testlimitedcapi.PyCapsule_Import() returns the name stored as the
+        # pointer by _testlimitedcapi.capsule_new().
+        self.assertEqual(_testlimitedcapi.PyCapsule_Import(name, no_block), name)
 
     def test_import(self):
         # The module is imported if not already imported.
@@ -84,9 +84,9 @@ class CapsuleImportTests(unittest.TestCase):
     def test_non_ascii_module_name(self):
         name = os_helper.TESTFN_NONASCII
         self.write_file(os.path.join(self.tmp, name + '.py'), f'''
-            import _testcapi
+            import _testlimitedcapi
 
-            capsule = _testcapi.capsule_new('{name}.capsule')
+            capsule = _testlimitedcapi.capsule_new('{name}.capsule')
         ''')
         importlib.invalidate_caches()
         self.addCleanup(import_helper.unload, name)
@@ -96,7 +96,7 @@ class CapsuleImportTests(unittest.TestCase):
         # Only the first component is imported; a submodule not imported
         # by its package is not found.
         self.assertRaises(AttributeError,
-                          _testcapi.PyCapsule_Import, 'capsule_pkg.sub.capsule')
+                          _testlimitedcapi.PyCapsule_Import, 'capsule_pkg.sub.capsule')
         # It is found after explicit import.
         importlib.import_module('capsule_pkg.sub')
         self.check_import('capsule_pkg.sub.capsule')
@@ -104,18 +104,27 @@ class CapsuleImportTests(unittest.TestCase):
         self.check_import('capsule_autopkg.sub.capsule')
 
     def test_invalid_name(self):
-        pycapsule_import = _testcapi.PyCapsule_Import
+        pycapsule_import = _testlimitedcapi.PyCapsule_Import
         # Non-existing module.
-        self.assertRaises(ImportError,
-                          pycapsule_import, 'capsule_nonexistent.capsule')
+        self.assertRaisesRegex(ImportError,
+            'PyCapsule_Import could not import module "capsule_nonexistent"',
+            pycapsule_import, 'capsule_nonexistent.capsule')
         # Non-UTF-8 module name.
-        self.assertRaises(ImportError, pycapsule_import, b'\xff\xfe.capsule')
+        self.assertRaisesRegex(ImportError,
+            'PyCapsule_Import could not import module',
+            pycapsule_import, b'\xff\xfe.capsule')
         # Empty module name.
-        self.assertRaises(ImportError, pycapsule_import, '.capsule_mod.capsule')
+        self.assertRaisesRegex(ImportError,
+            'PyCapsule_Import could not import module ""',
+            pycapsule_import, '.capsule_mod.capsule')
         # Empty name.
-        self.assertRaises(ImportError, pycapsule_import, '')
+        self.assertRaisesRegex(ImportError,
+            'PyCapsule_Import could not import module ""',
+            pycapsule_import, '')
         # Only a dot.
-        self.assertRaises(ImportError, pycapsule_import, '.')
+        self.assertRaisesRegex(ImportError,
+            'PyCapsule_Import could not import module ""',
+            pycapsule_import, '.')
         # Non-existing attribute.
         self.assertRaises(AttributeError,
                           pycapsule_import, 'capsule_mod.nonexistent')
@@ -134,7 +143,7 @@ class CapsuleImportTests(unittest.TestCase):
         # CRASHES pycapsule_import(NULL)
 
     def test_invalid_capsule(self):
-        pycapsule_import = _testcapi.PyCapsule_Import
+        pycapsule_import = _testlimitedcapi.PyCapsule_Import
         # The attribute is not a capsule.
         self.assertRaisesRegex(AttributeError, 'is not valid',
                                pycapsule_import, 'capsule_mod.not_capsule')
@@ -155,14 +164,17 @@ class CapsuleImportTests(unittest.TestCase):
     def test_error_from_import(self):
         # The exception raised during importing the module is replaced
         # with generic ImportError.
-        self.assertRaises(ImportError,
-                          _testcapi.PyCapsule_Import, 'capsule_broken.capsule')
+        with self.assertRaises(ImportError) as cm:
+            _testlimitedcapi.PyCapsule_Import('capsule_broken.capsule')
+        self.assertEqual(str(cm.exception),
+                         'PyCapsule_Import could not import '
+                         'module "capsule_broken"')
 
     def test_error_from_attribute_lookup(self):
         self.assertRaises(FloatingPointError,
-                          _testcapi.PyCapsule_Import, 'capsule_mod.bad_attr')
+                          _testlimitedcapi.PyCapsule_Import, 'capsule_mod.bad_attr')
         self.assertRaises(FloatingPointError,
-                          _testcapi.PyCapsule_Import, 'capsule_mod.bad_attr.capsule')
+                          _testlimitedcapi.PyCapsule_Import, 'capsule_mod.bad_attr.capsule')
 
 
 if __name__ == "__main__":

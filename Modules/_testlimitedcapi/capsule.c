@@ -57,7 +57,7 @@ static PyMethodDef test_methods[] = {
 };
 
 int
-_PyTestCapi_Init_Capsule(PyObject *m)
+_PyTestLimitedCAPI_Init_Capsule(PyObject *m)
 {
     return PyModule_AddFunctions(m, test_methods);
 }
