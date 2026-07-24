@@ -1951,15 +1951,25 @@ insert_split_key(PyDictKeysObject *keys, PyObject *key, Py_hash_t hash)
     if (ix >= 0) {
         return ix;
     }
+
+    // We need to acquire the type lock before the keys mutex. Another lock
+    // is never acquired below the keys mutex but a keys mutex can be acquired
+    // elsewhere while we hold the types lock. To avoid deadlocks we must always
+    // acquire the type lock first.
+    Py_BEGIN_CRITICAL_SECTION_MUTEX(&_PyInterpreterState_GET()->types.mutex);
 #endif
 
-    bool inserted = false;
     LOCK_KEYS(keys);
     ix = unicodekeys_lookup_unicode(keys, key, hash);
     if (ix == DKIX_EMPTY && keys->dk_usable > 0) {
         // Insert into new slot
-        inserted = true;
         FT_ATOMIC_STORE_UINT32_RELAXED(keys->dk_version, 0);
+        struct _instancekeysobject *shared_keys = _PyDictKeys_AsSharedKeys(keys);
+        PyTypeObject *type = FT_ATOMIC_LOAD_PTR_ACQUIRE(shared_keys->dsk_owning_type);
+        if (type) {
+            // we acquired the type lock above
+            _PyType_Modified_Unlocked(type);
+        }
         Py_ssize_t hashpos = find_empty_slot(keys, hash);
         ix = keys->dk_nentries;
         dictkeys_set_index(keys, hashpos, ix);
@@ -1970,12 +1980,9 @@ insert_split_key(PyDictKeysObject *keys, PyObject *key, Py_hash_t hash)
     assert (ix < SHARED_KEYS_MAX_SIZE);
     UNLOCK_KEYS(keys);
 
-    if (inserted) {
-        // gh-151593: Calling PyType_Modified() with LOCK_KEYS() creates a
-        // deadlock. So only call the function after UNLOCK_KEYS().
-        _PyDict_SplitKeysInvalidated(keys);
-    }
-
+#ifdef Py_GIL_DISABLED
+    Py_END_CRITICAL_SECTION();
+#endif
     return ix;
 }
 
@@ -7296,16 +7303,6 @@ _PyDict_RemoveKeysForClass(PyHeapTypeObject *cls)
 }
 
 void
-_PyDict_SplitKeysInvalidated(PyDictKeysObject* keys)
-{
-    struct _instancekeysobject *shared_keys = _PyDictKeys_AsSharedKeys(keys);
-    PyTypeObject *type = FT_ATOMIC_LOAD_PTR_ACQUIRE(shared_keys->dsk_owning_type);
-    if (type) {
-        PyType_Modified(type);
-    }
-}
-
-void
 _PyObject_InitInlineValues(PyObject *obj, PyTypeObject *tp)
 {
     assert(tp->tp_flags & Py_TPFLAGS_HEAPTYPE);
@@ -7725,7 +7722,7 @@ _PyObject_IsInstanceDictEmpty(PyObject *obj)
         PyDictValues *values = _PyObject_InlineValues(obj);
         if (FT_ATOMIC_LOAD_UINT8(values->valid)) {
             PyDictKeysObject *keys = CACHED_KEYS(tp);
-            for (Py_ssize_t i = 0; i < keys->dk_nentries; i++) {
+            for (Py_ssize_t i = 0; i < LOAD_KEYS_NENTRIES(keys); i++) {
                 if (FT_ATOMIC_LOAD_PTR_RELAXED(values->values[i]) != NULL) {
                     return 0;
                 }
