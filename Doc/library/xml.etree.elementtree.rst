@@ -1362,7 +1362,7 @@ TreeBuilder Objects
       Adds text to the current element.  *data* is a string.
 
 
-   .. method:: document()
+   .. method:: get_document_children()
 
       Returns the children of the document:
       the root element, and the comments and processing instructions
