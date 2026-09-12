@@ -1345,7 +1345,7 @@ TreeBuilder Objects
    factories will be used.  When *insert_comments* and/or *insert_pis* is true,
    comments/pis will be inserted into the tree if they appear within the root
    element.  Those which appear outside of it are returned by
-   :meth:`document`.
+   :meth:`get_document_children`.
 
    .. versionchanged:: next
       Comments and processing instructions outside the root element
